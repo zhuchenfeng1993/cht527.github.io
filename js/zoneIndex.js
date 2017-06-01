@@ -168,7 +168,6 @@ var headerText={
 }
 var showNewText=function(){
 	    var newstr=headerText.newstitle;
-	    console.log(newstr.length);
 		if(headerText.txti>=newstr.length){
 			clearInterval(headerText.txttimer);
 			clearInterval(headerText.newstimer);
