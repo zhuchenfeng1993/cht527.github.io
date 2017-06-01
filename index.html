@@ -127,7 +127,7 @@ window.onload=function(){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-		var pianoList=JSON.parse(data.pianoList);
+		var pianoList=JSON.parse(data);
 		console.log(pianoList);
 		$.map(pianoList,function(value,index,array){
 			var itemTemplate=
