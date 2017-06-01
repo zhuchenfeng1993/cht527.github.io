@@ -1,0 +1,59 @@
+body{font-family:microsoft yahei;min-width: 367px}a:hover{text-decoration: none;}#wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}
+.mod-header{background:white;background:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#f3f4f5));box-shadow:0 4px 4px rgba(0,0,0,.2)}
+#wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}img{max-width:100%;max-height:100%}
+body::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);background-color:#f5f5f5;border-radius:10px}
+body::-webkit-scrollbar{width:10px;background-color:#f5f5f5}
+body::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.44,#a0a0a0),color-stop(0.72,#aaa),color-stop(0.86,#b4b4b4))}
+footer{margin-bottom:20px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;justify-content:space-around;align-items:center;overflow:hidden;flex-wrap:wrap;color:black}
+.website-record{color: black;}
+.aliyun-pic{width:42px;height:30px;display:inline-block;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;vertical-align:middle;background:url("../img/aliyun_pic.png")}
+.backToTop{display:none;width:48px;position:fixed;_position:absolute;right:10px;bottom:100px;_bottom:"auto";cursor:pointer;opacity:.6;filter:Alpha(opacity=60)}
+.former_later{width:90%;height:90px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;justify-content:flex-end;align-items:center;overflow:hidden;flex-wrap:wrap;}
+article{
+	width: 80%;
+	margin: 0 auto;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    position: relative;
+    *zoom: 1;
+}
+article:before {
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    -moz-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg);
+    left: 15px;
+}
+article:after {
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg);
+    right: 15px;
+}
+.article_content{
+	font-size: 1.1em;
+	line-height: 2;
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 15px;
+}
+.article_content p{
+	line-height: 30px;
+	margin:15px 0 10px
+}
+.article_content:first-letter{
+	
+}
+.article_content p:first-of-type:first-letter{
+	font-weight: bold;
+	font-size:2em; 
+}
+.article_title{
+	width: 90%;
+	margin: 10px auto;
+	padding-top: 15px;
+}
+.author{
+	width: 90%;
+	margin: 10px auto
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<link rel="shortcut icon" href="./img/favicon.ico" /> 
+	<title>在云端 - caohaitao.cc</title>
+	<link rel="stylesheet" href="./css/b_t.css">
+	<link rel="stylesheet" type="text/css" href="./css/e-memoirs-base.css" >
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/sweetalert.css">
+	<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/header1.css" media="screen and (min-width: 1120px)">
+	<link rel="stylesheet" type="text/css" href="./css/header2.css" media="screen and (max-width: 1120px) and (min-width:1020px)">
+	<link rel="stylesheet" type="text/css" href="./css/header3.css" media="screen and (max-width: 1020px) and (min-width:737px)">
+	<link rel="stylesheet" type="text/css" href="./css/header4.css" media="screen and (max-width: 737px) and (min-width:546px)"> 
+	<link rel="stylesheet" type="text/css" href="./css/header5.css" media="screen and (max-width: 546px) and (min-width:476px)"> 
+	<link rel="stylesheet" type="text/css" href="./css/header6.css" media="screen and (max-width: 476px) and (min-width:368px)"> 
+	<link rel="stylesheet" type="text/css" href="./css/header7.css" media="screen and (max-width: 367px)"> 
+
+	<style type="text/css">
+	@media screen and (max-width: 737px) {
+    .nav-ul-list {
+        display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;
+        align-items:center;justify-content:space-around;
+        position: fixed;
+        bottom: 0;
+        padding: 0;
+        width: 85%;
+        background: #EEEEEE;
+    }
+    .nav-ul-list li{
+    	font-size: 1.1em;
+    }
+    .nav-ul-list li:last-child{
+    	display: none;
+    }
+}
+	</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+<?php
+    require_once('include/connect.php');
+          $sql = "SELECT * from pianoList";
+          $result=mysql_query($sql); 
+          $nums=mysql_num_rows($result);
+            if($result&&mysql_num_rows($result)){
+                while($row=mysql_fetch_assoc($result)){
+                    $data[]=$row;
+                }
+            }
+?>
+<div id="wrapper">
+	<header>
+
+		<div id="headout">
+				<a href="./cv/" target="_blank" ><img height="110px" src="./img/head.png" /></a>
+		</div>
+		
+		<div id="headtextparent">
+			<span id="headtext"></span>
+		</div>
+		
+		<nav class="nav-aboutme" onclick="javascript:window.location.href='about.me'"><img src="./img/about.png"><span style="font-size:1.5em">&nbsp;About Me</span><nav>
+	</header>
+
+	<div class="container"  style="margin-bottom:55px">
+		   <div class="row" id="nav_container">
+		      <div class="col-md-4">
+		      	<br>
+		        <ul class="nav-ul-list">
+				<li onclick="javascript:window.open('./panda.zhou')" >一字一元</li>
+		        	<li class="shidian" id="shidian" >十点读书</li>
+		        	<li class="webFE" id="webFE" >前端开发</li>
+		        	<li class="li_diary" id="li_diary" >心之契约</li>
+		        	<li class="photo" id="photo" >朝花夕拾</li>
+		        </ul>
+		        <hr style="width:75px; margin-left: 40px">
+		        <div class="piano-container" id="piano-container">
+                    <img src="./img/piano/pianoIcon.png" id="pianoBtn" />
+             		<span class="piano-text">指尖上的黑白键</span>
+		        </div>
+		    
+		       
+		      </div>
+		      <div class="col-md-8">
+		        <div class="parentimg">
+					<div class="img"><img class="photoimg" src="./img/1.png" onclick="window.location.href='article_show47.ds'"></div>
+					<div class="img"><img class="photoimg" src="./img/2.png" onclick="window.location.href='article_show53.ds'"></div>
+					<div class="img"><img class="photoimg" src="./img/3.png" onclick="window.location.href='article_show52.ds'"></div>
+					<div class="img"><img class="photoimg" src="./img/4.png" onclick="window.location.href='article_show51.ds'"></div>
+					<div class="img"><img class="photoimg" src="./img/5.png" onclick="window.location.href='article_show50.ds'"></div>
+				</div>
+		      </div>
+		   </div>
+		   <div class="pianoList-content" id="pianoList" >
+		   	 <img id="piano-back" src="./img/piano-back.png" title="返回"></span>					
+		    
+             <div class="piano-items-contianer">
+                 <?php
+                if(empty($data)){
+                    echo "<script> alert('当前没有曲谱，请添加');</script>";
+                }else{
+                    foreach ($data as $value) {
+                    
+              ?>
+              <section class="piano-items"> 
+                  <h3 style="display:inline-block;width:5%"><?php echo $value['id'];?>.</h3>
+                  <h3 style="display:inline-block;width:75%"><?php echo $value['title'];?></h3>
+                  <h3 style="display:inline-block;width:10%"><img class="show-hide-piano" title="展开" src="./img/piano/arrow-down.png" alt="" class="show-hide-arrow"></h3>
+                  <img class="piano-content-img" src="./img/piano/<?php echo $value['id'] ?>.png"  style="display:none" alt="">
+              </section>
+
+                  <?php
+                  }
+                }
+              ?>
+            </div>
+             
+        </div>
+	</div>
+	<hr class="divider" width="90%">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
+<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="/js/zoneIndex.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+navObj.addHandler(document.getElementById('shidian'),'click',function(){
+	window.location.href="/article_list.ds";
+});
+navObj.addHandler(document.getElementById('webFE'),'click',function(){
+	window.open("/webFE/");
+});
+navObj.addHandler(document.getElementById('photo'),'click',function(){
+	window.open("/photo_show/");
+});
+
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+</script>
+</body>
+</html>
