@@ -127,11 +127,11 @@ window.onload=function(){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-		console.log(data);
-		var pianoObj=JSON.parse(data);
+		//console.log(data);
+		//var pianoObj=JSON.parse(data);
 		//console.log(pianoObj);
 
-		$.map(pianoObj.pianoList,function(value,index,array){
+		$.map(data.pianoList,function(value,index,array){
 			var itemTemplate=
 			'<section class="piano-items">'+ 
                   '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
