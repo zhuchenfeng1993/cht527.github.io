@@ -7,7 +7,7 @@
 	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 	<link rel="shortcut icon" href="./img/favicon.ico" /> 
-	<title>在云端 - caohaitao.cc</title>
+	<title>caohaitao.cc</title>
 	<link rel="stylesheet" href="./css/b_t.css">
 	<link rel="stylesheet" type="text/css" href="./css/e-memoirs-base.css" >
 	<link rel="stylesheet" href="./css/animate.css">
@@ -42,17 +42,7 @@
 	</style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
-<?php
-    require_once('include/connect.php');
-          $sql = "SELECT * from pianoList";
-          $result=mysql_query($sql); 
-          $nums=mysql_num_rows($result);
-            if($result&&mysql_num_rows($result)){
-                while($row=mysql_fetch_assoc($result)){
-                    $data[]=$row;
-                }
-            }
-?>
+
 <div id="wrapper">
 	<header>
 
@@ -100,13 +90,9 @@
 		   	 <img id="piano-back" src="./img/piano-back.png" title="返回"></span>					
 		    
              <div class="piano-items-contianer">
-                 <?php
-                if(empty($data)){
-                    echo "<script> alert('当前没有曲谱，请添加');</script>";
-                }else{
-                    foreach ($data as $value) {
-                    
-              ?>
+              <script>
+              	
+              </script>  
               <section class="piano-items"> 
                   <h3 style="display:inline-block;width:5%"><?php echo $value['id'];?>.</h3>
                   <h3 style="display:inline-block;width:75%"><?php echo $value['title'];?></h3>
@@ -114,10 +100,6 @@
                   <img class="piano-content-img" src="./img/piano/<?php echo $value['id'] ?>.png"  style="display:none" alt="">
               </section>
 
-                  <?php
-                  }
-                }
-              ?>
             </div>
              
         </div>
