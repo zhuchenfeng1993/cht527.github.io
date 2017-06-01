@@ -118,6 +118,18 @@ navObj.addHandler(document.getElementById('photo'),'click',function(){
 });
 
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
+//---监听展开pianoList 展开、收起
+ $("#piano_items_contianer").on("click",'.show-hide-piano',function(){
+        if($(this).attr("title")=="展开"){
+            $(this).attr("src","./img/piano/arrow-up.png");
+            $(this).attr("title","收起")
+        }else{
+            $(this).attr("src","./img/piano/arrow-down.png");
+            $(this).attr("title","展开")
+        }
+        $(this).parent().next().toggle(800);
+ })
 </script>
 <script>
 window.onload=function(){
@@ -127,9 +139,6 @@ window.onload=function(){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-		console.log(data);
-		//var pianoObj=JSON.parse(data);
-		//console.log(pianoObj);
 
 		$.map(data.pianoList,function(value,index,array){
 			var itemTemplate=
