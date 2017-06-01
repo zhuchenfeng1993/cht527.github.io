@@ -132,7 +132,6 @@ window.onload=function(){
 		//console.log(pianoObj);
 
 		$.map(data.pianoList,function(value,index,array){
-			console.log(typeof(value.id));
 			var itemTemplate=
 			'<section class="piano-items">'+ 
                   '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
@@ -140,7 +139,7 @@ window.onload=function(){
                   '<h3 style="display:inline-block;width:10%">'+
                   	'<img class="show-hide-piano" title="展开" src="./img/piano/arrow-down.png" alt="" class="show-hide-arrow">'+
                   '</h3>'+
-                  '<img class="piano-content-img" src="./img/piano/'+value.id+'>.png" style="display:none" alt="" />'+
+                  '<img class="piano-content-img" src="./img/piano/'+value.id+'.png" style="display:none" alt="" />'+
               '</section>';
 			$("#piano_items_contianer").append(itemTemplate)
 		})
