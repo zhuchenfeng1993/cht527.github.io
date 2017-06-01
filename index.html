@@ -87,20 +87,9 @@
 		      </div>
 		   </div>
 		   <div class="pianoList-content" id="pianoList" >
-		   	 <img id="piano-back" src="./img/piano-back.png" title="返回"></span>					
+		   	 <img id="piano-back" src="./img/piano-back.png" title="返回">					
 		    
-             <div class="piano-items-contianer">
-              <script>
-              	
-              </script>  
-              <section class="piano-items"> 
-                  <h3 style="display:inline-block;width:5%"><?php echo $value['id'];?>.</h3>
-                  <h3 style="display:inline-block;width:75%"><?php echo $value['title'];?></h3>
-                  <h3 style="display:inline-block;width:10%"><img class="show-hide-piano" title="展开" src="./img/piano/arrow-down.png" alt="" class="show-hide-arrow"></h3>
-                  <img class="piano-content-img" src="./img/piano/<?php echo $value['id'] ?>.png"  style="display:none" alt="">
-              </section>
-
-            </div>
+             <div class="piano-items-contianer" id="piano_items_contianer"></div>
              
         </div>
 	</div>
@@ -130,5 +119,33 @@ navObj.addHandler(document.getElementById('photo'),'click',function(){
 
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 </script>
+<script>
+window.onload=function(){
+	 $.ajax({
+		method: "POST",
+		url: "./data_source/piano.json",
+		dataType:"json"
+		//data: { name: "John", location: "Boston" }
+	}).done(function(data) {
+
+		$.map(data.pianoList,function(value,index,array){
+			var itemTemplate=
+			'<section class="piano-items">'+ 
+                  '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
+                  '<h3 style="display:inline-block;width:75%">'+value.title+'</h3>'+
+                  '<h3 style="display:inline-block;width:10%">'+
+                  	'<img class="show-hide-piano" title="展开" src="./img/piano/arrow-down.png" alt="" class="show-hide-arrow">'+
+                  '</h3>'+
+                  '<img class="piano-content-img" src="./img/piano/'+value.id+'>.png" style="display:none" alt="">'+
+              '</section>';
+			$("#piano_items_contianer").append(itemTemplate)
+		})
+		     		
+
+	}).fail(function(){
+		swal('请求接口失败','error')
+	});
+}
+</script> 
 </body>
 </html>
