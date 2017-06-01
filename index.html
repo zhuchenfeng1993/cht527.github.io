@@ -127,8 +127,9 @@ window.onload=function(){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-
-		$.map(data.pianoList,function(value,index,array){
+		var pianoList=JSON.parse(data.pianoList);
+		console.log(pianoList);
+		$.map(pianoList,function(value,index,array){
 			var itemTemplate=
 			'<section class="piano-items">'+ 
                   '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
