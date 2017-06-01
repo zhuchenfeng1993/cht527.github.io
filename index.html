@@ -127,9 +127,9 @@ window.onload=function(){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-
+		console.log(data);
 		var pianoObj=JSON.parse(data);
-		console.log(pianoObj);
+		//console.log(pianoObj);
 
 		$.map(pianoObj.pianoList,function(value,index,array){
 			var itemTemplate=
@@ -146,7 +146,7 @@ window.onload=function(){
 		     		
 
 	}).fail(function(){
-		swal('请求接口失败','error')
+		swal('请求接口失败','error','error')
 	});
 }
 </script> 
