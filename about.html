@@ -97,27 +97,5 @@ window.blog = {
 <link rel="stylesheet" type="text/css" href="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/css/style-crayon-syntax-highlighter.e8ead470.css">
 <script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/lib/jquery.03ce4235.js"></script>
 <script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/index.983973b7.js"></script>
-<script>
-    $("#flyButton").on("click",function() {
-        $.ajax({
-                type:'post',
-                dataType:'text', 
-                url:'./admin/flyMessage_handle.php',//请求数据的地址
-                data:{
-                        flyMessage:$("#flyMessage").val()
-                },
-                success:function(data){
-                //console.log(typeof(data));
-                    if(data=="1"){
-                        console.log("data:1,success")
-                    }
-                    if(data=="0"){
-                        console.log("data:0,faild")
-                    }
-                }
-            })
-    });
-    
-</script>
 </body>
 </html>
