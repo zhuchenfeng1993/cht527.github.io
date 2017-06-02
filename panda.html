@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>一字一元</title>
+<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="./img/favicon.ico" /> 
+<link rel="stylesheet" href="./css/panda.css" />
+</head>
+
+<body>
+
+<div style="visibility:hidden">
+		<audio autoplay loop="loop">
+			  <source src="./include/panda.mp3" type="audio/mpeg">
+		</audio>
+</div> 
+<div class="panda-container">
+    <h1>one_word_one_gem</h1>
+    <div class="qr-container">
+    	 <img class="qr-img" src="./img/panda/qr.png" />
+    	 <div class="qr-des">
+    	 	闯荡江湖15年的广告圈女魔头、奋战在抗癌一线的大无胃女战士，用心血、欢笑和眼泪炫出人生最后一场直播~
+    	 </div>
+    </div>
+   
+    <hr style="color:#e0e0e0" />
+
+    <!---列表-->
+     <div id="article_panda_container"></div>
+    
+    <!--列表end-->
+    
+		<img id="to-left"  src="./img/panda/to-left.png" alt="" title="上一篇">
+		<img id="to-right" src="./img/panda/to-right.png" alt="" title="下一篇">
+	
+</div>
+<canvas width="1366" height="643"></canvas>
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script>
+            document.addEventListener('touchmove', function (e) {
+                e.preventDefault()
+            })
+            var c = document.getElementsByTagName('canvas')[0],
+                x = c.getContext('2d'),
+                pr = window.devicePixelRatio || 1,
+                w = window.innerWidth,
+                h = window.innerHeight,
+                f = 90,
+                q,
+                m = Math,
+                r = 0,
+                u = m.PI*2,
+                v = m.cos,
+                z = m.random
+            c.width = w*pr
+            c.height = h*pr
+            x.scale(pr, pr)
+            x.globalAlpha = 0.6
+            function i(){
+                x.clearRect(0,0,w,h)
+                q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+                while(q[1].x<w+f) d(q[0], q[1])
+            }
+            function d(i,j){   
+                x.beginPath()
+                x.moveTo(i.x, i.y)
+                x.lineTo(j.x, j.y)
+                var k = j.x + (z()*2-0.25)*f,
+                    n = y(j.y)
+                x.lineTo(k, n)
+                x.closePath()
+                r-=u/-50
+                x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+                x.fill()
+                q[0] = q[1]
+                q[1] = {x:k,y:n}
+            }
+            function y(p){
+                var t = p + (z()*2-1.1)*f
+                return (t>h||t<0) ? y(p) : t
+            }
+            document.onclick = i
+            document.ontouchstart = i
+            i()
+</script>
+<script>
+	
+
+    $("#to-left").on("click",function(){
+        if($(".article-panda-show").index()>0){
+            var prevEle=$(".article-panda-show").prev();
+            $(".article-panda-show").removeClass("article-panda-show");
+            prevEle.addClass("article-panda-show");
+        }else{
+            return false
+        }
+    })
+     $("#to-right").on("click",function(){
+        if($(".article-panda-show").index()<$(".article-panda").length-1){
+            var nextEle=$(".article-panda-show").next();
+            $(".article-panda-show").removeClass("article-panda-show");
+            nextEle.addClass("article-panda-show");
+        }else{
+            return false
+        }
+    })
+</script>
+<script>
+window.onload=function(){
+    $.ajax({
+        method: "GET",
+        url: "./data_source/panda.json",
+        dataType:"json"
+        //data: { name: "John", location: "Boston" }
+    }).done(function(data) {
+
+        $.map(data.pandaList,function(value,index,array){
+
+            var itemTemplate=
+            '<section class="article-panda">'+ 
+                  '<div class="a-container">'+
+                    '<a href='+value.link+' target="_blank" style="text-decoration:none">'+
+                    '<p class="panda-des1">'+value.des1+'</p>'+
+                    '<p class="panda-des2">'+value.des2+'</p>'+
+                  '</div>'+
+              '</section>';
+            $("#article_panda_container").append(itemTemplate)
+        })
+
+        $(".article-panda").eq(0).addClass("article-panda-show");
+                    
+    }).fail(function(){
+        swal('请求接口失败','error','error')
+    });
+}
+</script>
+</body>
+</html>
