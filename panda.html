@@ -128,8 +128,15 @@ window.onload=function(){
 
         $(".article-panda").eq(0).addClass("article-panda-show");
                     
-    }).fail(function(){
-        alert('请求接口失败')
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        /*打印jqXHR对象的信息*/
+        console.log(jqXHR.responseText); //必要的时候编码一下:encodeURIComponent(jqXHR.responseText);
+        console.log(jqXHR.status);
+        console.log(jqXHR.readyState);
+        console.log(jqXHR.statusText);
+        /*打印其他两个参数的信息*/
+        console.log(textStatus);
+        console.log(errorThrown);
     });
 }
 </script>
