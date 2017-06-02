@@ -23,6 +23,6 @@ footer{width: 90%;max-width: 760px; margin: 0 auto;padding: 15px 0;text-align: c
 .piano-text{animation:7s opacity_pic 0s infinite;-webkit-animation:7s opacity_pic 0s infinite;-moz-animation:7s opacity_pic 0s infinite}.img_two{animation:7s opacity_pic 2s infinite;-webkit-animation:7s opacity_pic 2s infinite;-moz-animation:7s opacity_pic 2s infinite}.img_three{animation:7s opacity_pic 4s infinite;-webkit-animation:7s opacity_pic 4s infinite;-moz-animation:7s opacity_pic 4s infinite}@keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}@-webkit-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}@-moz-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 .piano-items-contianer{width: 80%;margin: 30px auto}.piano-items{margin-bottom: 15px;color: #7C7C7C}
 .piano-content-img{margin: 10px auto}.show-hide-piano{cursor: pointer;}
-#pianoBtn{margin-left:25px;display: inline-block;vertical-align: middle;cursor: pointer;}
+#pianoBtn{margin-left:35px;display: inline-block;vertical-align: middle;cursor: pointer;}
 #pianoList{display: none;}.piano-text{font-size: 1.3em}#piano-back{cursor: pointer;margin: 10px auto;display: block;}
 .piano-container{width:75%;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:space-around;cursor: pointer;}
