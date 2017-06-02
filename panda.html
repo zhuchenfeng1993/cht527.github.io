@@ -13,11 +13,6 @@
 
 <body>
 
-<div style="visibility:hidden">
-		<audio autoplay loop="loop">
-			  <source src="./include/panda.mp3" type="audio/mpeg">
-		</audio>
-</div> 
 <div class="panda-container">
     <h1>one_word_one_gem</h1>
     <div class="qr-container">
@@ -134,7 +129,7 @@ window.onload=function(){
         $(".article-panda").eq(0).addClass("article-panda-show");
                     
     }).fail(function(){
-        swal('请求接口失败','error','error')
+        alert('请求接口失败')
     });
 }
 </script>
