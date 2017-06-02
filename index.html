@@ -145,8 +145,8 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 </script>
 <script>
 window.onload=function(){
-	 $.ajax({
-		method: "GET",
+	$.ajax({
+		method: "POST",
 		url: "./data_source/piano.json",
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
