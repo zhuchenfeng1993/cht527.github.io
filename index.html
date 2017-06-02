@@ -98,7 +98,7 @@
 <p>Copyright &copy; 2017&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
 <p>
 <a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
+<a href="https://www.aliyun.com/" target="_blank" class="github-pages"></a>
 </p>
 </footer>
 
@@ -146,7 +146,7 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 <script>
 window.onload=function(){
 	$.ajax({
-		method: "POST",
+		method: "GET",
 		url: "./data_source/piano.json",
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
@@ -165,7 +165,6 @@ window.onload=function(){
 			$("#piano_items_contianer").append(itemTemplate)
 		})
 		     		
-
 	}).fail(function(){
 		swal('请求接口失败','error','error')
 	});
