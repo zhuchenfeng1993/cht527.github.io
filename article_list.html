@@ -172,6 +172,7 @@ function showPages(page,total){
 $('#pagination_ul').on('click','a',function(){
 	var thisPage=$(this).text();
 	var thisPagination=showPages(thisPage,total);
+	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
 	$('#pagination_ul li').removeClass('active');
 	$('li[data-page='+thisPage+']').addClass('active');
