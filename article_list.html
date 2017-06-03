@@ -120,7 +120,7 @@ function mapArticleList(dataList){
 	}).done(function(data) {
 		articleList=data.articleList.reverse(); //逆序输出
 		var articleListCopy=articleList;
-		var init_articleData=articleListCopy.slice(start,end);
+		var init_articleData=articleListCopy.slice(0,7);
 		console.log(articleList.length);
 		mapArticleList(init_articleData);		
 	}).fail(function(){
