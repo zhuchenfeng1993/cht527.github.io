@@ -178,14 +178,15 @@ window.onload=function(){
 			var articleListCopy=articleList;
 			var init_articleData=articleListCopy.slice(0,5);
 			//console.log(articleList.length);
-			mapArticleList(init_articleData);		
+			mapArticleList(init_articleData);	
+			var pagination=showPages(curPage,pageCount);
+			$('#pagination_ul').append(pagination);
+			$('li[data-page='+curPage+']').addClass('active');	
 		}).fail(function(){
 		    swal('请求接口失败','error','error')
 		});
 	})();
-	var pagination=showPages(curPage,pageCount);
-	$('#pagination_ul').append(pagination);
-	$('li[data-page='+curPage+']').addClass('active');
+	
 }
 
 
