@@ -64,7 +64,7 @@
 <script>
 
 //初始化---list 
-var pageSize=7,curPage=1,total=0;
+var pageSize=7,curPage=1,total=0,pageCount=0;
 var articleList=[];
 
 function mapArticleList(dataList){
@@ -104,6 +104,7 @@ function mapArticleList(dataList){
 	}).done(function(data) {
 		articleList=data.articleList.reverse(); //逆序输出
 		total=articleList.length;
+		pageCount=Math.ceil(total/pageSize);
 		var articleListCopy=articleList;
 		var init_articleData=articleListCopy.slice(0,7);
 		//console.log(articleList.length);
@@ -171,14 +172,17 @@ function showPages(page,total){
 //----点击分页监听----
 $('#pagination_ul').on('click','a',function(){
 	var thisPage=$(this).text();
-	var thisPagination=showPages(thisPage,total);
+	var thisPagination=showPages(thisPage,pageCount);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
 	$('li[data-page='+thisPage+']').addClass('active');
+	var start=(thisPage-1)*5,end=thisPage*2;
+	var articleData=articleList.slice(start,end);
+		mapArticleList(articleData);
 })
 //---初始化分页---
 window.onload=function(){
-	var pagination=showPages(curPage,total);
+	var pagination=showPages(curPage,pageCount);
 	$('#pagination_ul').append(pagination);
 	$('li[data-page='+curPage+']').addClass('active');
 }
