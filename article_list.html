@@ -174,12 +174,12 @@ $('#pagination_ul').on('click','a',function(){
 	var thisPagination=showPages(thisPage,total);
 	$('#pagination_ul').append(thisPagination);
 	$('#pagination_ul li').removeClass('active');
-	$('li[data-page="+'thisPage'+"]').addClass('active');
+	$('li[data-page='+thisPage+']').addClass('active');
 })
 //---初始化分页---
 var pagination=showPages(curPage,total);
 $('#pagination_ul').append(pagination);
-$('li[data-page="+'curPage'+"]').addClass('active');
+$('li[data-page='+curPage+']').addClass('active');
 
 </script>
 
