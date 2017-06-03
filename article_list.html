@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<link rel="shortcut icon" href="./img/favicon.ico" /> 
+	<title>十点读书</title>
+	<link rel="stylesheet" href="./css/b_t.css">
+	<link rel="stylesheet" href="./css/jPages.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="./css/webFE_header.css">
+	<link rel="stylesheet" type="text/css" href="./css/article_list.css" >
+
+	<style type="text/css">
+		@media (max-width: 992px) and (min-width: 737px){.holder{width: 75%}  }
+		@media (max-width: 736px) and (min-width: 568px){.holder{width: 100%}  }
+		@media (max-width: 568px) {.holder{display: block; width: 30%;height: 195px} .holder a.jp-previous,.holder a.jp-next,.holder a.jp-current{display: block;margin: 0 auto} .holder a.jp-current{width: 30%;} .holder a.jp-previous,.holder a.jp-next,.holder a.jp-previous{width: 75%}}	
+	</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="./index.ds">首页</a></li>
+			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="javascript:window.open('./panda.html')" >一字一元</a></li>
+			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="shidian" class="nav" href="javascript:void(0);">十点读书</a></li>
+			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="webFE" class="nav"  href="javascript:void(0);" onclick="javascript:window.open('/webFE/webFE.html')">前端开发</a></li>
+			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="li_diary"  class="nav" href="javascript:void(0);" >心之契约</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" id="photo" href="javascript:void(0);" onclick="javascript:window.open('/photo_show/photo_show.html')">朝花夕拾</a></li>
+			</ul>   
+		</div>
+    </div>
+</header>
+<div id="wrapper">
+<hr class="divider" width="90%">
+
+<div id="j_Pages">
+<!---列表-->
+
+<!--列表end-->
+</div>
+
+<!--底部页码-->
+	<nav aria-label="Page navigation">
+	  <ul class="pagination">
+	    <li>
+	      <a href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">5</a></li>
+	    <li>
+	      <a href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+<!--底部页码 end-->
+<hr class="divider" style="width:90%">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="./js/jPages.js"></script>
+<script type="text/javascript" src="./js/nav.js"></script>
+<script>
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
+function mapArticleList(dataList){
+	$.map(dataList,function(value,index,array){
+			var itemTemplate=
+			'<section class="list">'+ 
+				'<h3>'+value.title'</h3>'+
+				'<p>原文出自:'+value.author+'</p>'+
+				'<div class="container">'+
+			   				'<div class="row" id="change_rowwidth">'+
+			      				'<div class="col-md-6">'+
+									'<div style="margin-top:10px;font-size:15px;line-height:25px;text-overflow:ellipsis">'+value.description+'</div>'+
+									'<div style="margin-top:5px">'+
+										'<p>'+
+											'<a href="javascript:void(0);" id='+value.id+' class="more">阅读全文&nbsp;>>></a>'+
+										'</p>'+
+									'</div>'+
+				  				'</div>'+
+				  				'<div class="col-md-6">'+
+				  					'<img class="article_img" src="./img/article_img/'+value.id+'.png" />'+
+				  				'</div>'+
+							'</div>'+
+				'</div>'+	
+				'<hr class="divider">'+
+			'</section>';
+
+			$("#piano_items_contianer").append(itemTemplate)
+		})
+}
+
+function getArticleListData(start,end){
+	$.ajax({
+		method: "GET",
+		url: "./data_source/piano.json",
+		dataType:"json"
+		//data: { name: "John", location: "Boston" }
+	}).done(function(data) {
+			var init_articleData=data.articleList.slice(start,end);
+			mapArticleList(init_articleData);		
+	}).fail(function(){
+			swal('请求接口失败','error','error')
+	});
+}
+
+//初始化---list 
+var pageSize=7,curPage=1;
+
+getArticleListData(curPage-1,pageSize);
+
+
+
+(function(){
+	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+		$("html, body").animate({scrollTop:0},120);
+	}),
+	$backToTopFun=function(){
+		var st=$(document).scrollTop(),
+		winh=$(window).height();
+		(st>0)?$backToTopEle.show():$backToTopEle.hide();
+		if(!window.XMLHttpRequest){
+			$backToTopEle.css("top",st+winh-166);
+		}
+	};
+	$(window).on("scroll",$backToTopFun);
+	$(function(){$backToTopFun();});
+})();
+    
+</script>
+
+</body>
+</html>
