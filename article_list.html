@@ -95,24 +95,7 @@ function mapArticleList(dataList){
 		})
 }
 
-(function getArticleListData(){
-	$.ajax({
-		method: "GET",
-		url: "./data_source/article/articleList.json",
-		dataType:"json"
-		//data: { name: "John", location: "Boston" }
-	}).done(function(data) {
-		articleList=data.articleList.reverse(); //逆序输出
-		total=articleList.length;
-		pageCount=Math.ceil(total/pageSize);
-		var articleListCopy=articleList;
-		var init_articleData=articleListCopy.slice(0,5);
-		//console.log(articleList.length);
-		mapArticleList(init_articleData);		
-	}).fail(function(){
-	    swal('请求接口失败','error','error')
-	});
-})();
+
 
 
 (function(){
@@ -152,7 +135,7 @@ function showPages(page,total){
 		'<a href="javascript:" aria-label="previous">'+
 			'<span aria-hidden="true">&laquo;上一页</span>'+
 		'</a>'+
-		'</li>'+'<li><a href="javascript:">'+1+'</a></li>'+" "+str;
+		'</li>'+'<li><a href="javascript:">'+1+'</a></li>'+str;
 	}
 	if (page+4<total) {
 		str=str+'<li><a href="javascript:">...</a></li>';
@@ -182,6 +165,24 @@ $('#pagination_ul').on('click','a',function(){
 })
 //---初始化分页---
 window.onload=function(){
+	(function getArticleListData(){
+		$.ajax({
+			method: "GET",
+			url: "./data_source/article/articleList.json",
+			dataType:"json"
+			//data: { name: "John", location: "Boston" }
+		}).done(function(data) {
+			articleList=data.articleList.reverse(); //逆序输出
+			total=articleList.length;
+			pageCount=Math.ceil(total/pageSize);
+			var articleListCopy=articleList;
+			var init_articleData=articleListCopy.slice(0,5);
+			//console.log(articleList.length);
+			mapArticleList(init_articleData);		
+		}).fail(function(){
+		    swal('请求接口失败','error','error')
+		});
+	})();
 	var pagination=showPages(curPage,pageCount);
 	$('#pagination_ul').append(pagination);
 	$('li[data-page='+curPage+']').addClass('active');
