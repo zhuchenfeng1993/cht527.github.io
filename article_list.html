@@ -177,9 +177,12 @@ $('#pagination_ul').on('click','a',function(){
 	$('li[data-page='+thisPage+']').addClass('active');
 })
 //---初始化分页---
-var pagination=showPages(curPage,total);
-$('#pagination_ul').append(pagination);
-$('li[data-page='+curPage+']').addClass('active');
+window.onload=function(){
+	var pagination=showPages(curPage,total);
+	$('#pagination_ul').append(pagination);
+	$('li[data-page='+curPage+']').addClass('active');
+}
+
 
 </script>
 
