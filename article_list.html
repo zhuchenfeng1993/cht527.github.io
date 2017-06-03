@@ -174,7 +174,6 @@ $('#pagination_ul').on('click','a',function(){
 	var thisPagination=showPages(thisPage,total);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
-	$('#pagination_ul li').removeClass('active');
 	$('li[data-page='+thisPage+']').addClass('active');
 })
 //---初始化分页---
