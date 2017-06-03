@@ -14,12 +14,6 @@
 	<link rel="stylesheet" href="./css/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="./css/webFE_header.css">
 	<link rel="stylesheet" type="text/css" href="./css/article_list.css" >
-
-	<style type="text/css">
-		@media (max-width: 992px) and (min-width: 737px){.holder{width: 75%}  }
-		@media (max-width: 736px) and (min-width: 568px){.holder{width: 100%}  }
-		@media (max-width: 568px) {.holder{display: block; width: 30%;height: 195px} .holder a.jp-previous,.holder a.jp-next,.holder a.jp-current{display: block;margin: 0 auto} .holder a.jp-current{width: 30%;} .holder a.jp-previous,.holder a.jp-next,.holder a.jp-previous{width: 75%}}	
-	</style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -47,7 +41,7 @@
 </div>
 
 <!--底部页码-->
-	<nav aria-label="Page navigation">
+	<nav aria-label="Page navigation" class="pagination">
 	  <ul class="pagination">
 	    <li>
 	      <a href="#" aria-label="上一页">
@@ -101,7 +95,7 @@ function mapArticleList(dataList){
 										'</p>'+
 									'</div>'+
 				  				'</div>'+
-				  				'<div class="col-md-6">'+
+				  				'<div class="col-md-5">'+
 				  					'<img class="article_img" src="./img/article_img/'+value.id+'.png" />'+
 				  				'</div>'+
 							'</div>'+
@@ -120,7 +114,7 @@ function getArticleListData(start,end){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-			var articleList=data.articleList.reverse();
+			var articleList=data.articleList.reverse(); //逆序输出
 			var init_articleData=articleList.slice(start,end);
 			mapArticleList(init_articleData);		
 	}).fail(function(){
