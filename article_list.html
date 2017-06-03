@@ -120,7 +120,8 @@ function getArticleListData(start,end){
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-			var init_articleData=data.articleList.slice(start,end);
+			var articleList=data.articleList.reverse();
+			var init_articleData=articleList.slice(start,end);
 			mapArticleList(init_articleData);		
 	}).fail(function(){
 			swal('请求接口失败','error','error')
