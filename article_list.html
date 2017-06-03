@@ -64,7 +64,7 @@
 <script>
 
 //初始化---list 
-var pageSize=7,curPage=1,total=0,pageCount=0;
+var pageSize=5,curPage=1,total=0,pageCount=0;
 var articleList=[];
 
 function mapArticleList(dataList){
@@ -106,7 +106,7 @@ function mapArticleList(dataList){
 		total=articleList.length;
 		pageCount=Math.ceil(total/pageSize);
 		var articleListCopy=articleList;
-		var init_articleData=articleListCopy.slice(0,7);
+		var init_articleData=articleListCopy.slice(0,5);
 		//console.log(articleList.length);
 		mapArticleList(init_articleData);		
 	}).fail(function(){
