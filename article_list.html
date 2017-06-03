@@ -50,7 +50,7 @@
 	<nav aria-label="Page navigation">
 	  <ul class="pagination">
 	    <li>
-	      <a href="#" aria-label="Previous">
+	      <a href="#" aria-label="上一页">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
@@ -60,7 +60,7 @@
 	    <li><a href="#">4</a></li>
 	    <li><a href="#">5</a></li>
 	    <li>
-	      <a href="#" aria-label="Next">
+	      <a href="#" aria-label="下一页">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>
@@ -89,7 +89,7 @@ function mapArticleList(dataList){
 	$.map(dataList,function(value,index,array){
 			var itemTemplate=
 			'<section class="list">'+ 
-				'<h3>'+value.title'</h3>'+
+				'<h3>'+value.title+'</h3>'+
 				'<p>原文出自:'+value.author+'</p>'+
 				'<div class="container">'+
 			   				'<div class="row" id="change_rowwidth">'+
@@ -116,7 +116,7 @@ function mapArticleList(dataList){
 function getArticleListData(start,end){
 	$.ajax({
 		method: "GET",
-		url: "./data_source/piano.json",
+		url: "./data_source/article/articleList.json",
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
