@@ -79,6 +79,10 @@
 <script>
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
+//初始化---list 
+var pageSize=7,curPage=1;
+var articleList=[];
+
 function mapArticleList(dataList){
 	$.map(dataList,function(value,index,array){
 			var itemTemplate=
@@ -107,26 +111,22 @@ function mapArticleList(dataList){
 		})
 }
 
-function getArticleListData(start,end){
+(function getArticleListData(){
 	$.ajax({
 		method: "GET",
 		url: "./data_source/article/articleList.json",
 		dataType:"json"
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
-			var articleList=data.articleList.reverse(); //逆序输出
-			var init_articleData=articleList.slice(start,end);
-			mapArticleList(init_articleData);		
+		articleList=data.articleList.reverse(); //逆序输出
+		var articleListCopy=articleList;
+		var init_articleData=articleListCopy.slice(start,end);
+		console.log(articleList.length);
+		mapArticleList(init_articleData);		
 	}).fail(function(){
-			swal('请求接口失败','error','error')
+	    swal('请求接口失败','error','error')
 	});
-}
-
-//初始化---list 
-var pageSize=7,curPage=1;
-
-getArticleListData(curPage-1,pageSize);
-
+})();
 
 
 (function(){
