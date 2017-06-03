@@ -42,22 +42,8 @@
 
 <!--底部页码-->
 	<nav aria-label="Page navigation" class="pagination">
-	  <ul class="pagination">
-	    <li>
-	      <a href="#" aria-label="上一页">
-	        <span aria-hidden="true">&laquo;</span>
-	      </a>
-	    </li>
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
-	    <li>
-	      <a href="#" aria-label="下一页">
-	        <span aria-hidden="true">&raquo;</span>
-	      </a>
-	    </li>
+	  <ul class="pagination" id="pagination_ul">
+	    
 	  </ul>
 	</nav>
 <!--底部页码 end-->
@@ -74,13 +60,11 @@
 
 <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/sweetalert.min.js"></script>
-<script type="text/javascript" src="./js/jPages.js"></script>
 <script type="text/javascript" src="./js/nav.js"></script>
 <script>
-navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
 //初始化---list 
-var pageSize=7,curPage=1;
+var pageSize=7,curPage=1,total=0;
 var articleList=[];
 
 function mapArticleList(dataList){
@@ -119,9 +103,10 @@ function mapArticleList(dataList){
 		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
 		articleList=data.articleList.reverse(); //逆序输出
+		total=articleList.length;
 		var articleListCopy=articleList;
 		var init_articleData=articleListCopy.slice(0,7);
-		console.log(articleList.length);
+		//console.log(articleList.length);
 		mapArticleList(init_articleData);		
 	}).fail(function(){
 	    swal('请求接口失败','error','error')
@@ -144,7 +129,58 @@ function mapArticleList(dataList){
 	$(window).on("scroll",$backToTopFun);
 	$(function(){$backToTopFun();});
 })();
-    
+
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
+//-------分页展现UI------
+function showPages(page,total){
+	var str='<li data-page='+page+'><a href="#">'+page+'</a></li>';
+	for (var i = 1; i <=3; i++) {
+		if (page-i>1) {
+			str='<li><a href="#">'+(page-i)+'</a></li>'+str;
+		}
+		if (page+i<total) {
+			str=str+'<li><a href="#">'+page+i'</a></li>';
+		}
+	}
+	if (page-4>1) {
+		str='<li><a href="#">...</a></li>'+str;
+	}
+	if (page>1) {
+		str='<li>'+
+		'<a href="#" aria-label="previous">'+
+			'<span aria-hidden="true">&laquo;上一页</span>'+
+		'</a>'+
+		'</li>'+'<li><a href="#">'+1+'</a></li>'+" "+str;
+	}
+	if (page+4<total) {
+		str=str+'<li><a href="#">...</a></li>';
+	}
+	if (page<total) {
+		str=str+'<li><a href="#">'+total+'</a></li>'+
+		'<li>'+
+			'<a href="#" aria-label="next">'+
+			    '<span aria-hidden="true">下一页&raquo;</span>'+
+			'</a>'+
+		'</li>';
+	}
+
+	return str;
+	
+};
+//----点击分页监听----
+$('#pagination_ul').on('click','a',function(){
+	var thisPage=$(this).text();
+	var thisPagination=showPages(thisPage,total);
+	$('#pagination_ul').append(thisPagination);
+	$('#pagination_ul li').removeClass('active');
+	$('li[data-page="+'thisPage'+"]').addClass('active');
+})
+//---初始化分页---
+var pagination=showPages(curPage,total);
+$('#pagination_ul').append(pagination);
+$('li[data-page="+'curPage'+"]').addClass('active');
+
 </script>
 
 </body>
