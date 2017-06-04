@@ -49,30 +49,7 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 		<div class="article_content" id="article_content"></div>
 	</article>
 	
-		
-		<!-- if(mysql_num_rows($queryset_former)){ //返回记录数，并判断是否为真，以此为依据显示结果 
-			$result = mysql_fetch_array($queryset_former); 
-			$former_text= "上一篇 <a href='javascript:void(0);'onclick=window.location.href='article_show$result[id].ds'> ". $result['title']." </a><br>"; 
-		} else {
-			$former_text= "上一篇 没有了<br>";
-		} 
-		
-		$queryset_later = mysql_query($sql_later); 
-		if(mysql_num_rows($queryset_later)){ 
-			$result = mysql_fetch_array($queryset_later); 
-			$later_text= "下一篇 <a href='javascript:void(0);'onclick=window.location.href='article_show$result[id].ds'> ". $result['title']." </a><br>"; 
-		} else {
-			$later_text= "下一篇 没有了<br>";
-		}  -->
-	
-	<div class="former_later">
-		<div class="inner_former_later">
-			<p></p>
-			<p></p>
-		</div>
-	</div>
-	
-	<hr class="divider" style="width:80%;color:#e0e0e0">
+	<hr class="divider" style="width:80%;border: 0;border-top: 1px solid #eee;">
 	<footer>
 		<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
 		<p>
