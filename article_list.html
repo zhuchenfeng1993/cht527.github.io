@@ -129,7 +129,7 @@ function showPages(page,total){
 	}
 	if (page==1) {
 		str='<li>'+
-		'<a href="#" aria-label="previous" style="cursor:default;color:#eee;">'+
+		'<a href="#" aria-label="previous" style="cursor:default;color:#aaa;">'+
 			'<span aria-hidden="true">&laquo;上一页</span>'+
 		'</a>'+
 		'</li>'+str;
@@ -137,7 +137,7 @@ function showPages(page,total){
 	if (page==total) {
 		str=str+
 		'<li>'+
-			'<a href="#" aria-label="next" style="cursor:default;color:#eee;">'+
+			'<a href="#" aria-label="next" style="cursor:default;color:#aaa;">'+
 			    '<span aria-hidden="true">下一页&raquo;</span>'+
 			'</a>'+
 		'</li>';
@@ -169,7 +169,7 @@ function showPages(page,total){
 };
 //----点击分页监听----
 $('#pagination_ul').on('click','a',function(){
-	var thisPage=$(this).text();
+	var thisPage=parseInt($(this).text());
 	var thisPagination=showPages(thisPage,pageCount);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
