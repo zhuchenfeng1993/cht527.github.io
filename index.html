@@ -55,6 +55,8 @@
 		</div>
 		
 		<nav class="nav-aboutme" onclick="javascript:window.location.href='about.html'"><img src="./img/about.png"><span style="font-size:1.5em">&nbsp;About</span><nav>
+		<audio id="myaudio" ></audio>  
+
 	</header>
 
 	<div class="container"  style="margin-bottom:55px">
@@ -78,11 +80,11 @@
 		      </div>
 		      <div class="col-md-8">
 		        <div class="parentimg">
-					<div class="img"><img class="photoimg" src="./img/1.png" onclick="window.location.href='article_show47.ds'"></div>
-					<div class="img"><img class="photoimg" src="./img/2.png" onclick="window.location.href='article_show53.ds'"></div>
-					<div class="img"><img class="photoimg" src="./img/3.png" onclick="window.location.href='article_show52.ds'"></div>
-					<div class="img"><img class="photoimg" src="./img/4.png" onclick="window.location.href='article_show51.ds'"></div>
-					<div class="img"><img class="photoimg" src="./img/5.png" onclick="window.location.href='article_show50.ds'"></div>
+					<div class="img"><img class="photoimg" src="./img/1.png" onclick="bgmPlay(43)"></div>
+					<div class="img"><img class="photoimg" src="./img/2.png" onclick="bgmPlay(49)"></div>
+					<div class="img"><img class="photoimg" src="./img/3.png" onclick="bgmPlay(44)"></div>
+					<div class="img"><img class="photoimg" src="./img/4.png" onclick="bgmPlay(47)"></div>
+					<div class="img"><img class="photoimg" src="./img/5.png" onclick="bgmPlay(42)"></div>
 				</div>
 		      </div>
 		   </div>
@@ -142,6 +144,23 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
         }
         $(this).parent().next().toggle(800);
  })
+ function bgmPlay(musicMark){
+ 	var music_file="include/music/"+musicMark+".mp3";
+ 	if (window.HTMLAudioElement) {
+		try {
+			var oAudio = document.getElementById('myaudio'); 
+			oAudio.src = music_file;
+			if(oAudio.paused){
+	            oAudio.play();
+	        }else{
+	            oAudio.pause();
+	        }
+		}catch (e) {
+						               
+			if(window.console && console.error("Error:" + e));
+		}
+	}  
+ }
 </script>
 <script>
 window.onload=function(){
@@ -149,7 +168,6 @@ window.onload=function(){
 		method: "GET",
 		url: "./data_source/piano.json",
 		dataType:"json"
-		//data: { name: "John", location: "Boston" }
 	}).done(function(data) {
 
 		$.map(data.pianoList,function(value,index,array){
