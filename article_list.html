@@ -176,6 +176,7 @@ $('#pagination_ul').on('click','a',function(){
 	$('li[data-page='+thisPage+']').addClass('active');
 	var start=(thisPage-1)*5,end=thisPage*5;
 	var articleData=articleList.slice(start,end);
+	$("#article_items_contianer").children().remove();
 		mapArticleList(articleData);
 });
 //---初始化分页---

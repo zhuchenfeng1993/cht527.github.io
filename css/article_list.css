@@ -11,3 +11,4 @@ footer{width: 90%;max-width: 760px; margin: 10px auto;text-align: center;font-si
 .backToTop{display:none;width:48px;position:fixed;_position:absolute;right:10px;bottom:100px;_bottom:"auto";cursor:pointer;opacity:.6;filter:Alpha(opacity=60)}
 .former_later{width:90px;height:90px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;justify-content:flex-end;align-items:center;overflow:hidden;flex-wrap:wrap;}
 #article_items_contianer{width: 85%;margin: 0 auto}
+.pagination{margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex; }
