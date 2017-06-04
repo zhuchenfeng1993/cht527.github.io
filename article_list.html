@@ -152,7 +152,7 @@ $('#pagination_ul').on('click','a',function(){
 	if (typeof(thisPage)=='number') {
 		curPage=thisPage;
 		doPagination(thisPage,pageCount);
-	}else{ //--上一页,下一页
+	}else{ //--上一页,下一页分页
 		if ($(this).children().eq(0).attr('class')=='previous') {
 			if (curPage==1) {
 				return;
