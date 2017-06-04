@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="./img/favicon.ico" /> 
+<script>
+function getQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return unescape(r[2]); return null;
+} 
+var target=getQueryString('target');
+var params=target.split('_');
+var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
+
+</script>
+<title></title>
+
+<link rel="stylesheet" type="text/css" href="./css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="./css/article_show.css" />
+<link rel="stylesheet" href="./css/sweetalert.css">
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+	    <div class="mod-header__wrap">
+	        <div class="js_menu mod-header__nav">
+	            <ul id="menu-nav" class="menu">
+	            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="./index.ds">首页</a></li>
+				<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="javascript:window.open('./panda.zhou')" >一字一元</a></li>
+				<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="shidian" class="nav" href="javascript:void(0);" onclick="javascript:window.location.href='./article_list.ds'" >十点读书</a></li>
+				<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="webFE" class="nav"  href="javascript:void(0);" onclick="javascript:window.location.href='./webFE/'" >前端开发</a></li>
+				<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="li_diary"  class="nav" href="javascript:void(0);" >心之契约</a></li>
+				<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" id="photo" href="javascript:void(0);"  onclick="javascript:window.location.href='./photo_show/'" >朝花夕拾</a></li>
+				</ul>   
+				
+				
+				<audio id="myaudio" autoplay loop></audio>  
+				<script type="text/javascript">
+				//------------------music player------------------------
+					/*if (window.HTMLAudioElement) {
+					        try {
+					            var oAudio = document.getElementById('myaudio'); 
+					                oAudio.src = currentFile;
+					        }catch (e) {
+					               // Fail silently but show in F12 developer tools console
+					               if(window.console && console.error("Error:" + e));
+					        }
+					}  */
+				</script>
+ 
+			</div>
+	    </div>
+	</header>
+
+	<article>
+		<h2 class="article_title" id="article_title"></h2>
+		<p class="author" id="article_author"></p>
+		<div class="article_content" id="article_content"></div>
+	</article>
+	
+		
+		<!-- if(mysql_num_rows($queryset_former)){ //返回记录数，并判断是否为真，以此为依据显示结果 
+			$result = mysql_fetch_array($queryset_former); 
+			$former_text= "上一篇 <a href='javascript:void(0);'onclick=window.location.href='article_show$result[id].ds'> ". $result['title']." </a><br>"; 
+		} else {
+			$former_text= "上一篇 没有了<br>";
+		} 
+		
+		$queryset_later = mysql_query($sql_later); 
+		if(mysql_num_rows($queryset_later)){ 
+			$result = mysql_fetch_array($queryset_later); 
+			$later_text= "下一篇 <a href='javascript:void(0);'onclick=window.location.href='article_show$result[id].ds'> ". $result['title']." </a><br>"; 
+		} else {
+			$later_text= "下一篇 没有了<br>";
+		}  -->
+	
+	<div class="former_later">
+		<div class="inner_former_later">
+			<p></p>
+			<p></p>
+		</div>
+	</div>
+	
+	<hr class="divider" style="width:80%;color:#e0e0e0">
+	<footer>
+		<p>Copyright &copy; 2017&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+		<p>
+			<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+			<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+		</p>
+	</footer>
+
+</div>	<!--wrapper-->
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../js/nav.js"></script>
+
+<script>
+document.getElementsByTagName('title')[0].innerHtml=targetTitle;
+document.getElementById('article_title').innerHtml=targetTitle;
+document.getElementById('article_author').innerHtml='原文出自:&nbsp;&nbsp;'+targetAuthor;
+
+		$.ajax({
+			method: "GET",
+			url: "./data_source/article/articleContent.json",
+			dataType:"json"
+		}).done(function(data) {
+			var articleContent=data.articleContent;
+			$.map(articleContent,function(value,index,array){
+				if (targetId==value.id) {
+					document.getElementById('article_content').innerHtml=value.content;
+					break;
+				}
+			}
+		}).fail(function(){
+		    swal('请求接口失败','error','error')
+		});
+
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+</script>
+</body>
+</html>

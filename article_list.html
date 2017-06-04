@@ -65,21 +65,21 @@
 
 //初始化---list 
 var pageSize=5,curPage=1,total=0,pageCount=0;
-var articleList=[];
+var articleList=[],curList=[];
 
 function mapArticleList(dataList){
 	$.map(dataList,function(value,index,array){
 			var itemTemplate=
 			'<section class="list">'+ 
 				'<h3>'+value.title+'</h3>'+
-				'<p>原文出自:'+value.author+'</p>'+
+				'<p style="margin: 10px auto;">原文出自:'+value.author+'</p>'+
 				'<div class="container">'+
 			   				'<div class="row" id="change_rowwidth">'+
 			      				'<div class="col-md-6">'+
 									'<div style="margin-top:10px;font-size:15px;line-height:25px;text-overflow:ellipsis">'+value.description+'</div>'+
 									'<div style="margin-top:5px">'+
 										'<p>'+
-											'<a href="javascript:void(0);" id='+value.id+' class="more">阅读全文&nbsp;>>></a>'+
+											'<a class="more" href="javascript:">阅读全文&nbsp;>>></a>'+
 										'</p>'+
 									'</div>'+
 				  				'</div>'+
@@ -108,7 +108,7 @@ function showPages(page,total){
 	}
 	if (page==1) {
 		str='<li>'+
-		'<a href="#" aria-label="previous" style="cursor:default;color:#aaa;">'+
+		'<a href="javascript:" aria-label="previous" style="cursor:default;color:#aaa;">'+
 			'<span aria-hidden="true" class="previous">&laquo;上一页</span>'+
 		'</a>'+
 		'</li>'+str;
@@ -116,7 +116,7 @@ function showPages(page,total){
 	if (page==total) {
 		str=str+
 		'<li>'+
-			'<a href="#" aria-label="next" style="cursor:default;color:#aaa;">'+
+			'<a href="javascript:" aria-label="next" style="cursor:default;color:#aaa;">'+
 			    '<span aria-hidden="true" class="next">下一页&raquo;</span>'+
 			'</a>'+
 		'</li>';
@@ -180,6 +180,7 @@ function doPagination(thisPage,pageCount){
 	$('li[data-page='+thisPage+']').addClass('active');
 	var start=(thisPage-1)*5,end=thisPage*5;
 	var articleData=articleList.slice(start,end);
+	curList=articleData;//当前页面的5条数据
 	$("#article_items_contianer").children().remove();
 	mapArticleList(articleData);
 	$("html, body").animate({scrollTop:0},400);
@@ -197,6 +198,7 @@ function doPagination(thisPage,pageCount){
 			pageCount=Math.ceil(total/pageSize);
 			var articleListCopy=articleList;
 			var init_articleData=articleListCopy.slice(0,5);
+			curPage=init_articleData;//当前页面的5条数据
 			//console.log(articleList.length);
 			mapArticleList(init_articleData);	
 			var pagination=showPages(curPage,pageCount);
@@ -225,6 +227,18 @@ function doPagination(thisPage,pageCount){
 
 
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
+//----阅读原文-事件绑定--
+$('#article_items_contianer').on('click','.more',function(){
+	var thisId=$(this).attr('id');
+	$.map(curList,function(value,index,array){
+		if (value.id==thisId) {
+			window.location.href='article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
+			break;
+		}
+	})
+
+})
 </script>
 
 </body>
