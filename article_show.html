@@ -110,7 +110,7 @@ document.getElementsByTagName('title')[0].innerHTML=targetTitle;
 document.getElementById('article_title').innerHTML=targetTitle;
 document.getElementById('article_author').innerHTML='原文出自:&nbsp;&nbsp;'+targetAuthor;
 
-var targetGroupNum=Math.floor(parseInt(targetId)/10);
+var targetGroupNum=Math.ceil(parseInt(targetId)/10);
 var targetUrl="";
 switch(targetGroupNum){
 	case 0:
