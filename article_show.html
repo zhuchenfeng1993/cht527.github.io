@@ -112,7 +112,7 @@ document.getElementById('article_author').innerHTML='原文出自:&nbsp;&nbsp;'+
 
 		$.ajax({
 			method: "GET",
-			url: "./articleContent.json",
+			url: "./data_source/article/articleContent.json",
 			dataType:"json"
 		}).done(function(data) {
 			var articleContent=data.articleContent;
