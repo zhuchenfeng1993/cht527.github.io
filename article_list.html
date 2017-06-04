@@ -198,7 +198,7 @@ function doPagination(thisPage,pageCount){
 			pageCount=Math.ceil(total/pageSize);
 			var articleListCopy=articleList;
 			var init_articleData=articleListCopy.slice(0,5);
-			curPage=init_articleData;//当前页面的5条数据
+			curList=init_articleData;//当前页面的5条数据
 			//console.log(articleList.length);
 			mapArticleList(init_articleData);	
 			var pagination=showPages(curPage,pageCount);
