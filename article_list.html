@@ -149,7 +149,7 @@ function showPages(page,total){
 //----点击分页监听----
 $('#pagination_ul').on('click','a',function(){
 	var thisPage=parseInt($(this).text());
-	if (typeof(thisPage)=='number') {
+	if (thisPage<pageCount+1) { // 点击具体页码
 		curPage=thisPage;
 		doPagination(thisPage,pageCount);
 	}else{ //--上一页,下一页分页
