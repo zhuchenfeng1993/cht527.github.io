@@ -25,6 +25,8 @@ switch(targetGroupNum){
 	default:
   
 }
+
+var targetMusicMark=0;
 $.ajax({
 	method: "GET",
 	url: targetUrl,
@@ -33,6 +35,7 @@ $.ajax({
 	var articleContent=data.articleContent;
 	$.each(articleContent,function(index,value){
 		if (targetId==value.id) {
+			targetMusicMark=value.article_music;
 			$('#article_content').append(value.content);
 			return false;
 		}
@@ -40,3 +43,21 @@ $.ajax({
 }).fail(function(){
 	swal('请求接口失败','error','error')
 });
+
+
+//------------------music player------------------------
+if(targetMusicMark=='1'){
+	music_file="include/music/"+targetId+".mp3";
+}else{
+	music_file="include/music/default.mp3";
+}
+
+if (window.HTMLAudioElement) {
+	try {
+		var oAudio = document.getElementById('myaudio'); 
+		oAudio.src = music_file;
+	}catch (e) {
+					               
+		if(window.console && console.error("Error:" + e));
+	}
+}  
