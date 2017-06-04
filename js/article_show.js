@@ -35,8 +35,9 @@ $.ajax({
 	var articleContent=data.articleContent;
 	$.each(articleContent,function(index,value){
 		if (targetId==value.id) {
-			targetMusicMark=value.article_music;
 			$('#article_content').append(value.content);
+			targetMusicMark=value.article_music;
+			bgmPlay(targetMusicMark);
 			return false;
 		}
 	})
@@ -46,18 +47,21 @@ $.ajax({
 
 
 //------------------music player------------------------
-if(targetMusicMark=='1'){
-	music_file="include/music/"+targetId+".mp3";
-}else{
-	music_file="include/music/default.mp3";
-}
-
-if (window.HTMLAudioElement) {
-	try {
-		var oAudio = document.getElementById('myaudio'); 
-		oAudio.src = music_file;
-	}catch (e) {
-					               
-		if(window.console && console.error("Error:" + e));
+function bgmPlay(targetMusicMark){
+	if(targetMusicMark=='1'){
+		music_file="include/music/"+targetId+".mp3";
+	}else{
+		music_file="include/music/default.mp3";
 	}
-}  
+
+	if (window.HTMLAudioElement) {
+		try {
+			var oAudio = document.getElementById('myaudio'); 
+			oAudio.src = music_file;
+		}catch (e) {
+						               
+			if(window.console && console.error("Error:" + e));
+		}
+	}  
+
+}
