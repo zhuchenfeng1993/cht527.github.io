@@ -100,7 +100,7 @@ function mapArticleList(dataList){
 
 (function(){
 	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
-		$("html, body").animate({scrollTop:0},120);
+		$("html, body").animate({scrollTop:0},400);
 	}),
 	$backToTopFun=function(){
 		var st=$(document).scrollTop(),
@@ -177,7 +177,8 @@ $('#pagination_ul').on('click','a',function(){
 	var start=(thisPage-1)*5,end=thisPage*5;
 	var articleData=articleList.slice(start,end);
 	$("#article_items_contianer").children().remove();
-		mapArticleList(articleData);
+	mapArticleList(articleData);
+	$("html, body").animate({scrollTop:0},400);
 });
 //---初始化分页---
 
