@@ -118,7 +118,7 @@ document.getElementById('article_author').innerHtml='原文出自:&nbsp;&nbsp;'+
 			$.map(articleContent,function(value,index,array){
 				if (targetId==value.id) {
 					document.getElementById('article_content').innerHtml=value.content;
-					break;
+					return false;
 				}
 			}
 		}).fail(function(){
