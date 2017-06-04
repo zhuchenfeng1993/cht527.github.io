@@ -11,7 +11,7 @@
 function getQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 	var r = window.location.search.substr(1).match(reg);
-	if (r != null) return unescape(r[2]); return null;
+	if (r != null) return decodeURI(r[2]); return null;
 } 
 var target=getQueryString('target');
 var params=target.split('_');
@@ -105,19 +105,20 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 <script type="text/javascript" src="../js/nav.js"></script>
 
 <script>
-document.getElementsByTagName('title')[0].innerHtml=targetTitle;
-document.getElementById('article_title').innerHtml=targetTitle;
-document.getElementById('article_author').innerHtml='原文出自:&nbsp;&nbsp;'+targetAuthor;
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+document.getElementsByTagName('title')[0].innerHTML=targetTitle;
+document.getElementById('article_title').innerHTML=targetTitle;
+document.getElementById('article_author').innerHTML='原文出自:&nbsp;&nbsp;'+targetAuthor;
 
 		$.ajax({
 			method: "GET",
-			url: "./data_source/article/articleContent.json",
+			url: "./articleContent.json",
 			dataType:"json"
 		}).done(function(data) {
 			var articleContent=data.articleContent;
-			$.map(articleContent,function(value,index,array){
+			$.each(articleContent,function(index,value){
 				if (targetId==value.id) {
-					document.getElementById('article_content').innerHtml=value.content;
+					$('#article_content').append(value.content);
 					return false;
 				}
 			})
@@ -125,7 +126,7 @@ document.getElementById('article_author').innerHtml='原文出自:&nbsp;&nbsp;'+
 		    swal('请求接口失败','error','error')
 		});
 
-navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
 </script>
 </body>
 </html>
