@@ -120,7 +120,7 @@ document.getElementById('article_author').innerHtml='原文出自:&nbsp;&nbsp;'+
 					document.getElementById('article_content').innerHtml=value.content;
 					return false;
 				}
-			}
+			})
 		}).fail(function(){
 		    swal('请求接口失败','error','error')
 		});
