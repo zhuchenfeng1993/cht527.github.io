@@ -8,15 +8,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <link rel="shortcut icon" href="./img/favicon.ico" /> 
 <script>
-function getQueryString(name) {
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-	var r = window.location.search.substr(1).match(reg);
-	if (r != null) return decodeURI(r[2]); return null;
-} 
-var target=getQueryString('target');
+var paramsString = window.location.search.substring(1);//URL ？后面的部分
+var target=window.decodeURIComponent(window.atob(paramsString))
 var params=target.split('_');
 var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
-
 </script>
 <title></title>
 
@@ -103,48 +98,7 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../js/nav.js"></script>
+<script type="text/javascript" src="../js/article_show.js"></script>
 
-<script>
-navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
-document.getElementsByTagName('title')[0].innerHTML=targetTitle;
-document.getElementById('article_title').innerHTML=targetTitle;
-document.getElementById('article_author').innerHTML='原文出自:&nbsp;&nbsp;'+targetAuthor;
-
-var targetGroupNum=Math.ceil(parseInt(targetId)/10);
-var targetUrl="";
-switch(targetGroupNum){
-	case 0:
-	  targetUrl="./data_source/article/articleContent_1.json";
-	  break;
-	case 1:
-	  targetUrl="./data_source/article/articleContent_2.json";
-	  break;
-	case 2:
-	  targetUrl="./data_source/article/articleContent_3.json";
-	  break;
-	case 3:
-	  targetUrl="./data_source/article/articleContent_4.json";
-	  break;
-	default:
-  
-}
-$.ajax({
-	method: "GET",
-	url: targetUrl,
-	dataType:"json"
-}).done(function(data) {
-	var articleContent=data.articleContent;
-	$.each(articleContent,function(index,value){
-		if (targetId==value.id) {
-			$('#article_content').append(value.content);
-			return false;
-		}
-	})
-}).fail(function(){
-	swal('请求接口失败','error','error')
-});
-
-
-</script>
 </body>
 </html>

@@ -167,9 +167,12 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 //----阅读原文-事件绑定--
 $('#article_items_contianer').on('click','.more',function(){
 	var thisId=$(this).attr('id');
+	var targetUrl=window.btoa(window.encodeURIComponent("article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author"))
 	$.each(curList,function(index,value){
 		if (value.id==thisId) {
-			window.location.href='article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
+			var targetUrl='target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
+			var targetUrl_encode=window.btoa(window.encodeURIComponent(targetUrl));
+			window.location.href='article_show.html?'+targetUrl_encode;
 			return false;
 		}
 	})
