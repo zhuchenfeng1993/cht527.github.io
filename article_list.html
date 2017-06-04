@@ -234,7 +234,7 @@ $('#article_items_contianer').on('click','.more',function(){
 	$.map(curList,function(value,index,array){
 		if (value.id==thisId) {
 			window.location.href='article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
-			break;
+			return false;
 		}
 	})
 
