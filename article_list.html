@@ -109,7 +109,7 @@ function showPages(page,total){
 	if (page==1) {
 		str='<li>'+
 		'<a href="#" aria-label="previous" style="cursor:default;color:#aaa;">'+
-			'<span aria-hidden="true">&laquo;上一页</span>'+
+			'<span aria-hidden="true" class="previous">&laquo;上一页</span>'+
 		'</a>'+
 		'</li>'+str;
 	}
@@ -117,7 +117,7 @@ function showPages(page,total){
 		str=str+
 		'<li>'+
 			'<a href="#" aria-label="next" style="cursor:default;color:#aaa;">'+
-			    '<span aria-hidden="true">下一页&raquo;</span>'+
+			    '<span aria-hidden="true" class="next">下一页&raquo;</span>'+
 			'</a>'+
 		'</li>';
 	}
