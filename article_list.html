@@ -95,27 +95,6 @@ function mapArticleList(dataList){
 		})
 }
 
-
-
-
-(function(){
-	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
-		$("html, body").animate({scrollTop:0},400);
-	}),
-	$backToTopFun=function(){
-		var st=$(document).scrollTop(),
-		winh=$(window).height();
-		(st>0)?$backToTopEle.show():$backToTopEle.hide();
-		if(!window.XMLHttpRequest){
-			$backToTopEle.css("top",st+winh-166);
-		}
-	};
-	$(window).on("scroll",$backToTopFun);
-	$(function(){$backToTopFun();});
-})();
-
-navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
-
 //-------分页展现UI------
 function showPages(page,total){
 	var str='<li data-page='+page+'><a href="javascript:">'+page+'</a></li>';
@@ -148,7 +127,7 @@ function showPages(page,total){
 	if (page>1) {
 		str='<li>'+
 		'<a href="javascript:" aria-label="previous">'+
-			'<span aria-hidden="true">&laquo;上一页</span>'+
+			'<span aria-hidden="true" class="previous">&laquo;上一页</span>'+
 		'</a>'+
 		'</li>'+'<li><a href="javascript:">'+1+'</a></li>'+str;
 	}
@@ -159,7 +138,7 @@ function showPages(page,total){
 		str=str+'<li><a href="javascript:">'+total+'</a></li>'+
 		'<li>'+
 			'<a href="javascript:" aria-label="next">'+
-			    '<span aria-hidden="true">下一页&raquo;</span>'+
+			    '<span aria-hidden="true" class="next">下一页&raquo;</span>'+
 			'</a>'+
 		'</li>';
 	}
@@ -170,6 +149,30 @@ function showPages(page,total){
 //----点击分页监听----
 $('#pagination_ul').on('click','a',function(){
 	var thisPage=parseInt($(this).text());
+	if (typeof(thisPage)=='number') {
+		curPage=thisPage;
+	}else{ //--上一页,下一页
+		if ($(this).children().eq(0).attr('class')=='previous') {
+			if (curPage==1) {
+				return;
+			}else{
+				thisPage=curPage-1;
+				doPagination(thisPage,pageCount);
+			}
+		}else{
+			if (curPage==pageCount) {
+				return;
+			}else{
+				thisPage=curPage+1;
+				doPagination(thisPage,pageCount);
+			}
+		}
+	}
+
+	
+});
+//---分页操作---
+function doPagination(thisPage,pageCount){
 	var thisPagination=showPages(thisPage,pageCount);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
@@ -179,7 +182,7 @@ $('#pagination_ul').on('click','a',function(){
 	$("#article_items_contianer").children().remove();
 	mapArticleList(articleData);
 	$("html, body").animate({scrollTop:0},400);
-});
+}
 //---初始化分页---
 
 	(function getArticleListData(){
@@ -203,9 +206,24 @@ $('#pagination_ul').on('click','a',function(){
 		});
 	})();
 	
+(function(){
+	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+		$("html, body").animate({scrollTop:0},400);
+	}),
+	$backToTopFun=function(){
+		var st=$(document).scrollTop(),
+		winh=$(window).height();
+		(st>0)?$backToTopEle.show():$backToTopEle.hide();
+		if(!window.XMLHttpRequest){
+			$backToTopEle.css("top",st+winh-166);
+		}
+	};
+	$(window).on("scroll",$backToTopFun);
+	$(function(){$backToTopFun();});
+})();
 
 
-
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 </script>
 
 </body>
