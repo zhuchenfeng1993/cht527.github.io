@@ -106,7 +106,7 @@ $('#pagination_ul').on('click','a',function(){
 });
 //---分页操作---
 function doPagination(thisPage,pageCount){
-	var thisPagination=showPages(thisPage,list_config.pageCount);
+	var thisPagination=showPages(thisPage,pageCount);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
 	$('li[data-page='+thisPage+']').addClass('active');
