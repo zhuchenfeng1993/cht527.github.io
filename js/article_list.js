@@ -111,8 +111,8 @@ function doPagination(thisPage,pageCount){
 	$('#pagination_ul').append(thisPagination);
 	$('li[data-page='+thisPage+']').addClass('active');
 	var start=(thisPage-1)*list_config.pageSize,end=thisPage*list_config.pageSize;
-	var articleData=articleList.slice(start,end);
-	curList=articleData;//当前页面的5条数据
+	var articleData=list_config.articleList.slice(start,end);
+	list_config.curList=articleData;//当前页面的5条数据
 	$("#article_items_contianer").children().remove();
 	mapArticleList(articleData);
 	$("html, body").animate({scrollTop:0},400);
