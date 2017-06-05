@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,122 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">响应式Web设计-布局</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;Fufu</a></p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2016-07-19</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<h3>概念</h3>
+      <p>Ehan Marcotte 为A List Apart写过一篇介绍型的文章 <响应式网页设计> 。文中讲到响应式的概念源自响应式建筑设计，即房间或者空间会根据其内部人群数量和流动而变化。</p>
+      <p style="color:#bbbbbb">[最近一门新兴的学科“响应式建筑(responsive architecture)”开始在探讨物理空间根据流动于其中的人进行响应的方法。建筑师们通过把嵌入式机器人与可拉伸材料结合的方法，尝试艺术装置和可弯曲、伸缩和扩展的墙体结构，达到根据接近人群的情况变化的效果。运动传感器与气候控制系统相结合，调整围绕人们周围的房间的温度以及环境照明。已经有公司制造了“智能玻璃技术”，当室内人数达到一定的阀值时，它可以自动变为不透明状态，为人们提供更多隐私保护。]</p>
+      <p>Web响应式设计的概念与之也非常相似。在如今技术飞快发展的时代，一向是以快论英雄，设备和分辨率日新月异，就以分类相对明晰的iPhone为例，就有多达4种的分辨率和屏幕尺寸，更别提厂商蓬勃发展的安卓机领域。因此，为每种设备或者特定设备分辨率制定相应的独立版本是非常费时费力的事情。</p>
+      <p>Web响应式设计的理念，应当是，页面可以根据用户的设备环境，包括系统，分辨率，屏幕尺寸等等因素，进行自发式调整，提供更适合当前环境的阅读和操作体验，对已有和未来即将出现的新设备有一定的适应能力。
+      </p>
+      <h3>实践</h3>
+      <p>
+      有了概念，一定要谈谈实现的方法。类似于响应式建筑，Web页面也有对应关键因素。
+      </p>
+      <p>可弯曲、伸缩、扩展的墙体结构——可扩展的布局；
+      </p>
+      <p>运动传感器——MediaQuery；
+      </p>
+      <p>气候控制系统——栅格；
+      </p>
+      <p>艺术装置——css等等。</p>
+      <p>以上给了我写文章的脉络结构灵感，于是先从最基础的布局谈起。</p>
+      <h3>可扩展的布局</h3>
+      <p>有一种流体布局的概念在早起web兴起的时，就开始盛行了。它的概念是说页面会根据浏览器窗口的变化进行更改，网站可以通过维护一套代码，保质一致性的设计。我这里强调的可扩展的布局也是基于这个概念，只是现在的方法多种多样，因此要强调页面布局的可扩展性。</p>
+      <p>可扩展的布局途径有很多，比如常见的百分比布局，以及一直未成为标准的栅格布局等等。</p>
+      <p><b>框架</b></p>
+      <p>就从这框架来说，以一个常见的可扩展的三栏布局为例，就有数十种方法</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_0.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法1：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_1.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法2：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_2.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法3：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_3.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法4：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_4.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法5：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_5.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法6：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_6.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法7：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_7.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法8：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_8.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>方法9：</p>
+      <p style="line-height:160%;word-break:break-all">
+      <img src="/img/webFE_img/1_9.png" style="display:block;margin:10px auto" />
+      </p>
+      <p>除了上述总结的几种，还有更多更多的方法。两栏布局同理就不赘述。此外W3C也有一个栅格化布局（Grid Layout）的规范，这个布局是基于两维栅格系统设计的，可以轻松按照我们的意愿改变页面的设计。它与Flexbox配合效果更佳。</p>
+
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>
