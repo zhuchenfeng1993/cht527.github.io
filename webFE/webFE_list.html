@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<link rel="shortcut icon" href="../img/favicon.ico" /> 
+	<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
+	<link rel="stylesheet" href="../css/webFE.css">
+	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+	
+	<title>前端开发技术</title>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+      <div class="js_menu mod-header__nav">
+        <ul id="menu-nav" class="menu">
+            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
+      			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank">W3CPLUS</a></li>
+      			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+      			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+	
+<div id="article_items_contianer"><!---列表-->
+	
+</div>
+
+<!---分页-start-->
+  <nav aria-label="Page navigation" class="pagination">
+    <ul class="pagination" id="pagination_ul">
+      
+    </ul>
+  </nav>
+<!--分页end-->
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+  <footer>
+    <p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+    <p>
+      <a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+      <a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+    </p>
+  </footer>
+</div>	<!--wrapper-->
+<script>
+  //初始化---list 
+  var list_config={
+    "type":"webFE",
+    "pageSize":7,
+    "curPage":1,
+    "total":0,
+    "pageCount":0,
+    "articleList":[],
+    "curList":[],
+    "dataUrl":"./data_source/webFE/webFE_list.json",
+    "locationUrl":"article/webFE_show_"
+  }
+
+
+//-------------------导航展开--------------------------------------
+ $(".js_piano_nav_icon").on("click",function(){
+        $("body");
+        $("body").toggleClass("mod-piano"),
+        $(this).toggleClass("close"),
+        $(".js_piano").toggleClass("ui-d-n"),
+        $(".js_piano_nav li").eq(0).trigger("click")
+})
+//-------------------导航触发音乐---------------------------------
+var mp3List = [
+                '1.mp3',
+                '2.mp3',
+                '3.mp3',
+                '4.mp3',
+                '5.mp3',
+                '6.mp3',
+                '7.mp3',
+                '8.mp3'
+              ],
+            //文件路径
+musicBaseUrl = '../include/webFE_nav/';
+         
+//play
+function playAudio(currentFile) {
+            // Check for audio element support.
+  if (window.HTMLAudioElement && currentFile) {
+        try {
+            var oAudio = document.getElementById('myaudio'); 
+                oAudio.src = currentFile;
+                oAudio.play();
+        }catch (e) {
+               // Fail silently but show in F12 developer tools console
+               if(window.console && console.error("Error:" + e));
+        }
+  }
+}
+var nav_aTag=$(".nav");
+for (var i = 0;i <=7; i++) {
+  (function(x){
+      nav_aTag[x].onmouseover=function(){
+      playAudio(musicBaseUrl+mp3List[x])
+    }
+  })(i)
+  
+};
+//---------导航触发音乐---end-----------------------
+
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}
+
+</script>
+<script type="text/javascript" src="../js/article_list.js"></script>
+
+</body>
+</html>

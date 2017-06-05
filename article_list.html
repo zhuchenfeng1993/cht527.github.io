@@ -30,7 +30,7 @@
     </div>
 </header>
 <div id="wrapper">
-<hr class="divider" width="90%">
+<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 <div id="article_items_contianer">
 
@@ -43,7 +43,7 @@
 	  </ul>
 	</nav>
 <!--底部页码 end-->
-<hr class="divider" style="width:90%">
+<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
 <p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
 <p>
@@ -67,6 +67,8 @@
 		"pageCount":0,
 		"articleList":[],
 		"curList":[]
+		"dataUrl":"./data_source/article/articleList.json",
+		"locationUrl":"article_show.html"
 	}
 // 事件绑定-----
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);

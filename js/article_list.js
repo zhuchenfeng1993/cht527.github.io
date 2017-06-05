@@ -1,6 +1,7 @@
 
 function mapArticleList(dataList){
-	$.map(dataList,function(value,index,array){
+	if (list_config.type=="hotArticle") { //---十点读书 文章列表模板
+		$.map(dataList,function(value,index,array){
 			var itemTemplate=
 			'<section class="list">'+ 
 				'<h3>'+value.title+'</h3>'+
@@ -25,6 +26,21 @@ function mapArticleList(dataList){
 
 			$("#article_items_contianer").append(itemTemplate)
 		})
+	}else{   //-----------webFE  文章列表 模板
+		$.map(dataList,function(value,index,array){
+    		var itemTemplate=
+		      '<section class="list">'+ 
+		        '<p>'+value.date+'</p>'+
+		        '<a class="webFE_items" href="javascript:void(0);" id='+value.id+'>'+
+		          '<span class="article_title">'+value.title+'</span>'+
+		          '<span class="webFE_category">'+value.category+'</span>'+
+		        '</a>'+
+		        '<hr class="divider">'+
+		      '</section>';
+
+		    $("#article_items_contianer").append(itemTemplate)
+		})
+	}
 }
 
 //-------分页展现UI------
@@ -114,25 +130,25 @@ function doPagination(thisPage,pageCount){
 	$('li[data-page='+thisPage+']').addClass('active');
 	var start=(thisPage-1)*list_config.pageSize,end=thisPage*list_config.pageSize;
 	var articleData=list_config.articleList.slice(start,end);
-	list_config.curList=articleData;//当前页面的5条数据
+	list_config.curList=articleData;//当前页面的N条数据
 	$("#article_items_contianer").children().remove();
 	mapArticleList(articleData);
 	$("html, body").animate({scrollTop:0},400);
 }
 //---初始化分页---
 
-	(function getArticleListData(){
+	(function getArticleListData(targetUrl){
 		$.ajax({
 			method: "GET",
-			url: "./data_source/article/articleList.json",
+			url: targetUrl,
 			dataType:"json"
 		}).done(function(data) {
 			list_config.articleList=data.articleList.reverse(); //逆序输出
 			list_config.total=list_config.articleList.length;
 			list_config.pageCount=Math.ceil(list_config.total/list_config.pageSize);
 			var articleListCopy=list_config.articleList;
-			var init_articleData=articleListCopy.slice(0,5);
-			list_config.curList=init_articleData;//当前页面的5条数据
+			var init_articleData=articleListCopy.slice(0,list_config.pageSize);
+			list_config.curList=init_articleData;//当前页面的初始 数据
 			//console.log(articleList.length);
 			mapArticleList(init_articleData);	
 			var pagination=showPages(list_config.curPage,list_config.pageCount);
@@ -141,7 +157,7 @@ function doPagination(thisPage,pageCount){
 		}).fail(function(){
 		    swal('请求接口失败','error','error')
 		});
-	})();
+	})(list_config.dataUrl);
 	
 (function(){
 	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
@@ -161,17 +177,32 @@ function doPagination(thisPage,pageCount){
 
 
 
-//----阅读原文-事件绑定--
+//--十点读书--阅读原文-事件绑定--
 $('#article_items_contianer').on('click','.more',function(){
 	var thisId=$(this).attr('id');
-	var targetUrl=window.btoa(window.encodeURIComponent("article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author"))
+	var baseUrl=list_config.locationUrl;
 	$.each(list_config.curList,function(index,value){
 		if (value.id==thisId) {
 			var targetUrl='target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
 			var targetUrl_encode=window.btoa(window.encodeURIComponent(targetUrl));
-			window.location.href='article_show.html?'+targetUrl_encode;
+			window.location.href=baseUrl+'?'+targetUrl_encode;
 			return false;
 		}
 	})
 
 })
+
+//--前端开发--阅读原文-事件绑定--
+$('#article_items_contianer').on('click','.webFE_items',function(){
+	var thisId=$(this).attr('id');
+	var baseUrl=list_config.locationUrl;
+	$.each(list_config.curList,function(index,value){
+		if (value.id==thisId) {
+			var thisDate=value.date;
+			window.location.href=baseUrl+thisDate+'.html';
+			return false;
+		}
+	})
+
+})
+
