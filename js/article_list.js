@@ -155,7 +155,7 @@ function doPagination(thisPage,pageCount){
 			$('#pagination_ul').append(pagination);
 			$('li[data-page='+list_config.curPage+']').addClass('active');	
 		}).fail(function(){
-		    swal('请求接口失败','error','error')
+		    alert('请求接口失败')
 		});
 	})(list_config.dataUrl);
 	
