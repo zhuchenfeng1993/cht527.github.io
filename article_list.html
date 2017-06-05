@@ -57,7 +57,22 @@
 <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="./js/nav.js"></script>
-<script type="text/javascript" src="./js/article_list.js"></script>
+<script>
+//初始化---list 
+	var list_config={
+		"type":"hotArticle",
+		"pageSize":5,
+		"curPage":1,
+		"total":0,
+		"pageCount":0,
+		"articleList":[],
+		"curPage":[],
+		"curList":[]
+	}
+// 事件绑定-----
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
+</script>
+<script type="text/javascript" src="./js/article_list.js"></script>
 </body>
 </html>
