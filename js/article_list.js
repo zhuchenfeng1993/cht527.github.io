@@ -30,7 +30,7 @@ function mapArticleList(dataList){
 		$.map(dataList,function(value,index,array){
     		var itemTemplate=
 		      '<section class="list">'+ 
-		        '<p>'+value.date+'</p>'+
+		        '<p class="webFE_date">'+value.date+'</p>'+
 		        '<a class="webFE_items" href="javascript:void(0);" id='+value.id+'>'+
 		          '<span class="article_title">'+value.title+'</span>'+
 		          '<span class="webFE_category">'+value.category+'</span>'+
