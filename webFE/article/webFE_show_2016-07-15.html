@@ -39,7 +39,7 @@
 
 	<article>
 	<h1 class="webFE_title"></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;转自<a href= \"http://yuguo.us/weblog/node/\">余果</a></p>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;转自<a href="http://yuguo.us/weblog/node/">余果</a></p>
 	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2016-07-15</span></p>
 	<div class="article_content">&nbsp;&nbsp;
 			<p><b>Node给前端开发者打了鸡血，现在我们可以用一种语言来写前后端的程序了，但我们都要避免的一点是，当你有一把锤子，你看见什么都是钉子。</b></p>
@@ -90,6 +90,23 @@ function classify(mark){
   }
   
 }	
+	
+(function(){
+		var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+		$("html, body").animate({scrollTop:0},400);
+		}),
+		$backToTopFun=function(){
+			var st=$(document).scrollTop(),
+			winh=$(window).height();
+			(st>0)?$backToTopEle.show():$backToTopEle.hide();
+			if(!window.XMLHttpRequest){
+				$backToTopEle.css("top",st+winh-166);
+			}
+		};
+		$(window).on("scroll",$backToTopFun);
+		$(function(){$backToTopFun();});
+
+})();
 </script>
 
 </body>
