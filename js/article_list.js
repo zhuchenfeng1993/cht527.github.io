@@ -158,22 +158,27 @@ function doPagination(thisPage,pageCount){
 		    alert('请求接口失败')
 		});
 	})(list_config.dataUrl);
+
+
 	
-(function(){
-	var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+(function(type){
+	if (type=="hotArticle") {
+		var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
 		$("html, body").animate({scrollTop:0},400);
-	}),
-	$backToTopFun=function(){
-		var st=$(document).scrollTop(),
-		winh=$(window).height();
-		(st>0)?$backToTopEle.show():$backToTopEle.hide();
-		if(!window.XMLHttpRequest){
-			$backToTopEle.css("top",st+winh-166);
-		}
-	};
-	$(window).on("scroll",$backToTopFun);
-	$(function(){$backToTopFun();});
-})();
+		}),
+		$backToTopFun=function(){
+			var st=$(document).scrollTop(),
+			winh=$(window).height();
+			(st>0)?$backToTopEle.show():$backToTopEle.hide();
+			if(!window.XMLHttpRequest){
+				$backToTopEle.css("top",st+winh-166);
+			}
+		};
+		$(window).on("scroll",$backToTopFun);
+		$(function(){$backToTopFun();});
+	}
+	
+})(list_config.type);
 
 
 
