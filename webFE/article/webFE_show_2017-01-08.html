@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,128 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">JavaScript有多灵活？</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;转自<a href="http://www.ruanyifeng.com/blog/2015/02/flexible-javascript.html">阮一峰</a></p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-01-08</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p>JavaScript 是一种灵活的语言，表达力极强，我来举一个例子，保证让很多人大吃一惊。<p>
+      <p>本文受到了 Kyle Simpson 的文章《Iterating ES6 Numbers》的启发。<p>
+      <p>首先，在 Number.prototype 对象上，部署一个 add 方法。<p>
+      <p style="border:1px solid #bbbbbb">
+      <pre><code">
+      Number<span>.</span>prototype<span >.</span>add <span >=</span> <span >function</span> <span >(</span>x<span >)</span> <span >{</span>
+        <span >return</span> this <span >+</span> x<span >;</span>
+      <span >}</span><span >;</span>
+      </code></pre>
+      <p>
+      <p>上面代码为 Number 的实例定义了一个 add 方法。（如果你对这种写法不熟悉，建议先阅读我写的《JavaScript 面向对象编程》。）
+      由于 Number 的实例就是数值，在数值上调用某个方法，数值会自动转为实例对象，所以就得到了下面的结果。<p>
+      <p style="border:1px solid #bbbbbb">8['add'](2)   //------ 10<p>
+      <p>上面代码中，调用方法之所以写成8['add']，而不是8.add，是因为数值后面的点，会被解释为小数点，而不是点运算符。
+      将数值放在圆括号中，就可以使用点运算符调用方法了。<p>
+      <p style="border:1px solid #bbbbbb">(8).add(2)   //------- 10<p>
+      <p>其实，还有另一种写法。<p>
+      <p style="border:1px solid #bbbbbb">(8)..add(2)   //------- 10<p>
+      <p>上面代码的第一个点解释为小数点，第二个点解释为点运算符。为了语义清晰起见，下面我统一采用圆括号的写法。
+      由于add方法返回的还是数值，所以可以链式运算。<p>
+      <p><pre class=" language-javascript"><code class=" language-javascript">
+      Number<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>subtract <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> this <span class="token operator">-</span> x<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      <span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add<span class="token punctuation">(</span></span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subtract<span class="token punctuation">(</span></span><span class="token number">4</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">
+      // 6
+      </span></code></pre><p>
+      <p>上面代码在Number对象的实例上部署了subtract方法，它可以与add方法链式调用。
+      如果使用方括号调用属性，写法会很古怪。<p>
+      <p style="border:1px solid #bbbbbb">8["add"](2)["subtract"](4)  /------/ 6<p>
+      <p>我们还可以部署更复杂的方法。<p>
+      <p><pre class=" language-javascript"><code class=" language-javascript">
+      Number<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>iterate <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> this<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          result<span class="token punctuation">.</span><span class="token function">push<span class="token punctuation">(</span></span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      <span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">iterate<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">
+      // [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      </span></code></pre><p>
+      <p>上面代码在 Number 对象的原型上部署了 iterate 方法，可以将一个数值自动扩展为一个数组。
+      总之，现在我们可以在数值上直接调用方法了，但是后面一对圆括号看着有点碍眼，有没有可能去掉圆括号呢？也就是说，能不能将下面的表达式<p>
+      <p style="border:1px solid #bbbbbb">(8).double().square()<p>
+      <p>写成另一种样子？<p>
+      <p style="border:1px solid #bbbbbb">(8).double.suqare<p>
+      <p>这是可以做到的。
+      ES5规定，每个对象的属性都有一个取值方法get，用来自定义该属性的读取操作。<p>
+      <p><pre class=" language-javascript"><code class=" language-javascript">
+      Number<span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">defineProperty<span class="token punctuation">(</span></span>
+        Number<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">"double"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          get<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token punctuation">(</span>this <span class="token operator">+</span> this<span class="token punctuation">)</span><span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      Number<span class="token punctuation">.</span>prototype <span class="token operator">=</span>  Object<span class="token punctuation">.</span><span class="token function">defineProperty<span class="token punctuation">(</span></span>
+        Number<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">"square"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          get<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token punctuation">(</span>this <span class="token operator">*</span> this<span class="token punctuation">)</span><span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      </code></pre><p>
+      <p>上面代码在 Number.prototype 上定义了两个属性 double 和 square ，以及它们的取值方法 get 。
+      因此，在任一数值上，读取这两个属性，就可以写成下面的样子。<p>
+      <p style="border:1px solid #bbbbbb">(8).double.square   //----- 256</p>
+      <p>也可以改用方括号运算符。</p>
+      <p style="border:1px solid #bbbbbb">8["double"]["square"]   //----- 256</p>
+
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>

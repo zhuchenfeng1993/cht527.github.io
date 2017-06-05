@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,67 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">分页思路解析</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-05-02</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p>很多自学前端的同学都会遇到这样一个坎儿，我能做很多东西，但是感觉自己还是啥都不会。</p><p>编程，很重要的一个技能就是抽象能力，就是现实中的琐事儿，我怎么用代码来表示。（是表示哈，不是人工智能）</p><p>我特别崇拜 ACM 的获奖者，我们公司的死月大大就曾经是 ACM 全国一等奖哦，快过来膜拜。</p><p>ACM 是做一些 c 语言算法题，但是你从中可以看到，那些题目都是从生活的例子出发，然后就得到了这样一个用 c 语言可以编程的题。</p><p>现在回归那个分页。</p><p>我们先看一下简单的需求。</p><blockquote>当前页码前后显示 3 页，然后需要显示第一页和最后一页未显示的页码用省略号表示。</blockquote><p>举例：如果总共 110 页</p><p>当前页码为 1，那么显示 1 2 3 4 ... 110 下一页</p><p>当前页码为 2，那么显示 上一页 1 2 3 4 5 ... 110 下一页</p><p>当前页码为 3，那么显示 上一页 1 2 3 4 5 6 ... 110 下一页</p><p>当前页码为 4，那么显示 上一页 1 2 3 4 5 6 7 ... 110 下一页</p><p>当前页码为 5，那么显示 上一页 1 2 3 4 5 6 7 8 ... 110 下一页</p><p>当前页码为 6，那么显示 上一页 1 ... 3 4 5 6 7 8 9 ... 110 下一页</p><p>…</p><p>当前页码为 100，那么显示 上一页 1 ... 97 98 99 100 101 102 103 ... 110 下一页</p><p>…</p><p>当前页码为 109，那么显示 上一页 1 ... 106 107 108 109 110 下一页</p><p>当前页码为 110，那么显示 上一页 1 ... 107 108 109 110</p><p>那么你可能就看出来了，虽然每一页在实际应用中都是一个超链接，但是我们在思考算法时可以先将其忽略。</p><p>现在就变成了一个简单的字符串输出题。</p><p>我们先定义一个函数</p><pre><code>function showPages (page, total) {
+
+ 
+
+}</code></pre><p>盲目的就开始码代码一定是个不好的习惯，码代码之前，我们要先准备好覆盖所有情况的测试。</p><p>这个题就简单咯，我们可以把所有结果都打印出来呗。</p><p>在无需引入一个代码测试库的情况下，我们来这么干</p><pre><code>var total = 110;  
+for (var i = 1; i &lt;= total; i++) {  
+    var ret = showPages(i, total);
+    console.log(ret);
+}</code></pre><p>就从页码为 1 到最后一页的结果全输出出来了。</p><p>我之所以崇拜 ACM 大神，是因为我算法能力其实一般般，所以献丑贴代码一定不要笑话我哦，咱说好，本文讲的是解决问题的思维模式。</p><p>function&nbsp;showPages&nbsp;(page,&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;str&nbsp;=&nbsp;page&nbsp;+ ";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;3;&nbsp;i++)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;-&nbsp;i&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;page&nbsp;-&nbsp;i&nbsp;+ " " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;+&nbsp;i&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " " +&nbsp;(page&nbsp;+&nbsp;i);</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;-&nbsp;4&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "... " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "上一页 " +&nbsp;1&nbsp;+ " " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;+&nbsp;4&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " ...";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " " +&nbsp;total&nbsp;+ " 下一页";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;str;</p><p>&nbsp; &nbsp; }</p><p>那么，作为一个算法题，可算是完成了，可是它不是一个分页啊，不能用啊。</p><p>别急，我们只需要把一些简单的 html 代码补充完整就行。</p><p>var&nbsp;str&nbsp;= "&lt;a&gt;" +&nbsp;page&nbsp;+ "&lt;/a&gt;";</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;3;&nbsp;i++)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;-&nbsp;i&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "&lt;a class="page"&gt;" +&nbsp;(page&nbsp;-&nbsp;i)&nbsp;+ "&lt;/a&gt; " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;+&nbsp;i&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " " +&nbsp;(page&nbsp;+&nbsp;i);</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp; &nbsp; &nbsp; &nbsp; }</p><p>这里仅仅举一个简单例子，class 名啊什么的，自己按需求修改修改就好了，必要的话，多套个 div 也没关系。</p><p>最后，贴一个大概是可以实现通用分页的思路。</p><p>function&nbsp;showPageCommon(config)&nbsp;{&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;function&nbsp;(page,&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;str&nbsp;= "&lt;a&gt;" +&nbsp;page&nbsp;+ "&lt;/a&gt;";</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(var&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;3;&nbsp;i++)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;-&nbsp;i&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "&lt;a class="'&nbsp;+&nbsp;config.color&nbsp;+&nbsp;'"&gt;" +&nbsp;(page&nbsp;-&nbsp;i)&nbsp;+ "&lt;/a&gt; " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;+&nbsp;i&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " " +&nbsp;(page&nbsp;+&nbsp;i);</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp; &nbsp; &nbsp; &nbsp; }</p><p>if&nbsp;(page&nbsp;-&nbsp;4&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "... " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;&gt;&nbsp;1)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;= "上一页 " +&nbsp;1&nbsp;+ " " +&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;+&nbsp;4&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " ...";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(page&nbsp;&lt;&nbsp;total)&nbsp;{</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+ " " +&nbsp;total&nbsp;+ " 下一页";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;str;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>}</p><p>&nbsp;</p><p>var&nbsp;showPages&nbsp;=&nbsp;showPageCommon({&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;color: red</p><p>});</p><p>var&nbsp;total&nbsp;=&nbsp;110;&nbsp;&nbsp;</p><p>for&nbsp;(var&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;total;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ret&nbsp;=&nbsp;showPages(i,&nbsp;total);</p><p>&nbsp;&nbsp;&nbsp;&nbsp;console.log(ret);</p><p>}</p><p>&nbsp;</p><p>var&nbsp;showPages&nbsp;=&nbsp;showPageCommon({&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;color: blue</p><p>});</p><p>&nbsp;</p><p>var&nbsp;total&nbsp;=&nbsp;110;&nbsp;&nbsp;</p><p>for&nbsp;(var&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;total;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ret&nbsp;=&nbsp;showPages(i,&nbsp;total);</p><p>&nbsp;&nbsp;&nbsp;&nbsp;console.log(ret);</p><p>}</p><p>输出的 html 打印出来就是一个红色主题的分页，和一个蓝色主题的分页。</p><p>括弧笑。</p><p><br></p><p><br></p>
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>

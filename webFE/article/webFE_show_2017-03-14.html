@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,1536 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">JS正则表达式详解</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-03-14</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p>1、第一种定义：<p>
+      <pre>new RegExp(<em>pattern</em>, <em>attributes</em>);</pre>
+      <span style="color:#333333;font-family:Arial;font-size:14px;line-height:26px;background-color:#FFFFFF;">如var reg = new RegExp("abc","g")&nbsp;</span>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        &nbsp;其中pattern为表示表达式内容,如上表示匹配abc
+      </p>
+      <pre><em>attributes：g,全局匹配，i不区分大小写，m执行多行匹配，用最多的为g和i </em></pre>
+      <p>2、第二种定义:/pattern/attributes.</p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        如：var reg = /abc/g;
+      </p>
+
+      <p style="color:#3E3E3E;">
+        <span style="font-size:20px;"><strong>空白\s（包括空格回车制表符等）</strong></span>
+      </p>
+      <p style="color:#3E3E3E;">
+        \f匹配换页符，\n匹配换行符，\r匹配回车，\t匹配制表符，\v匹配垂直制表符。
+      </p>
+      <p style="color:#3E3E3E;">
+        \s匹配单个空格，等同于[\f\n\r\t\v]。例如：
+      </p>
+      <p style="color:#3E3E3E;">
+        例1：
+      </p>
+      <p style="color:#3E3E3E;">
+        
+
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var reg = /\s.+/;
+        </p>
+        <p>
+          var str='This is a test String.';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        返回“is a test String.”，正则的意思是匹配第一个空格以及其后的所有非换行字符。
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <p style="color:#3E3E3E;">
+        同样，\S表示非空格字符。
+      </p>
+      <p style="color:#3E3E3E;">
+        例2：
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var reg = /\S+/;
+        </p>
+        <p>
+          var str='This is a test String.';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        匹配结果为This，当遇到第一个空格之后，正则就停止匹配了。
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <p style="color:#3E3E3E;">
+        在正则中最常用到的一个是：
+      </p>
+      <p style="color:#3E3E3E;">
+        例3：var reg=/^\s*$/; //匹配任意空或空白字符，如果你什么也没输入，或输入的只有空格、回车、换行等字符，则匹配成功。这样就可以验证用户是否正确输入内容了。
+      </p>
+      <p style="color:#3E3E3E;">
+        这个用来验证输入框里是否写了有效效字符,用法如下：
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var &nbsp;reg=/^\s*$/;
+        </p>
+        <p>
+          if(reg.test(value)){
+        </p>
+        <p>
+          &nbsp; alert('请输入有效值');
+        </p>
+        <p>
+          &nbsp; return false;
+        </p>
+        <p>
+          }
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <p style="color:#3E3E3E;">
+        <span style="font-size:20px;"><strong>单字符\w</strong></span>
+      </p>
+      <p style="color:#3E3E3E;">
+        \w表示单词字符，等同于字符集合[a-zA-Z0-9_]。例如：
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var reg = /\w+/;
+        </p>
+        <p>
+          var str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        返回完整的zhufengpeixun字符串，因为所有字符都是单词字符。
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var reg = /\w+/;
+        </p>
+        <p>
+          var str='.className';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        结果显示匹配了字符串中的className，只有第一个“.”唯一的非单词字符没有匹配。
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;">
+        <p>
+          var reg = /\w+/;
+        </p>
+        <p>
+          var str='正则教程';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;">
+        试图用单词字符去匹配中文自然行不通了，返回 null。
+      </p>
+      <p style="color:#3E3E3E;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        \W表示非单词字符，等效于[^a-zA-Z0-9_]
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /\W+/;
+        </p>
+        <p>
+          var str='正则教程';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回完整的字符串，因为，中文算作是非单词字符。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>分组和分组的引用</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        请见在线视频的正则专题部分的
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        正则表达式基础第三讲：分组、分组的引用、选择等<span style="color:#3DA742;">http://online.zhufengpeixun.cn/viewCourseDetail.do?courseId=141415</span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式如下：/(子正则表达式)\1/ 依旧用例子来说明：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        1.例子
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          <span style="line-height:1.75em;">var reg = /\w/;</span>
+        </p>
+        <p>
+          var str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //返回z。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        2.例子
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          <span style="line-height:1.75em;">var reg = /(\w)(\w)/;</span>
+        </p>
+        <p>
+          var str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回zh,z,h ,zh是整个正则匹配的内容，z是第一个括号里的子正则表达式匹配的内容，h是第二个括号匹配的内容。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        3.例子
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          <span style="line-height:1.75em;">var reg = /(\w)\1/;</span>
+        </p>
+        <p>
+          var str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        则会返回null。这里的“\1”就叫做反向引用，它表示的是第一个括号内的子正则表达式匹配的内容。在上面的例子中，第一个括号里的(\w)匹配了z，因此“\1”就同样表示z了，在余下的字符串里自然找不到z了。与第二个例子对比就可以发现，“\1”是等同于“第1个括号匹配的内容”，而不是“第一个括号的内容”。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /(\w)\1/;
+        </p>
+        <p>
+          var str='bbs.zhufengpeixun.cn';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        这个正则则会匹配到bb,b。同样，前面有几个子正则表达式我们就可以使用几个反向引用。例如：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /(\w)(\w)\2\1/;
+        </p>
+        <p>
+          var str='woow';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        会匹配成功，因为第一个括号匹配到w，第二个括号匹配到o，而\2\1则表示ow，恰好匹配了字符串的最后两个字符。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        括号() ，表示子表达式，也叫分组
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        前面我们曾经讨论过一次括号的问题，见下面这个例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^(b|c).+/;
+        </p>
+        <p>
+          var str='bbs.blueidea.com';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        这个正则是为了实现只匹配以b或者c开头的字符串，一直匹配到换行字符，但是。上面我们已经看到了，可以使用“\1”来反向引用这个括号里的子正则表达式所匹配的内容。而且exec方法也会将这个字正则表达式的匹配结果保存到返回的结果中。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>不记录子正则表达式的匹配结果[匹配不捕获]</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        使用形如(?:pattern)的正则就可以避免保存括号内的匹配结果。例如：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^(?:b|c).+/;
+        </p>
+        <p>
+          var str='bbs.blueidea.com';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        可以看到返回的结果不再包括那个括号内的字正则表达式多匹配的内容。同理，反向引用也不好使了：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^(b|c)\1/;
+        </p>
+        <p>
+          var str='bbs.zhufengpeixun.cn';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回bb,b。bb是整个正则表达式匹配的内容，而b是第一个子正则表达式匹配的内容。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^(?:b|c)\1/;
+        </p>
+        <p>
+          var str='bbs.zhufengpeixun.cn';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回null。由于根本就没有记录括号内匹配的内容，自然没有办法反向引用了。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>正向预查</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式：(?=pattern)所谓正向预查，意思就是：要匹配的字符串，后面必须紧跟着pattern！ 我们知道正则表达式/cainiao/会匹配cainiao。同样，也会匹配cainiao9中的cainiao。但是我们可能希望，cainiao只能匹配cainiao8中的cainiao。这时候就可以像下面这样写：/cainiao(?=8)/，看两个实例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /cainiao(?=8)/;
+        </p>
+        <p>
+          var &nbsp;str='cainiao9';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //返回null。
+        </p>
+        <p>
+          var reg = /cainiao(?=8)/;
+        </p>
+        <p>
+          var &nbsp;str='cainiao8';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        匹配cainiao。需要注意的是，括号里的内容并不参与真正的匹配，只是检查一下后面的字符是否符合要求而已，例如上面的正则，返回的是cainiao，而不是cainiao8。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        再来看几个例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /zhufeng(?=peixun)/;
+        </p>
+        <p>
+          var &nbsp;str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        匹配到zhufeng，而不是peixun。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /zhufeng(?=peixun)/;
+        </p>
+        <p>
+          var str=’zhufengonline’;
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回null，因为zhufeng后面不是peixun。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /zhufeng(?=peixun)/;
+        </p>
+        <p>
+          var str='onlinepeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        同样返回null。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          ?!
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式(?!pattern)和?=恰好相反，要求字符串的后面不能紧跟着某个pattern，还拿上面的例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /zhufeng(?!js)/;
+        </p>
+        <p>
+          var str=`zhufengjs`;
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回null，因为正则要求，zhufeng的后面不能是js。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /zhufeng(?!js)/;
+        </p>
+        <p>
+          var &nbsp;str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        则成功返回zhufeng。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>匹配元字符</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        首先要搞清楚什么是元字符呢？我们之前用过*,+,?之类的符号，它们在正则表达式中都有一定的特殊含义，类似这些有特殊功能的字符都叫做元字符。例如
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /c*/;
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        表示有任意个c，但是如果我们真的想匹配c*这个字符串的时候怎么办呢？只要将*转义了就可以了，如下：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /c\*/;
+        </p>
+        <p>
+          var str='c*';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回匹配的字符串：c*。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        同理，要匹配其他元字符，只要在前面加上一个“\”就可以了。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>正则表达式的修饰符</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        全局匹配，修饰符g
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式：/pattern/g 例子：reg = /b/g; 后面再说这个g的作用。先看后面的两个修饰符。不区分大小写，修饰符i
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式：/pattern/i 例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /b/;
+        </p>
+        <p>
+          var str = 'BBS';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回null，因为大小写不符合。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /b/i;
+        </p>
+        <p>
+          var str = 'BBS';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        匹配到B，这个就是i修饰符的作用了。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        行首行尾，修饰符m
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        形式：/pattern/m m修饰符的作用是修改^和$在正则表达式中的作用，让它们分别表示行首和行尾。例如：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^b/;
+        </p>
+        <p>
+          var str = 'test\nbbs';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        匹配失败，因为字符串的开头没有b字符。但是加上m修饰符之后：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /^b/m;
+        </p>
+        <p>
+          var str = 'test\nbbs';
+        </p>
+        <p>
+          alert(reg.exec(str));;
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        匹配到b，因为加了m修饰符之后，^已经表示行首，由于bbs在字符串第二行的行首，所以可以成功地匹配。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>匹配固定的n个 c{n}</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        {1}表示一个的意思。/c{1}/只能匹配一个c，和/c/是一个意思，一般匹配只出现一次的字符，后边的{1}就不写了。/c{2}/则会匹配两个连续的c。以此类推, /c{n}/则会匹配n个连续的c。看下面的例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /c{1}/; &nbsp;
+        </p>
+        <p>
+          var str='china_zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //输出结果是：c
+        </p>
+        <p>
+          
+        </p>
+        <p>
+          var reg = /o{2}/; &nbsp;
+        </p>
+        <p>
+          var str='money'; &nbsp;
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //返回结果`null`，表示没有匹配成功。
+        </p>
+        <p>
+          
+        </p>
+        <p>
+          reg = /o{2}/;
+        </p>
+        <p>
+          str='good food';
+        </p>
+        <p>
+          alert(reg.exec(str))
+        </p>
+        <p>
+          //输出结果oo。（其实是第一组oo，不会匹配到第二组oo，因为正则的匹配是懒惰的，不加模式匹配符g，则表示只去匹配一次，匹配到了则返回并且停止。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        如果写成
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg=/o{2}/g;
+        </p>
+        <p>
+          alert(str.match(reg))
+        </p>
+        <p>
+          //则输出oo,oo了
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>c{m,n} 匹配最少m个，最多n个</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        c{3,4}的意思是，连续的3个c或者4个c。例如:
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /o{3,4}/;// (匹配三到四个o)
+        </p>
+        <p>
+          str='good正则教程';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回结果null，表示没有匹配成功。例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /o{3,4}/;
+        </p>
+        <p>
+          str='goood正则教程';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        弹出结果是：ooo。例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /o{3,4}/;
+        </p>
+        <p>
+          str='very gooood正则教程';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        输出的结果是：oooo，这表明正则会尽量多匹配，可3可4的时候它会选择多匹配一个。（这就是贪婪匹配）例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /c{3,4}/;
+        </p>
+        <p>
+          str='cccccTest';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        仍然会匹配4个c。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        由以上例子可以推断出：c{m,n}表示m到n个c，且m小于等于n。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>c{n,}表示最少匹配n个c，最多不限制</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        c{1,}表示1个以上的c,相当于+。如下：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /c{1,}/;str='cainiao';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //结果弹出c。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /c{1,}/;
+        </p>
+        <p>
+          str='cccccTest';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+        <p>
+          //返回ccccc，再次说明了正则表达式会尽量多地匹配。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /c{2,}/;
+        </p>
+        <p>
+          str='cainiao';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        结果返回null，c{2,}表示2个以上的c，而cainiao中只有1个c。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        由以上例子可知，c{n,}表示最少n个c，最多则不限个数。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        综合：*,+,?
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        *表示0次或者多次，等同于{0,}，即c* 和c{0,} 是一个意思。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        +表示一次或者多次，等同于{1,}，即c+ 和c{1,} 是一个意思。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        最后，?表示0次或者1次，等同于{0,1}，即c? 和c{0,1} 是一个意思。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>贪心与非贪心【贪婪匹配和非贪婪匹配】</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        人都是贪婪的，正则也是如此。我们在例子reg = /c{3,4}/;str='ccccTest';的例子中已经看到了，能匹配四个的时候，正则绝对不会去匹配三个。上面所介绍的所有的正则都是这样，只要在合法的情况下，它们会尽量多去匹配字符，这就叫做贪心模式。如果我们希望正则尽量少地匹配字符，那么就可以在表示数字的符号后面加上一个?（即：问号加在量词的后边，则表示非贪婪匹配）。组成如下的形式：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          {n,}?, *?, +?, ??, {m,n}?
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /c{1,}?/;
+        </p>
+        <p>
+          str='ccccc';
+        </p>
+        <p>
+          &nbsp;alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回的结果只有1个c，尽管有5个c可以匹配，但是由于正则表达式是非贪心模式，所以只会匹配一个。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>元字符点’.’的用法</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        .会匹配字符串中除了换行符\n之外的所有字符，例如
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /./; //一个点表示匹配字符串中出现的第一个非换行符字符。
+        </p>
+        <p>
+          str='zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));;
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        结果显示，正则匹配到了字符z。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /./;
+        </p>
+        <p>
+          str='online.zhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        这次是o，只要有一个是非换行字符，就表示匹配成功，就不会往下再继续了。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /.+/;
+        </p>
+        <p>
+          str='zhufengpeixun_ &nbsp;前端开发权威培训';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        结果是“zhufengpeixun_前端开发“也就是说所有的字符都被匹配掉了，包括一个空格，一个下滑线
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        【贪婪匹配】。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例1：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /.+/;
+        </p>
+        <p>
+          str='online.zhufengpeixun.cn'; &nbsp;
+        </p>
+        <p>
+          alert(reg.exec(str));;
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        同样，直接返回整个字符串——online.zhufengpeixun.cn，可见”.”也匹配”.”本身。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例2：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          reg = /^./; //这样表示必须以非换行符开始。
+        </p>
+        <p>
+          str='\nzhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        结果是null，终于失败了，正则要求字符串的第一个字符不是换行，但是恰恰字符是以\n开始的。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>“|“，正则表达式中的或，把“|”左右两边的一到多个字符当成一个整体对待</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        b|c表示，匹配b或者c（这里相当于[bc]）。ab|ac表示匹配ab或ac（但这里不相当于[abc]，[]表示在一组字符中任选一个）。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例1：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /z|o/.exec('zhufengpeixun'))
+        </p>
+        <p>
+          //结果是z。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例2：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /z|o/.exec('online');
+        </p>
+        <p>
+          //结果是o。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例3：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /^z|o.+/.exec('online');
+        </p>
+        <p>
+          //匹配掉整个online。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例4：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /^z|o.+/.exec('zhufengpeixun.cn');
+        </p>
+        <p>
+          //结果只有一个z，而不是整个字符串。因为上面正则表达式的意思是，匹配开头的z或者是o.+。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>和括号结合使用</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /^(z|o).+/.exec('zhufengpeixun');
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        这次的结果是整个串zhufengpeixun，加上上面的括号这后，这个正则的意思是，如果字符串的开头是z或者o，那么匹配开头的z或者o以及其后的所有的非换行字符。如果你也实验了的话，会发现返回的结果后面多出来一个“z“，这是()内的z|o所匹配的内容(这个叫分组或子正则)。我们在正则表达式内括号里写的内容会被认为是子正则表达式，所匹配的结果也会被记录下来供后面使用。我们暂且不去理会这个特性。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        
+      </p>
+
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>关于正则中的连续字符</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        在正则中/[0-9]/表示匹配字符从0到9中的任意一个，/[a-z]/表示匹配从a到z中的任意一个字母只要是在ASCII码表里连续出现的字符，都可以用这样的表示法。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        请百度一下“ASCII码表”，参照里面字符出现的顺序和对应的16进制或10进制的编码。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        比如var reg=/^[!-z]$/; 就会匹配从字符“!”开始，到字符“z”结束的任意一个字符。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg=/^[!-z]$/;
+        </p>
+        <p>
+          alert(reg.test("8"));//true,
+        </p>
+        <p>
+          alert(reg.test("*"))//true,
+        </p>
+        <p>
+          alert(reg.test("}"))//false,因为"}"不在从！到z的这个范围内
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        正则/^[!-z]$/也可以用16进制来表示。如果用16进制表示，则需要用\u开头，表示这是在以16进制的方式定义unicode字符，并且后边的16进制的编码要写成四位，不足4位的前边补0。则上边的那个正则，也可以写成
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg=/^[\u0021-\u007a]$/;
+        </p>
+        <p>
+          // 字符“！”对应的16进制编码是21，字符“z”的16进制编码是7a。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        这种方式。中文是扩展的ASCII字符编码，匹配UTF8中文的正则是：/^[\u4e00-\u9fa5]+$/
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        php中utf-8编码下用正则表达式匹配汉字的正则是：/^[\x{4e00}-\x{9fa5}]+$/u
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        注意：写成[1-13]不是表示从数字1到数字13，而是表示从1到1和3，也就是1和3。因为正则里是在表示连续出现的字符，而不是数字。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>反字符集合[^abc]</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        ^在正则表达式开始部分的时候表示开头的意思，例如/^c/表示开头是c；但是在字符集和中，它表示的是类似“非“的意思，例如[^abc]就表示不能是a，b或者c中的任何一个。例如：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /[^abc]/;
+        </p>
+        <p>
+          var str='blueidea';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        返回的结果是l，因为它是第一个非abc的字符（即第一个b没有匹配）。同样：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          var reg = /[^abc]/;
+        </p>
+        <p>
+          var str='cbazhufengpeixun';
+        </p>
+        <p>
+          alert(reg.exec(str));
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        输出z，前三个字符都是[abc]集合中的。由此我们可知：[^0-9]表示非数字，[^a-z]表示非小写字母，依次类推。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>边界与非边界</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        \b表示的边界的意思，也就是说，只有字符串的开头和结尾才算数。例如/\bc/就表示字符串开始的c。看下面的例子：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /\bc/.exec('cainiao');
+        </p>
+        <p>
+          //返回结果c。匹配到了左边界的c字符。
+        </p>
+        <p>
+          /\bc/.exec('???c');
+        </p>
+        <p>
+          //仍然返回c，不过这次返回的是右侧边界的c。
+        </p>
+        <p>
+          /\bc/.exec('bcb');
+        </p>
+        <p>
+          //这次匹配失败，因为bcb字符串中的c被夹在中间，既不在左边界也不再右边界。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        与\b对应\B表示非边界。例如：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /\Bc/.exec('bcb');
+        </p>
+        <p>
+          //这次会成功地匹配到bcb中的c，。然而
+        </p>
+        <p>
+          /\Bc/.exec('cainiao');
+        </p>
+        <p>
+          //则会返回null。因为\B告诉正则，只匹配非边界的c。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <span style="font-size:20px;"><strong>数字与非数字</strong></span>
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        \d表示数字的意思，相反，\D表示非数字。
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /\d/.exec('cainiao8')
+        </p>
+        <p>
+          //返回的匹配结果为8，因为它是第一个数字字符。
+        </p>
+      </blockquote>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        例：
+      </p>
+      <p style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <br />
+      </p>
+      <blockquote style="color:#3E3E3E;font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;font-size:16px;background-color:#FFFFFF;">
+        <p>
+          /\D/.exec('cainiao8');
+        </p>
+        <p>
+          //返回c，第一个非数字字符。
+        </p>
+      </blockquote>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        说完正则表达的规则，再介绍两个跟正则表达式相关的函数--exec和match：
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        1、exec是正则表达式的方法，而不是字符串的方法，它的参数才是字符串，如下所示：
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        如上定义&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("abc") ;&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var str = "3abc4，5abc6";
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        reg.exec(str );&nbsp;&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        2、match是字符串执行匹配正则表达式规则的方法，他的参数是正则表达，如
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("abc") ;&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var str = "3abc4,5abc6";
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        str.match(reg);
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        3、exec和match返回的都是数组；
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        如果exec执行的正则表达式没有子表达式(小括号内的内容，如/abc(\s*)/中的(\s*) )，如果有匹配，就返回第一个匹配的字符串内容，此时的数组仅有一个元素，如果没有匹配返回null;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("abc") ;&nbsp;<br />
+      var str = "3abc4,5abc6";<br />
+      alert(reg.exec(str));<br />
+      alert(str.match(reg));
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        执行如上代码，你会发现两者内容均为一样：abc，
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        4、如果定义正则表达对象为全局匹配如:
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("abc","g") ;&nbsp;<br />
+      var str = "3abc4,5abc6";<br />
+      alert(reg.exec(str));<br />
+      alert(str.match(reg));&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        则 为abc和abc,abc；因为match执行了全局匹配查询；而exec如果没有子表达式只会找到一个匹配的即返回。
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        5、当表示中含有子表达式的情况：
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("a(bc)") ;&nbsp;<br />
+      var str = "3abc4,5abc6";<br />
+      alert(reg.exec(str));<br />
+      alert(str.match(reg));
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        你会发现两者执行的结果都是：abc,bc;&nbsp;
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        6、当如果正则表达式对象定义为为全局匹配
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        var reg = new RegExp("a(bc)","g") ;&nbsp;<br />
+      var str = "3abc4,5abc6";<br />
+      alert(reg.exec(str));<br />
+      alert(str.match(reg));
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        则两者返回的结果是abc,bc和abc,abc,
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        总结为：
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        1、当正则表达式无子表达式，并且定义为非全局匹配时，exec和match执行的结果是一样，均返回第一个匹配的字符串内容；
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        2、当正则表达式无子表达式，并且定义为全局匹配时，exec和match执行，做存在多处匹配内容，则match返回的是多个元素数组；
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        3、当正则表达式有子表示时，并且定义为非全局匹配，exec和match执行的结果是一样如上边的第5种情况；
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        4、当正则表达式有子表示时，并且定义为全局匹配，exec和match执行的结果不一样，此时match将忽略子表达式，只查找全匹配正则表达式并返回所有内容，如上第6种情况；
+      </p>
+      <p style="color:#333333;font-family:Arial;font-size:14px;background-color:#FFFFFF;">
+        也就说，exec与全局是否定义无关系，而match则于全局相关联，当定义为非全局，两者执行结果相同
+      </p>
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>

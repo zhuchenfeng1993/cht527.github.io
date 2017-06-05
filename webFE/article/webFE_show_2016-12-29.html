@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,110 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">querySelectorAll from an element probably doesn't do what you think it does</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;lvh</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2016-12-29</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p>Modern browsers have APIs called querySelector and querySelectorAll. They find one or more elements matching a CSS selector. I'm assuming basic familiarity with CSS selectors: how you select elements, classes and ids. If you haven't used them, the Mozilla Developer Network has an excellent introduction.</p>
+      <p>Imagine the following HTML page:</p>
+      <pre ><span></span><span >&lt;!DOCTYPE html&gt;</span>
+      <span >&lt;</span><span >html</span><span >&gt;</span>
+      <span >&lt;</span><span >body</span><span >&gt;</span>
+          <span >&lt;</span><span >img</span> <span >id</span><span c>=</span><span>"outside"</span><span >&gt;</span>
+          <span >&lt;</span><span >div</span> <span >id</span><span >=</span><span >"my-id"</span><span >&gt;</span>
+              <span >&lt;</span><span >img</span> <span>id</span><span >=</span><span >"inside"</span><span class="p">&gt;</span>
+              <span >&lt;</span><span >div</span> <span >class</span><span >=</span><span>"lonely"</span><span >&gt;&lt;/</span><span>div</span><span>&gt;</span>
+              <span>&lt;</span><span>div</span> <span>class</span><span>=</span><span >"outer"</span><span >&gt;</span>
+                  <span >&lt;</span><span >div</span> <span >class</span><span>=</span><span>"inner"</span><span>&gt;&lt;/</span><span>div</span><span >&gt;</span>
+              <span>&lt;/</span><span>div</span><span >&gt;</span>
+          <span>&lt;/</span><span>div</span><span >&gt;</span>
+      <span >&lt;/</span><span >body</span><span>&gt;</span>
+      <span >&lt;/</span><span >html</span><span>&gt;</span>
+      </pre>
+      <p>document.querySelectorAll("div") returns a NodeList of all of the <div> elements on the page. document.querySelector("div.lonely") returns that single lonely div.</p>
+      <p>document supports both querySelector and querySelectorAll, letting you find elements in the entire document. Elements themselves also support both querySelector and querySelectorAll, letting you query for elements that are descendants of that element. For example, the following expression will find images that are descendants of #my-id:</p>
+      <p>document.querySelector("#my-id").querySelectorAll("img")</p>
+      <p>In the sample HTML page above, it will find <img id="inside"> but not <img id="outside">.</p>
+      <p>With that in mind, what do these two expressions do?</p>
+      <pre ><span></span><span >document</span><span >.</span><span >querySelectorAll</span><span >(</span><span >"#my-id div div"</span><span>);</span>
+      <span >document</span><span >.</span><span >querySelector</span><span >(</span><span >"#my-id"</span><span >).</span><span >querySelectorAll</span><span >(</span><span >"div div"</span><span >);</span>
+      </pre>
+      <p>You might reasonably expect them to be equivalent. After all, one asks for div elements inside div elements inside #my-id, and the other asks for div elements inside div elements that are descendants of #my-id. However, when you look at this JSbin, you'll see that they produce very different results:</p>
+      <pre class="code literal-block"><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"#my-id div div"</span><span class="p">).</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+      <span >document</span><span >.</span><span >querySelector</span><span>(</span><span >"#my-id"</span><span >).</span><span>querySelectorAll</span><span >(</span><span >"div div"</span><span >).</span><span >length</span> <span >===</span> <span>3</span><span>;</span>
+      </pre>
+      <p>What is going on here?</p>
+      <p>It turns out that element.querySelectorAll doesn't match elements starting from element. Instead, it matches elements matching the query that are also descendants of element. Therefore, we're seeing three div elements: div.lonely, div.outer, div.inner. We're seeing them because they both match the div div selector and are all descendants of #my-id.</p>
+      <p>The trick to remembering this is that CSS selectors are absolute. They are not relative to any particular element, not even the element you're calling querySelectorAll on.</p>
+      <p>This even works with elements outside the element you're calling querySelectorAll on. For example, this selector:</p>
+      <p>document.querySelector("#my-id").querySelector("div div div")</p>
+      <p>... matches div.inner in this snippet (JSbin):</p>
+      <pre class="code literal-block"><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+      <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"my-id"</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"inner"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+      </pre>
+      <p>I think this API is surprising, and the front-end engineers I've asked seem to agree with me. This is, however, not a bug. It's how the spec defines it to work, and browsers consistently implement it that way. Safari. John Resig commented how he and others felt this behavior was quite confusing back when the spec came out.</p>
+      <p>If you can't easily rewrite the selector to be absolute like we did above, there are two alternatives: the :scope CSS pseudo-selector, and query/queryAll.</p>
+      <p>The :scope pseudo-selector matches against the current scope. The name comes from the CSS scoping, which limits the scope of styles to part of the document. The element we're calling querySelectorAll on also counts as a scope, so this expression only matches div.inner:</p>
+      <p>document.querySelector("#my-id").querySelectorAll(":scope div div");</p>
+      <p>Unfortunately, browser support for scoped CSS and the :scope pseudo-selector is extremely limited. Only recent versions of Firefox support it by default. Blink-based browsers like Chrome and Opera require the well-hidden experimental features flag to be turned on. Safari has a buggy implementation. Internet Explorer doesn't support it at all.</p>
+      <p>The other alternative is element.query/queryAll. These are alternative methods to querySelector and querySelectorAll that exist on DOM parent nodes. They also take selectors, except these selectors are interpreted relative to the element being queried from. Unfortunately, these methods are even more obscure: they are not referenced on MDN or caniuse.com, and are missing from the current DOM4 working draft, dated 18 June 2015. They were still present in an older version, dated 4 February 2014, as well as in the WHATWG Living Document version of the spec. They have also been implemented by at least two polyfills:</p>
+      <p>In conclusion, the DOM spec doesn't always necessarily do the most obvious thing. It's important to know pitfalls like these, because they're difficult to discover from just the behavior. Fortunately, you can often rewrite your selector so that it isn't a problem. If you can't, there's always a polyfill to give you the modern API you want. Alternatively, libraries like jQuery can also help you get a consistent, friendly interface for querying the DOM.</p>
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>

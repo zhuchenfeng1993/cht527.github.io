@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,99 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">HTML5LocalStorage本地存储</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2016-11-10</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p style="color:#bbbbbb"><i>Cookies自然是大家都知道，问题主要就是太小，大概也就4KB的样子，而且IE6只支持每个域名20个cookies，太少了。优势就是大家都支持，而且支持得还蛮好。很早以前那些禁用cookies的用户也都慢慢的不存在了，就好像以前禁用javascript的用户不存在了一样。</i></p>
+      <p>在HTML5中，本地存储是一个window的属性，包括localStorage和sessionStorage，从名字应该可以很清楚的辨认二者的区别，前者是一直存在本地的，后者只是伴随着session，窗口一旦关闭就没了。二者用法完全相同，这里练一下localStorage为例。</p>
+      <p>首先判断浏览器是否支持</p>
+      <pre><code><span>if</span>(<span>window</span>.localStorage){
+          alert(<span>'This browser supports localStorage'</span>);
+      }<span>else</span>{
+          alert(<span>'This browser does NOT support localStorage'</span>);
+      }
+      </code>
+      </pre>
+      <p>存储数据的方法就是直接给window.localStorage添加一个属性，例如：window.localStorage.a 或者 window.localStorage["a"]。它的读取、写、删除操作方法很简单，是以键值对的方式存在的，如下：</p>
+      <p>localStorage.a = 3;//设置a为"3"</p>
+      <p>看看官方api推荐使用的自然是getItem()和setItem()，清除键值对使用removeItem()。如果希望一次性清除所有的键值对，可以使用clear()。</p>
+      <p>简单的需求，一个按钮初次点击出现A提示，然后点击都出现B提示</p>
+      <pre class="highlight"><code class="hljs javascript"><span class="hljs-comment">//我们自然想到定义一个flag变量进行判断</span>
+      <span class="hljs-keyword">var</span> isFirstClick = <span class="hljs-literal">true</span>;
+              $(<span class="hljs-string">".test"</span>).on(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+                  <span>if</span> (isFirstClick) {
+                      alert(<span>"你是第一次点击"</span>);
+                      isFirstClick = <span>false</span>;
+                  } <span>else</span> {
+                      alert(<span>"你是第二次点击"</span>);
+                  }
+              })
+      </code></pre>
+      <p>这样做刷新浏览器的时候就重置了，如果我想刷新浏览器也不改变点击的状态，localStorage就派上用场了。</p>
+      <pre><code>    
+          <span><span>//用一个变了isClicked把第一次点击的状态存进去，如果我不手工清除你刷新也没卵用，哈哈哈</span></span>
+          <span><span>var</span></span> <span>storage</span> <span>=</span> <span><span>window</span></span><span>.</span><span>localStorage</span><span>;</span>
+              <span>$</span><span>(</span><span><span>".test"</span></span><span>).</span><span>on</span><span >(</span><span><span>"click"</span></span><span>,</span> <span><span><span >function</span></span></span><span><span>(<span></span>)</span></span><span> </span><span>{</span>
+                      <span><span>if</span></span> <span>(</span><span>!</span><span>storage</span><span>.</span><span>getItem</span><span>(</span><span><span>"isClicked"</span></span><span>))</span> <span>{</span>
+                          <span>alert</span><span>(</span><span><span>"这是你第一次点击"</span></span><span>);</span>
+                          <span>storage</span><span>.</span><span>setItem</span><span>(</span><span><span >"isClicked"</span></span><span>,</span> <span><span>true</span></span><span>);</span>
+                      <span>}</span> <span><span>else</span></span> <span>{</span>
+                          <span>alert</span><span>(</span><span><span>"你已经点击过了，刷新也没什么卵用"</span></span><span>);</span>
+                      <span>}</span>
+                  <span>})</span>
+          
+      </code></pre>
+      <p>先酱紫，更多复杂的应用后面在玩。又到马竞大战巴萨了，时光就在一个个赛季中流逝。感叹，如水时光！</p>
+
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+
 </body>
 </html>

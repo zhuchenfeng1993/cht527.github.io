@@ -6,28 +6,12 @@
 <meta name="keywords" content="自我对话,回忆,记录,web前端技术">
 <meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="shortcut icon" href="../img/favicon.ico" /> 
-<?php
-	require_once('../include/connect.php');
-	$id=$_GET['id'];
-	$sql="select * from webfe where id=$id";
-	$query=mysql_query($sql);
-	if($query&&mysql_num_rows($query)){
-		$row=mysql_fetch_assoc($query);	
-		$sql_visits=mysql_query("UPDATE webfe SET visits=visits+1 where id=$id");
-		
-	}else{
-		echo "<script> alert('文章不存在!');window.location.href='./webFE.ds';</script>";
-	}
-
-?>
-<title><?php echo $row['title']?></title>
-<?php date_default_timezone_set("Asia/Shanghai");?>
-<link rel="stylesheet" href="../css/jPages.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-<link rel="stylesheet" type="text/css" href="../css/webFE.css">
-<link rel="stylesheet" type="text/css" href="../css/wangEditor.min.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -36,11 +20,11 @@
     <div class="mod-header__wrap">
         <div class="js_menu mod-header__nav">
             <ul id="menu-nav" class="menu">
-            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="../index.ds">首页</a></li>
-			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_HTML.ds"'>HTML</a></li>
-			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_CSS.ds"'>CSS</a></li>
-			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_JavaScript.ds"'>JavaScript</a></li>
-			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick='window.location.href="webFE_articleFind_frame.ds"'>前端框架</a></li>
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">前端框架</a></li>
 			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
 			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
 			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
@@ -51,25 +35,109 @@
     </div>
 </header>
 
-	<hr class="divider" width="90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 
 	<article>
-	<h1 class="webFE_title"><?php echo $row['title'];?></h1>
-	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<?php echo $row['author'];?></p>
-	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span><?php echo $row['date'];?></span></p>
-	<div class="article_content">&nbsp;&nbsp;<?php echo $row['content']; ?></div>
+	<h1 class="webFE_title">CSS4</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;转自<a href="http://www.smallni.com/css4/">smallni</a></p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2016-12-23</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+			<p>好吧，我承认我out了，CSS3还没学透，CSS4已经被W3C提上了日程。今天在支付宝sofish那看到介绍的文章，自己也做了点了解，让我们一起来先睹为快吧！</p>
+      <h3>一、父元素 $E > F</h3>
+      <p>CSS 终于有了与 DOM 一样的父选择器。这个选择器将会把样式显示在包含有 F 的 $E 上。用 $ 符表示父选择器：</p>
+      <span>/* 样式显示在 li 上 */</span><br>
+      <span>$li > p { border: 1px solid #ccc; }</span><br>
+      <span>/* 样式显示在 ol 上 */</span><br>
+      <span>#wrapper > $ol > li { background:#f8f8f8; }</span><br>
+      <h3>二、ID匹配 E /foo/ F</h3>
+      <p>用双斜杆（//）包含 HTML 属性名。 E /foo/ F 表示选中的所有页面中所有 F 里 ID 值与 E 元素的 foo 属性值相等的。</p>
+      <span><!-- 我们写一个 tab 的时候通常使用这样的情况 --></span><br>
+      <span><code><ul></code></span><br>
+      <span><code><li targetID="tab1">trigger1</li></code></span><br>
+      <span><code><li targetID="tab2">trigger2</li></code></span><br>
+      <span><code></ul></code></span><br>
+      <span><code><div></code></span><br>
+      <span><code><li targetID="tab1">trigger1</li></code></span><br>
+      <span><code><li targetID="tab2">trigger2</li></code></span><br>
+      <span><code></div></code></span><br>
+      <p><span>li:hover /targetID/ p { border:2px solid #609060; }</span><br></p>
+      <h3>三、匹配 :matches</h3>
+      <p>div:matches(s1, s2) 所有div 匹配 s1 和 s2 的时候，这个 div 应用样式。比如我们想在 label 在 hover 状态的时候，所对应有 input 边框变成紫色(#609060)，可以这样写：</p>
+      <p>label:matches(:hover, :focus) /for/ input{ border:1px solid #609060; }</p>
+      <p>有一点值得注意的是，只有 compound selectors 可以应用于 :matches() ，它自己不能嵌套自己，所以像 :not(): :matches(:matches(…)) 和 :not(:matches(…)) 都是不合法的。</p>
+      <h3>四、链接相关 :any-link & :local-link</h3>
+      <p>:any-link 匹配任何链接，:local-link 匹配任何本地链接。:local-link(n) 可以加参数，n 表示链接 path/ (目录的级数)，从序数 0 起算。官方文档描述得不是很清楚。像 a 和 :any-link 其实是一样的，而 div:any-link 呢？应该是拥有 src / href 值的 div 被选中。:local-link 看起来更有用。</p>
+      <p>/* 匹配所有与页面域名相同的链接，这样所有内部链接都会变成紫色的，而外部链接都是红色 */</p>
+      <p>a{color:#f30;}</p>
+      <p>a:local-link{ color:#609060; }</p>
+      <p>/* 匹配所有具有 2 级目录的内部链接:如：http://sofish.de/path1/path2/ */</p>
+      <p>a:local-link(2) { color:#080; }</p>
+      <h3>五、状态 :current & :pass & :future</h3>
+      <p>状态选择器描述太不清楚了。是指一切在时间线内的东西。可以看一下这篇吐槽，说是在 twitter 等的回复都说对这个规范都是完全不知所言。按理来说，应该是在页面的有时间线的 canvas, video, audio, 屏幕阅读等的内容上应用样式：</p>
+      <p>/* 时间线内当前被处理（选中）的元素，如果是 p 或者 li 背景变成浅黄色 */</p>
+      <p>:current(p, li){ background:#ffc; }</p>
+      <p>:pass 表示时间线上的前一个元素，如果不在时间线内，则指其前一个元素（相当于 DOM 的 prevSibling）。</p>
+      <p>:future 表示时间线上的后一个元素，如果不在时间线内，则指其后一个元素（相当于 DOM 的 nextSibling）。</p>
+      <h3>六、方向 :dir</h3>
+      <p>根据 HTML 属性选中。比如选中 <p dir=”rtl”> ，如代码：</p>
+      <p>p:dir(rtl){ color:#888; </p>
+      <h3>七、默认选项 :default</h3>
+      <p>选中多个子元素中的默认元素。比如 select 中的默认 option，允许有多个 :default。比如在允许多选的 select 中，有多个 :default 元素。</p>
+      <p>option:default { background:#ffc; }</p>
+      <h3>八、表单限制 :required & ：optional</h3>
+      <p>表单项中必处理项与可选项。记不记得 HTML5 中的 required 属性？！说的就是这个。</p>
+      <p>input:required { color:#f30; }</p>
+      <h3>九、可读可写 :read-write & :read-only</h3>
+      <p>大部分元素都是可读不可写的，所以都是 :read-only；像 text input 这些值可以改变的，和 HTML5 中设置了 contenteditable 的元素其本身是可改变的，这些被认为是具有写属性的，所以是 :read-write</p>
+      <p>:read-write { font-family: Georgia; }</p>
+      <h3>十、:vaild & :invaild / :in-range & ：out-of-range</h3>
+      <p>官方文档表示写得很不容易懂。数据和范围，估计都说是 [XFORMS10] 和 [HTML5] 中的一些内容。</p>
+      <p>总结：前端技术革新是相当的快啊！这是一个技术迅速更新的行业，富有激情，但同时，我们自己也要跟得上行业的步伐，及时汲取新的技术，不然就会被时代所抛弃啦！</p>
+	</div>
 	</article>
 	
-	<hr class="divider" style="width:90%">
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
 <footer>
-	<p>Copyright&nbsp;&copy;&nbsp;2017&nbsp;&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
-	<p>
-		<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
-		<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
-	</p>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+</p>
 </footer>
 
 </div>	
-<script type="text/javascript" src="../js/webFE.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="webFE_article_JavaScript.html";
+  }else{
+    window.location.href="webFE_article_frame.html";
+  }
+  
+}
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();	
+</script>
+
 </body>
 </html>
