@@ -1,8 +1,4 @@
 
-//初始化---list 
-var pageSize=5,curPage=1,total=0,pageCount=0;
-var articleList=[],curList=[];
-
 function mapArticleList(dataList){
 	$.map(dataList,function(value,index,array){
 			var itemTemplate=
@@ -85,23 +81,23 @@ function showPages(page,total){
 //----点击分页监听----
 $('#pagination_ul').on('click','a',function(){
 	var thisPage=parseInt($(this).text());
-	if (thisPage<pageCount+1) { // 点击具体页码
-		curPage=thisPage;
-		doPagination(thisPage,pageCount);
+	if (thisPage<list_config.pageCount+1) { // 点击具体页码
+		list_config.curPage=thisPage;
+		doPagination(thisPage,list_config.pageCount);
 	}else{ //--上一页,下一页分页
 		if ($(this).children().eq(0).attr('class')=='previous') {
-			if (curPage==1) {
+			if (list_config.curPage==1) {
 				return;
 			}else{
-				thisPage=curPage-1;
-				doPagination(thisPage,pageCount);
+				thisPage=list_config.curPage-1;
+				doPagination(thisPage,list_config.pageCount);
 			}
 		}else{
-			if (curPage==pageCount) {
+			if (list_config.curPage==list_config.pageCount) {
 				return;
 			}else{
-				thisPage=curPage+1;
-				doPagination(thisPage,pageCount);
+				thisPage=list_config.curPage+1;
+				doPagination(thisPage,list_config.pageCount);
 			}
 		}
 	}
@@ -110,11 +106,11 @@ $('#pagination_ul').on('click','a',function(){
 });
 //---分页操作---
 function doPagination(thisPage,pageCount){
-	var thisPagination=showPages(thisPage,pageCount);
+	var thisPagination=showPages(thisPage,list_config.pageCount);
 	$('#pagination_ul').children().remove();
 	$('#pagination_ul').append(thisPagination);
 	$('li[data-page='+thisPage+']').addClass('active');
-	var start=(thisPage-1)*5,end=thisPage*5;
+	var start=(thisPage-1)*list_config.pageSize,end=thisPage*list_config.pageSize;
 	var articleData=articleList.slice(start,end);
 	curList=articleData;//当前页面的5条数据
 	$("#article_items_contianer").children().remove();
@@ -129,17 +125,17 @@ function doPagination(thisPage,pageCount){
 			url: "./data_source/article/articleList.json",
 			dataType:"json"
 		}).done(function(data) {
-			articleList=data.articleList.reverse(); //逆序输出
-			total=articleList.length;
-			pageCount=Math.ceil(total/pageSize);
-			var articleListCopy=articleList;
+			list_config.articleList=data.articleList.reverse(); //逆序输出
+			list_config.total=list_config.articleList.length;
+			list_config.pageCount=Math.ceil(list_config.total/list_config.pageSize);
+			var articleListCopy=list_config.articleList;
 			var init_articleData=articleListCopy.slice(0,5);
-			curList=init_articleData;//当前页面的5条数据
+			list_config.curList=init_articleData;//当前页面的5条数据
 			//console.log(articleList.length);
 			mapArticleList(init_articleData);	
-			var pagination=showPages(curPage,pageCount);
+			var pagination=showPages(list_config.curPage,list_config.pageCount);
 			$('#pagination_ul').append(pagination);
-			$('li[data-page='+curPage+']').addClass('active');	
+			$('li[data-page='+list_config.curPage+']').addClass('active');	
 		}).fail(function(){
 		    swal('请求接口失败','error','error')
 		});
@@ -162,13 +158,12 @@ function doPagination(thisPage,pageCount){
 })();
 
 
-navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
 //----阅读原文-事件绑定--
 $('#article_items_contianer').on('click','.more',function(){
 	var thisId=$(this).attr('id');
 	var targetUrl=window.btoa(window.encodeURIComponent("article_show.html?target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author"))
-	$.each(curList,function(index,value){
+	$.each(list_config.curList,function(index,value){
 		if (value.id==thisId) {
 			var targetUrl='target='+Date.parse(new Date())+'_'+value.id+'_'+value.title+'_'+value.author;
 			var targetUrl_encode=window.btoa(window.encodeURIComponent(targetUrl));
