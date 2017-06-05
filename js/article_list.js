@@ -89,14 +89,16 @@ $('#pagination_ul').on('click','a',function(){
 			if (list_config.curPage==1) {
 				return;
 			}else{
-				thisPage=list_config.curPage-1;
+				list_config.curPage-=1;
+				thisPage=list_config.curPage;
 				doPagination(thisPage,list_config.pageCount);
 			}
 		}else{
 			if (list_config.curPage==list_config.pageCount) {
 				return;
 			}else{
-				thisPage=list_config.curPage+1;
+				list_config.curPage+=1;
+				thisPage=list_config.curPage;
 				doPagination(thisPage,list_config.pageCount);
 			}
 		}
