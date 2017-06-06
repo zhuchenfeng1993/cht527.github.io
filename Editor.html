@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<title>Editor</title>
+	<link rel="shortcut icon" href="../img/favicon.ico" /> 
+    <link rel="stylesheet" type="text/css" href="./css/webFE_header.css">
+	<link rel="stylesheet" type="text/css" href="/css/article_manage.css" />
+	<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+	
+	<style type="text/css">
+	 @font-face {
+          font-family: 'icomoon';
+          src: url("/wangeditorFonts/icomoon.eot");
+          src: url("/wangeditorFonts/icomoon.eot?#iefix") format('embedded-opentype'),
+               url("/wangeditorFonts/icomoon.woff") format('woff'),
+               url("/wangeditorFonts/icomoon.ttf") format('truetype'),
+               url("/wangeditorFonts/icomoon.svg#icomoon") format('svg');
+          font-weight: normal;
+          font-style: normal;
+        }</style>
+</head>
+<body>
+<div id="wrapper" style="overflow:auto">
+<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="./index.html">首页</a></li>
+            <li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="javascript:window.open('./panda.html')" >一字一元</a></li>
+            <li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="shidian" class="nav" href="javascript:void(0);" onclick="javascript:window.location.href='/article_list.html'" >十点读书</a></li>
+            <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="webFE" class="nav"  href="javascript:void(0);" onclick="javascript:window.open('/webFE/webFE_list.html')">前端开发</a></li>
+            <li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="li_diary"  class="nav" href="javascript:void(0);" >心之契约</a></li>
+            <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" id="photo" href="javascript:void(0);" onclick="javascript:window.open('/photo_show/photo_show.html')">朝花夕拾</a></li>
+            </ul>   
+        </div>
+    </div>
+
+</header>
+<hr style="width:75%;margin:0 auto;border:1px solid #e0e0e0" />
+<h3 style="text-align:center;color:#999"><i>Editor</i></h3>
+	
+<div class="form-group" style="width:50%;margin:0 auto">
+   			  
+		      <div class="info">
+		         <label style="display:block">此刻心情：</label>
+	             <div class="faceDiv"> </div>
+	             <div class="imgBtncontainer">
+	             	<img src="/img/imgs.png" class="imgBtn" />
+	             </div>
+	             <input class="form-control" id="mood" style="width:15%;display:inline-block" />
+	   		  </div>
+
+   			  <div class="info">
+                <!-- 编辑器 -->
+   			  	<textarea class="form-control" id="diary_content" rows="12" style="height:450px">
+                    
+                </textarea>
+   			  </div>
+</div>
+
+<hr class="divider" style="width:75%;border: 0;border-top: 1px solid #eee;">
+<footer>
+    <p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+    <p>
+      <a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+      <a href="https://pages.github.com/" target="_blank" class="github-pages"></a>
+    </p>
+</footer>
+
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/article_manage.js"></script>
+<script type="text/javascript" src="../js/wangEditor.min.js"></script>
+<script type="text/javascript" src="../js/emoji.js"></script>
+
+<script type="text/javascript">
+     var editor = new wangEditor('diary_content');
+
+        // 上传图片
+        editor.config.uploadImgUrl = '/upload';
+        editor.config.uploadParams = {
+            // token1: 'abcde',
+            // token2: '12345'
+        };
+        editor.config.uploadHeaders = {
+            // 'Accept' : 'text/x-json'
+        }
+        // editor.config.uploadImgFileName = 'myFileName';
+
+        // 隐藏网络图片
+        // editor.config.hideLinkImg = true;
+
+        // 表情显示项
+        editor.config.emotionsShow = 'value';
+        editor.config.emotions = {
+            'default': {
+                title: '默认',
+                data: '../js/emotions.data'
+            },
+            'weibo': {
+                title: '微博表情',
+                data: [
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/7a/shenshou_thumb.gif',
+                        value: '[草泥马]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/60/horse2_thumb.gif',
+                        value: '[神马]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/bc/fuyun_thumb.gif',
+                        value: '[浮云]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/c9/geili_thumb.gif',
+                        value: '[给力]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/f2/wg_thumb.gif',
+                        value: '[围观]'    
+                    },
+                    {
+                        icon: 'http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/70/vw_thumb.gif',
+                        value: '[威武]'
+                    }
+                ]
+            }
+        };
+
+        // 插入代码时的默认语言
+        // editor.config.codeDefaultLang = 'html'
+
+        // 只粘贴纯文本
+        // editor.config.pasteText = true;
+
+        // 跨域上传
+        // editor.config.uploadImgUrl = 'http://localhost:8012/upload';
+
+        // 第三方上传
+        // editor.config.customUpload = true;
+
+        // 普通菜单配置
+        // editor.config.menus = [
+        //     'img',
+        //     'insertcode',
+        //     'eraser',
+        //     'fullscreen'
+        // ];
+        // 只排除某几个菜单（兼容IE低版本，不支持ES5的浏览器），支持ES5的浏览器可直接用 [].map 方法
+        // editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+        //     if (item === 'insertcode') {
+        //         return null;
+        //     }
+        //     if (item === 'fullscreen') {
+        //         return null;
+        //     }
+        //     return item;
+        // });
+
+        // onchange 事件
+        editor.onchange = function () {
+        };
+
+        // 取消过滤js
+        // editor.config.jsFilter = false;
+
+        // 取消粘贴过来
+        // editor.config.pasteFilter = false;
+
+        // 设置 z-index
+        // editor.config.zindex = 20000;
+
+        // 语言
+        // editor.config.lang = wangEditor.langs['en'];
+
+        // 自定义菜单UI
+        // editor.UI.menus.bold = {
+        //     normal: '<button style="font-size:20px; margin-top:5px;">B</button>',
+        //     selected: '.selected'
+        // };
+        // editor.UI.menus.italic = {
+        //     normal: '<button style="font-size:20px; margin-top:5px;">I</button>',
+        //     selected: '<button style="font-size:20px; margin-top:5px;"><i>I</i></button>'
+        // };
+        editor.create();
+</script>
+</body>
+
+</body>
+</html>
