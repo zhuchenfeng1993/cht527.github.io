@@ -5,7 +5,7 @@ function mapArticleList(dataList){
 			var itemTemplate=
 			'<section class="list">'+ 
 				'<h3>'+value.title+'</h3>'+
-				'<p style="margin: 10px auto;">原文出自:'+value.author+'</p>'+
+				'<p style="margin: 10px auto;">原文出自: '+value.author+'</p>'+
 				'<div class="container">'+
 			   				'<div class="row" id="change_rowwidth">'+
 			      				'<div class="col-md-6">'+
