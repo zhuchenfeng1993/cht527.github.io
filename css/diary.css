@@ -37,9 +37,9 @@ margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;
 	display: inline-block;
 	width: 0;
 	height: 0;
-	border:3px solid;
+	border:5px solid;
 	border-radius: 50%;
-	vertical-align: baseline;
+	vertical-align: bottom;
 }
 .date-item{
 	font-size: 1.2em;
