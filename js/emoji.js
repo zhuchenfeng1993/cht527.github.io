@@ -76,12 +76,15 @@ var ImgIputHandler={
 		}
 		$(".imgBtn").on("click",function(){
 			$(".faceDiv").toggle();
+			$('#editorContainer').css("marginTop","200px")
 				
 		});
 		$(".faceDiv>img").on("click",function(){
 			     var selectMood=$(this).attr("title");
 			     $("#mood").val(selectMood);
 			     $(".faceDiv").hide();
+			     $('#editorContainer').css("marginTop","0px")
+
 		});
 	},
 
