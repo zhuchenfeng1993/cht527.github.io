@@ -2,7 +2,6 @@ body::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);b
 body::-webkit-scrollbar{width:10px;background-color:#f5f5f5}
 body::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.44,#a0a0a0),color-stop(0.72,#aaa),color-stop(0.86,#b4b4b4))}
 
-
 .info{
   padding-bottom:15px;
 }
@@ -64,12 +63,12 @@ img{border:0;}
     display: inline-block;
     height: 30px;
     border-radius: 2px;
-    outline: none;
-    border: 1px solid #ccc;
-    padding-bottom: -2px;
-    position: relative;
-    bottom: 6px;
+    border: 1px solid #ccc;;
     text-align: center;
+}
+.moodContianer{
+ display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;
+ justify-content: space-between;
 }
 #diary_content{
 	height: 500px;
