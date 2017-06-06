@@ -26,9 +26,9 @@ margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;
 	justify-content: space-between;
 }
 .line-point{
-	width: 40px;
+	width: 120px;
 	display: inline-block;
-	border-bottom: 1px dotted 
+	border-bottom: 1px dashed
 }
 .line-item{
 	display: inline-block;
@@ -38,7 +38,8 @@ margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;
 	width: 0;
 	height: 0;
 	border:3px solid;
-	border-radius: 50%
+	border-radius: 50%;
+	vertical-align: baseline;
 }
 .date-item{
 	font-size: 1.2em;
