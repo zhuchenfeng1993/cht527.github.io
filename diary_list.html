@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="caohaitao">
+	<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<link rel="shortcut icon" href="/img/favicon.ico" /> 
+	<link rel="stylesheet" href="/css/b_t.css">
+	<link rel="stylesheet" href="/css/sweetalert.css">
+	<link rel="stylesheet" href="/css/diary.css">
+	<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+	<link rel="stylesheet" type="text/css" href="/css/article_list.css" >
+
+	<title>心之契约</title>
+	
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+ 	<div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="./index.html">首页</a></li>
+			<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="javascript:window.open('./panda.html')" >一字一元</a></li>
+			<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="shidian" class="nav" href="javascript:void(0);" onclick="javascript:window.location.href='/article_list.html'" >十点读书</a></li>
+			<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="webFE" class="nav"  href="javascript:void(0);" onclick="javascript:window.open('/webFE/webFE_list.html')">前端开发</a></li>
+			<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="li_diary"  class="nav" href="javascript:void(0);" >心之契约</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" id="photo" href="javascript:void(0);" onclick="javascript:window.open('/photo_show/photo_show.html')">朝花夕拾</a></li>
+			</ul>   
+		</div>
+    </div>
+	</header>
+
+	
+	<hr class="divider" width="90%">
+	<div id="article_items_contianer">
+
+	</div>
+
+		
+<!--底部页码-->
+	<nav aria-label="Page navigation" class="pagination">
+	  <ul class="pagination" id="pagination_ul">
+	    
+	  </ul>
+	</nav>
+<!--底部页码 end-->
+
+<hr class="divider" style="width:90%">
+<footer>
+	<p>Copyright&copy;2017&nbsp;<a href="http://www.caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+	<p>
+	<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备16068799号</a>
+	<a href="https://www.aliyun.com/" target="_blank" class="aliyun-pic"></a>
+	</p>
+</footer>
+
+</div>	
+
+</div>
+
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+<script type="text/javascript" src="/js/article_list.js"></script>
+
+<script>
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+var list_config={
+    "type":"diary",
+    "pageSize":5,
+    "curPage":1,
+    "total":0,
+    "pageCount":0,
+    "articleList":[],
+    "curList":[],
+    "dataUrl":"/data_source/diary/diary2017.json",
+    "locationUrl":""
+}  
+</script>
+</body>
+</html>
