@@ -197,11 +197,7 @@ function getArticleListData(targetUrl){
 }
 
 window.onload=function(){
-	getArticleListData(list_config.dataUrl)
-}
-	
-	
-(function(){
+	getArticleListData(list_config.dataUrl);
 	var type=list_config.type;
 	if (type=="hotArticle"||type=="diary") {
 		var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
@@ -218,10 +214,8 @@ window.onload=function(){
 		$(window).on("scroll",$backToTopFun);
 		$(function(){$backToTopFun();});
 	}
+}
 	
-})()
-
-
 
 //--十点读书--阅读原文-事件绑定--
 $('#article_items_contianer').on('click','.more',function(){
