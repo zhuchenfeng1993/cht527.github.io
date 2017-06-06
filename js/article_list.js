@@ -63,7 +63,7 @@ function mapArticleList(dataList){
 				'<section class="list">'+
 					'<h3>'+value.title+'</h3>'+
 					'<p>此刻心情：'+
-						'<img src="'+moodUrl+'" />'+
+						'<img src='+moodUrl+'/>'+
 				    '</p>'+
 					'<div class="container">'+
 						   '<div class="row" id="change_rowwidth">'+
@@ -201,7 +201,8 @@ window.onload=function(){
 }
 	
 	
-(function(type){
+(function(){
+	var type=list_config.type;
 	if (type=="hotArticle"||type=="diary") {
 		var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
 		$("html, body").animate({scrollTop:0},400);
@@ -218,7 +219,7 @@ window.onload=function(){
 		$(function(){$backToTopFun();});
 	}
 	
-})(list_config.type)
+})()
 
 
 
