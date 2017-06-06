@@ -218,7 +218,7 @@ window.onload=function(){
 		$(function(){$backToTopFun();});
 	}
 	
-})(list_config.type);
+})(list_config.type)
 
 
 
