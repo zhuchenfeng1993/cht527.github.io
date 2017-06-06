@@ -25,6 +25,11 @@ margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;
 	width: 65%;
 	justify-content: space-between;
 }
+.line-point{
+	width: 40px;
+	display: inline-block;
+	border-bottom: 1px dotted 
+}
 .line-item{
 	display: inline-block;
 }
