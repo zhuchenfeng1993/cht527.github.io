@@ -52,7 +52,7 @@ function show_prompt() {
     swal({
         title: "欢迎访问",
         text: "请输入我的名字:",
-        imageUrl: "./img/head.png",
+        imageUrl: "/img/head.png",
         type: "input",
         showCancelButton: true,
         closeOnConfirm: false,
@@ -71,7 +71,7 @@ function show_prompt() {
         swal({
             title: "欢迎访问",
             text: "现在请输入你的名字",
-            imageUrl: "./img/face/keai.gif",
+            imageUrl: "/img/face/keai.gif",
             type: "input",
             showCancelButton: true,
             closeOnConfirm: false,
@@ -81,7 +81,7 @@ function show_prompt() {
             var chName = /^[\u4e00-\u9fa5]{2,4}$/;
             if (chName.test(inputValue)) {
                 var master = "曹海涛";
-                var yourNameArr = [ "艾为凯", "曹海亭", "张凌博", "曹兰兰", "曹三省", "曹淑蓉", "曹洪杰", "曹宪", "常新", "陈栋梁", "陈家琪", "陈建新", "陈金芳", "陈泰歌", "陈文", "陈彦存", "程邵波", "程彦泽", "崔少强", "戴兰芝", "邓超", "邸萌", "董平", "董亚峰", "杜怀昌", "段高杰", "冯其林", "高付琨", "高健", "官龙涛", "官盼盼", "郭才才", "郭菲菲", "郭乾", "郭通通", "何凯", "何倩倩", "贺海丽", "侯淑芳", "黄果", "黄琳", "贾慧", "贾育", "孔德旭", "李博", "李长风", "李大伟", "李建超", "李刘东", "李卓", "李娜", "李淑红", "李垚辉", "李永斌", "李余韵梓", "李志垒", "李子波", "梁波", "刘佳鑫", "刘国芝", "刘全才", "刘晓睿", "刘兴龙", "柳井明", "潘文龙", "祁沛龙", "邓潘纪", "齐晓强", "钱琳琳", "邱娜", "史甜", "史晓正", "史玉磊", "石超", "宋佳伦", "宋青松", "宋玉杰", "孙宝妮", "孙妲妲", "孙雷", "孙雯雯", "孙一涵", "孙一粟", "孙右", "佟世文", "万青春", "汪鑫", "王博", "王福山", "王凯丽", "王爽", "王涛", "王蕾", "王天旺", "王永瑞", "王育晨", "魏巍", "席召燕", "夏秀芳", "张辉", "徐磊", "许云庚", "闫洪康", "杨会会", "杨建琐", "杨磊山", "杨昭", "尹鹏", "于成", "张炳奇", "张成东", "张海聪", "张建东", "张建强", "张路峰", "张熙峰", "张贤林", "张晓斐", "张秀民", "张杨杨", "张艺瀚", "张瑾", "肖玲子", "张宇驰", "张卓铭", "赵辉杰", "赵帅帅", "赵晓杰", "邹国梁", "孙松", "张永书", "李聪", "梁宇", "唐百慧", "李年丰", "刘家男", "钟志峰", "雷涛", "徐嫣雯", "武宏斌", "张一甲", "梁中良", "王越", "严堃", "苏梨绯", "高心悦", "邱杰", "焦栋强", "万兆武", "黄锦", "苏晓刚", "陈亭玉", "褚文羽", "范珍星", "耿遵", "卢薇朵", "宫大成", "李海泉", "韩露", "何雪晨", "侯朝晖", "侯佳莹", "黄华津", "黄锦", "纪海", "肖亚翠", "张宏伟", "张建超", "孔凡家", "李猛哲", "林沙沙", "刘静璇", "刘全才", "刘诗敏", "刘帅奇", "刘天元", "单丹丹", "单丽婷", "宋梦茜", "孙明明", "张娟娟", "孙永坤", "王凯丽", "王同柱", "谢地", "银晴", "袁宗强", "余邦定", "张灵", "张迎亚", "张永书", "赵倩", "赵婉潇", "庄咏雪", "钟志峰", "张元", "陈友仙", "张冠鹏", "崔卉", "张鹏栋", "田蓓", "郭霄", "赵卓凯", "宋志新", "李清凡", "李世优", "郑龙飞", "姜力晖" ];
+                var yourNameArr = [ "艾为凯", "曹海亭","张海满", "张凌博", "曹兰兰", "曹三省", "曹淑蓉", "曹洪杰", "曹宪", "常新", "陈栋梁", "陈家琪", "陈建新", "陈金芳", "陈泰歌", "陈文", "陈彦存", "程邵波", "程彦泽", "崔少强", "戴兰芝", "邓超", "邸萌", "董平", "董亚峰", "杜怀昌", "段高杰", "冯其林", "高付琨", "高健", "官龙涛", "官盼盼", "郭才才", "郭菲菲", "郭乾", "郭通通", "何凯", "何倩倩", "贺海丽", "侯淑芳", "黄果", "黄琳", "贾慧", "贾育", "孔德旭", "李博", "李长风", "李大伟", "李建超", "李刘东", "李卓", "李娜", "李淑红", "李垚辉", "李永斌", "李余韵梓", "李志垒", "李子波", "梁波", "刘佳鑫", "刘国芝", "刘全才", "刘晓睿", "刘兴龙", "柳井明", "潘文龙", "祁沛龙", "邓潘纪", "齐晓强", "钱琳琳", "邱娜", "史甜", "史晓正", "史玉磊", "石超", "宋佳伦", "宋青松", "宋玉杰", "孙宝妮", "孙妲妲", "孙雷", "孙雯雯", "孙一涵", "孙一粟", "孙右", "佟世文", "万青春", "汪鑫", "王博", "王福山", "王凯丽", "王爽", "王涛", "王蕾", "王天旺", "王永瑞", "王育晨", "魏巍", "席召燕", "夏秀芳", "张辉", "徐磊", "许云庚", "闫洪康", "杨会会", "杨建琐", "杨磊山", "杨昭", "尹鹏", "于成", "张炳奇", "张成东", "张海聪", "张建东", "张建强", "张路峰", "张熙峰", "张贤林", "张晓斐", "张秀民", "张杨杨", "张艺瀚", "张瑾", "肖玲子", "张宇驰", "张卓铭", "赵辉杰", "赵帅帅", "赵晓杰", "邹国梁", "孙松", "张永书", "李聪", "梁宇", "唐百慧", "李年丰", "刘家男", "钟志峰", "雷涛", "徐嫣雯", "武宏斌", "张一甲", "梁中良", "王越", "严堃", "苏梨绯", "高心悦", "邱杰", "焦栋强", "万兆武", "黄锦", "苏晓刚", "陈亭玉", "褚文羽", "范珍星", "耿遵", "卢薇朵", "宫大成", "李海泉", "韩露", "何雪晨", "侯朝晖", "侯佳莹", "黄华津", "黄锦", "纪海", "肖亚翠", "张宏伟", "张建超", "孔凡家", "李猛哲", "林沙沙", "刘静璇", "刘全才", "刘诗敏", "刘帅奇", "刘天元", "单丹丹", "单丽婷", "宋梦茜", "孙明明", "张娟娟", "孙永坤", "王凯丽", "王同柱", "谢地", "银晴", "袁宗强", "余邦定", "张灵", "张迎亚", "张永书", "赵倩", "赵婉潇", "庄咏雪", "钟志峰", "张元", "陈友仙", "张冠鹏", "崔卉", "张鹏栋", "田蓓", "郭霄", "赵卓凯", "宋志新", "李清凡", "李世优", "郑龙飞", "姜力晖" ];
                 if (inputValue == master) {
                     swal({
                         title: "管理员登录",
@@ -97,48 +97,34 @@ function show_prompt() {
                             return false;
                         }
                         swal("欢迎登录", "曹海涛", "success");
-                        window.location.href = "/diary/";
+                        window.location.href = "/diary_list.html";
                     });
                 } else if (yourNameArr.indexOf(inputValue) != -1) {
                     var pinYin_name = navObj.diaryLogin.codefans_net_CC2PY(inputValue);
-                    $.ajax({
-                        type: "post",
-                        dataType: "text",
-                        url: "/admin/visitor.php",
-                        data: {
-                            visitorName: inputValue
-                        },
-                        success: function(data) {
-                            if (data) {
-                                swal({
-                                    title: "欢迎" + inputValue,
-                                    text: "密码是:Visitor:" + pinYin_name,
-                                    imageUrl: "./img/face/yongbao.gif",
-                                    type: "input",
-                                    showCancelButton: true,
-                                    closeOnConfirm: false,
-                                    animation: "slide-from-top"
-                                }, function(inputValue) {
-                                    if (inputValue != "Visitor:" + pinYin_name + "&cht") {
-                                        swal.showInputError("咦,密码错误！");
-                                        return false;
-                                    }
-                                    swal("欢迎", "真爱", "success");
-                                    window.location.href = "/diary/";
-                                });
+                    
+                        swal({
+                            title: "欢迎" + inputValue,
+                            text: "密码是:Visitor:"+pinYin_name,
+                            imageUrl: "/img/face/yongbao.gif",
+                            type: "input",
+                            showCancelButton: true,
+                            closeOnConfirm: false,
+                            animation: "slide-from-top"
+                        }, function(inputValue) {
+                            if (inputValue != ("Visitor:"+pinYin_name)) {
+                                swal.showInputError("咦,密码错误！");
+                                return false;
                             }
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            alert(XMLHttpRequest.status);
-                            alert(XMLHttpRequest.readyState);
-                            alert(textStatus);
-                        }
-                    });
+                            swal("欢迎", "真爱", "success");
+                            window.location.href = "/diary_list.html";
+                        });
+                            
+                       
                 } else {
                     swal({
                         title: "sorry",
                         text: "还不认识你哦,可以的话先加微信好友吧",
-                        imageUrl: "./img/duhaoshu.png"
+                        imageUrl: "/img/duhaoshu.png"
                     });
                 }
             } else {
