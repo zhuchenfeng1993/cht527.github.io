@@ -171,9 +171,10 @@ function doPagination(thisPage,pageCount){
 	mapArticleList(articleData);
 	$("html, body").animate({scrollTop:0},400);
 }
-//---初始化分页---
 
-	(function getArticleListData(targetUrl){
+
+//---初始化分页---
+function getArticleListData(targetUrl){
 		$.ajax({
 			method: "GET",
 			url: targetUrl,
@@ -193,9 +194,12 @@ function doPagination(thisPage,pageCount){
 		}).fail(function(){
 		    alert('请求接口失败')
 		});
-	})(list_config.dataUrl);
+}
 
-
+window.onload=function(){
+	getArticleListData(list_config.dataUrl)
+}
+	
 	
 (function(type){
 	if (type=="hotArticle"||type=="diary") {

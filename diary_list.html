@@ -94,9 +94,21 @@ var list_config={
     "articleList":[],
     "curList":[],
     "dataUrl":"/data_source/diary/diary2017.json",
-    "locationUrl":""
+    "locationUrl":"",
 }  
 </script>
 <script type="text/javascript" src="/js/article_list.js"></script>
+<script>
+	//-----时间轴选择---
+	$(".date-item").on('click',function () {
+		var date_year=$(this).text(),targetUrl="/data_source/diary/diary"+date_year+".json";
+		if (list_config.dataUrl==targetUrl) {
+			return false;
+		}else{
+			getArticleListData(targetUrl)
+		}
+		
+	})
+</script>
 </body>
 </html>
