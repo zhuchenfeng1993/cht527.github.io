@@ -48,7 +48,7 @@ function mapArticleList(dataList){
 				moodUrl='/img/face/'+value.mood+'.gif';
 			}else if(titleArr[0]==2016){
 				if (titleArr[1]>8) {
-					moodUrl='/img/face/'+value.mood+.'.gif';
+					moodUrl='/img/face/'+value.mood+'.gif';
 				}else if(titleArr[1]==8){
 					if (titleArr[2]>=28) {
 			 			moodUrl='/img/face/'+value.mood+'.gif';
