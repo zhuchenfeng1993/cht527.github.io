@@ -58,6 +58,8 @@ function mapArticleList(dataList){
 				}else{
 			 			moodUrl='/img/imgmood/'+value.mood+'.png';
 			 	}
+			}else{
+				moodUrl='/img/imgmood/'+value.mood+'.png';
 			}
 			var itemTemplate=
 				'<section class="list">'+
