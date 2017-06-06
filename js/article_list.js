@@ -63,7 +63,7 @@ function mapArticleList(dataList){
 				'<section class="list">'+
 					'<h3>'+value.title+'</h3>'+
 					'<p>此刻心情：'+
-						'<img src='+moodUrl+'/>'+
+						'<img src="'+moodUrl+'"/>'+
 				    '</p>'+
 					'<div class="container">'+
 						   '<div class="row" id="change_rowwidth">'+
