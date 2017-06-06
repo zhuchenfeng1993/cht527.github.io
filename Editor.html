@@ -41,8 +41,8 @@
     </div>
 
 </header>
-<hr style="width:75%;margin:0 auto;border:1px solid #e0e0e0" />
-<h3 style="text-align:center;color:#999"><i>Editor</i></h3>
+<hr style="width:75%;margin:0 auto;border:1px solid black" />
+<h1 style="text-align:center;color:#999;margin: 10px auto"><i>Editor</i></h1>
 	
 <div class="form-group" style="width:50%;margin:0 auto">
    			  
@@ -81,7 +81,7 @@
      var editor = new wangEditor('diary_content');
 
         // 上传图片
-        editor.config.uploadImgUrl = '/upload';
+        editor.config.uploadImgUrl = '/img';
         editor.config.uploadParams = {
             // token1: 'abcde',
             // token2: '12345'
@@ -99,7 +99,7 @@
         editor.config.emotions = {
             'default': {
                 title: '默认',
-                data: '../js/emotions.data'
+                data: '/js/emotions.data'
             },
             'weibo': {
                 title: '微博表情',
