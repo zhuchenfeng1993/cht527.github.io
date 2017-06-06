@@ -26,7 +26,7 @@ function mapArticleList(dataList){
 
 			$("#article_items_contianer").append(itemTemplate)
 		})
-	}else{   //-----------webFE  文章列表 模板
+	}else if(list_config.type=="webFE"){   //-----------webFE  文章列表 模板
 		$.map(dataList,function(value,index,array){
     		var itemTemplate=
 		      '<section class="list">'+ 
@@ -39,6 +39,42 @@ function mapArticleList(dataList){
 		      '</section>';
 
 		    $("#article_items_contianer").append(itemTemplate)
+		})
+	}else{//-----------日记 列表 模板
+		var moodUrl='';
+		$.map(dataList,function(value,index,array){
+			var titleArr=value.title.split('/');
+			if(titleArr[0]>2016){
+				moodUrl='/img/face/'+value.mood+'.gif';
+			}else if(titleArr[0]==2016){
+				if (titleArr[1]>8) {
+					moodUrl='/img/face/'+value.mood+.'.gif';
+				}else if(titleArr[1]==8){
+					if (titleArr[2]>=28) {
+			 			moodUrl='/img/face/'+value.mood+'.gif';
+			 		}else{
+			 			moodUrl='/img/imgmood/'+value.mood+'.png';
+			 		}
+				}else{
+			 			moodUrl='/img/imgmood/'+value.mood+'.png';
+			 	}
+			}
+			var itemTemplate=
+				'<section class="list">'+
+					'<h3>'+value.title+'</h3>'+
+					'<p>此刻心情：'+
+						'<img src="'+moodUrl+'" />'+
+				    '</p>'+
+					'<div class="container">'+
+						   '<div class="row" id="change_rowwidth">'+
+						      '<div class="col-md-12">'+
+								'<div class="diary_content">'+value.content+'</div>'+
+							  '</div>'+
+							'</div>'+
+					'</div>'+	
+					'<hr class="divider">'+
+				'</section>';  
+			$("#article_items_contianer").append(itemTemplate)
 		})
 	}
 }
