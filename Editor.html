@@ -15,11 +15,11 @@
 	<style type="text/css">
 	 @font-face {
           font-family: 'icomoon';
-          src: url("./wangeditorFonts/icomoon.eot");
-          src: url("./wangeditorFonts/icomoon.eot?#iefix") format('embedded-opentype'),
-               url("./wangeditorFonts/icomoon.woff") format('woff'),
-               url("./wangeditorFonts/icomoon.ttf") format('truetype'),
-               url("./wangeditorFonts/icomoon.svg#icomoon") format('svg');
+          src: url("./wangEditorFonts/icomoon.eot");
+          src: url("./wangEditorFonts/icomoon.eot?#iefix") format('embedded-opentype'),
+               url("./wangEditorFonts/icomoon.woff") format('woff'),
+               url("./wangEditorFonts/icomoon.ttf") format('truetype'),
+               url("./wangEditorFonts/icomoon.svg#icomoon") format('svg');
           font-weight: normal;
           font-style: normal;
         }</style>
@@ -73,9 +73,12 @@
 
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/wangEditor.min.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
 <script type="text/javascript" src="/js/emoji.js"></script>
 
 <script type="text/javascript">
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
      var editor = new wangEditor('diary_content');
 
         // 上传图片
