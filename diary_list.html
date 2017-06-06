@@ -105,6 +105,8 @@ var list_config={
 		if (list_config.dataUrl==targetUrl) {
 			return false;
 		}else{
+			$("#article_items_contianer").children().remove();
+			$('#pagination_ul').children().remove();
 			getArticleListData(targetUrl)
 		}
 		
