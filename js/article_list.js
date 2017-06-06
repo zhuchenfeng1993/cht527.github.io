@@ -198,7 +198,7 @@ function doPagination(thisPage,pageCount){
 
 	
 (function(type){
-	if (type=="hotArticle") {
+	if (type=="hotArticle"||type=="diary") {
 		var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
 		$("html, body").animate({scrollTop:0},400);
 		}),
