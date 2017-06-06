@@ -68,6 +68,7 @@ var ImgIputHandler={
 	]
 	,
 	Init:function(){
+		var toggleMark=true;
 		if($(".faceDiv").children().length==0){
 					for(var i=0;i<ImgIputHandler.facePath.length;i++){
 						$(".faceDiv").append("<img title=\""+ImgIputHandler.facePath[i].faceName+"\" src=\"../img/face/"+ImgIputHandler.facePath[i].facePath+"\" />");
@@ -76,7 +77,14 @@ var ImgIputHandler={
 		}
 		$(".imgBtn").on("click",function(){
 			$(".faceDiv").toggle();
-			$('#editorContainer').css("marginTop","200px")
+			if (toggleMark) {
+				$('#editorContainer').css("marginTop","200px");
+				toggleMark=false;
+			}else{
+				$('#editorContainer').css("marginTop","0px");
+
+			}
+			
 				
 		});
 		$(".faceDiv>img").on("click",function(){
