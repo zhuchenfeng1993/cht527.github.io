@@ -58,8 +58,8 @@ margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;
 	top: 20%;
 	left: 45%;
 	text-align:center;
-	font-size: 2em
-	
+	font-size: 2em;
+	display: none;
 }
 
 .blur{
