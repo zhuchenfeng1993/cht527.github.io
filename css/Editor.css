@@ -7,7 +7,8 @@ body::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradie
 }
 footer{width: 90%;max-width: 760px; margin: 10px auto;text-align: center;font-size: 13px;line-height: 34px;}
 .website-record{color: black;}
-.github-pages{width:30px;height:30px;display:inline-block;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;vertical-align:middle;background: url('/img/github_pages.png');}
+.github-pages{width:30px;height:30px;display:inline-block;}
+.a-github-square{font-size: 2em;color: black;}
 /*----日记 emoji表情----*/
 .imgBtn {
 	height: 21px;
