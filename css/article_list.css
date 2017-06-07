@@ -12,3 +12,17 @@ footer{width: 60%;max-width: 760px; margin: 10px auto;text-align: center;font-si
 .former_later{width:90px;height:90px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;justify-content:flex-end;align-items:center;overflow:hidden;flex-wrap:wrap;}
 #article_items_contianer{width: 85%;margin: 0 auto}
 .pagination{margin: 10px auto;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex; }
+#modal_load{
+	z-index: 1050;
+	position: fixed;
+	top: 20%;
+	left: 45%;
+	text-align:center;
+	font-size: 2em
+	
+}
+
+.blur{
+    -webkit-filter: blur(4px);
+    filter: blur(10px);
+}

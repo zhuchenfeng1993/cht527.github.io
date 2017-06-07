@@ -28,3 +28,17 @@ blockquote{display: block;border-left: 8px solid #d0e5f2;padding: 5px 10px;margi
     background-color: #fff;
     border: 1px solid #ddd;
 }
+#modal_load{
+    z-index: 1050;
+    position: fixed;
+    top: 20%;
+    left: 45%;
+    text-align:center;
+    font-size: 2em
+    
+}
+
+.blur{
+    -webkit-filter: blur(4px);
+    filter: blur(10px);
+}
