@@ -90,9 +90,8 @@
 				</div>
 		      </div>
 		   </div>
-		   <div class="pianoList-content" id="pianoList" >
-		   	 <img id="piano-back" src="./img/piano-back.png" title="返回">					
-		    
+		   <div class="pianoList-content" id="pianoList" >				
+		     <div id="piano-back" style="font-size: 3em"><i class="fa fa-reply"></i></div>
              <div class="piano-items-contianer" id="piano_items_contianer"></div>
              
         </div>
@@ -141,10 +140,10 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 //---监听展开pianoList 展开、收起
  $("#piano_items_contianer").on("click",'.show-hide-piano',function(){
         if($(this).attr("title")=="展开"){
-            $(this).attr("src","./img/piano/arrow-up.png");
+            $(this).children().eq(0).removeClass("fa-chevron-down").addClass("fa-chevron-up");
             $(this).attr("title","收起")
         }else{
-            $(this).attr("src","./img/piano/arrow-down.png");
+            $(this).children().eq(0).removeClass("fa-chevron-up").addClass("fa-chevron-down");
             $(this).attr("title","展开")
         }
         $(this).parent().next().toggle(800);
@@ -181,7 +180,7 @@ window.onload=function(){
                   '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
                   '<h3 style="display:inline-block;width:75%">'+value.title+'</h3>'+
                   '<h3 style="display:inline-block;width:10%">'+
-                  	'<img class="show-hide-piano" title="展开" src="./img/piano/arrow-down.png" alt="" class="show-hide-arrow">'+
+                  	'<span class="show-hide-piano" title="展开"><i class="fa fa-chevron-down"></i></span>'+
                   '</h3>'+
                   '<img class="piano-content-img" src="./img/piano/'+value.id+'.png" style="display:none" alt="" />'+
               '</section>';
