@@ -22,7 +22,7 @@ body::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradie
 footer{width: 90%;max-width: 760px; margin: 0 auto;text-align: center;font-size: 13px;line-height: 34px;}
 .website-record{color: black;}
 .github-pages{width:30px;height:30px;display:inline-block;vertical-align:middle;}
-.a-github-square{font-size: 2em;color: black;}
+.fa-github-square{font-size: 2em;color: black;}
 .h1-readme{width: 60%;display:inline-block;margin: 0px auto}#headout img{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px; }
 .piano-text{animation:7s opacity_pic 0s infinite;-webkit-animation:7s opacity_pic 0s infinite;-moz-animation:7s opacity_pic 0s infinite}.img_two{animation:7s opacity_pic 2s infinite;-webkit-animation:7s opacity_pic 2s infinite;-moz-animation:7s opacity_pic 2s infinite}.img_three{animation:7s opacity_pic 4s infinite;-webkit-animation:7s opacity_pic 4s infinite;-moz-animation:7s opacity_pic 4s infinite}@keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}@-webkit-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}@-moz-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 .piano-items-contianer{width: 80%;margin: 30px auto}.piano-items{margin-bottom: 15px;color: #7C7C7C}
