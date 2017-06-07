@@ -4,7 +4,7 @@ a:hover{text-decoration: none;}#wrapper{background-color:#fff;width:90%;margin:0
 .nav-aboutme:hover span{color: #A09D9D}.title{display:inline-block;font:normal normal 1.5em/35px STXingkai}
 #index{width:54px;height:34px;font-size:1.1em}
 .nhr{width:70px;border:1px solid #eee}ul{list-style-type:none}
-.fa{visibility: hidden;font-size: 0.9em}
+.fa-link{visibility: hidden;font-size: 0.9em}
 li:hover{color:#A09D9D}
 li:hover > i{visibility: visible;}
 li{width:30%;font-size:1.3em;line-height:35px;cursor:pointer;text-align: center;}
