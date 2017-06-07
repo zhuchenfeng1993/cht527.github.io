@@ -177,6 +177,8 @@ function doPagination(thisPage,pageCount){
 
 //---初始化分页---
 function getArticleListData(targetUrl){
+	$("#article_items_contianer").addClass('blur');
+	$("#modal_load").show();
 		$.ajax({
 			method: "GET",
 			url: targetUrl,
@@ -201,7 +203,6 @@ function getArticleListData(targetUrl){
 }
 
 window.onload=function(){
-	$("#article_items_contianer").addClass('blur');
 	getArticleListData(list_config.dataUrl);
 	var type=list_config.type;
 	if (type=="hotArticle"||type=="diary") {
