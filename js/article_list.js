@@ -177,7 +177,7 @@ function doPagination(thisPage,pageCount){
 
 //---初始化分页---
 function getArticleListData(targetUrl){
-	$("#article_items_contianer").addClass('blur');
+	$("#wrapper").addClass('blur');
 	$("#modal_load").show();
 		$.ajax({
 			method: "GET",
@@ -195,7 +195,7 @@ function getArticleListData(targetUrl){
 			var pagination=showPages(list_config.curPage,list_config.pageCount);
 			$('#pagination_ul').append(pagination);
 			$("#modal_load").hide();
-			$("#article_items_contianer").removeClass('blur');
+			$("#wrapper").removeClass('blur');
 			$('li[data-page='+list_config.curPage+']').addClass('active');	
 		}).fail(function(){
 		    alert('请求接口失败')
