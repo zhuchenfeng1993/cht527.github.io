@@ -74,7 +74,7 @@ function mapArticleList(dataList){
 							  '</div>'+
 							'</div>'+
 					'</div>'+	
-					'<hr class="divider">'+
+					'<hr class="divider" style="width:90%;margin:15px auto;border: 0;border-top: 1px solid #eee;">'+
 				'</section>';  
 			$("#article_items_contianer").append(itemTemplate)
 		})
