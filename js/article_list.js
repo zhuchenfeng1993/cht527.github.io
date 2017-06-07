@@ -192,6 +192,8 @@ function getArticleListData(targetUrl){
 			mapArticleList(init_articleData);	
 			var pagination=showPages(list_config.curPage,list_config.pageCount);
 			$('#pagination_ul').append(pagination);
+			$("#modal_load").hide();
+			$("#article_items_contianer").removeClass('blur');
 			$('li[data-page='+list_config.curPage+']').addClass('active');	
 		}).fail(function(){
 		    alert('请求接口失败')
@@ -199,6 +201,7 @@ function getArticleListData(targetUrl){
 }
 
 window.onload=function(){
+	$("#article_items_contianer").addClass('blur');
 	getArticleListData(list_config.dataUrl);
 	var type=list_config.type;
 	if (type=="hotArticle"||type=="diary") {
