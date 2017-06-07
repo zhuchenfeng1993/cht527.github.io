@@ -4,7 +4,9 @@ a:hover{text-decoration: none;}#wrapper{background-color:#fff;width:90%;margin:0
 .nav-aboutme:hover span{color: #A09D9D}.title{display:inline-block;font:normal normal 1.5em/35px STXingkai}
 #index{width:54px;height:34px;font-size:1.1em}
 .nhr{width:70px;border:1px solid #eee}ul{list-style-type:none}
-li:hover{color: #A09D9D}li{width:30%;font-size:1.3em;line-height:35px;cursor:pointer;text-align: center;}
+li i{visibility: hidden;}
+li:hover > i{visibility: visible;}
+li{width:30%;font-size:1.3em;line-height:35px;cursor:pointer;text-align: center;}
 h4{margin-left:40px}
 .parentimg{width:85%;height:300px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;overflow:hidden;flex-wrap:nowrap;margin:0 auto}
 .photoimg{height:100%;cursor:pointer}
