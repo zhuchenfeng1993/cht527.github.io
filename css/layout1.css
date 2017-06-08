@@ -17,7 +17,6 @@ header{
 #headtext{
 	display: inline-block;
 	font:normal normal 1.3em/35px STXingkai;
-	margin-top:100px
 }
 .row{
 	display: flex;
