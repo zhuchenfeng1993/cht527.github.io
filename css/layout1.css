@@ -7,11 +7,9 @@ header{
 	align-items:center;
 }
 #headout{
-    height:160px;
     width: 15%;
     overflow:hidden;
     margin: 35px 10px 10px 75px;
-    padding:30px 10px 10px 10px;
     display: inline-block;
 
 }
@@ -20,4 +18,26 @@ header{
 	display: inline-block;
 	font:normal normal 1.4em/35px STXingkai;
 	margin-top:100px
+}
+.row{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.col-md-4{
+	width: 30%
+}
+
+.nav-ul-list{
+	margin: 0;
+	margin-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+}
+ul li{
+    font-size: 1.3em;
+    line-height: 40px;
+    cursor: pointer;
 }
