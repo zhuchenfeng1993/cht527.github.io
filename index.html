@@ -82,11 +82,11 @@
 		      </div>
 		      <div class="col-md-8">
 		        <div class="parentimg">
-					<div class="img"><img class="photoimg" src="./img/1.png" onclick="bgmPlay(43)"></div>
-					<div class="img"><img class="photoimg" src="./img/2.png" onclick="bgmPlay(49)"></div>
-					<div class="img"><img class="photoimg" src="./img/3.png" onclick="bgmPlay(44)"></div>
-					<div class="img"><img class="photoimg" src="./img/4.png" onclick="bgmPlay(47)"></div>
-					<div class="img"><img class="photoimg" src="./img/5.png" onclick="bgmPlay(42)"></div>
+					<div class="img"><img class="photoimg" src="./img/1.png" id="photoimg_43"></div>
+					<div class="img"><img class="photoimg" src="./img/2.png" id="photoimg_49"></div>
+					<div class="img"><img class="photoimg" src="./img/3.png" id="photoimg_44"></div>
+					<div class="img"><img class="photoimg" src="./img/4.png" id="photoimg_47"></div>
+					<div class="img"><img class="photoimg" src="./img/5.png" id="photoimg_42"></div>
 				</div>
 		      </div>
 		   </div>
@@ -147,6 +147,13 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
             $(this).attr("title","展开")
         }
         $(this).parent().next().toggle(800);
+ })
+ //-------photo img click-------
+ $(".photoimg").on('click',function(){
+ 	var id=$(this).attr('id');
+ 	var targetId=id.split('_')[1];
+ 	bgmPlay(targetId)
+
  })
  function bgmPlay(musicMark){
  	var music_file="include/music/"+musicMark+".mp3";
