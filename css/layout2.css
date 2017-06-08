@@ -10,16 +10,16 @@ header{
 
 }
 #headout{
-            height:110px;
-            width: 110px;
-            margin: 20px auto;
-            display: block;
+    height:110px;
+    width: 110px;
+    margin: 20px auto;
+    display: block;
 
 }
-#headtextparent{ width:60% ;display:block}
+#headtextparent{ width:45% ;display:block}
 #headtext{
 	display: inline-block;
-	font:normal normal 1em/35px STXingkai;
+	font:normal normal 1.4em/35px STXingkai;
 }
-	img{max-width: 100%;max-height: 100%}
+	
 

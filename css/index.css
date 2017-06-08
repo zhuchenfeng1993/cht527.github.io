@@ -1,5 +1,6 @@
 body{font-family:microsoft yahei;min-width: 367px}
-a:hover{text-decoration: none;}#wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}img{max-width:100%;max-height:100%}
+a:hover{text-decoration: none;}#wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}
+img{max-width:100%;max-height:100%}
 .nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;cursor: pointer;}
 .nav-aboutme:hover span{color: #A09D9D}.title{display:inline-block;font:normal normal 1.5em/35px STXingkai}
 #index{width:54px;height:34px;font-size:1.1em}
