@@ -227,7 +227,6 @@ $("#piano-container,#piano-back").on("click",function(){
         	$("#pianoList").toggle(800);
 		}else{
 			getPianoData();
-			window.blog.is_loadpiano=!window.blog.is_loadpiano;
 		}
        
 });
@@ -252,6 +251,7 @@ function getPianoData(){
 			$("#piano_items_contianer").append(itemTemplate);
 			$("#nav_container").toggle();
         	$("#pianoList").toggle(800);
+        	window.blog.is_loadpiano=!window.blog.is_loadpiano;
 		})
 		     		
 	}).fail(function(){
