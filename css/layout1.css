@@ -2,21 +2,21 @@
 header{
 	width: 100%;
 	padding-bottom: 50px;
+	padding-top: 20px;
 	display:flex;
-	justify-content:space-between;
+	justify-content:center;
 	align-items:center;
 }
 #headout{
     width: 15%;
     overflow:hidden;
-    margin: 35px 10px 10px 75px;
     display: inline-block;
 
 }
 #headtextparent{ width:45% }
 #headtext{
 	display: inline-block;
-	font:normal normal 1.4em/35px STXingkai;
+	font:normal normal 1.3em/35px STXingkai;
 	margin-top:100px
 }
 .row{
@@ -37,7 +37,7 @@ header{
     align-items: flex-start;
 }
 ul li{
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 40px;
     cursor: pointer;
 }
