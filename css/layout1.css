@@ -9,15 +9,13 @@ header{
 }
 #headout{
     width: 15%;
-    overflow:hidden;
-    display: inline-block;
-
 }
 #headtextparent{ width:45% }
 #headtext{
 	display: inline-block;
 	font:normal normal 1.3em/35px STXingkai;
 }
+.nav-hr{width:95px;}
 .row{
 	display: flex;
     justify-content: space-between;
@@ -34,9 +32,4 @@ header{
     justify-content: space-around;
     flex-direction: column;
     align-items: flex-start;
-}
-ul li{
-    font-size: 1.2em;
-    line-height: 40px;
-    cursor: pointer;
 }

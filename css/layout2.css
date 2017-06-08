@@ -10,16 +10,22 @@ header{
 
 }
 #headout{
-    height:110px;
-    width: 110px;
     margin: 20px auto;
-    display: block;
-
 }
-#headtextparent{ width:45% ;display:block}
+#headtextparent{
+	width: 100%;font-size: 1em;margin: 0 auto
+}
 #headtext{
 	display: inline-block;
-	font:normal normal 1.4em/35px STXingkai;
+	font:normal normal 1em/35px STXingkai;
 }
 	
-
+.nav-ul-list {
+    font-size: 1.2em;
+    line-height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+}
+.nav-hr{width:90%;}
+.col-md-8{margin: 20px auto}
