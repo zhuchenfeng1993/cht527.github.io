@@ -182,19 +182,79 @@ var showNewText=function(){
 }
 showNewText();
 
-/*----钢琴弹奏事件绑定----*/
+//-------photo img click-------
+ $(".photoimg").on('click',function(){
+ 	var id=$(this).attr('id');
+ 	var targetId=id.split('_')[1];
+ 	bgmPlay(targetId)
 
-$("#piano-container,#piano-back").on("click",function(){
-        $("#nav_container").toggle();
-        $("#pianoList").toggle(800);
-});
-$(".show-hide-piano").on("click",function(){
+ })
+ function bgmPlay(musicMark){
+ 	var music_file="include/music/"+musicMark+".mp3";
+ 	if (window.HTMLAudioElement) {
+		try {
+			var oAudio = document.getElementById('myaudio'); 
+			oAudio.src = music_file;
+			if(oAudio.paused){
+	            oAudio.play();
+	        }else{
+	            oAudio.pause();
+	        }
+		}catch (e) {
+						               
+			if(window.console && console.error("Error:" + e));
+		}
+	}  
+ }
+
+ //---监听展开pianoList 展开、收起
+ $("#piano_items_contianer").on("click",'.show-hide-piano',function(){
         if($(this).attr("title")=="展开"){
-            $(this).attr("src","./img/piano/arrow-up.png");
+            $(this).children().eq(0).removeClass("fa-chevron-down").addClass("fa-chevron-up");
             $(this).attr("title","收起")
         }else{
-            $(this).attr("src","./img/piano/arrow-down.png");
+            $(this).children().eq(0).removeClass("fa-chevron-up").addClass("fa-chevron-down");
             $(this).attr("title","展开")
         }
         $(this).parent().next().toggle(800);
-})
+ })
+
+/*----钢琴弹奏事件绑定----*/
+
+$("#piano-container,#piano-back").on("click",function(){
+		if (window.blog.is_loadpiano) {
+			$("#nav_container").toggle();
+        	$("#pianoList").toggle(800);
+		}else{
+			getPianoData();
+			window.blog.is_loadpiano=!window.blog.is_loadpiano;
+		}
+       
+});
+
+function getPianoData(){
+	$.ajax({
+		method: "GET",
+		url: "./data_source/piano.json",
+		dataType:"json"
+	}).done(function(data) {
+
+		$.map(data.pianoList,function(value,index,array){
+			var itemTemplate=
+			'<section class="piano-items">'+ 
+                  '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
+                  '<h3 style="display:inline-block;width:75%">'+value.title+'</h3>'+
+                  '<h3 style="display:inline-block;width:10%">'+
+                  	'<span class="show-hide-piano" title="展开"><i class="fa fa-chevron-down"></i></span>'+
+                  '</h3>'+
+                  '<img class="piano-content-img" src="./img/piano/'+value.id+'.png" style="display:none" alt="" />'+
+              '</section>';
+			$("#piano_items_contianer").append(itemTemplate);
+			$("#nav_container").toggle();
+        	$("#pianoList").toggle(800);
+		})
+		     		
+	}).fail(function(){
+		swal('请求接口失败','error','error')
+	});
+}
