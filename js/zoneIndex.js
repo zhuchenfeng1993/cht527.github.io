@@ -249,10 +249,11 @@ function getPianoData(){
                   '<img class="piano-content-img" src="./img/piano/'+value.id+'.png" style="display:none" alt="" />'+
               '</section>';
 			$("#piano_items_contianer").append(itemTemplate);
-			$("#nav_container").toggle();
-        	$("#pianoList").toggle(800);
-        	window.blog.is_loadpiano=!window.blog.is_loadpiano;
-		})
+
+		});
+		$("#nav_container").toggle();
+        $("#pianoList").toggle(800);
+        window.blog.is_loadpiano=!window.blog.is_loadpiano;
 		     		
 	}).fail(function(){
 		swal('请求接口失败','error','error')
