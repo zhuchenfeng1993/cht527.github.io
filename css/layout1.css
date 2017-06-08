@@ -30,7 +30,7 @@ header{
 
 .nav-ul-list{
 	margin: 0;
-	margin-left: 20px;
+	margin-left: 35px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
