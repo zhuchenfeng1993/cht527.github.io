@@ -7,13 +7,12 @@ header{
 	flex-direction:column;
 	justify-content:space-between;
 	align-items:center;
-
 }
 #headout{
     margin: 20px auto;
 }
 #headtextparent{
-	width: 60%;margin: 0 auto
+	width: 370px;margin: 0 auto
 }
 #headtext{
 	display: inline-block;
@@ -21,11 +20,13 @@ header{
 }
 	
 .nav-ul-list {
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 40px;
     cursor: pointer;
     display: flex;
     justify-content: space-around;
 }
-.nav-hr{width:90%;}
+.nav-hr{width:90%;margin: 15px auto}
 .col-md-8{margin: 20px auto}
+#pianoBtn{margin-right: 50px}
+.parentimg{width: 75%}
