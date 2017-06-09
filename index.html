@@ -61,11 +61,11 @@
 		    </div>
 		    <div class="col-md-8">
 		        <div class="parentimg">
-		        	<div class="img"><img class="photoimg" src="./img/1.png" id="photoimg_43"></div>
-					<div class="img"><img class="photoimg" src="./img/2.png" id="photoimg_49"></div>
-					<div class="img"><img class="photoimg" src="./img/3.png" id="photoimg_44"></div>
-					<div class="img"><img class="photoimg" src="./img/4.png" id="photoimg_47"></div>
-					<div class="img"><img class="photoimg" src="./img/5.png" id="photoimg_42"></div> 
+		        	<div class="img"><img class="photoimg js_fly" src="./img/1.png" id="photoimg_43"></div>
+					<div class="img"><img class="photoimg js_fly" src="./img/2.png" id="photoimg_49"></div>
+					<div class="img"><img class="photoimg js_fly" src="./img/3.png" id="photoimg_44"></div>
+					<div class="img"><img class="photoimg js_fly" src="./img/4.png" id="photoimg_47"></div>
+					<div class="img"><img class="photoimg js_fly" src="./img/5.png" id="photoimg_42"></div> 
 			        
 				</div>
 		    </div>
@@ -150,6 +150,50 @@ navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 </script>
 <link rel="stylesheet" type="text/css" href="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/css/style-crayon-syntax-highlighter.e8ead470.css">
 <script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/lib/jquery.03ce4235.js"></script>
-<script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/index.983973b7.js"></script>
+<!-- <script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/index.983973b7.js"></script> -->
+<script>
+$(".js_fly").click(function() {
+    return $(".js_fly_message").val(e[Math.floor(10 * Math.random())]),
+    $(".js_fly_wind, .js_fly_plane").fadeIn(200),
+    !1
+})
+$(".js_fly_close").click(function() {
+    $(".js_fly_wind").fadeOut(200)
+})
+$(".js_fly_comment").click(function() {
+    $(this).toggleClass("choose_active")
+})
+$(".js_fly_send").click(function() {
+    //var e = "1288460501986050384";
+    if ($(".js_fly_comment").hasClass("choose_active")) {
+    	setTimeout(function() {
+        	$(".js_fly_plane").removeClass("front"),
+        	$(".js_fly_container").removeClass("beginning"),
+        	$(".js_fly_curvable").addClass("curved"),
+	        setTimeout(function() {
+	            $(".js_fly_container").addClass("hover"),
+	            setTimeout(function() {
+	                $(".js_fly_container").addClass("fly_away_first"),
+	                setTimeout(function() {
+	                    $(".js_fly_container").addClass("fly_away"),
+	                    setTimeout(function() {
+	                        $(".js_fly_plane").addClass("front"),
+	                        $(".js_fly_container").removeClass("fly_away fly_away_first hover").addClass("beginning"),
+	                        $(".js_fly_curvable").removeClass("curved"),
+	                        $(".js_fly_wind").hide()
+	                    },
+	                    3e3)
+	                },
+	                600)
+	            },
+	            2e3)
+	        },
+	        2800)
+    	},
+    	200)
+    }
+})
+
+</script>
 </body>
 </html>
