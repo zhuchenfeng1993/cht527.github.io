@@ -9,8 +9,11 @@
 	<link rel="shortcut icon" href="./img/favicon.ico" /> 
 	<title>caohaitao.cc</title>
 	<link rel="stylesheet" href="./css/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/css/style-index.4ef92492.css">
+    <link rel="canonical" href="http://www.xuanfengge.com/paper-airplane-make-a-wish">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/index.css" >
+
 	<link rel="stylesheet" type="text/css" href="./css/layout2.css" media="screen and (max-width: 1120px) and (min-width:768px)">
 	<link rel="stylesheet" type="text/css" href="./css/layout3.css" media="screen and (max-width: 768px)">
 	<style>
@@ -39,7 +42,7 @@
 		<nav>
 		
 	</header>
-
+	
 	<div class="container"  style="margin-bottom:55px">
 		<div class="row" id="nav_container">
 		    <div class="col-md-4">
@@ -58,11 +61,41 @@
 		    </div>
 		    <div class="col-md-8">
 		        <div class="parentimg">
-					<div class="img"><img class="photoimg" src="./img/1.png" id="photoimg_43"></div>
+			        <div class="img mod-header__wrap">
+			            <h1 class="js_fly mod-header__logo">
+			            	<img class="photoimg" src="./img/1.png" id="photoimg_43">
+			                <a href="http://caohaitao.cc"></a>
+			            </h1>
+	        		</div>
+	        		<div class="img mod-header__wrap">
+			            <h1 class="js_fly mod-header__logo">
+			            	<img class="photoimg" src="./img/2.png" id="photoimg_49">
+			                <a href="http://caohaitao.cc"></a>
+			            </h1>
+	        		</div>
+	        		<div class="img mod-header__wrap">
+			            <h1 class="js_fly mod-header__logo">
+			            	<img class="photoimg" src="./img/3.png" id="photoimg_44">
+			                <a href="http://caohaitao.cc"></a>
+			            </h1>
+	        		</div>
+	        		<div class="img mod-header__wrap">
+			            <h1 class="js_fly mod-header__logo">
+			            	<img class="photoimg" src="./img/4.png" id="photoimg_47">
+			                <a href="http://caohaitao.cc"></a>
+			            </h1>
+	        		</div>
+	        		<div class="img mod-header__wrap">
+			            <h1 class="js_fly mod-header__logo">
+			            	<img class="photoimg" src="./img/5.png" id="photoimg_42">
+			                <a href="http://caohaitao.cc"></a>
+			            </h1>
+	        		</div>
+					<!-- <div class="img"><img class="photoimg" src="./img/1.png" id="photoimg_43"></div>
 					<div class="img"><img class="photoimg" src="./img/2.png" id="photoimg_49"></div>
 					<div class="img"><img class="photoimg" src="./img/3.png" id="photoimg_44"></div>
 					<div class="img"><img class="photoimg" src="./img/4.png" id="photoimg_47"></div>
-					<div class="img"><img class="photoimg" src="./img/5.png" id="photoimg_42"></div>
+					<div class="img"><img class="photoimg" src="./img/5.png" id="photoimg_42"></div> -->
 				</div>
 		    </div>
 		</div>
@@ -72,6 +105,31 @@
             <div class="piano-items-contianer" id="piano_items_contianer"></div> 
         </div>
 	</div>
+	<div class="js_fly_wind mod-fly__wind animated fadeIn" style="display: none;">
+        <div class="js_fly_plane mod-fly__plane front">
+            <h4 class="mod-fly__title">许愿&nbsp;|&nbsp;留言</h4>
+            <textarea class="js_fly_message mod-fly__message" id="flyMessage">写下你的愿望,放飞到未来~</textarea>
+            <div><button class="js_fly_send mod-fly__send" id="flyButton"> 起飞 </button></div>
+            <div class="js_fly_close mod-fly__close" title="关闭">x</div>
+    <!--         <div class="js_fly_comment mod-fly__comment" title="点击选择/取消评论"></div>
+         -->    </div>
+
+        <div class="js_fly_container mod-fly__container beginning">
+            <div id="left-wing" class="mod-fly__left-wing">
+                <div class="js_fly_curvable mod-fly__top_left mod-fly__curvable"> </div>
+                <div class="js_fly_curvable mod-fly__bottom_left mod-fly__curvable"> </div>
+                <div class="mod-fly__wing mod-fly__wing1"></div>
+                <div class="mod-fly__wing mod-fly__wing2"></div>
+            </div>
+
+            <div id="right-wing" class="mod-fly__right-wing">
+                <div class="js_fly_curvable mod-fly__top_right mod-fly__curvable"> </div>
+                <div class="js_fly_curvable mod-fly__bottom_right mod-fly__curvable"> </div>
+                <div class="mod-fly__wing mod-fly__wing3"></div>
+                <div class="mod-fly__wing mod-fly__wing4"></div>
+            </div>
+        </div>
+    </div>
 	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;margin: 0 auto;">
 	<footer>
 		<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
@@ -119,6 +177,8 @@ navObj.addHandler(document.getElementById('photo'),'click',function(){
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
 </script>
-
+<link rel="stylesheet" type="text/css" href="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/css/style-crayon-syntax-highlighter.e8ead470.css">
+<script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/lib/jquery.03ce4235.js"></script>
+<script type="text/javascript" src="http://cdn.xuanfengge.com/wp-content/themes/lee3.0/dist/js/index.983973b7.js"></script>
 </body>
 </html>
