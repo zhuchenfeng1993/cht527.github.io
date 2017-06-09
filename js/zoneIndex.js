@@ -193,7 +193,8 @@ showNewText();
  	var music_file="include/music/"+musicMark+".mp3";
  	if (window.HTMLAudioElement) {
 		try {
-			var oAudio = document.getElementById('myaudio_'+musicMark); 
+			var targetId='myaudio_'+musicMark;
+			var oAudio = document.getElementById(targetId); 
 			oAudio.src = music_file;
 			if(oAudio.paused){
 	            oAudio.play();
