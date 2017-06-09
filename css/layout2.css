@@ -25,6 +25,7 @@ header{
 }
 
 .nav-hr{width:90%;margin: 15px auto}
-.col-md-8{margin: 20px auto}.col-md-4{width: auto;}
+.col-md-8{margin: 20px auto}.col-md-4{width: 600px;}
+.piano-container{justify-content:center;margin: 20px auto}
 #pianoBtn{margin-right: 50px}
 .parentimg{width: 75%}

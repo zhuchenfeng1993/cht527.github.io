@@ -15,3 +15,14 @@ header{
 	font:normal normal 1em/35px STXingkai;
 }
 
+.row{flex-direction: column;}	
+.nav-ul-list {
+    font-size: 1em;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.col-md-4{width: auto;}
+#pianoBtn{margin-right: 50px}
+.nav-hr{width:90%;margin: 15px auto}
