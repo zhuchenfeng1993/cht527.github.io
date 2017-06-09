@@ -186,10 +186,16 @@ showNewText();
  $(".photoimg").on('click',function(){
  	var id=$(this).attr('id');
  	var targetId=id.split('_')[1];
- 	bgmPlay(targetId)
-
+ 	//bgmPlay(targetId)
+ 	var Id='myaudio_'+musicMark;
+	var oAudio = document.getElementById(Id); 
+	if(oAudio.paused){
+	    oAudio.play();
+	}else{
+	    oAudio.pause();
+	}
  })
- function bgmPlay(musicMark){
+/* function bgmPlay(musicMark){
  	var music_file="include/music/"+musicMark+".mp3";
  	if (window.HTMLAudioElement) {
 		try {
@@ -206,7 +212,7 @@ showNewText();
 			if(window.console && console.error("Error:" + e));
 		}
 	}  
- }
+ }*/
 
  //---监听展开pianoList 展开、收起
  $("#piano_items_contianer").on("click",'.show-hide-piano',function(){
