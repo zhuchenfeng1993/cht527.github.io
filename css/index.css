@@ -39,7 +39,7 @@ header{
 .nav-ul-list{
 	font-size:1.2em;
 	margin: 0;
-	margin-left: 35px;
+	margin-left: 80px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
