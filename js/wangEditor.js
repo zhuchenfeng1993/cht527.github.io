@@ -3251,7 +3251,7 @@ _e(function (E, $) {
         'emotion',
         '|',
         'img',
-        'video',
+        //'video',
         'location',
         'insertcode',
         '|',
