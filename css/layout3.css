@@ -1,22 +1,15 @@
 
 /*-------------------------head---------------------------------*/
 header{
-	height:300px;
-	width: 100%;
-	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
 	align-items:center;
-
+	padding: 0
 }
 #headout{
-    height:110px;
-    width: 110px;
     margin: 20px auto;
-    display: block;
-
 }
-#headtextparent{ width:55% ;display:block}
+#headtextparent{ width:360px;display:block}
 #headtext{
 	display: inline-block;
 	font:normal normal 1em/35px STXingkai;

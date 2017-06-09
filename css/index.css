@@ -9,12 +9,47 @@ a:hover{text-decoration: none;}
 img{max-width:100%;max-height:100%}
 .nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;cursor: pointer;}
 .nav-aboutme:hover span{color: #A09D9D}
-.title{display:inline-block;font:normal normal 1.5em/35px STXingkai}
-#index{width:54px;height:34px;font-size:1.1em}
-.nhr{width:70px;border:1px solid #eee}ul{list-style-type:none}
+
+header{
+	width: 100%;
+	padding-bottom: 50px;
+	padding-top: 50px;
+	display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;
+	justify-content:center;
+	align-items:center;
+}
+#headout{
+    width: 15%;
+}
+#headtextparent{ width:45% }
+#headtext{
+	display: inline-block;
+	font:normal normal 1.3em/35px STXingkai;
+}
+.nav-hr{width:95px;}
+.row{
+	display: flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.col-md-4{
+	width: 30%
+}
+
+.nav-ul-list{
+	font-size:1.2em;
+	margin: 0;
+	margin-left: 35px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .fa-link{visibility: hidden;font-size: 0.8em}
+
+ul{list-style-type:none}
 ul li{
-    font-size: 1.2em;
     line-height: 40px;
     cursor: pointer;
 }
@@ -36,8 +71,7 @@ footer{width: 90%;max-width: 760px; margin: 0 auto;text-align: center;font-size:
 .fa-github-square{font-size: 2em;color: black;}
 .h1-readme{width: 60%;display:inline-block;margin: 0px auto}
 .piano-text{animation:7s opacity_pic 0s infinite;-webkit-animation:7s opacity_pic 0s infinite;-moz-animation:7s opacity_pic 0s infinite}
-.img_two{animation:7s opacity_pic 2s infinite;-webkit-animation:7s opacity_pic 2s infinite;-moz-animation:7s opacity_pic 2s infinite}
-.img_three{animation:7s opacity_pic 4s infinite;-webkit-animation:7s opacity_pic 4s infinite;-moz-animation:7s opacity_pic 4s infinite}
+
 @keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-webkit-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-moz-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
