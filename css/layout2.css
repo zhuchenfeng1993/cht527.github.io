@@ -13,11 +13,11 @@ header{
     margin: 20px auto;
 }
 #headtextparent{
-	width: 100%;font-size: 1em;margin: 0 auto
+	width: 60%;margin: 0 auto
 }
 #headtext{
 	display: inline-block;
-	font:normal normal 1em/35px STXingkai;
+	font:normal normal 1.2em/35px STXingkai;
 }
 	
 .nav-ul-list {
