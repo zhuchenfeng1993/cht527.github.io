@@ -6,11 +6,12 @@ header{
 	align-items:center;
 	padding: 0
 }
+#wrapper{width: 95%}
 #headout{
 	width: auto;
     margin: 20px auto;
 }
-#headtextparent{ width:360px;display:block}
+#headtextparent{ width:345px;display:block}
 #headtext{
 	display: inline-block;
 	font:normal normal 1em/35px STXingkai;
