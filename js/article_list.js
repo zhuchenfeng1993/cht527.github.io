@@ -29,7 +29,6 @@ function mapArticleList(dataList){
 	}else if(list_config.type=="webFE"){   //-----------webFE  文章列表 模板
 
 		$.map(dataList,function(value,index,array){
-			if (list_config.webFE_mark=="All") {
 				var itemTemplate=
 			      '<section class="list">'+ 
 			        '<p class="webFE_date">'+value.date+'</p>'+
@@ -41,19 +40,6 @@ function mapArticleList(dataList){
 			      '</section>';
 
 		    	$("#article_items_contianer").append(itemTemplate)
-			}else if (list_config.webFE_mark==value.category) {
-				var itemTemplate=
-			      '<section class="list">'+ 
-			        '<p class="webFE_date">'+value.date+'</p>'+
-			        '<a class="webFE_items" href="javascript:void(0);" id='+value.id+'>'+
-			          '<span class="article_title">'+value.title+'</span>'+
-			          '<span class="webFE_category">'+value.category+'</span>'+
-			        '</a>'+
-			        '<hr class="divider">'+
-			      '</section>';
-
-		    	$("#article_items_contianer").append(itemTemplate)
-			}
     		
 		})
 	}else{//-----------日记 列表 模板
