@@ -183,7 +183,7 @@ var showNewText=function(){
 showNewText();
 
 //-------photo img click-------
- $(".photoimg").on('click',function(){
+/* $(".photoimg").on('click',function(){
  	var id=$(this).attr('id');
  	var targetId=id.split('_')[1];
  	//bgmPlay(targetId)
@@ -194,7 +194,7 @@ showNewText();
 	}else{
 	    oAudio.pause();
 	}
- })
+ })*/
 /* function bgmPlay(musicMark){
  	var music_file="include/music/"+musicMark+".mp3";
  	if (window.HTMLAudioElement) {
