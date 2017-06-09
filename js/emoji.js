@@ -82,6 +82,7 @@ var ImgIputHandler={
 				toggleMark=false;
 			}else{
 				$('#editorContainer').css("marginTop","0px");
+				toggleMark=true;
 
 			}
 			
