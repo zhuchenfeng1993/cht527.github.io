@@ -65,3 +65,16 @@ function bgmPlay(targetMusicMark){
 	}  
 
 }
+var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+		$("html, body").animate({scrollTop:0},400);
+}),
+$backToTopFun=function(){
+			var st=$(document).scrollTop(),
+			winh=$(window).height();
+			(st>0)?$backToTopEle.show():$backToTopEle.hide();
+			if(!window.XMLHttpRequest){
+				$backToTopEle.css("top",st+winh-166);
+			}
+};
+$(window).on("scroll",$backToTopFun);
+$(function(){$backToTopFun();});
