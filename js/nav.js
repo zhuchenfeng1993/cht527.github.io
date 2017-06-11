@@ -17,7 +17,7 @@ var	diaryLogin_obj={
 		    var reg = new RegExp('[a-zA-Z0-9\- ]');
 		    for (var i=0;i<l2;i++) {
 		        var val = l1.substr(i,1);
-		        var name = arraySearch(val,PinYin);
+		        var name = this.arraySearch(val,PinYin);
 		        if(reg.test(val)) {
 		            I1 += val;
 		        } else if (name!==false) {
@@ -32,9 +32,9 @@ var	diaryLogin_obj={
    			 return I1;
 		},
 		arraySearch:function(l1,l2){
-			for (var name in PinYin){
-		        if (PinYin[name].indexOf(l1)!=-1) {
-		            return ucfirst(name); break;
+			for (var name in this.PinYin){
+		        if (this.PinYin[name].indexOf(l1)!=-1) {
+		            return this.ucfirst(name); break;
 		        }
     		}
     		return false;
