@@ -48,6 +48,13 @@
             "author": "cht",
             "date": "2017-05-03",
             "category": "JavaScript"
+        },
+        {
+            "id": 18,
+            "title": "数组随机打乱算法",
+            "author": "cht",
+            "date": "2017-06-12",
+            "category": "JavaScript"
         }
     ]
 }

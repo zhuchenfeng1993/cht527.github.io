@@ -118,6 +118,13 @@
             "author": "<a href=\"https://segmentfault.com/a/1190000009662029\">jasonintju</a>",
             "date": "2017-06-11",
             "category": "F2E散文"
+        },
+        {
+            "id": 18,
+            "title": "数组随机打乱算法",
+            "author": "cht",
+            "date": "2017-06-12",
+            "category": "JavaScript"
         }
     ]
 }
