@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+  .btn{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-right: 15px 
+  }
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">数组随机打乱算法</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-06-12</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+    <p>相信很多前端开发者会都遇到一个问题：<b><font color="#ffcc00">随机将一组数字打乱</font></b></p><p>也相信绝大部分人在看到这个题目后会马上在脑子里闪过两个函数：</p><p><b style="background-color: rgb(255, 204, 0);">Math.random() 和 sort()</b></p><p>很好！恭喜你，你已经在解题过程中完成了一半的工作量！<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d8/good_thumb.gif" style="line-height: 1;"></p><p>为啥这么说呢？因为作为一个有经验的F2E，一定知道解决这个问题其实有一个非常'聪明'的实现思路，核心代码就是下面这个方法：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">   arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.random() - <span class="hljs-number">0.5</span>;
+   });</code></pre><p>接下来让我们对这简单的几句代码进行逐步解剖&nbsp;<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/cool_thumb.gif" style="line-height: 1;"></p><p>// arr是一个数组，sort方法是JavaScript的原生函数，作用是对数组进行排序<br>// 该函数这样工作的：<br>/*&nbsp;</p><p>每次从数组里面挑选两个数 进行运算。</p><p>如果传入的参数是0 两个数位置不变。</p><p>如果参数小于0 就交换位置</p><p>如果参数大于0就不交换位置</p><p>接下来用刚才的较大数字跟下一个进行比较。这样循环进行排序。<br>/*</p><p>恰好。我们利用了这一点使用了 <i>Math.random() -0.5 </i>这个运算的结果要么是大于0,要么是小于0.这样要么交换位置，要么不交换位置。当然大于或者小于0是随即出现的。所以数组就被随即排序了。</p><p>OK，看起来一切逻辑都说的通，但事实真的是这样吗？不多分析，直接写个Demo 验证一下：</p><h3>测试数组['a',&nbsp;'b',&nbsp;'c',&nbsp;'d',&nbsp;'e',&nbsp;'f',&nbsp;'g',&nbsp;'h',&nbsp;'i',&nbsp;'j']在N次随机处理后的位置分布</h3><h3><font size="2">我们可以挑选数组中的任何一个字母为例，如果上述算法正确，那在进行了N次随机处理后，那该字母在数组各个位置出现的次数应该是<font color="#ff0000">几乎一样</font>的！</font></h3><p><font size="2">先放核心代码：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-comment">//Math.Random-0.5 </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mathRandom_0_5</span>(<span class="hljs-params">arr</span>)</span>{
+   arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.random() - <span class="hljs-number">0.5</span>;
+   });
+}
+
+<span class="hljs-keyword">var</span> array_test1 = (<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">10</span>)).fill(<span class="hljs-number">0</span>)<span class="hljs-comment">//arr.fill(val) 将arr的每个值填充为val</span>
+
+</code></pre><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-comment">// 测试字符的位置</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_mathRandom_0_5</span>(<span class="hljs-params">str,method</span>)</span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) {
+        <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'f'</span>, <span class="hljs-string">'g'</span>, <span class="hljs-string">'h'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'j'</span>];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method); //调用 highcharts 对结果进行可视化
+
+}</code></pre><p><br></p><p>输入随机处理次数：<input id="id_1" type="text"></p><p><br></p>
+<button class="btn" onclick="test_mathRandom_0_5('a','Math.random()-0.5')"> a  </button>
+<button class="btn" onclick="test_mathRandom_0_5('b','Math.random()-0.5')"> b </button>
+<button class="btn" onclick="test_mathRandom_0_5('c','Math.random()-0.5')"> c  </button>
+<button class="btn" onclick="test_mathRandom_0_5('d','Math.random()-0.5')"> d  </button>
+<button class="btn" onclick="test_mathRandom_0_5('e','Math.random()-0.5')"> e  </button>
+<button class="btn" onclick="test_mathRandom_0_5('f','Math.random()-0.5')"> f  </button>
+<button class="btn" onclick="test_mathRandom_0_5('g','Math.random()-0.5')"> g  </button>
+<button class="btn" onclick="test_mathRandom_0_5('h','Math.random()-0.5')"> h  </button>
+<button class="btn" onclick="test_mathRandom_0_5('i','Math.random()-0.5')">  i  </button>
+<button class="btn" onclick="test_mathRandom_0_5('j','Math.random()-0.5')"> j  </button><p><br></p>
+<div id="container1"></div>
+<p><br></p><p>输入随机处理次数后可以点击a、b....j 中的任何一个，观察随机处理后该字母在各个位置出现的次数。当我们依次输入10、100、1000、10000、100000，点击处理后我们发现，字母对应的位置出现次数并不符合均等，甚至差别很大。<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9d/sada_thumb.gif" style="line-height: 1;"></p><p>为啥呢？刚才我们对代码进行分析后不是觉得逻辑思路很正确吗？？？带着这个疑问，从stackoverflow上搜了一下，（Ps：此处省略对知识求知的眼神）终于得到了答案：</p>
+<p>以下是某前端大牛的原话：</p><blockquote><p>翻看v8引擎数组部分的源码，注意到它出于对性能的考虑，对短数组使用的是插入排序，对长数组则使用了快速排序，至此，也就能理解为什么()&nbsp;=&gt;&nbsp;Math.random()&nbsp;-&nbsp;0.5并不能真正随机打乱数组排序了。有一个没明白的地方：源码中说的是对长度小于等于&nbsp;22&nbsp;的使用插入排序，大于&nbsp;22&nbsp;的使用快排，但实际测试结果显示分界长度是&nbsp;10。</p></blockquote><p>好吧，原来问题出在JavaScript的解析引擎！是程序员的程序员在底层“捣鬼”！那这问题就解决不了了吗？<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/62/crazya_thumb.gif" style="line-height: 1;"></p><p>此时脑海中又闪出一句话<span style="background-color: rgb(255, 204, 0);">“这残酷的时代，惶者都无法生存，只有迫害妄想狂才能”</span></p><p>带着微弱的希望google（搞IT的就别用某度）了半天，终于。。。一个词语闪到了我的眼睛：</p><p><i><font size="4">&nbsp;Fisher–Yates shuffle&nbsp;</font></i></p><p>--------------------------------------------华丽的分隔线---------------------------------------------</p><p>&nbsp;<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle" target="_blank">Fisher–Yates shuffle&nbsp;</a>&nbsp;详情请点击查看，本文只作一下简要介绍：</p><p>Fisher–Yates shuffle 算法是一个用来将一个有限集合生成一个随机排列的算法（数组随机排序）。这个算法生成的随机排列是等概率的。同时这个算法非常高效。</p><p>Fisher–Yates shuffle 算法的现代版本是为计算机设计的。由 Richard Durstenfeld 在1964年 描述。并且是被 Donald E. Knuth 在 《The Art of Computer Programming》 中推广。但是不管是 Durstenfeld 还是 Knuth，都没有在书的第一版中承认这个算法是 Fisher 和 Yates 的研究成果。也许他们并不知道。不过后来出版的 《The Art of Computer Programming》提到了 Fisher 和 Yates 贡献。</p><p>现代版本的描述与原始略有不同，因为如果按照原始方法，愚蠢的计算机会花很多无用的时间去计算上述第 3 步的剩余数字。这里的方法是在每次迭代时交换这个被取出的数字到原始列表的最后。这样就将时间复杂度从 O(n^2) 减小到了&nbsp;O(n)。算法的伪代码如下：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">-- To shuffle an array a <span class="hljs-keyword">of</span> n elements (indices <span class="hljs-number">0.</span>.n<span class="hljs-number">-1</span>):
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">from</span> n−<span class="hljs-number">1</span> downto <span class="hljs-number">1</span> <span class="hljs-keyword">do</span>
+     j ← random integer such that <span class="hljs-number">0</span> ≤ j ≤ i
+     exchange a[j] and a[i]</code></pre><p>该算法原理是：</p><ul><li>定义一个数组（shuffled），长度（length）是原数组（arr）长度；<br></li><li>取 0 到 index (初始0) 随机值 rand, shuffled[index] = shuffled[rand], shuffled[rand] = arr[index]，index++ ;&nbsp;<br></li><li>重复第二步，直到 index = length -1；<br></li><li>就是 shuffled 从 0 到 length-1 的赋值过程，并且新加入的值是 arr[index]，shuffled[index] 的值是已赋值的元素中随机值shuffled[rand]，因为这样会有两个重复的值，所以 shuffled[rand] 就等于新加入的值 arr[index]<br></li></ul><p>根据算法思路，我们可以写出JavaScript版本：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span> (<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">var</span> i=arr.length,t,j;
+    <span class="hljs-keyword">while</span>(i){
+        j=<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}</code></pre><p>另外还有核心代码如下：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-function"><span class="hljs-keyword"><p>var array_test2&nbsp;=&nbsp;(new&nbsp;Array(10)).fill(0); </p>function</span> <span class="hljs-title">test_shuffle</span>(<span class="hljs-params">str,method</span>)</span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) {
+        <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'f'</span>, <span class="hljs-string">'g'</span>, <span class="hljs-string">'h'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'j'</span>];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method);
+}</code></pre><p>OK，上Demo 验证：</p><p>输入随机处理次数：：<input id="id_2" type="text"></p><p><br></p>
+ <button class="btn" onclick="test_shuffle('a','shuffle')"> a  </button>
+ <button class="btn" onclick="test_shuffle('b','shuffle')"> b  </button>
+ <button class="btn" onclick="test_shuffle('c','shuffle')"> c  </button>
+ <button class="btn" onclick="test_shuffle('d','shuffle')"> d  </button>
+ <button class="btn" onclick="test_shuffle('e','shuffle')"> e  </button>
+ <button class="btn" onclick="test_shuffle('f','shuffle')"> f  </button>
+ <button class="btn" onclick="test_shuffle('g','shuffle')"> g  </button>
+ <button class="btn" onclick="test_shuffle('h','shuffle')"> h  </button>
+ <button class="btn" onclick="test_shuffle('i','shuffle')"> i  </button>
+ <button class="btn" onclick="test_shuffle('j','shuffle')"> j  </button>
+<p>随机处理次数依次输入10、100、1000、10000、100000，点击字母按钮，--- 奇迹出现了，一马平川的均匀分布，次数越多效果越明显，问题完美的解决了！<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0b/tootha_thumb.gif" style="line-height: 1;"></p>
+<div id="container2"></div><p><br></p>
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").text();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").text();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
