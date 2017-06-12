@@ -125,6 +125,13 @@
             "author": "cht",
             "date": "2017-06-12",
             "category": "JavaScript"
+        },
+        {
+            "id": 19,
+            "title": "What Do You Do When Programming Sucks ?",
+            "author": "<a href=\"https://blog.klimczyk.pl/2017/05/04/what-to-do-when-programming-sucks/\">jasonintju</a>  cht 译",
+            "date": "2017-06-18",
+            "category": "F2E散文"
         }
     ]
 }
