@@ -190,7 +190,7 @@ var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0);
 // 测试字符的位置
 
 function test_mathRandom_0_5(str,method){
-    var inputText=$("#id_1").text();
+    var inputText=$("#id_1").val();
     var n=parseInt(inputText);
     for (var i = 0; i < n; i ++) {
         var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
@@ -202,7 +202,7 @@ function test_mathRandom_0_5(str,method){
 }
 
 function test_shuffle(str,method){
-    var inputText=$("#id_2").text();
+    var inputText=$("#id_2").val();
     var n=parseInt(inputText);
     for (var i = 0; i < n; i ++) {
         var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
