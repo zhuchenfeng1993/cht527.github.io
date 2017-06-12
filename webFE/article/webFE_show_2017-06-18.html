@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">What Do You Do When Programming Sucks ?</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;<a href=\"https://blog.klimczyk.pl/2017/05/04/what-to-do-when-programming-sucks/\">jasonintju</a>  cht 译</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-06-18</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+                        
+                <p>You’re at your desk for the N-th hour straight. Typing is becoming a burden, and you’re thinking whether your keyboard is the modern equivalent of Sisyphus’s rock.<span style="line-height: 1;">Coffee won’t do it anymore. Plus, the magnesium levels in your body are so low that another cup of brown deliciousness might be the nail that drives you into an unproductive state of shaking and sweating profusely without putting out any code.</span></p><p>你已经对着电脑n个小时了。不知道该写什么代码，或者一种摔键盘的冲动正在你的胸中酝酿。</p><p>咖啡一杯接着一杯。不敢再喝了，因为搞不好要有副作用了，心跳加速，身体不由自主地颤抖，出冷汗，但还是无法产出任何代码。</p><p>All efforts to rediscover the joy of programming are futile, as you use the last bit of your energy to push back the words that are creeping around your mind in all caps:</p><h1>“PROGRAMMING SUCKS!”</h1><p>所有重新发现编程趣味的努力都徒劳无功，因为你的最后一点能量都用来驱逐大脑中正在攻城略地的话：</p><p><font size="4">“我写不出代码了！”</font></p><h1><i><font color="#c0c0c0">Tricky Nature of Programming &nbsp;<strong style="line-height: 1;">编程的本质是棘手</strong></font></i></h1><p>Even the best of us encounter unsolvable software engineering problems. When it happens, it doesn’t necessarily mean that you’re lacking skills or knowledge.</p><p>Programming isn’t an easy job and it can take unorthodox methods to stay productive at the level that you wish to be, and to keep committing quality code.</p><p>即使是最优秀的程序员也会遭遇无法解决的软件工程问题。碰到这样的问题，并不一定意味着你缺乏技能或知识。</p><p>编程不是一项容易的工作，我们可以通过采取非正统的方法来保持你想要的生产力水平，并确保提交高质量的代码。</p><p>When I spend hours on a problem and still can’t find a solution, I end up feeling wasted. I don’t mean drunk — more as “I never thought someone could get this tired”.</p><p>There’s no anger or sadness. It’s just that I’ve tried everything and it still isn’t working. I lose hope and get closer to resigning. I feel like switching jobs and becoming a bartender or something, where I wouldn’t have to put hours of research and testing into pouring someone a beer.</p><p>如果我在一个问题上花了几个小时，却仍然找不到解决方案的话，最后我会觉得这是浪费了时间。我不是胡言乱语——我只是觉得“没有人能够百死不悔”。</p><p>没有愤怒和悲伤。因为我已经尝试过所有方向，只是都走不通而已。失去希望，于是开始想辞职不干。我觉得自己应该换工作，去做做调酒师或其他，至少研究和测试在啤酒中加点什么不会耗去我数个小时的时间。</p><p>These are the thoughts that run through my head as I rest from typing. I wonder about life, wonder about code, and wonder why my energy is so depleted.</p><p>Is this productive? Well, I’ve never heard any expert say that “resignation and malaise make great code”, so probably not.</p><p>This raises the question: how do I escape this unproductive state?</p><p>这些都是我在不敲代码时的想法。我开始怀疑生活，怀疑编码，怀疑人生。</p><p>有成效不？好吧，我从来没听任何专家说过“辞职和萎靡不振”可以造就伟大的代码，所以可能并没有成效。</p><p>这就提出了一个问题：我们该如何避免这种没有成效的状态？</p><h1><i><font color="#c0c0c0">Rediscover the Problem, Rediscover Your Productivity</font></i><strong><font size="5" color="#c0c0c0"><i>重新发现问题，重新发现你的生产力</i></font></strong></h1><p>I suppose you may already have your own process for doing this. In that case just carry on doing it, I’m probably not going to tell you anything new.</p><p>If you’re new to coding, then I doubt that you already have a process for rediscovering your productivity.</p><p>可能你已经行进在这条路上了。那么此时你只要继续就可以了，我可能没有什么新的东西可以告诉你的。</p><p>如果你是新手，那么可能你还不知道如何重新发现生产力。</p><p>The ideas that I will share should help you maintain your productivity while programming, in a healthy way and without burning out. Those ideas are:</p><blockquote><p>Test different solutions until it feels repetitive</p></blockquote><blockquote><p>&nbsp;Look for open-source solutions online</p></blockquote><blockquote><p>&nbsp;Ask programmers with more experience than you</p></blockquote><blockquote><p>&nbsp;When all else fails, become Hercules Poirot</p></blockquote><p>下面我要分享的内容将有助于你在编程时以一种健康的方式保持生产力，不至于筋疲力竭。主要包括：</p><blockquote><p>测试不同的解决方案，直到感觉重复</p></blockquote><blockquote><p>在线寻找开源解决方案</p></blockquote><blockquote><p>向更有经验的程序员询问</p></blockquote><blockquote><p>如果一切都失败，那就潇洒放手</p></blockquote><br><h2>1 – Test different solutions until it feels repetitive</h2><p>Before you start researching or asking other developers (=wasting their time), you should try to work out every solution that you can, using the knowledge and ideas you already have.</p><p>As obvious as it might seem, too many programmers start from asking others before they even sit down to analyse the problem themselves. Don’t be one of them, don’t waste other people’s time.</p><p>Put in your work first, look for help later.</p><p><font size="4"><b>1 – 测试不同的解决方案，直到感觉重复</b></font></p><p>在你研究或询问其他开发人员（=浪费他们的时间）之前，你应该尝试使用你现有的知识和思维来制定每一个可能的解决方案。</p><p>显而易见的是，太多的程序员是从询问他人开始的，自己甚至都不曾静下心来分析问题本身。不要成为这样的讨厌鬼，尽可能不要浪费别人的时间。</p><p>先投身于工作，然后再寻求帮助。</p><h2>2 – Look for open-source code online</h2><p>When you’ve put in the work and it hasn’t led anywhere, your next step can be to try open-source code. A lot of&nbsp;coders build software&nbsp;for the fun of creating a solution and posting it&nbsp;online for everyone to use. Others post code they’ve used in commercial projects.</p><p><a href="https://github.com/">GitHub</a>&nbsp;is one of two main places where you look for open-source code. The other is&nbsp;<a href="http://stackoverflow.com/">StackOverflow</a>.</p><p>Solutions from these sites come in the form of reusable code that you can implement into your project.</p><p>Just remember that there is always a risk to using code developed by someone you don’t know. It might change the behaviour of your program in unexpected ways. Back-up your original code and proceed with caution and common sense.</p><p><font size="4">2 – 在线查找开源代码</font></p><p>当你投入于工作，却没有什么成果的时候，那么下一步你可以尝试开源代码。许多编程人员构建软件，是出于创造解决方案并在线发布以供大家使用的乐趣。有些人发布的代码曾被它们的程序员使用于商业项目。</p><p>GitHub是寻找开源代码的两个主要地方之一。另一个是StackOverflow。</p><p>这些网站的解决方案是采用可重用代码的形式，方便你在项目中实现。</p><p>谨记，使用其他人开发的代码总是有风险的。它可能会以你意想不到的方式改变程序的行为。备份原始代码，这是常识。</p><h2>3 – Ask programmers with more experience than you</h2><p>Have you ever asked someone for help, only to realise that you don’t even know what you’re asking about?</p><p>Before you ask anyone, you should prepare questions that you haven’t been able to answer with online research.</p><p>Come with a well-defined problem, and you should get a well-defined solution. Come with a chaotic description of a problem that you don’t understand yet — and you’ll get a chaotic response (and probably annoy someone).</p><p>If you there aren’t any developers around you that you could ask, look for them online. You can ask around on<a href="http://stackoverflow.com/">StackOverflow</a>, or the&nbsp;<a href="https://social.msdn.microsoft.com/Forums/en-US/home">MSDN Social Forums</a>, or look for Slack channels specifically dedicated to the technology you’re using.</p><p>Dig deep enough and you’ll find more online communities that are full of helpful, and often very experienced programmers able to help you. For instance, you might want to join FreeCodeCamp. Even if you’re already an experienced coder, you might find help in the&nbsp;<a href="https://www.freecodecamp.com/">FreeCodeCamp</a>&nbsp;chatroom, which currently holds 44,853 people (checked on 04.05.2017).</p><p><font size="4">3 – 向更有经验的程序员询问</font></p><p>你有没有碰到过这样的情况，向其他人求助却发现你甚至不知道自己在问什么？</p><p>在询问任何人之前，你得准备好一些你无法通过网络信息搜索解答的问题。</p><p>明确的问题，才能有明确的解决方案。如果是你自己都描述得云里雾里的问题——那么你只会得到一个云里雾里的回答（并且可能会惹恼他人）。</p><p>如果你周围没有任何开发者可以询问，那么也可以在线查找。你可以在StackOverflow或MSDN社交论坛上询问，或查找特别针对于你所用技术的Slack频道。</p><h2>4 – When all else fails, become Hercules Poirot</h2><p>Whenever Hercule Poirot was working a case he would gather all necessary information, twist his fashionable mustache and… go to sleep. Or drink tea.</p><p>Seems like he was avoiding real work, right? That’s where you’re heavily mistaken.</p><p>He was letting his “little grey cells” do the work, instead of obsessing or worrying about a murder case that seems unsolvable.</p><p>Agatha Christie may have not been aware of just how big of a lesson she was giving us through making Hercules Poirot into a character with such unorthodox ideas about knowledge work.</p><p>That’s because the hardest solutions often come when you’re the most relaxed — and it’s not literary fiction, but proven science. That’s when your brain is working in “diffused” mode, not in “focused” mode — you can learn the difference&nbsp;<a href="https://staciechoice1010.wordpress.com/2014/08/08/focused-vs-diffused-mode/">in this article</a>.</p><p>Overall the idea is to simply forget about the problem at hand, and let your conscious mind&nbsp;get absorbed by something different. Your subconscious mind will start connecting the dots and working towards that “a-ha” moment that you’ve been waiting for so long.</p><p><strong><font size="4">4 – 如果一切都失败，那就潇洒放手</font></strong></p><p>不要一心钻在死胡同里，实在不行，那就去干点别的事——睡觉，吃东西，等等。</p><p>你觉得这是在逃避工作？那就错了。</p><p>我要告诉你的是，当你最轻松的时候，往往正是解决办法灵机一现的时候，这不是我胡编乱造的，而是有科学的证明。此时你的大脑工作在“发散思维”的模式下，而不是在“集中注意力”的模式下——你可以在这篇文章中了解之间的差异。</p><p>总的来说，这个理念就是要你忘记手头的问题，让你的意识心灵沉浸到其他的事情中。此时，你的潜意识则开始连接要点，朝着顿悟的方向前行。</p><p>What can you do to help your brain&nbsp;work in diffused mode? Just relax:</p><p>&nbsp; &nbsp; &nbsp;Go for a walk (ancient philosophers used to give lectures while walking, because they already realised that&nbsp;<a href="http://www.newyorker.com/tech/elements/walking-helps-us-think" style="line-height: 1;">walking helps us think</a>&nbsp;)</p><ul><li><span style="line-height: 1.8;">Clean your office or apartment (and give yourself a reward once you’re finished)</span><br></li><li><br></li><li><span style="line-height: 1.8;">Meet a friend, grab a coffee, talk gossip (if you’re too focused on the problem, conversation with someone who’s not a coder will surely help)</span><br></li></ul><p>我们可以做些什么以便于帮助大脑在发散思维的模式下工作呢？放轻松就好了：</p><p>散步（古代哲学家非常习惯于在走路时演讲，因为他们意识到走路有助于思考）</p><p>清理办公室或住所（完成后给自己一个奖励）</p><p>与朋友约会，和杯咖啡，聊聊八卦（如果你过于关注问题的话，那么建议和不能提供帮助的非编码人员交谈）</p><h1>Summary</h1><p>I maintain a sort of healthy balance between programming and the rest of my life thanks to the ideas that I’ve described.</p><p>Whether you’re coding for the satisfaction, for the money or for a chance to change the world — programming shouldn’t be the only thing you think about, because you’ll go crazy.</p><p>If you’ve tried everything and still can’t solve a problem, try to forget about it completely. The breakthrough idea might appear once your subconscious mind connects the right dots.</p><p>总结</p><p>我在编程和生活两者之间保持了一种健康的平衡。</p><p>无论你是为了兴趣爱好、钱还是改变世界的宏图伟业而选择编程——编程都不应该是你唯一痴迷的东西，否则你会走火入魔。</p><p>最后再说一句，如果你绞尽脑汁，却仍然无法解决问题，那么不妨先放一放。通过潜意识的运作，搞不好突破性的想法就会灵光乍现。</p><p><br></p><p><br></p>
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
