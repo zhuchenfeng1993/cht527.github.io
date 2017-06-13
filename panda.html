@@ -133,6 +133,16 @@ window.onload=function(){
         })
 
         $(".article-panda").eq(0).addClass("article-panda-show");
+        var music_file="include/jojo.mp3";
+        if (window.HTMLAudioElement) {
+            try {
+                var oAudio = document.getElementById('myaudio'); 
+                oAudio.src = music_file;
+            }catch (e) {
+                                           
+                if(window.console && console.error("Error:" + e));
+            }
+        }  
                     
     }).fail(function (jqXHR, textStatus, errorThrown) {
         /*打印jqXHR对象的信息*/
@@ -147,17 +157,6 @@ window.onload=function(){
 }
 
 </script>
-<script>
-   var music_file="include/jojo.mp3";
-   if (window.HTMLAudioElement) {
-        try {
-            var oAudio = document.getElementById('myaudio'); 
-            oAudio.src = music_file;
-        }catch (e) {
-                                       
-            if(window.console && console.error("Error:" + e));
-        }
-    }  
-</script>
+
 </body>
 </html>
