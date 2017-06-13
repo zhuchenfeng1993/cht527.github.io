@@ -36,18 +36,7 @@
 	<audio id="myaudio" autoplay loop></audio>  
 </div>
 <canvas width="1366" height="643"></canvas>
-<script>
-   var music_file="include/jojo.mp3";
-   if (window.HTMLAudioElement) {
-        try {
-            var oAudio = document.getElementById('myaudio'); 
-            oAudio.src = music_file;
-        }catch (e) {
-                                       
-            if(window.console && console.error("Error:" + e));
-        }
-    }  
-</script>
+
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 
 <script>
@@ -156,6 +145,19 @@ window.onload=function(){
         console.log(errorThrown);
     });
 }
+
+</script>
+<script>
+   var music_file="include/jojo.mp3";
+   if (window.HTMLAudioElement) {
+        try {
+            var oAudio = document.getElementById('myaudio'); 
+            oAudio.src = music_file;
+        }catch (e) {
+                                       
+            if(window.console && console.error("Error:" + e));
+        }
+    }  
 </script>
 </body>
 </html>
