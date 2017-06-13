@@ -10,6 +10,7 @@
 <link rel="shortcut icon" href="./img/favicon.ico" /> 
 <link rel="stylesheet" href="./css/panda.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -32,10 +33,23 @@
     
     <span id="to-left" title="上一篇" style=""><i class="fa fa-arrow-circle-o-left"></i></span> 
     <span id="to-right" title="下一篇"><i class="fa fa-arrow-circle-o-right"></i></span> 
-	
+	<audio id="myaudio" autoplay loop></audio>  
 </div>
 <canvas width="1366" height="643"></canvas>
+<script>
+   var music_file="include/jojo.mp3";
+   if (window.HTMLAudioElement) {
+        try {
+            var oAudio = document.getElementById('myaudio'); 
+            oAudio.src = music_file;
+        }catch (e) {
+                                       
+            if(window.console && console.error("Error:" + e));
+        }
+    }  
+</script>
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+
 <script>
             document.addEventListener('touchmove', function (e) {
                 e.preventDefault()
@@ -104,6 +118,8 @@
             return false
         }
     })
+
+
 </script>
 <script>
 window.onload=function(){
