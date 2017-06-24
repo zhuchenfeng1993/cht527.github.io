@@ -86,7 +86,7 @@
 		var paramsString = window.location.search.substring(1);//URL ？后面的部分
 		var hasCheck=window.decodeURIComponent(window.atob(paramsString));
 
-		if (!hasCheck||parseInt(hasCheck.split("=")[0]+60*1000)<Date.parse(new Date())) {
+		if (!hasCheck||parseInt(hasCheck.split("=")[1]+60*1000)<Date.parse(new Date())) {
 			 	swal({
 			 		title:"还不认识你哦!",
 			 		type:"error",
