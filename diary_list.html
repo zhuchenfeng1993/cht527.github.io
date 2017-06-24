@@ -12,14 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
 	<link rel="stylesheet" href="/css/diary.css">
 	<title>心之契约</title>
-	<script>
-		var paramsString = window.location.search.substring(1);//URL ？后面的部分
-		var hasCheck=window.decodeURIComponent(window.atob(paramsString));
-		if (!hasCheck) {
-			alert("还不认识你哦");
-			window.location.href="http://caohaitao.cc";
-		}
-	</script>
+	
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 <div id="modal_load"><i class="fa fa-spinner fa-pulse"></i></div>
@@ -89,7 +82,14 @@
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="/js/nav.js"></script>
-
+<script>
+		var paramsString = window.location.search.substring(1);//URL ？后面的部分
+		var hasCheck=window.decodeURIComponent(window.atob(paramsString));
+		if (!hasCheck) {
+			 swal("OMG!", "还不认识你哦", "error");
+			 window.location.href="http://caohaitao.cc";
+		}
+</script>
 <script>
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 var list_config={
