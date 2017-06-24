@@ -97,7 +97,10 @@ function show_prompt() {
                             return false;
                         }
                         swal("欢迎登录", "曹海涛", "success");
-                        window.location.href = "/diary_list.html";
+                        var baseUrl="/diary_list.html";
+                        var targetUrl='hasCheck='+Date.parse(new Date());
+						var targetUrl_encode=window.btoa(window.encodeURIComponent(targetUrl));
+                        window.location.href =baseUrl+'?'+targetUrl_encode ;
                     });
                 } else if (yourNameArr.indexOf(inputValue) != -1) {
                     var pinYin_name = navObj.diaryLogin.codefans_net_CC2PY(inputValue);
