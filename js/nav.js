@@ -116,7 +116,10 @@ function show_prompt() {
                                 return false;
                             }
                             swal("欢迎", "真爱", "success");
-                            window.location.href = "/diary_list.html";
+                            var baseUrl="/diary_list.html";
+                            var targetUrl='hasCheck='+Date.parse(new Date());
+							var targetUrl_encode=window.btoa(window.encodeURIComponent(targetUrl));
+                            window.location.href =baseUrl+'?'+targetUrl_encode ;
                         });
                             
                        
