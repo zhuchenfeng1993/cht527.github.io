@@ -86,8 +86,12 @@
 		var paramsString = window.location.search.substring(1);//URL ？后面的部分
 		var hasCheck=window.decodeURIComponent(window.atob(paramsString));
 		if (!hasCheck) {
-			 swal("OMG!", "还不认识你哦", "error");
-			 window.location.href="http://caohaitao.cc";
+			 	swal({
+			 		title:"还不认识你哦!",
+			 		type:"error",
+					timer: 2000
+				});
+			 	window.location.href="http://caohaitao.cc";
 		}
 </script>
 <script>
