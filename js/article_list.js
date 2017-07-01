@@ -199,7 +199,14 @@ function getArticleListData(targetUrl){
 			$("#modal_load").hide();
 			$("#wrapper").removeClass('blur');
 			$('li[data-page='+list_config.curPage+']').addClass('active');	
-		}).fail(function(){
+		}).fail(function(jqXHR, textStatus, errorThrown){
+			console.log(jqXHR.responseText); //必要的时候编码一下:encodeURIComponent(jqXHR.responseText);
+		    console.log(jqXHR.status);
+		    console.log(jqXHR.readyState);
+		    console.log(jqXHR.statusText);
+		    /*打印其他两个参数的信息*/
+		    console.log(textStatus);
+		    console.log(errorThrown);
 		    alert('请求接口失败')
 		});
 }
