@@ -117,14 +117,9 @@ var list_config={
 	//-----时间轴选择---
 	$(".date-item").on('click',function () {
 		var date_year=$(this).text(),targetUrl="/data_source/diary/diary"+date_year+".json";
-		if (list_config.dataUrl==targetUrl) {
-			return false;
-		}else{
-			$("#article_items_contianer").children().remove();
-			$('#pagination_ul').children().remove();
-			getArticleListData(targetUrl)
-		}
-		
+		$("#article_items_contianer").children().remove();
+		$('#pagination_ul').children().remove();
+		getArticleListData(targetUrl)
 	})
 </script>
 </body>
