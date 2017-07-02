@@ -16,6 +16,7 @@ header{
 	display: inline-block;
 	font:normal normal 1em/35px STXingkai;
 }
+.nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;cursor: pointer;}
 
 .row{flex-direction: column;}	
 .nav-ul-list {

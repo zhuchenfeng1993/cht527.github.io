@@ -25,6 +25,7 @@ header{
 .col-md-4{
 	width: 30%
 }
+.nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;cursor: pointer;}
 
 .nav-ul-list{
 	font-size:1.2em;
