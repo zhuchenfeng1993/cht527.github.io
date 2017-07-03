@@ -132,6 +132,13 @@
             "author": "<a href=\"https://blog.klimczyk.pl/2017/05/04/what-to-do-when-programming-sucks/\">jasonintju</a>  cht 译",
             "date": "2017-06-18",
             "category": "F2E散文"
+        },
+        {
+            "id": 20,
+            "title": "重拾数组",
+            "author": "转自 <a href=\"http://www.cnblogs.com/pssp/p/6902031.html\">追梦子</a>",
+            "date": "2017-07-03",
+            "category": "JavaScript"
         }
     ]
 }
