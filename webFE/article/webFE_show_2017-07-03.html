@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">重拾数组</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;转自 <a href="http://www.cnblogs.com/pssp/p/6902031.html">追梦子</a></p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-07-03</span></p>
+	<div class="article_content">&nbsp;&nbsp;
+                           
+                <h3>Array构造器</h3><p>如果参数只有一个并且是Number类型，那么就是指定数组的长度，但不能是NaN，如果是多个会被当做参数列表。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">12</span>)
+<span class="hljs-comment">// (12) [undefined × 12]</span>
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-string">''</span>)
+<span class="hljs-comment">// [""]</span>
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>({})
+<span class="hljs-comment">// [Object]</span>
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>([])
+<span class="hljs-comment">// [Array(0)]</span>
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-literal">null</span>)
+<span class="hljs-comment">// [null]</span>
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-literal">NaN</span>)
+<span class="hljs-comment">// Uncaught RangeError: Invalid array length (无效的数组长度，因为NaN是Number类型，但又不是一个具体的数字因此报错)</span></code></pre><p><font color="#ffcc00">注意当只传递一个参数时，它只是指定该数组的长度，并不会去填充内容</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-literal">undefined</span>,<span class="hljs-literal">undefined</span>)
+(<span class="hljs-number">2</span>) [<span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>]
+<span class="hljs-number">0</span>: <span class="hljs-literal">undefined</span>
+<span class="hljs-number">1</span>: <span class="hljs-literal">undefined</span>
+length: <span class="hljs-number">2</span>
+__proto__: <span class="hljs-built_in">Array</span>(<span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">2</span>)
+(<span class="hljs-number">2</span>) [<span class="hljs-literal">undefined</span> × <span class="hljs-number">2</span>]
+length: <span class="hljs-number">2</span>
+__proto__: <span class="hljs-built_in">Array</span>(<span class="hljs-number">0</span>)</code></pre><p>由于传递一个参数时不会填充数组内容，因此forEach不会循环这些空内容，或者说forEach不是根据数组长度来循环的，<span style="background-color: rgb(255, 0, 0);">以下代码就不会被输出任何内容</span></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">6</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,index</span>)</span>{
+  <span class="hljs-built_in">console</span>.log(index)
+});</code></pre><p>像我们自己模拟的forEach基本上都是有问题的，因为我看大部分人都是通过for循环数组的长度来模拟的forEach</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forEach</span>(<span class="hljs-params">arr,fun</span>)</span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++){
+        fun(arr[i]);
+    }
+}</code></pre><p>这就说明在某些情况下数组的长度是不可靠的，并且我们没有办法去真实的模拟forEach，通过判断是不是undefined也是不准确的。</p><p>由于传递一个参数时只会增加数组长度而不会填充内容，因此我们可以利用这个特点来实现自定义索引起始位置。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">10</span>).concat([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item,index</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`item: <span class="hljs-subst">${item}</span> index: <span class="hljs-subst">${index}</span>`</span>);
+});
+<span class="hljs-comment">// item: 1 index: 10</span>
+<span class="hljs-comment">// item: 2 index: 11</span>
+<span class="hljs-comment">// item: 3 index: 12</span>
+<span class="hljs-comment">// item: 4 index: 13</span>
+<span class="hljs-comment">// item: 5 index: 14</span></code></pre><p>当然我们也可以这样玩</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">10</span>).concat([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]).concat(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>)).concat([<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>])</code></pre><p>输出：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">(<span class="hljs-number">25</span>) [<span class="hljs-literal">undefined</span> × <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-literal">undefined</span> × <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]
+<span class="hljs-number">10</span>:<span class="hljs-number">1</span>
+<span class="hljs-number">11</span>:<span class="hljs-number">2</span>
+<span class="hljs-number">12</span>:<span class="hljs-number">3</span>
+<span class="hljs-number">13</span>:<span class="hljs-number">4</span>
+<span class="hljs-number">14</span>:<span class="hljs-number">5</span>
+<span class="hljs-number">20</span>:<span class="hljs-number">6</span>
+<span class="hljs-number">21</span>:<span class="hljs-number">7</span>
+<span class="hljs-number">22</span>:<span class="hljs-number">8</span>
+<span class="hljs-number">23</span>:<span class="hljs-number">9</span>
+<span class="hljs-number">24</span>:<span class="hljs-number">10</span>
+length:<span class="hljs-number">25</span>
+__proto__:<span class="hljs-built_in">Array</span>(<span class="hljs-number">0</span>)</code></pre><p>这种方式有个好处就是，空内容不会被循环到。</p><p>它还可以用来实现相同的连续字符</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>+<span class="hljs-number">1</span>).join(<span class="hljs-string">"哈"</span>) <span class="hljs-comment">//由于数组索引是从0开始的所以需要加+1才是5</span>
+<span class="hljs-comment">// "哈哈哈哈哈"</span></code></pre><p>我们用它来输出一个好玩的</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">3</span>).concat([<span class="hljs-string">'l'</span>,<span class="hljs-string">'o'</span>,<span class="hljs-string">'v'</span>,<span class="hljs-string">'e'</span>]).concat(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">3</span>)).join(<span class="hljs-string">'--'</span>)
+<span class="hljs-comment">// "------l--o--v--e------"</span></code></pre><p>如果你希望设置默认填充内容可以使用数组的fill方法</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>).fill(<span class="hljs-number">999</span>)
+[<span class="hljs-number">999</span>, <span class="hljs-number">999</span>, <span class="hljs-number">999</span>, <span class="hljs-number">999</span>, <span class="hljs-number">999</span>]</code></pre><p>我们也可以使用下面这种方式来实现默认填充内容</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>).join(<span class="hljs-string">'5,'</span>).split(<span class="hljs-string">','</span>);
+arr.splice(<span class="hljs-number">-1</span>,<span class="hljs-number">1</span>);
+<span class="hljs-comment">// ["5", "5", "5", "5"]</span></code></pre><p>以上这种方式的缺点就是都会变成字符串。通过Array()方法来创建数组和用new方法来创建效果一样。</p><h3><br></h3><h3>数组的访问</h3><p>数组通过下标访问</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>][<span class="hljs-number">1</span>]
+<span class="hljs-comment">// 3</span></code></pre><p>当我们通过以下方式进行访问时，会被解析成连续运算返回最后一个值</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>][<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]
+<span class="hljs-comment">// 4</span></code></pre><p>由于以上[1,2]是去访问数组的下标因而被解析成了1,2结果返回的是2，所以以上输出4，数组也是一种特殊的对象，因此我们也可以通过键值对的形式去访问</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [];
+arr.say = <span class="hljs-string">'Hello'</span>;
+arr.say
+<span class="hljs-comment">// "Hello"</span></code></pre><h3>数组与其他值的运算</h3><p>数组和任何值相加都会将数组转换成字符串再进行拼接</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] + <span class="hljs-number">6</span>
+<span class="hljs-comment">// "1,2,36"</span>
+[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] + {}
+<span class="hljs-comment">// "1,2,3[object Object]"</span>
+[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] + [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-comment">// "1,2,31,2,3"</span></code></pre><p>如果数组只有一个值，那么当这个数组和其他值相减相乘等时会被转换为数字，如果为空会被转换为0</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">5</span>] - <span class="hljs-number">2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>如果是多个值，肯定是NaN</p><h3>遍历数组</h3><p>使用for</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, len = arr.length; i &lt; len; i++){
+    <span class="hljs-built_in">console</span>.log(arr[i])
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
+<span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// 5</span></code></pre><p>使用forEach</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
+arr.forEach((item)=&gt;<span class="hljs-built_in">console</span>.log(item))
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
+<span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// 5</span></code></pre><p>使用map、filter、some等方法都可以达到遍历数组的目的，不过这些方法都<span style="background-color: rgb(255, 0, 0);">不能直接通过return来跳出循环</span>，但我们可以通过以下方式来实现跳出循环</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">try</span>{
+    arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+        <span class="hljs-keyword">if</span>(item === <span class="hljs-number">3</span>){
+            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>();
+        }
+        <span class="hljs-built_in">console</span>.log(item);
+    });
+}<span class="hljs-keyword">catch</span>(e){
+}
+<span class="hljs-comment">// 2</span></code></pre><p>使用for in</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> arr){
+    <span class="hljs-built_in">console</span>.log(arr[k]);
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>不过由于for in会将继承的属性和方法也遍历出来，如下所示</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-built_in">Array</span>.prototype.a = <span class="hljs-number">123</span>;
+<span class="hljs-built_in">Array</span>.prototype.foo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{};
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> arr){
+    <span class="hljs-built_in">console</span>.log(arr[k]);
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
+<span class="hljs-comment">// 123</span>
+<span class="hljs-comment">// function (){}</span></code></pre><p>所以我们还得过滤一下</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-built_in">Array</span>.prototype.a = <span class="hljs-number">123</span>;
+<span class="hljs-built_in">Array</span>.prototype.foo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{};
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> arr){
+    <span class="hljs-keyword">if</span>(arr.hasOwnProperty(k)){
+        <span class="hljs-built_in">console</span>.log(arr[k]);
+    }
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>我们还可以使用for of来实现同样的效果，并且没有以上问题</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> arr){
+    <span class="hljs-built_in">console</span>.log(item)
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>有时我们并不希望一次性遍历所有的数组项，而是根据需求来执行，此时我们就需要用到迭代器了，数组中有一个keys方法可以生成一个迭代器，如下</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">var</span> iterator = arr.keys();
+<span class="hljs-built_in">console</span>.log(iterator.next().value);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'-----'</span>);
+<span class="hljs-built_in">console</span>.log(iterator.next().value);
+
+<span class="hljs-comment">// 0</span>
+<span class="hljs-comment">// -----</span>
+<span class="hljs-comment">// 1</span></code></pre><h3>其他</h3><p>实际上JavaScript中的数组并非是传统意义上的数组，而是一个关联数组，索引数组只是个表面现象，我们通过下标的方式去访问数组，它最终还是会被转换为字符串的。</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>][<span class="hljs-number">1</span>]
+<span class="hljs-comment">// 3</span></code></pre><p>其实它是这样</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>][<span class="hljs-string">"1"</span>]
+<span class="hljs-comment">// 3</span></code></pre><p>如果说javascript中的数组不是索引数组而是关联数组，那么我们在使用for循环时为什么可以按照顺序来输出呢？</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.length; i &lt; len; i++){
+    <span class="hljs-built_in">console</span>.log(arr[i]);
+}
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>如果我们仔细观察以上代码，会发现一个啃爹的现象，我们被欺骗了很久，我们是用0 1 2这样的形式去访问的数组，自然是按照顺序输出了，再看看下面这段代码，估计你就懂了</p><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-built_in">console</span>.log(arr[<span class="hljs-number">0</span>]);
+<span class="hljs-built_in">console</span>.log(arr[<span class="hljs-number">1</span>]);
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span></code></pre><p>你可是手动去访问人家某个具体属性的，你说能不是按照顺序输出吗。</p><p></p><p>这也就是为什么数组可以使用for in方法来循环的原因，因为本质上来讲数组具有对象的某些特性，也就说其实我们也可以自己用对象来模拟实现数组，不过我们需要手动去维护length属性，从另外一个角度上来讲JavaScript中的数组很大一部分只是维护了length属性，跟对象没什么两样。</p><p><br></p>                 
+                
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
