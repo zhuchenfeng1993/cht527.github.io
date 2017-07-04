@@ -56,7 +56,7 @@
 alert(sum); <span class="hljs-comment">// 10</span></code></pre>
 <p><font color="#ff0000">Array原型扩展实现forEach：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-built_in">Array</span>.prototype.forEach = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fn</span>)</span>{
 　　<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.length;i++){
-　　　　fn(<span class="hljs-keyword">this</span>[i],i);
+　　　　fn(<span class="hljs-keyword">this</span>[i],i,this);
 　　}
 };</code></pre><p><br></p>
 <p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的$.each</span></p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">$.each(array, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> index, value </span>) </span>{
