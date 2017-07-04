@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">Web图片资源的加载与渲染时机</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-07-13</span></p>
+	<div class="article_content">&nbsp;&nbsp;      
+      <p>要研究图片资源的加载和渲染，先要了解浏览器的工作原理，这在之前<a href="http://caohaitao.cc/webFE/article/webFE_show_2017-05-12.html" target="_blank">从输入URL到页面展示都发生了什么</a>一文中已经有详细说明了，在此简单回顾一下web资源在浏览器解析的过程：</p><p>浏览器加载一个HTML页面后进行如下操作：</p><ul><li><font size="3">解析HTML —&gt; 构建DOM树</font></li><li><font size="3"><br></font></li><li><font size="3">加载样式 —&gt; 解析样式 —&gt; 构建样式规则树</font></li><li><font size="3"><br></font></li><li><font size="3">加载javascript —&gt; 执行javascript代码</font></li><li><font size="3"><br></font></li><li><font size="3">把DOM树和样式规则树匹配构建渲染树</font></li><li><font size="3"><br></font></li><li><font size="3">计算元素位置进行布局</font></li><li><font size="3"><br></font></li><li><font size="3">绘制</font></li><li><font size="3"><br></font></li></ul><p>然后是<span style="line-height: 1;">图片加载和渲染的时机：</span></p><ul><li><font size="3">解析HTML【遇到标签加载图片】 —&gt; 构建DOM树</font></li><li><font size="3"><br></font></li><li><font size="3">加载样式 —&gt; 解析样式【遇到背景图片链接不加载】 —&gt; 构建样式规则树</font></li><li><font size="3"><br></font></li><li><font size="3">加载javascript —&gt; 执行javascript代码</font></li><li><font size="3"><br></font></li><li><font size="3">把DOM树和样式规则树匹配构建渲染树【加载渲染树上的背景图片】</font></li><li><font size="3"><br></font></li><li><font size="3">计算元素位置进行布局</font></li><li><font size="3"><br></font></li><li><font size="3">绘制【开始渲染图片】</font></li></ul><p><br></p><p><strong><font size="4" face="Georgia" color="#ff0000">图片加载与渲染规则</font></strong></p><p>页面中不是所有的<img>标签图片和样式表背景图片都会加载。</p><h5><b><font size="3" color="#0000ff"><u>display:none</u></font></b></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+.img-div {
+    background-image: url(./<span class="hljs-number">6.</span>png);
+}
+&lt;<span class="hljs-regexp">/style&gt;
+
+&lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">" style="</span>display:none<span class="hljs-string">"&gt;
+  
+&lt;div class="</span>img-div<span class="hljs-string">" style="</span>display:none<span class="hljs-string">"&gt;&lt;/div&gt;</span></code></pre><p>图片资源请求如下：</p><p><img src="../img/webFE_img/21_1.png"></p><p><span style="background-color: rgb(255, 204, 0);">设置了display:none属性的元素，图片不会渲染出来，但会加载。</span></p><p>原理</p><blockquote><p>把DOM树和样式规则树匹配构建渲染树时，会把可渲染元素上的所有属性（如display:none属性和background-image属性）结合一起产出到渲染树。</p></blockquote><blockquote><p>当解析渲染树时会加载标签元素上的图片，发现元素上有background-image属性时会加载背景图片。</p></blockquote><blockquote><p>当绘制时发现元素上有display:none属性，则不计算该元素位置，也不会绘制该元素。</p></blockquote><p><br></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+.img-div {
+    background-image: url(./<span class="hljs-number">6.</span>png);
+}
+&lt;<span class="hljs-regexp">/style&gt;
+&lt;div style="display:none"&gt;
+
+  &lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;
+
+   &lt;div class="</span>img-div<span class="hljs-string">"&gt;&lt;/div&gt;
+
+&lt;/div&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">设置了display:none属性元素的子元素，样式表中的背景图片不会渲染出来，也不会加载；</span></p><p><span style="background-color: rgb(255, 204, 0);">而标签的图片不会渲染出来，但会加载。</span></p><p>原理</p><blockquote><p>正如上面所说的，构建渲染树时，只会把可渲染元素产出到渲染树，这就意味有不可渲染元素，当匹配DOM树和样式规则树时，若发现一个元素的属性上有display:none，浏览器会认为该元素的子元素是不可渲染的，因此不会把该元素的子元素产出到渲染树上。</p></blockquote><blockquote><p>当解析渲染树时渲染树上没有设置了display:none属性元素的子元素，因此不会加载该元素中子元素的图片。</p></blockquote><blockquote><p>当绘制时也因为渲染树上没有设置了display:none属性元素的子元素，因此该元素中子元素不会渲染出来。</p></blockquote><h5><br></h5><h5><font size="3" color="#0000ff"><u>重复图片</u></font></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+.img-div {
+    background-image: url(./<span class="hljs-number">2.</span>png);
+}
+&lt;<span class="hljs-regexp">/style&gt;
+
+&lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;
+&lt;img src="</span>./<span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;
+&lt;div class="</span>img-div<span class="hljs-string">"&gt;&lt;/div&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">页面中多个标签或样式表中的背景图片图片路径是同一个，图片只加载一次。</span></p><p>原理</p><blockquote><p>浏览器请求资源时，都会先判断是否有缓存，若有缓存且未过期则会从缓存中读取，不会再次请求。先加载的图片会存储到浏览器缓存中，后面再次请求同路径图片时会直接读取缓存中的图片。</p></blockquote><h5><br></h5><h5><font size="3" color="#0000ff"><u>不存在元素的背景图片</u></font></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+.img-div {
+    background-image: url(./<span class="hljs-number">3.</span>png);
+}
+&lt;<span class="hljs-regexp">/style&gt;
+
+&lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">不存在元素的背景图片不会加载。</span></p><p>原理</p><blockquote><p>不存在的元素不会产出到DOM树上，因此渲染树上也不会有不存在的元素，当解析渲染树时无法解析不存在的元素，不存在的元素上的图片自然不会加载也不会渲染。</p></blockquote><h5><br></h5><h5><u><font size="3" color="#0000ff">伪类的背景图片</font></u></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+.img-div {
+  width: <span class="hljs-number">100</span>px;height: <span class="hljs-number">100</span>px;
+    background-image: url(./<span class="hljs-number">2.</span>png);
+}
+.img-div:hover{
+  background-image: url(./<span class="hljs-number">6.</span>png);
+}
+&lt;<span class="hljs-regexp">/style&gt;
+
+&lt;div class="img-div"&gt;&lt;/</span>div&gt;</code></pre><p>触发hover前的图片资源请求如下：</p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p>触发hover后的图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_1.png"></p><p><span style="background-color: rgb(255, 204, 0);">当触发伪类的时候，伪类样式上的背景图片才会加载。</span></p><p>原理</p><blockquote><p>触发hover前，DOM树与样式规则树匹配的是无hover状态选择器.img-green的样式，因此渲染树上background-image属性的值是url(../image/green.png)，解析渲染树时加载的是green.png，绘制时渲染的也是green.png。</p></blockquote><p></p><blockquote><p>触发hover后，因为.img-green:hover的优先级比较高，因此DOM树与样式规则树匹配的是有hover状态选择器.img-green:hover的样式，渲染树上background-image属性的值是url(../image/red.png)，解析渲染树时加载的是red.png，绘制时渲染的也是red.png。</p></blockquote><p><br></p><p>---------------------------------------- &nbsp;低调的分隔线 &nbsp;-----------------------------------------------</p><p>以上实例全部经过检验，无特殊情况，干货满满的一篇文章<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/shamea_thumb.gif" style="line-height: 1;"></p><p><br></p>
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
