@@ -76,13 +76,13 @@
 
 &lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;
 &lt;img src="</span>./<span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;
-&lt;div class="</span>img-div<span class="hljs-string">"&gt;&lt;/div&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">页面中多个标签或样式表中的背景图片图片路径是同一个，图片只加载一次。</span></p><p>原理</p><blockquote><p>浏览器请求资源时，都会先判断是否有缓存，若有缓存且未过期则会从缓存中读取，不会再次请求。先加载的图片会存储到浏览器缓存中，后面再次请求同路径图片时会直接读取缓存中的图片。</p></blockquote><h5><br></h5><h5><font size="3" color="#0000ff"><u>不存在元素的背景图片</u></font></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+&lt;div class="</span>img-div<span class="hljs-string">"&gt;&lt;/div&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="/img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">页面中多个标签或样式表中的背景图片图片路径是同一个，图片只加载一次。</span></p><p>原理</p><blockquote><p>浏览器请求资源时，都会先判断是否有缓存，若有缓存且未过期则会从缓存中读取，不会再次请求。先加载的图片会存储到浏览器缓存中，后面再次请求同路径图片时会直接读取缓存中的图片。</p></blockquote><h5><br></h5><h5><font size="3" color="#0000ff"><u>不存在元素的背景图片</u></font></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
 .img-div {
     background-image: url(./<span class="hljs-number">3.</span>png);
 }
 &lt;<span class="hljs-regexp">/style&gt;
 
-&lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">不存在元素的背景图片不会加载。</span></p><p>原理</p><blockquote><p>不存在的元素不会产出到DOM树上，因此渲染树上也不会有不存在的元素，当解析渲染树时无法解析不存在的元素，不存在的元素上的图片自然不会加载也不会渲染。</p></blockquote><h5><br></h5><h5><u><font size="3" color="#0000ff">伪类的背景图片</font></u></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
+&lt;img src="./</span><span class="hljs-number">2.</span>png<span class="hljs-string">"&gt;</span></code></pre><p>图片资源请求如下：</p><p><br></p><p><br></p><p><img src="/img/webFE_img/21_2.png"></p><p><span style="background-color: rgb(255, 204, 0);">不存在元素的背景图片不会加载。</span></p><p>原理</p><blockquote><p>不存在的元素不会产出到DOM树上，因此渲染树上也不会有不存在的元素，当解析渲染树时无法解析不存在的元素，不存在的元素上的图片自然不会加载也不会渲染。</p></blockquote><h5><br></h5><h5><u><font size="3" color="#0000ff">伪类的背景图片</font></u></h5><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;style&gt;
 .img-div {
   width: <span class="hljs-number">100</span>px;height: <span class="hljs-number">100</span>px;
     background-image: url(./<span class="hljs-number">2.</span>png);
@@ -92,7 +92,7 @@
 }
 &lt;<span class="hljs-regexp">/style&gt;
 
-&lt;div class="img-div"&gt;&lt;/</span>div&gt;</code></pre><p>触发hover前的图片资源请求如下：</p><p><br></p><p><img src="../img/webFE_img/21_2.png"></p><p>触发hover后的图片资源请求如下：</p><p><br></p><p><br></p><p><img src="../img/webFE_img/21_1.png"></p><p><span style="background-color: rgb(255, 204, 0);">当触发伪类的时候，伪类样式上的背景图片才会加载。</span></p><p>原理</p><blockquote><p>触发hover前，DOM树与样式规则树匹配的是无hover状态选择器.img-green的样式，因此渲染树上background-image属性的值是url(../image/green.png)，解析渲染树时加载的是green.png，绘制时渲染的也是green.png。</p></blockquote><p></p><blockquote><p>触发hover后，因为.img-green:hover的优先级比较高，因此DOM树与样式规则树匹配的是有hover状态选择器.img-green:hover的样式，渲染树上background-image属性的值是url(../image/red.png)，解析渲染树时加载的是red.png，绘制时渲染的也是red.png。</p></blockquote><p><br></p><p>---------------------------------------- &nbsp;低调的分隔线 &nbsp;-----------------------------------------------</p><p>以上实例全部经过检验，无特殊情况，干货满满的一篇文章<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/shamea_thumb.gif" style="line-height: 1;"></p><p><br></p>
+&lt;div class="img-div"&gt;&lt;/</span>div&gt;</code></pre><p>触发hover前的图片资源请求如下：</p><p><br></p><p><img src="/img/webFE_img/21_2.png"></p><p>触发hover后的图片资源请求如下：</p><p><br></p><p><br></p><p><img src="/img/webFE_img/21_1.png"></p><p><span style="background-color: rgb(255, 204, 0);">当触发伪类的时候，伪类样式上的背景图片才会加载。</span></p><p>原理</p><blockquote><p>触发hover前，DOM树与样式规则树匹配的是无hover状态选择器.img-green的样式，因此渲染树上background-image属性的值是url(../image/green.png)，解析渲染树时加载的是green.png，绘制时渲染的也是green.png。</p></blockquote><p></p><blockquote><p>触发hover后，因为.img-green:hover的优先级比较高，因此DOM树与样式规则树匹配的是有hover状态选择器.img-green:hover的样式，渲染树上background-image属性的值是url(../image/red.png)，解析渲染树时加载的是red.png，绘制时渲染的也是red.png。</p></blockquote><p><br></p><p>---------------------------------------- &nbsp;低调的分隔线 &nbsp;-----------------------------------------------</p><p>以上实例全部经过检验，无特殊情况，干货满满的一篇文章<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/shamea_thumb.gif" style="line-height: 1;"></p><p><br></p>
 	</div>
 	</article>
 	
