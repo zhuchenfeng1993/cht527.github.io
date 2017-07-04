@@ -44,18 +44,22 @@
 	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
 	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-05-03</span></p>
 	<div class="article_content">&nbsp;&nbsp;
-			<p>本文主要介绍ES5中几个实用的数组方法，如下：</p><ol><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#foreach">forEach</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#map">map</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#filter">filter</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#some">some</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#every">every</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#indexof">indexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#lastindexof">lastIndexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduce">reduce</a>&nbsp;(js v1.8)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduceright">reduceRight</a>&nbsp;(js v1.8)</li></ol><p><b><i>注意：</i></b></p><p>浏览器兼容性</p><ul><li>Opera 11+</li><li>Firefox 3.6+</li><li>Safari 5+</li><li>Chrome 8+</li><li>Internet Explorer 9+</li></ul><p>Array原型扩展可以实现以上全部功能，例如<code>forEach</code>方法:</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Array</span>.prototype.forEach != <span class="hljs-string">"function"</span>) {
-  <span class="hljs-built_in">Array</span>.prototype.forEach = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">/* 实现 */</span>
-  };
-}</code></pre><p>接下来就开始一个个剖析：</p><p><strong><font size="3">1、forEach</font></strong></p><p><code>forEach</code>方法中的<code>function</code>回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身。</p><p>一个稍显完整的例子了，数组求和：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+			<p>本文主要介绍ES5中几个实用的数组方法，如下：</p><ol><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#foreach">forEach</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#map">map</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#filter">filter</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#some">some</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#every">every</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#indexof">indexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#lastindexof">lastIndexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduce">reduce</a>&nbsp;(js v1.8)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduceright">reduceRight</a>&nbsp;(js v1.8)</li></ol><p><b><i>注意：</i></b></p><p>浏览器兼容性</p><ul><li>Opera 11+</li><li>Firefox 3.6+</li><li>Safari 5+</li><li>Chrome 8+</li><li>Internet Explorer 9+</li></ul>
+
+      <p>接下来就开始一个个剖析：</p><p><strong><font size="3">1、forEach</font></strong></p><p><code>forEach</code>方法中的<code>function</code>回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身。</p><p>一个稍显完整的例子了，数组求和：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
 
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (value<span class="hljs-params">, index, array</span>) </span>{
   <span class="hljs-built_in">console</span>.log(array[index] == value); <span class="hljs-comment">// true</span>
   sum += value;
 });
 
-alert(sum); <span class="hljs-comment">// 10</span></code></pre><p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的$.each</span></p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">$.each(array, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> index, value </span>) </span>{
+alert(sum); <span class="hljs-comment">// 10</span></code></pre>
+<p><font color="#ff0000">Array原型扩展实现forEach：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-built_in">Array</span>.prototype.forEach = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fn</span>)</span>{
+　　<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.length;i++){
+　　　　fn(<span class="hljs-keyword">this</span>[i],i);
+　　}
+};</code></pre><p><br></p>
+<p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的$.each</span></p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">$.each(array, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> index, value </span>) </span>{
   <span class="hljs-comment">//......</span>
 });</code></pre><p><span style="background-color: rgb(192, 192, 192);"><font color="#000000"><a href="http://lib.csdn.net/base/jquery" target="_blank"><font color="#000000">jQuery</font></a>对象可以直接调用</font>each:</span></p><p>$("input").each(function(){</p><p>&nbsp;&nbsp;&nbsp;$(this).val()........</p><p>});</p><p>注意：回调函数中的参数<span style="line-height: 1;"><font color="#ff0000">value 、index</font>&nbsp;</span>与 forEach &nbsp; 相反 ！</p><p><b><font size="3">2、Map</font></b></p><p>基本用法跟<code>forEach</code>方法类似：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">[].map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, index, array</span>) </span>{
     <span class="hljs-comment">// ...</span>
@@ -75,14 +79,31 @@ alert(arrayOfSquares); <span class="hljs-comment">// 1, 4, 9, 16</span></code></
 
 <span class="hljs-keyword">var</span> emails = users.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">user</span>) </span>{ <span class="hljs-keyword">return</span> user.email; });
 
-<span class="hljs-built_in">console</span>.log(emails.join(<span class="hljs-string">", "</span>)); <span class="hljs-comment">// zhang@email.com, jiang@email.com, li@email.com</span></code></pre><p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的$.map</span></p><pre><div><div><code class="hljs javascript" codemark="1">$.map( array, <span><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(<span class="hljs-params"> value, index </span>) </span>{</code></div></div><div><div><code class="hljs cpp" codemark="1">  <span><span class="hljs-comment">// Do something</span></span></code></div></div><div><div><code class="hljs" codemark="1">});</code></div></div></pre><p><span style="background-color: rgb(192, 192, 192);"><a href="http://lib.csdn.net/base/jquery" target="_blank"><font color="#000000">jQuery</font></a>对象可以直接调用map:</span></p><pre>$("input")<span style="font-size: inherit; line-height: 1.5; white-space: pre-wrap;">.map(</span><span class="hljs-function" style="font-size: inherit; white-space: pre-wrap;"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><span style="font-size: inherit; line-height: 1.5; white-space: pre-wrap;">{</span><code class="hljs javascript" codemark="1">  <span class="hljs-keyword">return</span> $(<span class="hljs-keyword">this</span>).val();
+<span class="hljs-built_in">console</span>.log(emails.join(<span class="hljs-string">", "</span>)); <span class="hljs-comment">// zhang@email.com, jiang@email.com, li@email.com</span></code></pre>
+<p><font color="#ff0000">Array原型扩展实现map：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><p>Array.prototype.map&nbsp;=&nbsp;function(fn){
+</p><p>　　var&nbsp;arr&nbsp;=&nbsp;[];
+</p><p>　　for(var&nbsp;i=0;i&lt;this.length;i++){
+</p><p>　　　　arr.push(fn(this[i],i,this));
+</p><p>　　}
+</p><p>　　return&nbsp;arr;
+</p><p>};</p></code></pre><p><br></p>
+<p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的$.map</span></p><pre><div><div><code class="hljs javascript" codemark="1">$.map( array, <span><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(<span class="hljs-params"> value, index </span>) </span>{</code></div></div><div><div><code class="hljs cpp" codemark="1">  <span><span class="hljs-comment">// Do something</span></span></code></div></div><div><div><code class="hljs" codemark="1">});</code></div></div></pre><p><span style="background-color: rgb(192, 192, 192);"><a href="http://lib.csdn.net/base/jquery" target="_blank"><font color="#000000">jQuery</font></a>对象可以直接调用map:</span></p><pre>$("input")<span style="font-size: inherit; line-height: 1.5; white-space: pre-wrap;">.map(</span><span class="hljs-function" style="font-size: inherit; white-space: pre-wrap;"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span><span style="font-size: inherit; line-height: 1.5; white-space: pre-wrap;">{</span><code class="hljs javascript" codemark="1">  <span class="hljs-keyword">return</span> $(<span class="hljs-keyword">this</span>).val();
 })</code>.get().join(", ");</pre><p><b>3、filter</b></p><p><code>filter</code>为“过滤”、“筛选”之意。指数组<code>filter</code>后，返回过滤后的新数组</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">[].filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, index, array</span>) </span>{
     <span class="hljs-comment">// ...</span>
 });</code></pre><p><code>filter</code>的<code>callback</code>函数需要返回布尔值<code>true</code>或<code>false</code>. 如果为<code>true</code>则表示，恭喜你，通过啦<img src="http://mat1.gtimg.com/www/mb/images/face/188.gif">！如果为<code>false</code>, 只能高歌“我只能无情地将你抛弃……”<img src="http://mat1.gtimg.com/www/mb/images/face/186.gif">。但经过测试发现：<span style="line-height: 1;">返回值只要是弱等于</span><code>== true/false</code><span style="line-height: 1;">就可以了，而非非得返回</span><span style="line-height: 1;">&nbsp;</span><code>=== true/false</code><span style="line-height: 1;">. 下面栗子可以证明：</span></p><pre>var data = [0, 1, 2, 3];
 var arrayFilter = data.filter(function(item) {
     return item;
 });
-console.log(arrayFilter); <span>// [1, 2, 3]</span></pre><p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的filter</span></p><p><span style="background-color: rgb(192, 192, 192);">jQuery中的filter函数有两种形式</span></p><p>第一种用法：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">$(<span class="hljs-string">'a'</span>).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) </span>{  
+console.log(arrayFilter); <span>// [1, 2, 3]</span></pre>
+<p><font color="#ff0000">Array原型扩展实现filter：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><p>Array.prototype.filter&nbsp;=&nbsp;function(fn){
+</p><p>　　var&nbsp;arr&nbsp;=&nbsp;[];
+</p><p>　　for(var&nbsp;i=0;i&lt;this.length;i++){
+</p><p>　　　　fn(this[i],i,this)&amp;&amp;arr.push(this[i]);
+</p><p>　　}
+</p><p>　　return&nbsp;arr;
+</p><p></p><p>};
+</p></code></pre><p><br></p>
+<p><span style="background-color: rgb(255, 204, 0);">对比 Jquery中的filter</span></p><p><span style="background-color: rgb(192, 192, 192);">jQuery中的filter函数有两种形式</span></p><p>第一种用法：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">$(<span class="hljs-string">'a'</span>).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) </span>{  
     <span class="hljs-keyword">return</span> $(<span class="hljs-keyword">this</span>).hasClass(<span class="hljs-string">'external'</span>);  
 })  </code></pre><p>对于每个元素，如果该函数返回 true，则元素会被包含在已筛选集合中；否则，会排除这个元素。</p><p>第二种用法：</p><pre>.filter(<i>selector</i>)</pre><p>第二种用法中接收的参数很不一样，传入的是<span style="line-height: 1;">字符串值，包含<font color="#ffcc00">供匹配当前元素集合的选择器表达式</font>。</span></p><p><b>4、some</b></p><p><code>some</code>意指“某些”，指是否“某些项”合乎条件</p><p>some() 方法会依次执行数组的每个元素：</p><ul><li>如果有一个元素满足条件，则表达式返回true&nbsp;, 剩余的元素不会再执行检测。</li><li>如果没有满足条件的元素，则返回false。</li></ul><p>注意：&nbsp;some() 不会对空数组进行检测。 some() 不会改变原始数组。</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1">array.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(v<span class="hljs-params">alue,index,array</span>){
 
@@ -95,7 +116,16 @@ function higherThanCurrent(score) {
 
 if (scores.some(higherThanCurrent)) {
   alert("朕准了！");
-}</pre><p><b>5、every</b></p><p>跟<code>some</code>的基友关系已经是公开的秘密了，同样是返回Boolean值，不过，<code>every</code>需要每一个妃子都要让朕满意，否则——“来人，给我拖出去砍了！”</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> scores = [<span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">10</span>];
+}</pre>
+<p><font color="#ff0000">Array原型扩展实现some：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><p>Array.prototype.some&nbsp;=&nbsp;function(fn){
+</p><p>　　for(var&nbsp;i=0;i&lt;this.length;i++){
+</p><p>　　　　if(fn(this[i],i,this)){
+</p><p>　　　　　　return&nbsp;true;
+</p><p>　　　　};
+</p><p>　　}
+</p><p>　　return&nbsp;false;
+</p><p>};</p></code></pre><p><br></p>
+<p><b>5、every</b></p><p>跟<code>some</code>的基友关系已经是公开的秘密了，同样是返回Boolean值，不过，<code>every</code>需要每一个妃子都要让朕满意，否则——“来人，给我拖出去砍了！”</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> scores = [<span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">10</span>];
 <span class="hljs-keyword">var</span> current = <span class="hljs-number">7</span>;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">higherThanCurrent</span>(<span class="hljs-params">score</span>) </span>{
@@ -105,7 +135,17 @@ if (scores.some(higherThanCurrent)) {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"朕准了！"</span>);
 } <span class="hljs-keyword">else</span> {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"来人，拖出去斩了！"</span>);        
-}</code></pre><p><b>6、<span style="line-height: 1;">indexOf</span></b></p><p><code>indexOf</code>方法在字符串中自古就有，<code>string.indexOf(searchString, position)</code>。数组这里的<code>indexOf</code>方法与之类似。</p><pre>array.indexOf(searchElement[, fromIndex])</pre><p>返回整数索引值，如果没有匹配（严格匹配），返回-1.&nbsp;fromIndex可选，表示从这个位置开始搜索，若缺省或格式不合要求，使用默认值0</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> data = [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>];
+}</code></pre>
+<p><font color="#ff0000">Array原型扩展实现every：</font></p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><p>Array.prototype.every&nbsp;=&nbsp;function(fn){
+</p><p>　　for(var&nbsp;i=0;i&lt;this.length;i++){
+</p><p>　　　　if(!fn(this[i],i,this)){
+</p><p>　　　　　　return&nbsp;false;
+</p><p>　　　　};
+</p><p>　　}
+</p><p>　　return&nbsp;true;
+</p><p></p><p>};
+</p></code></pre><p><br></p>
+<p><b>6、<span style="line-height: 1;">indexOf</span></b></p><p><code>indexOf</code>方法在字符串中自古就有，<code>string.indexOf(searchString, position)</code>。数组这里的<code>indexOf</code>方法与之类似。</p><pre>array.indexOf(searchElement[, fromIndex])</pre><p>返回整数索引值，如果没有匹配（严格匹配），返回-1.&nbsp;fromIndex可选，表示从这个位置开始搜索，若缺省或格式不合要求，使用默认值0</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> data = [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>];
 
 <span class="hljs-built_in">console</span>.log(data.indexOf(<span class="hljs-number">5</span>, <span class="hljs-string">"x"</span>)); <span class="hljs-comment">// 1 ("x"被忽略)</span>
 <span class="hljs-built_in">console</span>.log(data.indexOf(<span class="hljs-number">5</span>, <span class="hljs-string">"3"</span>)); <span class="hljs-comment">// 4 (从3号位开始搜索)</span>
