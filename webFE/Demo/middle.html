@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>各类水平垂直居中</title>
+	<style type="text/css">
+		/*--水平居中--*/
+			/*--行内元素--*/
+			/*
+			text-align: center 
+
+			适用元素：文字，链接，及其其它inline或者inline-*类型元素（inline-block，inline-table）
+			*/
+			.line-center{
+				text-align: center;
+				display: inline-block;
+				width: 200px;
+				border: 1px solid red;
+			}
+			/*--单个块级元素--*/
+			/*
+			对于块状元素（display:block）来说，我们需要将它的左右外边距（即margin-left，margin-right）设置为auto，即可实现块状元素的居中
+			*/
+			.horizontal-block{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				margin: 0 auto
+			}
+
+			/*--多个块级元素--*/
+			/*
+			①  将元素的display属性设置为inline-block，并且把父元素的text-align属性设置为center即可实现
+			②  使用flexbox    父元素display:flex;  justify-content: center;
+			*/
+			.horizontal-muti-block{
+				text-align: center;
+				width: 600px;
+				height: 100px;
+				border:1px solid red;
+
+			}
+			.horizontal-muti-block div{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				background: blue
+			}
+		/*--垂直居中--*/
+			/*--单个行内元素--*/
+			/*
+				当一个行内元素，高度由line-height决定。即inline，inline-*类型的元素需要居中的话，可以将它的height和line-height同时设置为父元素的高度即可实现垂直居中效果
+			*/
+			.vertical-single-inline{
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				border:1px solid red;
+			}
+			.vertical-single-inline span{
+				display: inline-block;
+			}
+			/*--多行行内元素：--*/
+			/*--组合使用display:table-cell和vertical-align:middle属性来定义需要居中的元素的父容器元素生成效果*/
+			.vertical-muti-inline{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				display: table-cell;
+				vertical-align: middle;
+
+				/*水平 居中*/
+				/* text-align: center; */
+			}
+
+			/*--图片--*/
+			.vertical-single-img{
+				width: 500px;
+				height: 400px;
+				line-height: 400px;
+				border:1px solid red;
+
+				/*水平 居中*/
+				text-align: center;
+			}
+			
+			.vertical-single-img-child{
+				vertical-align: middle;
+			}
+			
+			/* ---多图片垂直居中--- */
+			.vertical-muti-img{
+				width: 800px;
+				height: 280px;
+
+				/*水平 居中*/
+				text-align: center;
+			}
+			.vertical-muti-img span{
+				display: inline-block;
+				vertical-align: middle;
+			};
+			.vertical-muti-img-child{
+				vertical-align: middle;
+			}
+			/*--已知高度的块级元素--*/
+		    /*--设置margin-top为（父级元素高度-居中元素高度)/2 */
+		    .height-known-block,.height-unknown-block{
+		    	width: 300px;height: 300px;border:1px solid blue;position: relative;
+		    }
+		    .height-known-block .inner{
+		    	width:100px;height:100px;border:1px solid red;margin-top:100px
+		    }
+		    /*--未知高度 块级元素--*/
+		    /*---   这里我们使用css3的transform来达到类似效果--*/
+		    .height-unknown-block .inner{
+		    	width:100px;height:100px;border:1px solid blue;
+    			top: 50%;
+			    position: absolute;
+			    transform: translateY(-50%); 
+			    background: red
+    		}
+	</style>
+</head>
+<body>
+<!-- 水平居中 -->
+	<!-- 行内元素 -->
+	<h2>水平居中--行内元素</h2>
+	<span class="line-center"><span>水平居中</span></span><br/><br/><br/>
+
+	<!-- 块级元素 -->
+	
+	<h2>水平居中 单个块级元素</h2>
+
+	<div style="width: 400px;border: 1px solid red"><div class="horizontal-block"></div></div>
+	 
+
+    <br/><br/>
+
+    <!-- 多个块级元素-->
+  
+    <h2>水平居中  多个块级元素</h2>
+    <div class="horizontal-muti-block">
+    	<div></div>
+    	<div></div>
+    	<div></div>
+    </div> 
+
+
+    <br/><br/>
+
+<!-- 垂直居中 -->	
+	
+	<h2>垂直居中  单个行内元素</h2>
+	<div class="vertical-single-inline">
+		<span>垂直居中</span>
+	</div>
+
+
+	<br/><br/>
+
+	 
+	<h2>垂直居中  多行行内元素</h2>
+	<div class="vertical-muti-inline">
+		<span>垂直元素 1</span>
+		<span>垂直元素 2</span>
+	</div> 
+
+
+	<br/><br/>
+
+	<h2>垂直居中  图片宽度高度不确定</h2>
+	<div class="vertical-single-img">
+
+			<img class="vertical-single-img-child" src="./6.png" />
+	
+	
+	</div> 
+	
+
+	<br/><br/>
+
+	 
+	<h2>垂直居中  多图片垂直居中</h2>
+	<div class="vertical-muti-img">
+		<span>
+			<img class="vertical-muti-img-child" src="./6.png" />
+		</span>
+		<span>
+			<img class="vertical-muti-img-child" src="./2.png" />
+		</span>
+	</div> 
+
+
+	<br/><br/>
+
+	
+	<h2>已知高度的块级元素</h2>
+	<div class="height-known-block">
+		<div class="inner"></div>
+	</div>
+	
+
+	<br/><br/>
+
+
+	<h2>未知高度的块级元素</h2>
+	<div class="height-unknown-block">
+		<div class="inner"></div>
+	</div> 
+	
+
+	<br/><br/>
+
+</body>
+</html>
