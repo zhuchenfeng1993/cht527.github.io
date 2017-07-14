@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">水平、垂直居中汇总</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-07-21</span></p>
+	<div class="article_content">&nbsp;&nbsp;  
+    <h1>测试demo 链接：<a href="../Demo/middle.html" target="_blank">点击我查看</a></h1><h1>一、水平居中</h1><p><font size="3">1、行内元素</font></p><p><i>方法：</i></p><p>父容器设置<b> <font color="#ff0000">text-align: center </font></b></p><p>- 适用元素：文字，链接，及其它inline或者inline-*类型元素（inline-block，inline-table等）
+</p><p><br></p><p><font size="3">2、单个块级元素</font></p><p><i>方法：</i></p><p>将元素的左右外边距（margin-left，margin-right）设置为auto，即可实现块状元素的居中，简写：<font color="#ff0000">margin:0 auto
+</font></p><p><font color="#ff0000"><br></font></p><p><font size="3">3、多个块级元素</font></p><p><i>方法：
+</i></p><p>step1 &nbsp;将元素的display属性设置为<font color="#ff0000">inline-block</font></p><p>step2 &nbsp;把父元素的text-align属性设置为<font color="#ff0000">center
+</font></p><p><br></p><h1>二、垂直居中</h1><p><font size="3">1、<span style="line-height: 1;">单个行内元素</span></font></p><p>一个行内元素，高度由line-height决定。</p><p><i>方法：</i></p><p>将它的<font color="#ff0000">line-height设置为父元素的高度</font></p><p>- 适用元素： inline，inline-*类型的元素</p><p><br></p><p><font size="3">2、<span style="line-height: 1;">多</span><span style="line-height: 1;">个行内元素</span></font></p><p><i>方法：</i></p><p>使用&nbsp;<font color="#ff0000">display:table-cell&nbsp;</font>和&nbsp;<font color="#ff0000">vertical-align:middle&nbsp;</font>定义需要居中的元素的父容器</p><p>- 适用元素： inline，inline-*类型的元素</p><p><br></p><p><font size="3">3、<span style="line-height: 1;">图片（</span><span style="line-height: 1;">大小不确定</span><span style="line-height: 1;">）</span></font></p><p><i>方法1：</i></p><p>父容器元素设置 <font color="#ff0000">height=line-height</font>，子元素 <font color="#ff0000">vertical-align:middle
+</font></p><p><i>方法2：</i></p><p>父容器元素使用 <font color="#ff0000">display:table-cell</font> 和 <font color="#ff0000">vertical-align:middle</font>，子元素 <font color="#ff0000">vertical-align:middle
+</font></p><p><br></p><p><font size="3">4、<span style="line-height: 1;">多</span><span style="line-height: 1;">图片（</span><span style="line-height: 1;">大小不确定</span><span style="line-height: 1;">）</span></font></p><p><i>方法：&nbsp;</i></p><p>step1: img外的标签需是a标签或span这类<font color="#ff0000">inline属性</font>的标签，设置为 <font color="#ff0000">display:inline-block</font>，<font color="#ff0000">vertical-align:middle
+</font></p><p>step2: 图片设置：<font color="#ff0000"> vertical-align:middle
+</font></p><p>--适用于多图垂直居中对齐的情况。因为其对齐原理是<font color="#ff0000">相邻的图片居中对齐
+</font></p><p><br></p><p><font size="3">5、<span style="line-height: 1;">已知高度的块级元素</span></font></p><p><i>方法：</i></p><p>设置元素的 <font color="#ff0000">margin-top：（父级元素高度-居中元素高度) / 2</font></p><p><br></p><p><font size="3">6、<span style="line-height: 1;">未知高度的块级元素</span></font></p><p><i>方法：
+</i></p><p>step1 ：父元素相对定位 <font color="#ff0000">position：relative</font></p><p>step2 ：子元素 绝对定位 <font color="#ff0000">position：absolute，top:50%</font>, 然后使用css3的transform来达到类似效果，<font color="#ff0000">translateY(-50%)</font></p><p><br></p>
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
