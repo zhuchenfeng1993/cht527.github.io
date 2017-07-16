@@ -32,7 +32,6 @@
       			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
       			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
 			</ul>   
-			<audio id="myaudio"></audio>     
 		</div>
         <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -86,44 +85,57 @@
         $(".js_piano_nav li").eq(0).trigger("click")
 })
 //-------------------导航触发音乐---------------------------------
-var mp3List = [
-                '1.mp3',
-                '2.mp3',
-                '3.mp3',
-                '4.mp3',
-                '5.mp3',
-                '6.mp3',
-                '7.mp3',
-                '8.mp3'
-              ],
-            //文件路径
-musicBaseUrl = '../include/webFE_nav/';
-         
-//play
-function playAudio(currentFile) {
-            // Check for audio element support.
-  if (window.HTMLAudioElement && currentFile) {
-        try {
-            var oAudio = document.getElementById('myaudio'); 
-                oAudio.src = currentFile;
-                oAudio.play();
-        }catch (e) {
-               // Fail silently but show in F12 developer tools console
-               if(window.console && console.error("Error:" + e));
-        }
-  }
-}
-var nav_aTag=$(".nav");
-for (var i = 0;i <=7; i++) {
-  (function(x){
-      nav_aTag[x].onmouseover=function(){
-      playAudio(musicBaseUrl+mp3List[x])
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+(function () {
+    if (!window.AudioContext) { 
+        alert('当前浏览器不支持Web Audio API');
+        return;
     }
-  })(i)
-  
-};
+    
+    // 创建新的音频上下文接口
+    var audioCtx = new AudioContext();
+    
+    // 发出的声音频率数据，表现为音调的高低
+    var arrFrequency = [196.00, 220.00, 246.94, 261.63, 293.66, 329.63, 349.23,392.00];
+    
+    // 音调依次递增或者递减处理需要的参数
+    var start = 0, direction = 1;
+    
+    // 鼠标hover我们的按钮的时候
+    var nav_aTag=$(".nav");
+    for (var i = 0;i <=7; i++) {
+      (function(x){
+          nav_aTag[x].onmouseover=function(){
+          // 当前频率
+            var frequency = arrFrequency[x];
+            
+            // 创建一个OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
+            var oscillator = audioCtx.createOscillator();
+            // 创建一个GainNode,它可以控制音频的总音量
+            var gainNode = audioCtx.createGain();
+            // 把音量，音调和终节点进行关联
+            oscillator.connect(gainNode);
+            // audioCtx.destination返回AudioDestinationNode对象，表示当前audio context中所有节点的最终节点，一般表示音频渲染设备
+            gainNode.connect(audioCtx.destination);
+            // 指定音调的类型，其他还有square|triangle|sawtooth
+            oscillator.type = 'sine';
+            // 设置当前播放声音的频率，也就是最终播放声音的调调
+            oscillator.frequency.value = frequency;
+            // 当前时间设置音量为0
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            // 0.01秒后音量为1
+            gainNode.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 0.01);
+            // 音调从当前时间开始播放
+            oscillator.start(audioCtx.currentTime);
+            // 1秒内声音慢慢降低，是个不错的停止声音的方法
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+            // 1秒后完全停止声音
+            oscillator.stop(audioCtx.currentTime + 1);
+        }
+      })(i)
+    };
+})();
 //---------导航触发音乐---end-----------------------
-
 //---------筛选分类---------
 function classify(mark){
   if (mark=='html') {
