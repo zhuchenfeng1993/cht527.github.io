@@ -56,7 +56,9 @@ footer{width: 90%;padding: 20px 0;max-width: 760px; margin: 0 auto;text-align: c
 @keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-webkit-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-moz-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
-.piano-items-contianer{width: 80%;margin: 30px auto}.piano-items{margin-bottom: 15px;color: #7C7C7C}
+.piano-items-contianer{width: 80%;margin: 30px auto}
+.piano-items{margin-bottom: 15px;color: #7C7C7C}
+.piano-items .item-child{display: flex;justify-content: center;}
 .piano-content-img{margin: 10px auto}.show-hide-piano{cursor: pointer;}
 #pianoBtn{margin-left:50px;display: inline-block;vertical-align: middle;cursor: pointer;}
 #pianoList{display: none;}.piano-text{font-size: 1.3em}#piano-back{cursor: pointer;margin: 10px auto;display: block;}
