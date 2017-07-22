@@ -5,7 +5,7 @@ body::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradie
 a{text-decoration: none;}
 a:hover{text-decoration: none;}
 #wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}
-#headout img{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px; }
+#headout img{border-radius:5px;-webkit-border-radius:4px;-moz-border-radius:4px; }
 img{max-width:100%;max-height:100%}
 .nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:flex-end;}
 .about-me-span{cursor: pointer;}
@@ -25,27 +25,12 @@ header{
 	display: inline-block;
 	font:normal normal 1.3em/35px STXingkai;
 }
-.nav-hr{width:95px;}
-.row{
-	display: flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.col-md-4{
-	width: 30%
-}
 
 .nav-ul-list{
 	font-size:1.2em;
-	margin: 0;
-	margin-left: 80px;
     display: flex;
     justify-content: space-around;
-    flex-direction: column;
-    align-items: flex-start;
 }
-
-.fa-link{visibility: hidden;font-size: 0.8em}
 
 ul{list-style-type:none}
 ul li{
@@ -53,8 +38,7 @@ ul li{
     cursor: pointer;
 }
 li:hover{color:#A09D9D}
-li:hover > i{visibility: visible;}
-.nav-hr{margin: 15px auto;margin-left: 80px; border: 0;border-top: 1px solid #eee;}
+
 
 .parentimg{width:80%;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;overflow:hidden;flex-wrap:nowrap;margin:0 auto}
 .photoimg{height:100%;cursor:pointer}
