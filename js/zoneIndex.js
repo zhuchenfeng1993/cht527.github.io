@@ -244,7 +244,7 @@ $(".js_fly_send").click(function() {
 
 $("#piano-container,#piano-back").on("click",function(){
 		if (window.blog.is_loadpiano) {
-			$("#container").toggle();
+			$("#container").toggle(400);
         	$("#pianoList").toggle(800);
 		}else{
 			getPianoData();
