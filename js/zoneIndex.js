@@ -237,7 +237,7 @@ $(".js_fly_send").click(function() {
             $(this).children().eq(0).removeClass("fa-chevron-up").addClass("fa-chevron-down");
             $(this).attr("title","展开")
         }
-        $(this).parent().next().toggle(800);
+        $(this).parent().parent().next().toggle(800);
  })
 
 /*----钢琴弹奏事件绑定----*/
