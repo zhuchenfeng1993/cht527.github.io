@@ -262,11 +262,13 @@ function getPianoData(){
 		$.map(data.pianoList,function(value,index,array){
 			var itemTemplate=
 			'<section class="piano-items">'+ 
+				'<div class="item-child">'+	
                   '<h3 style="display:inline-block;width:5%">'+value.id+'</h3>'+
                   '<h3 style="display:inline-block;width:75%">'+value.title+'</h3>'+
                   '<h3 style="display:inline-block;width:10%">'+
                   	'<span class="show-hide-piano" title="展开"><i class="fa fa-chevron-down"></i></span>'+
                   '</h3>'+
+                '</div>'+
                   '<img class="piano-content-img" src="./img/piano/'+value.id+'.png" style="display:none" alt="" />'+
               '</section>';
 			$("#piano_items_contianer").append(itemTemplate);
