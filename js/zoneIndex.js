@@ -274,7 +274,7 @@ function getPianoData(){
 			$("#piano_items_contianer").append(itemTemplate);
 
 		});
-		$("#nav_container").toggle();
+		$("#container").toggle();
         $("#pianoList").toggle(800);
         window.blog.is_loadpiano=!window.blog.is_loadpiano;
 		     		
