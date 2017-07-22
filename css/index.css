@@ -18,7 +18,7 @@ header{
 	justify-content:center;
 	align-items:center;
 }
-#headtextparent{ width:35%;line-height: 80px;cursor: pointer;vertical-align: middle; display: table-cell; }
+#headtextparent{ width:33%;line-height: 80px;cursor: pointer;vertical-align: middle; display: table-cell; }
 #headtext{
 	display: inline-block;
 	font:normal normal 1.3em/35px STXingkai;
