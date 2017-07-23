@@ -8,4 +8,6 @@
 	width: 30%
 }
 #headtextparent{text-align: center;}
-#headtext{display: inline;}
+#headtext{display: inline;font-size: 1.2em}
+.photoimg{height:auto;}
+.parentimg{width: 60%}

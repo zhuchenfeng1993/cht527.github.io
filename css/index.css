@@ -31,6 +31,7 @@ header{
 ul{list-style-type:none}
 ul li{
     line-height: 40px;
+    height: 40px;
     cursor: pointer;
 }
 li:hover{color:#A09D9D}
@@ -55,7 +56,7 @@ footer{width: 90%;padding: 20px 0;max-width: 760px; margin: 0 auto;text-align: c
 .piano-items{margin-bottom: 15px;color: #7C7C7C}
 .piano-items .item-child{display: flex;justify-content: center;}
 .piano-content-img{margin: 10px auto}.show-hide-piano{cursor: pointer;}
-#pianoBtn{display: inline-block;vertical-align: middle;cursor: pointer;}
+#pianoBtn{vertical-align: middle;cursor: pointer;}
 #pianoList{display: none;}.piano-text{font-size: 1.3em}#piano-back{cursor: pointer;margin: 10px auto;display: block;}
-.piano-container{width: 18%;margin: 0 auto;display:flex;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:space-around;cursor: pointer;}
+.piano-container{margin: 20px auto;text-align: center;vertical-align: middle;cursor: pointer;}
 #piano-back{font-size: 2em;text-align: center;}
