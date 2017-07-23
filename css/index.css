@@ -8,10 +8,6 @@ img{max-width:100%;max-height:100%}
 #wrapper{background-color:#fff;width:90%;margin:0 auto;height:100%}
 #headout{text-align: center;}
 #headout img{border-radius:5px;-webkit-border-radius:4px;-moz-border-radius:4px; width: 9%}
-
-.nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:flex-end;}
-.about-me-span{cursor: pointer;}
-.about-me-span:hover span{color: #A09D9D}
 header{
 	width: 100%;
 	padding-top: 50px;
