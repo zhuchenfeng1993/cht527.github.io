@@ -6,9 +6,10 @@
 #headtext{display: inline;font-size: 1em}
 .photoimg{height:auto;}
 .parentimg{width: 100%}
-#container{margin-bottom: 30px}
+#container{margin-bottom: 50px}
 #container nav{position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
 .nav-ul-list{width: 100%}
 .nav-ul-list .nav-divider{display: block;border-right: 1px solid #D8D8D8}
 .nav-ul-list .photo{display: none;}
 footer{font-size: 12px}
+.footer-divider{width: 70%}
