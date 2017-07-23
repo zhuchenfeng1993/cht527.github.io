@@ -5,7 +5,7 @@
 #headtextparent{text-align: center;}
 #headtext{display: inline;font-size: 1em}
 .photoimg{height:auto;}
-.parentimg{width: 70%}
+.parentimg{width: 100%}
 #container{margin-bottom: 30px}
 #container nav{position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
 .nav-ul-list{width: 100%}
