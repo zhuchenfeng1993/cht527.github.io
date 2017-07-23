@@ -1,33 +1,11 @@
 
 /*-------------------------head---------------------------------*/
-header{
-	flex-direction:column;
-	justify-content:space-between;
-	align-items:center;
-	padding: 0
+#headout img{width: 12%}
+.nav-ul-list{
+	font-size:1.1em;
 }
-#headout{
-	width: auto;
-    margin: 20px auto;
+.piano-container{
+	width: 30%
 }
-#headtextparent{
-	width: 410px;margin: 0 auto
-}
-#headtext{
-	display: inline-block;
-	font:normal normal 1.2em/35px STXingkai;
-}
-.row{flex-direction: column;}	
-.nav-ul-list {
-    font-size: 1.1em;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-}
-.nav-aboutme{width:25%;height:100px;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;cursor: pointer;}
-
-.nav-hr{width:90%;margin: 15px auto}
-.col-md-8{margin: 20px auto}.col-md-4{width: 600px;}
-.piano-container{justify-content:center;margin: 20px auto}
-#pianoBtn{margin-right: 50px}
-.parentimg{width: 75%}
+#headtextparent{text-align: center;}
+#headtext{display: inline;}
