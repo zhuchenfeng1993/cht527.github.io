@@ -5,6 +5,8 @@
 #headtextparent{text-align: center;}
 #headtext{display: inline;font-size: 1em}
 .photoimg{height:auto;}
-.parentimg{width: 65%}
+.parentimg{width: 70%}
 #container nav{position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 }
+.nav-ul-list{width: 100%}
 .nav-ul-list .photo{display: none;}
+footer{font-size: 12px}
