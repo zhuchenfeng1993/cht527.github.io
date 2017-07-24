@@ -49,28 +49,10 @@ var	diaryLogin_obj={
 };
 /*-----点击心之契约--登录确认---*/
 function show_prompt() {
-    swal({
-        title: "欢迎访问",
-        text: "请输入我的名字:",
-        imageUrl: "/img/head.png",
-        type: "input",
-        showCancelButton: true,
-        closeOnConfirm: false,
-        animation: "slide-from-top",
-        inputPlaceholder: "我的名字"
-    }, function(inputValue) {
-        if (inputValue === false) return false;
-        if (inputValue === "") {
-            swal.showInputError("请输入!");
-            return false;
-        }
-        if (inputValue != "曹海涛") {
-            swal.showInputError("竟然不知道我的名字!");
-            return false;
-        }
+   
         swal({
             title: "欢迎访问",
-            text: "现在请输入你的名字",
+            text: "请输入你的名字",
             imageUrl: "/img/face/keai.gif",
             type: "input",
             showCancelButton: true,
@@ -138,7 +120,7 @@ function show_prompt() {
                 return false;
             }
         });
-    });
+ 
 }
 
 var navObj={
