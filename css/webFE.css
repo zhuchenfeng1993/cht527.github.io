@@ -18,6 +18,9 @@ blockquote{display: block;border-left: 8px solid #d0e5f2;padding: 5px 10px;margi
     background-color: #337ab7;
     border-color: #337ab7;
 }
+.nav-responsive{
+    display: none;
+}
 .pagination>li>a, .pagination>li>span {
     position: relative;
     float: left;
