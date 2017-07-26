@@ -42,7 +42,6 @@ footer{width: 60%;max-width: 760px; padding: 20px 0;margin: 10px auto;text-align
 	font-size: 2em;
 	display: none;
 }
-
 .blur{
     -webkit-filter: blur(4px);
     filter: blur(10px);
