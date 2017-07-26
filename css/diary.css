@@ -48,10 +48,6 @@ footer{width: 60%;max-width: 760px; margin: 10px auto;text-align: center;font-si
 	width: 85%;
 	margin: 10px auto;
 }
-.diary_content p:first-of-type:first-letter{
-	font-weight: bold;
-	font-size:2em; 
-}
 
 #diary_content{
 	height: 500px;
