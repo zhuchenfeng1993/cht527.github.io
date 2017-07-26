@@ -114,6 +114,16 @@
 		}
 </script>
 <script>
+navObj.addHandler(document.getElementById('shidian'),'click',function(){
+  window.location.href="/article_list.html";
+});
+navObj.addHandler(document.getElementById('webFE'),'click',function(){
+  window.open("/webFE/webFE_list.html");
+});
+navObj.addHandler(document.getElementById('photo'),'click',function(){
+  window.open("/photo_show/photo_show.html");
+});
+
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 var list_config={
     "type":"diary",
