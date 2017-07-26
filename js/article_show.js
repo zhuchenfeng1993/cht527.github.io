@@ -41,8 +41,8 @@ $.ajax({
 			return false;
 		}
 	})
-}).fail(function(){
-	swal('请求接口失败','error','error')
+}).fail(function(jqXHR, textStatus, errorThrown){
+	swal('请求失败,responseText:'+jqXHR.responseText,"status"+jqXHR.status,'error')
 });
 
 
