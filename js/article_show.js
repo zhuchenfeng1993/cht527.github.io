@@ -42,7 +42,14 @@ $.ajax({
 		}
 	})
 }).fail(function(jqXHR, textStatus, errorThrown){
-	swal('请求失败,responseText:'+jqXHR.responseText,"status"+jqXHR.status,'error')
+	swal('请求失败','error','error');
+			console.log(jqXHR.responseText); //必要的时候编码一下:encodeURIComponent(jqXHR.responseText);
+		    console.log(jqXHR.status);
+		    console.log(jqXHR.readyState);
+		    console.log(jqXHR.statusText);
+		    /*打印其他两个参数的信息*/
+		    console.log(textStatus);
+		    console.log(errorThrown);
 });
 
 
