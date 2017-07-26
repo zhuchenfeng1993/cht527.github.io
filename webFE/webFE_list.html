@@ -10,7 +10,17 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
 	<link rel="stylesheet" href="../css/webFE.css">
-
+  <style>
+  @media screen ( max-width: 450px ) {
+      header{display: none;}
+      #wrapper{width: 98%;}
+      #article_items_contianer{width: 92%;}
+      .nav-responsive{font-size:1.2em;display: flex;justify-content: space-around;margin: 0 auto;position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
+      .nav-ul-list{width: 100%}
+      .nav-ul-list .nav-divider{display: block;border-right: 1px solid #D8D8D8}
+      .nav-ul-list .photo{display: none;}
+  }
+  </style>
 	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 	
 	<title>前端开发技术</title>
@@ -37,7 +47,18 @@
         <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
     </div>
 </header>
-
+<nav class="nav-responsive">
+      <ul class="nav-ul-list">
+        <li onclick="javascript:window.open('./panda.html')" >&nbsp;一字一元</li>
+        <li class="nav-divider"></li>
+          <li class="shidian" id="shidian" >&nbsp;十点读书</li>
+          <li class="nav-divider"></li>
+          <li class="webFE" id="webFE" >&nbsp;前端开发</li>
+          <li class="nav-divider"></li>
+          <li class="li_diary" id="li_diary" >&nbsp;心之契约</li>
+          <li class="photo" id="photo" >&nbsp;朝花夕拾</li>
+      </ul>
+</nav>
 
 <div id="article_items_contianer"><!---列表-->
 	
