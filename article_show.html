@@ -19,8 +19,16 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 <link rel="stylesheet" type="text/css" href="./css/article_show.css" />
 <link rel="stylesheet" href="./css/sweetalert.css">
 <style>
-
+	@media screen ( max-width: 450px ) {
+			header{display: none;}
+			article{width: 99%}
+ 			.nav-responsive{font-size:1.2em;display: flex;justify-content: space-around;margin: 0 auto;position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
+			.nav-ul-list{width: 100%}
+			.nav-ul-list .nav-divider{display: block;border-right: 1px solid #D8D8D8}
+			.nav-ul-list .photo{display: none;}
+ 	}
 </style>
+
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -37,12 +45,24 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 				<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" id="photo" href="javascript:void(0);"  onclick="javascript:window.location.href='./photo_show/photo_show.html'" >朝花夕拾</a></li>
 				</ul>   
 				
-				<audio id="myaudio" autoplay loop></audio>  
+				 
  
 			</div>
 	    </div>
 	</header>
-
+	<audio id="myaudio" autoplay loop></audio> 
+	<nav class="nav-responsive">
+			<ul class="nav-ul-list">
+				<li onclick="javascript:window.open('./panda.html')" >&nbsp;一字一元</li>
+				<li class="nav-divider"></li>
+			    <li class="shidian" id="shidian" >&nbsp;十点读书</li>
+			    <li class="nav-divider"></li>
+			    <li class="webFE" id="webFE" >&nbsp;前端开发</li>
+			    <li class="nav-divider"></li>
+			    <li class="li_diary" id="li_diary" >&nbsp;心之契约</li>
+			    <li class="photo" id="photo" >&nbsp;朝花夕拾</li>
+			</ul>
+	</nav>
 	<article>
 		<h2 class="article_title" id="article_title"></h2>
 		<p class="author" id="article_author"></p>
@@ -65,6 +85,19 @@ var targetId=params[1],targetTitle=params[2],targetAuthor=params[3];
 <script type="text/javascript" src="../js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../js/nav.js"></script>
 <script type="text/javascript" src="../js/article_show.js"></script>
+<script>
+navObj.addHandler(document.getElementById('shidian'),'click',function(){
+	window.location.href="/article_list.html";
+});
+navObj.addHandler(document.getElementById('webFE'),'click',function(){
+	window.open("/webFE/webFE_list.html");
+});
+navObj.addHandler(document.getElementById('photo'),'click',function(){
+	window.open("/photo_show/photo_show.html");
+});
 
+navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
+
+</script>
 </body>
 </html>

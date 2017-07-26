@@ -13,6 +13,17 @@
 	<link rel="stylesheet" type="text/css" href="./css/webFE_header.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/article_list.css" >
+	<style>
+	@media screen ( max-width: 450px ) {
+			header{display: none;}
+			#wrapper{width: 98%;}
+			#article_items_contianer{width: 92%;}
+ 			.nav-responsive{font-size:1.2em;display: flex;justify-content: space-around;margin: 0 auto;position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
+			.nav-ul-list{width: 100%}
+			.nav-ul-list .nav-divider{display: block;border-right: 1px solid #D8D8D8}
+			.nav-ul-list .photo{display: none;}
+ 	}
+	</style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
@@ -30,6 +41,18 @@
 		</div>
     </div>
 </header>
+<nav class="nav-responsive">
+			<ul class="nav-ul-list">
+				<li onclick="javascript:window.open('./panda.html')" >&nbsp;一字一元</li>
+				<li class="nav-divider"></li>
+			    <li class="shidian" id="shidian" >&nbsp;十点读书</li>
+			    <li class="nav-divider"></li>
+			    <li class="webFE" id="webFE" >&nbsp;前端开发</li>
+			    <li class="nav-divider"></li>
+			    <li class="li_diary" id="li_diary" >&nbsp;心之契约</li>
+			    <li class="photo" id="photo" >&nbsp;朝花夕拾</li>
+			</ul>
+</nav>
 <div id="modal_load"><i class="fa fa-spinner fa-pulse"></i></div>
 
 <div id="wrapper">
@@ -75,6 +98,17 @@
 		"locationUrl":"article_show.html"
 	}
 // 事件绑定-----
+
+navObj.addHandler(document.getElementById('shidian'),'click',function(){
+	window.location.href="/article_list.html";
+});
+navObj.addHandler(document.getElementById('webFE'),'click',function(){
+	window.open("/webFE/webFE_list.html");
+});
+navObj.addHandler(document.getElementById('photo'),'click',function(){
+	window.open("/photo_show/photo_show.html");
+});
+
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
 </script>
