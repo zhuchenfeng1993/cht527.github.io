@@ -1,8 +1,8 @@
 .mod-header{display: none;}
 article{width: 99%}
-#wrapper{width: 98%;}
+#wrapper{width: 100%;}
 #article_items_contianer{width: 92%;}
 .nav-responsive{display: block;}
-.nav-ul-list{line-height: 40px;font-size:1.2em;display: flex;justify-content: space-around;margin: 0 auto;position: fixed;z-index:100;bottom: 0;width: 98%;border-top:1px solid #D8D8D8 ;background-color: #eee}
+.nav-ul-list{line-height: 40px;font-size:1.2em;display: flex;justify-content: space-around;margin: 0 auto;position: fixed;z-index:100;bottom: 0;width: 100%;border-top:1px solid #D8D8D8 ;background-color: #eee}
 .nav-ul-list .nav-divider{display: block;border-right: 1px solid #D8D8D8}
 .nav-ul-list .photo{display: none;}
