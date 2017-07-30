@@ -5,29 +5,7 @@ document.getElementById('article_title').innerHTML=targetTitle;
 document.getElementById('article_author').innerHTML='原文出自:&nbsp;&nbsp;'+targetAuthor;
 
 var targetGroupNum=Math.ceil(parseInt(targetId)/10);
-var targetUrl="";
-switch(targetGroupNum){
-	case 1:
-	  targetUrl="./data_source/article/articleContent_1.json";
-	  break;
-	case 2:
-	  targetUrl="./data_source/article/articleContent_2.json";
-	  break;
-	case 3:
-	  targetUrl="./data_source/article/articleContent_3.json";
-	  break;
-	case 4:
-	  targetUrl="./data_source/article/articleContent_4.json";
-	  break;
-	case 5:
-	  targetUrl="./data_source/article/articleContent_5.json";
-	  break;
-	case 6:
-	  targetUrl="./data_source/article/articleContent_6.json";
-	  break;
-	default:
-  
-}
+var targetUrl="./data_source/article/articleContent_"+targetGroupNum+".json";
 
 var targetMusicMark=0;
 $.ajax({
