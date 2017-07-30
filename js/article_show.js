@@ -22,6 +22,9 @@ switch(targetGroupNum){
 	case 5:
 	  targetUrl="./data_source/article/articleContent_5.json";
 	  break;
+	case 6:
+	  targetUrl="./data_source/article/articleContent_6.json";
+	  break;
 	default:
   
 }
