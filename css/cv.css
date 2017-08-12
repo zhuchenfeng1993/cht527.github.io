@@ -11,5 +11,6 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }
 .download-resume img{
 	width: 1.2em;
+	margin: 0 5px;
 	vertical-align: text-bottom
 }
