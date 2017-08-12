@@ -7,4 +7,9 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 .download-resume{
 	cursor: pointer;
 	margin-left:20px;
+	color: #1296db
+}
+.download-resume img{
+	width: 1.2em;
+	vertical-align: text-bottom
 }
