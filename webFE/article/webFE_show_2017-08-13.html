@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">各种高度、宽度、距离及相关事件汇总</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-08-13</span></p>
+	<div class="article_content">&nbsp;&nbsp;  
+                       
+                <p>这几个属性一直在脑子里很混乱，每次用到都要现查，恰好最近自己在写一个全屏滚动功能的插件，又是在网上找了好半天现学现卖，MD，今天实在忍不了了<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/62/crazya_thumb.gif" style="line-height: 1;">，于是写篇文章总结一下，坚决要把<span style="line-height: 1;">这几个属性的含义</span>弄明白。</p><p><font size="4">1、<span style="line-height: 1;">offsetTop&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="line-height: 1;">&nbsp;</span></font></p><p><span style="background-color: rgb(255, 204, 0);">获取元素的上外缘距离最近采用定位父元素内壁的距离。</span></p><p>如果父元素中没有采用定位的，则是获取上外边缘距离文档内壁的距离。所谓的定位就是position属性值为relative、absolute或者fixed。</p><p>返回值是一个整数，单位是像素。</p><p>此属性是只读的。<span style="line-height: 1;">不能对其进行赋值，设置对象到页面顶部的距离请用<font color="#ff0000">style.top</font>属性</span></p><p><font size="4">2、<span style="line-height: 1;">offsetLeft &nbsp;</span></font></p><p>和offsetTop的原理是一样的，只不过方位不同</p><p><font size="4">3、<span style="line-height: 1;">offsetWidth</span></font></p><p><span style="background-color: rgb(255, 204, 0);">当前对象的宽度.</span></p><p>宽度值包括:&nbsp;<i><font color="#ff0000">元素内容+内边距+边框</font></i>。不包括外边距和滚动条部分。<br>返回值是一个整数，单位是像素。</p><p><i>与style.width属性的区别在于:&nbsp;</i></p><p>style.width 获取的是 元素的content 的宽度，不包括 padding和border。</p><p>如果没有padding和border，则<font color="#ff0000">二者的数值大小在理论上是相等的</font><font color="#000000">（</font><span style="line-height: 1;">实际在chrome 浏览器 和搜狗浏览器上测试 发现</span><span style="color: rgb(0, 0, 0);">有不到1px 的差距，应该是浏览器默认样式的问题）</span></p><p><span style="color: rgb(0, 0, 0);">另外 style.width 返回值 是字符串，如 200px，offsetWidth 则返回 200</span></p><p><font size="4">4、<span style="line-height: 1;">offsetHeight&nbsp;</span></font></p><p>和offsetWidth的原理是一样的，只不过方位不同</p><p><font size="4">5、<strong style="line-height: 1;">clientWidth</strong></font></p><p><span style="background-color: rgb(255, 204, 0);">元素的宽度值</span></p><p>返回值是一个整数，单位是像素</p><p><i>与<span style="line-height: 1;">offsetWidth的区别在于：</span></i></p><strong>clientWidth的</strong><span style="line-height: 1.8;">值是: 元素的内容+内边距。不包括边框、外边距和滚动条部分。</span><p><font size="4">6、<strong style="line-height: 1;">clientHeight</strong></font></p><p>和<strong>clientWidth</strong>的原理是一样的，只不过方位不同</p><p><font size="4">7、<strong style="line-height: 1;">scrollLeft</strong></font></p><p>此属性可以<span style="background-color: rgb(255, 204, 0);">获取或者设置</span>对象的最左边到对象在当前窗口显示的范围内的左边的距离，也就是元素被滚动条向左拉动的距离。</p><p>也可以理解为 被隐藏在内容区域左侧的像素数。元素未滚动时，scrollLeft的值为0，如果元素被水平滚动了，scrollLeft的值大于0，且表示元素左侧不可见内容的像素宽度。也就是说使用scrollLeft的必要条件是<span style="background-color: rgb(255, 204, 0);"> 此标签的内容宽度超过了标签本身的宽度。</span></p><p>返回值是一个整数，单位是像素。</p><p><font size="4">8、<strong>scrollTop</strong></font></p><p>和<strong>scrollLeft</strong>的原理是一样的，只不过方位不同</p><p><font size="4">9、<strong style="line-height: 1;">scrollWidth</strong></font></p><p><span style="background-color: rgb(255, 204, 0);">元素的总宽度，包括由于溢出而无法展示在网页的不可见部分</span></p><p>（1）没有滚动条时，scrollHeight与clientHeight属性结果相等，scrollWidth与clientWidth属性结果相等</p><p>（2）<span style="line-height: 1;">存在滚动条时，当元素设置宽高大于等于元素内容宽高时，scroll和client属性的结果相等</span></p><p>（3）存在滚动条时，元素设置宽高小于元素内容宽高，即存在内容溢出的情况时，scroll属性大于client属性</p><p>当滚动条滚动到内容最右边缘时，符合以下等式</p><pre>scrollWidth = scrollLeft  + clientWidth</pre><p><font size="4">10、<strong style="line-height: 1;">scrollHeight</strong></font></p><p>元素的总高度，包括由于溢出而无法展示在网页的不可见部分</p><p>当滚动条滚动到内容底部时，符合以下等式</p><pre>scrollHeight = scrollTop  + clientHeight</pre><p><br></p><p>---------------------------------------低调的分隔线------------------------------------------------</p><p>与上述属性相关的原生js和jquery事件总结：</p><p><font size="4">1、原生js 获取 以上属性值&nbsp;</font></p><p>直接使用 style.xxx &nbsp;或者 window.getComputedStyle(element,null).getPropertyValue('xxx')</p><p><font size="4">2、jQuery 获取/设置 元素的 offsetLeft 和 offsetWidth：</font></p><p>&nbsp;&nbsp;&nbsp;&nbsp;2.1 获取</p><pre>$(<i>selector</i>).offset()</pre><p>&nbsp;&nbsp;&nbsp;&nbsp;返回第一个匹配元素的偏移坐标。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效</p><p>&nbsp; &nbsp; 2.2 设置</p><pre>$(<i>selector</i>).offset(<i>value</i>)</pre><p>value 可能的值：</p><ul><li>1- &nbsp;值对，比如 {top:100,left:0}</li><li><br></li><li>2 - 带有 top 和 left 属性的对象</li></ul><p>eg：&nbsp;</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"> <span class="hljs-number">1</span>、$(<span class="hljs-string">"p"</span>).offset( {top:<span class="hljs-number">100</span>,left:<span class="hljs-number">0</span>} );
+
+ <span class="hljs-number">2</span>、$(<span class="hljs-string">"p"</span>).offset($(<span class="hljs-string">"span"</span>).offset());    
+
+<span class="hljs-number"> 3</span>、newPos=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();  newPos.left=<span class="hljs-string">"0"</span>;  newPos.top=<span class="hljs-string">"100"</span>;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;$(<span class="hljs-string">"button"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+
+    &nbsp;&nbsp;&nbsp;&nbsp;$(<span class="hljs-string">"p"</span>).offset(newPos);
+
+ &nbsp;&nbsp;&nbsp;&nbsp; });<br></code></pre><p><font size="4">3、<span style="line-height: 1;">jQuery 获取 元素的 offsetHeight 、 offsetWidth、clientHeight·、clientWidth&nbsp;</span></font></p><p>width() 、height() 方法获取 -- 元素的content内容</p><p><span style="line-height: 1;">innerWidth()、</span><span style="line-height: 1;">innerHeight() 方法获取 --</span><span style="line-height: 1;">&nbsp;clientWidth 、</span><span style="line-height: 1;">clientHeight （即 width+padding）</span></p><p><span style="line-height: 1;">outerWidth()、</span><span style="line-height: 1;">outerHeight()&nbsp;</span><span style="line-height: 1;">方法获取 --&nbsp;</span><span style="line-height: 1;">offsetWidth、</span><span style="line-height: 1;">offset</span><span style="line-height: 1;">Height</span><span style="line-height: 1;">&nbsp;(即&nbsp;</span><span style="line-height: 1;">&nbsp;</span><span style="line-height: 1;">width+padding</span></p><p><span style="line-height: 1;">+border )</span></p><p><font size="4"><span style="line-height: 1;">4、</span><span style="line-height: 1;">jQuery 获取/设置 元素的 scrollLeft、scrollTop</span></font></p><pre>$(<i>selector</i>).scrollLeft(<i>value</i>)</pre><pre>$(<i>selector</i>).scrollTop(<i>value</i>)</pre><p><span style="line-height: 14px;">value 为空时表示获取，不为空时 表示 设置</span></p><p><font size="4">5、js 和 jQuery 滚动事件 监听</font></p><p>5.1 js滚动事件监听</p><p>&nbsp; &nbsp; （1）<em style="line-height: 1;">object</em><span style="line-height: 1;">.onscroll=function(){</span><i style="font-family: inherit; font-size: inherit; font-variant: inherit; font-weight: inherit; line-height: 1;">myScript</i><span style="line-height: 1;">};</span><br></p><p>&nbsp; &nbsp; （2）<em style="line-height: 1;">object</em><span style="line-height: 1;">.addEventListener("scroll",</span><span style="line-height: 1;">&nbsp;</span><em style="line-height: 1;">myScript</em><span style="line-height: 1;">); --- IE8 及以下浏览器不支持</span><br></p><p>5.2 jQuery滚动事件监听</p><p></p><pre>$(<i>selector</i>).scroll()</pre><p><br></p>
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
