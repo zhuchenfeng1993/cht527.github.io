@@ -36,7 +36,7 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }
 #headpic{width:140px;height:130px;max-width:100%;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
 #work_chinatelecom,#work_chinavec,#work_siemens,#work_vinci,#work_me,#work_chinatelecom_intern{-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
-#section1 .child-div,#section2 .child-div #section4 .child-div{
+#section1 .child-div,#section2 .child-div,#section4 .child-div,#section5 .child-div{
 	text-align: center;
     top: 50%;
     transform: translateY(-50%);
