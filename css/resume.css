@@ -19,6 +19,7 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 	position: absolute;
 	top: 45%;
 	right: 20px;
+	z-index: 100;
 }
 .nav-switch li{
 	width: 10px;
@@ -46,6 +47,9 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }    
 #section1 div h1,#section1 div p{
 	margin: 0
+}
+#section1 div p{
+	margin-bottom: 15px;
 }
 p img{vertical-align:middle}
 #edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
