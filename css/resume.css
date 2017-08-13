@@ -44,9 +44,6 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
     left: 0;
     right: 0;
 }    
-#section1 div h1,#section1 div p{
-	margin: 0
-}
 #section1 div p{
 	margin-bottom: 15px;
 }
@@ -54,7 +51,7 @@ p img{vertical-align:middle}
 #edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
 .outer-container{display: flex;flex-direction: column;align-items: flex-start}
 .edu-content{display: flex;justify-content: center;}
-.cuc-inner,.buu-inner{display: flex;align-items: center;line-height: 8;}
+.cuc-inner,.buu-inner{display: flex;align-items: center;line-height: 6.5;}
 .time-line{display: flex; flex-direction: column;align-items: center;}
 .time-inner-line{width: 10px;height: 10px;border-radius: 50%;background: #0074d9; margin: 2px;}
 .number{height: 60px;width: 0px;border: 1px solid #0074d9;}
