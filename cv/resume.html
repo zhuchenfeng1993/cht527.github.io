@@ -26,10 +26,10 @@
 	<div id="section1" class="page active">
 		<div>
 			<img id="headpic" src="/img/cv_img/cv_headpic.png">
-	        <h1 >曹海涛</h1>
+	        <h1 style="font-size: 1.5em">曹海涛</h1>
 	        <p>中国电信 • 移动互联网事业部</p>
-	        <p style="padding-bottom:0px;font-size: 1.1em">Web前端开发工程师</p>
-	        <p id="webFE" >一腔热血的激情 · 一夜失眠的创意 · 一个像素的执着</p>
+	        <p style="padding-bottom:0px;">Web前端开发工程师</p>
+	        <p id="webFE">一腔热血的激情 · 一夜失眠的创意 · 一个像素的执着</p>
 	        <table style="margin:0 auto;" cellpadding ="5%">
 	            <tr>
 	                <td><img src="/img/cv_img/icon_email.png"></td>
@@ -51,24 +51,32 @@
 			<h1 id="edu_h1">教育背景</h1>
 			<img id="edu_headpic" src="/img/cv_img/cv_edu.png">
 			<div class="edu-content">
-				<div class="cuc-container">
-		            <div class="content">
-		                <img src="/img/cv_img/cuc.png" alt="">
-		                <h3>中国传媒大学 · 数字媒体技术</h3>
-		            </div>
-				</div>
 				<div class="time-line">
 					<div class="time">2016</div>
-			        <div class="number"></div>
+    				<div class="time-inner-line" ></div>
+			        <div class="number" ></div>
+    				<div class="time-inner-line" ></div>
 					<div class="time">2014</div>
+    				<div class="time-inner-line" ></div>
 			        <div class="number"></div>
+			        <div  class="time-inner-line"></div>
 			        <div class="time">2010</div>
 				</div>
-				<div class="buu-container">
-			       	<div class="content">
-						<img src="/img/cv_img/buu.png" alt="">
-			            <h3>北京联合大学 · 自动化</h3>
-			        </div>
+				<div class="outer-container">
+					<div class="cuc-container">
+						<div class="cuc-inner">
+			                <img src="/img/cv_img/cuc.png" alt="" style="width: 60px;">
+			                <h3 style="font-size: 0.9em;margin-left: 10px;">中国传媒大学·通信工程</h3>
+			       		</div>
+						<div></div>				
+					</div>
+					<div class="buu-container" >
+	     				<div class="buu-inner">
+							<img src="/img/cv_img/buu.png" alt="" style="width: 60px;">
+				            <h3 style="font-size: 0.9em;margin-left: 10px;">北京联合大学 · 自动化</h3>
+				        </div>
+				        <div></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -221,10 +229,15 @@ pageObj.navEle.on('click',function(e) {
 		
 })
 
-   $youziku.load("h1,h2,h3,#webFE", "899f0f42e7ac471e9d20342236afe362", "jdlibianjian");
-    /*$youziku.load("#id1,.class1,h1", "899f0f42e7ac471e9d20342236afe362", "jdlibianjian");*/
-    /*．．．*/
-    $youziku.draw();
+//----- 点击导航 -- 页面 切换 & 导航切换   
+function clickSwitchPage(targetPage,targeNav){
+	targetPage.addClass('active').siblings().removeClass('active');
+	targeNav.addClass('current').siblings().removeClass('current');
+}
+
+$youziku.load("h1,h2,h3,#webFE", "899f0f42e7ac471e9d20342236afe362", "jdlibianjian");
+
+$youziku.draw();
 </script>
 
 </body>
