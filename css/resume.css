@@ -32,10 +32,17 @@ ul li{
 .current{
    background-color: #aaa;
 }
-#headpic{width:140px;height:130px;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
+#headpic{width:140px;height:130px;max-width:100%;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
 #work_chinatelecom,#work_chinavec,#work_siemens,#work_vinci,#work_me,#work_chinatelecom_intern{-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
 #webFE{font-size:1.2em}
-
+#section1 div{
+	text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+}    
 p img{vertical-align:middle}
 #edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
 ul.timeline{list-style-type:none;background:url("../img/cv_img/timeline.png") repeat-y scroll 125px 0 transparent;width:60%;margin:0 auto;padding:0}
