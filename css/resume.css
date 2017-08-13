@@ -15,12 +15,12 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 	overflow: visible;
 	overflow-x: hidden;
 }
-ul{
+.nav-switch{
 	position: absolute;
 	top: 45%;
 	right: 20px;
 }
-ul li{
+.nav-switch li{
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
@@ -49,14 +49,7 @@ ul li{
 }
 p img{vertical-align:middle}
 #edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
-ul.timeline{list-style-type:none;background:url("../img/cv_img/timeline.png") repeat-y scroll 125px 0 transparent;width:60%;margin:0 auto;padding:0}
-ul.timeline li{position:relative;margin-bottom:20px}
-ul.timeline li .time{position:absolute;width:80px;text-align:right;left:0;color:#999}
-ul.timeline li .number{position:absolute;background:url("../img/cv_img/timepoint.png") no-repeat scroll 0 0 transparent;width:20px;height:20px;left:115px;line-height:20px;text-align:center;color:#fff;font-size:18px}
-ul.timeline li.alt .number{background-image:url("../img/cv_img/timepoint.png")}
-ul.timeline li .content{margin-left:180px;position:relative;top:15px;box-shadow:0 0 12px #aaa}
-.content img{position:absolute;top:10px;left:10px;height:70%}
-ul.timeline li .content:before{position:absolute;top:12px;width:0;height:0;content:"";border-width:6px;border-style:solid;left:-12px;border-color:transparent white transparent transparent}
+
 .work_container{width:90%;margin:0 auto}
 .work_container .two_column{width:100%}
 .work_flexdiv{width:49%;display:inline-block}
