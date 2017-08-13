@@ -13,15 +13,19 @@
     <link rel="canonical" href="http://www.xuanfengge.com/paper-airplane-make-a-wish">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/index.css" >
-
 	<link rel="stylesheet" type="text/css" href="./css/layout2.css" media="screen and (max-width: 1120px) and (min-width:768px)">
 	<link rel="stylesheet" type="text/css" href="./css/layout3.css" media="screen and (max-width: 768px)">
 	<style>
+		/*  @media screen ( max-width: 768px ) {
+		 			#headout img{
+						pointer-events: none;
+					}
+		} */
 		 @media screen ( max-width: 420px ) {
  			#headtextparent{
 				width: 100%;margin: 0 auto;font-size: 0.9em;
-			}
- 		}
+			} 
+ 		 }
 	</style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
@@ -29,7 +33,7 @@
 <div id="wrapper">
 	<header>
 		<div id="headout">
-			<img onclick="javascript:window.open('./cv/cv_en.html')" src="./img/head.png" />
+			<img  src="./img/head.png" />
 		</div>
 		
 		<div id="headtextparent" >
@@ -133,7 +137,10 @@ navObj.addHandler(document.getElementById('photo'),'click',function(){
 
 navObj.addHandler(document.getElementById("li_diary"), "click", show_prompt);
 
-</script>
+navObj.addHandler(document.getElementById('headout'),'click',function(){
+	window.open(($(window).width()>768)?"./cv/cv_en.html":"./cv/resume.html");
+});
 
+</script>
 </body>
 </html>
