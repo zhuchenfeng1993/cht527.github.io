@@ -78,6 +78,7 @@ p img{vertical-align:middle}
 @keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-webkit-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
 @-moz-keyframes opacity_pic{0%{opacity:0}25%{opacity:.4}50%{opacity:.8}75%{opacity:.4}100%{opacity:0}}
+.honor-div{margin-bottom: 15px;text-align: center;}
 .download-resume{
 	cursor: pointer;
 	margin-left:20px;
