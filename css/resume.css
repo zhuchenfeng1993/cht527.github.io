@@ -16,7 +16,7 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 	overflow-x: hidden;
 }
 .nav-switch{
-	position: absolute;
+	position: fixed;
 	top: 45%;
 	right: 20px;
 	z-index: 100;
@@ -44,6 +44,12 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
     left: 0;
     right: 0;
 }    
+#section3 .child-div{
+	text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
 #section1 div p{
 	margin-bottom: 15px;
 }
@@ -56,14 +62,10 @@ p img{vertical-align:middle}
 .time-inner-line{width: 10px;height: 10px;border-radius: 50%;background: #0074d9; margin: 2px;}
 .number{height: 60px;width: 0px;border: 1px solid #0074d9;}
 
-.work_container{width:90%;margin:0 auto}
-.work_container .two_column{width:100%}
-.work_flexdiv{width:49%;display:inline-block}
-.work_container .two_column .work_flexdiv div p,.work_title,.hobby_flex,.skill_flex{display:flex;display:-ms-flex;display:-webkit-flex;display:-moz-flex;justify-content:space-between}
-.work_container .two_column .work_flexdiv div{display:inline-block;width:70%}
-.work_container .two_column .work_flexdiv .work_img{display:inline-block;width:15%}
+.work_container{margin:0 auto}
 .work_title{color:#aaa}
-.description{display:inline-block;word-wrap:break-word;text-align:left !important}
+.timedur{margin-right: 10px;} 
+.work_flexdiv{margin-bottom: 50px}  
 .skillcontainer_flex{display:flex;flex-direction:column;display:-ms-flex;display:-webkit-flex;display:-moz-flex;justify-content:space-between;align-items:center;width:85%;margin:0 auto}
 .hobby_flex,.skill_flex{display:flex;display:-ms-flex;display:-webkit-flex;display:-moz-flex;justify-content:space-around;align-items:center;width:100%}
 .img_one{animation:7s opacity_pic 0s infinite;-webkit-animation:7s opacity_pic 0s infinite;-moz-animation:7s opacity_pic 0s infinite}
