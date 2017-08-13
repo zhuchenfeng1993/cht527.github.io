@@ -36,7 +36,7 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }
 #headpic{width:140px;height:130px;max-width:100%;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
 #work_chinatelecom,#work_chinavec,#work_siemens,#work_vinci,#work_me,#work_chinatelecom_intern{-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
-#section1 .child-div,#section2 .child-div{
+#section1 .child-div,#section2 .child-div #section4 .child-div{
 	text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -54,7 +54,8 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 	margin-bottom: 15px;
 }
 p img{vertical-align:middle}
-#edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
+#edu_h1,#work_h1,#honor_h1{font-size:3em}
+#skill_h1{font-size: 2em}
 .outer-container{display: flex;flex-direction: column;align-items: flex-start}
 .edu-content{display: flex;justify-content: center;}
 .cuc-inner,.buu-inner{display: flex;align-items: center;line-height: 6.5;}
@@ -66,6 +67,9 @@ p img{vertical-align:middle}
 .work_title{color:#aaa}
 .timedur{margin-right: 10px;} 
 .work_flexdiv{margin-bottom: 50px}  
+.hobby_flex{margin: 20px}
+.hobby_flex img{width: 12%}
+.skill_flex img{width: 10%}
 .skillcontainer_flex{display:flex;flex-direction:column;display:-ms-flex;display:-webkit-flex;display:-moz-flex;justify-content:space-between;align-items:center;width:85%;margin:0 auto}
 .hobby_flex,.skill_flex{display:flex;display:-ms-flex;display:-webkit-flex;display:-moz-flex;justify-content:space-around;align-items:center;width:100%}
 .img_one{animation:7s opacity_pic 0s infinite;-webkit-animation:7s opacity_pic 0s infinite;-moz-animation:7s opacity_pic 0s infinite}
