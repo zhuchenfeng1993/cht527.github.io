@@ -36,8 +36,7 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }
 #headpic{width:140px;height:130px;max-width:100%;-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
 #work_chinatelecom,#work_chinavec,#work_siemens,#work_vinci,#work_me,#work_chinatelecom_intern{-webkit-border-radius:50%;-moz-border-radius:50%;-o-border-radius:50%;border-radius:50%}
-#webFE{font-size:1.2em}
-#section1 div{
+#section1 div,#section2 div{
 	text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -53,6 +52,12 @@ a{text-decoration:none;transition:.5s;color:#0074d9}
 }
 p img{vertical-align:middle}
 #edu_h1,#work_h1,#skill_h1,#honor_h1{font-size:3em}
+.outer-container{display: flex;flex-direction: column;align-items: flex-start}
+.edu-content{display: flex;justify-content: center;}
+.cuc-inner,.buu-inner{display: flex;align-items: center;line-height: 8;}
+.time-line{display: flex; flex-direction: column;align-items: center;}
+.time-inner-line{width: 10px;height: 10px;border-radius: 50%;background: #0074d9; margin: 2px;}
+.number{height: 60px;width: 0px;border: 1px solid #0074d9;}
 
 .work_container{width:90%;margin:0 auto}
 .work_container .two_column{width:100%}
