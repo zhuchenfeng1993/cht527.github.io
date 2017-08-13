@@ -16,7 +16,7 @@
 	<div id="lang-panel"> 
             <a class="download-resume" href="caohaitao.pdf" download="caohaitao"><img src="../img/cv_img/download-resume.png" alt="">下载</a>
     </div>
-    <ul>
+    <ul class="nav-switch">
 	  <li class="current"></li>
 	  <li></li>
 	  <li></li>
@@ -24,55 +24,55 @@
 	  <li></li>
 	</ul>
 	<div id="section1" class="page active">
-		<img id="headpic" src="/img/cv_img/cv_headpic.png">
-        <p style="font-size: 2em" class="css72138227f1712b">Haitao Cao</p>
-        <p>China Telecom • Mobile Internet Business Unit</p>
-        <p style="padding-bottom:0px;font-size: 1.1em">Web Front-End Developer</p>
-        <p id="webFE" class="css72138227f1712b">Passionate&nbsp; · &nbsp;Creative&nbsp; ·&nbsp; Devoted</p>
-        <table style="margin:0 auto;" cellpadding ="5%">
-            <tr>
-                <td><img src="/img/cv_img/icon_email.png"></td>
-                <td><a  style="" href="mailto:cht527@126.com">cht527@126.com</a></td>
-            </tr>
-            <tr>
-                <td><img src="/img/cv_img/icon_linkedin.png"></td>
-                <td><a  href="http://www.linkedin.com/in/caohaitaolinkedin">LinkedIn</a></td>
-            </tr>
-            <tr>
-                <td><img src="/img/cv_img/github.png"></td>
-                <td><a  href="https://github.com/cht527">GitHub</a></td>
-            </tr>
-        </table>
+		<div>
+			<img id="headpic" src="/img/cv_img/cv_headpic.png">
+	        <p style="font-size: 2em" class="css72138227f1712b">曹海涛</p>
+	        <p>中国电信 • 移动互联网事业部</p>
+	        <p style="padding-bottom:0px;font-size: 1.1em">>Web前端开发工程师</p>
+	        <p id="webFE" class="css72138227f1712b">一腔热血的激情 · 一夜失眠的创意 · 一个像素的执着</p>
+	        <table style="margin:0 auto;" cellpadding ="5%">
+	            <tr>
+	                <td><img src="/img/cv_img/icon_email.png"></td>
+	                <td><a  style="" href="mailto:cht527@126.com">cht527@126.com</a></td>
+	            </tr>
+	            <tr>
+	                <td><img src="/img/cv_img/icon_linkedin.png"></td>
+	                <td><a  href="http://www.linkedin.com/in/caohaitaolinkedin">LinkedIn</a></td>
+	            </tr>
+	            <tr>
+	                <td><img src="/img/cv_img/github.png"></td>
+	                <td><a  href="https://github.com/cht527">GitHub</a></td>
+	            </tr>
+	        </table>
+        </div>
 	</div>
 	<div id="section2" class="page">
-		<h1 id="edu_h1" class="css72138227f1712b">Education</h1>
-		<img id="edu_headpic" src="/img/cv_img/cv_edu.png">
-		<ul class="timeline">
-	       <li>
-	            <div class="time">2016</div>
-	           	<div class="number"></div>
-	            <div class="content">
-	                <img src="/img/cv_img/cuc.png" alt="">
-	                <h3 class="css72138227f1712b">Communication University of China</h3>
-	                <h3>Digital media technology - CHINAVEC Lab</h3>
-	            </div>
-	        </li>
-	        <li>
-	            <div class="time">2014</div>
-	           	<div class="number"></div>
-	            <div class="content">
-					<img src="/img/cv_img/buu.png" alt="">
-	                <h3 class="css72138227f1712b">Beijing Union University · Automation&nbsp;&nbsp;</h3>
-	                <h3>Control network and control technology</h3>
-	            </div>
-	        </li>
-	        <li style="height:10px">
-	            <div class="time">2010</div>
-	           	<div class="number"></div>
-	        </li>
-     
-    	</ul>
-
+		<div>
+			<h1 id="edu_h1" class="css72138227f1712b">Education</h1>
+			<img id="edu_headpic" src="/img/cv_img/cv_edu.png">
+			<ul class="timeline">
+		       <li>
+		            <div class="time">2016</div>
+		           	<div class="number"></div>
+		            <div class="content">
+		                <img src="/img/cv_img/cuc.png" alt="">
+		                <h3 class="css72138227f1712b">中国传媒大学 · 数字媒体技术</h3>
+		            </div>
+		        </li>
+		        <li>
+		            <div class="time">2014</div>
+		           	<div class="number"></div>
+		            <div class="content">
+						<img src="/img/cv_img/buu.png" alt="">
+		                <h3 class="css72138227f1712b">北京联合大学 · 自动化</h3>
+		            </div>
+		        </li>
+		        <li style="height:10px">
+		            <div class="time">2010</div>
+		           	<div class="number"></div>
+		        </li>
+		    </ul>
+		</div>
 	</div>
 	<div id="section3" class="page">
 		<h1 id="work_h1" class="css72138227f1712b">Project & Work Experience</h1>
@@ -201,9 +201,9 @@ var pageObj={
 	"firstPage":$('.page:first-child'), //第一页
 	"lastPage":$('.page:last-child'), //最后一页
 	"pageSize":$('.page').length,//页面数目
-	"navEle":$('ul li'), // 导航切换区域元素
-	"navEle_first":$('li:first-child'), // 导航切换区域 第一个元素
-	"navEle_last":$('li:last-child'), // 导航切换区域 最后一个元素
+	"navEle":$('.nav-switch li'), // 导航切换区域元素
+	"navEle_first":$('.nav-switch li:first-child'), // 导航切换区域 第一个元素
+	"navEle_last":$('.nav-switch li:last-child'), // 导航切换区域 最后一个元素
 };
 
 //-----监听点击 事件 
@@ -222,11 +222,7 @@ pageObj.navEle.on('click',function(e) {
 		
 })
 
-//----- 点击导航 -- 页面 切换 & 导航切换   
-function clickSwitchPage(targetPage,targeNav){
-	targetPage.addClass('active').siblings().removeClass('active');
-	targeNav.addClass('current').siblings().removeClass('current');
-}
+
 </script>
 
 </body>
