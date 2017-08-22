@@ -44,7 +44,11 @@
 	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
 	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-05-03</span></p>
 	<div class="article_content">&nbsp;&nbsp;
-			<p>本文主要介绍ES5中几个实用的数组方法，如下：</p><ol><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#foreach">forEach</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#map">map</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#filter">filter</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#some">some</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#every">every</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#indexof">indexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#lastindexof">lastIndexOf</a>&nbsp;(js v1.6)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduce">reduce</a>&nbsp;(js v1.8)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/04/es5%e6%96%b0%e5%a2%9e%e6%95%b0%e7%bb%84%e6%96%b9%e6%b3%95/#reduceright">reduceRight</a>&nbsp;(js v1.8)</li></ol><p><b><i>注意：</i></b></p><p>浏览器兼容性</p><ul><li>Opera 11+</li><li>Firefox 3.6+</li><li>Safari 5+</li><li>Chrome 8+</li><li>Internet Explorer 9+</li></ul>
+			<p>今天总结一下ES5中几个实用的数组方法，如下：</p><ol><li>forEach</li><li>map</li><li>filter</li><li>some</li><li>every</li><li>indexOf</li><li><li>reduce</li><li></ol>
+			
+			<p>除了数组方法的使用之外，还把在Jquery中对应的方法做了对比，并给出了原生数组的底层实现。</p>
+			<p><b><i>注意：</i></b></p>
+			<p>浏览器兼容性</p><ul><li>Opera 11+</li><li>Firefox 3.6+</li><li>Safari 5+</li><li>Chrome 8+</li><li>Internet Explorer 9+</li></ul>
 
       <p>接下来就开始一个个剖析：</p><p><strong><font size="3">1、forEach</font></strong></p><p><code>forEach</code>方法中的<code>function</code>回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身。</p><p>一个稍显完整的例子了，数组求和：</p><pre style="max-width: 100%;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
 
@@ -168,6 +172,20 @@ if (scores.some(higherThanCurrent)) {
   <span class="hljs-keyword">return</span> result;  
 }  
 </code></pre><p><br></p>
+	<p style="color: #aaa">补充于：2017/08/22</p>
+	<p>
+		使用map、filter、some等方法都可以达到遍历数组的目的，不过这些方法都不能直接通过return来跳出循环，但我们可以通过以下方式来实现跳出循环:
+	</p>
+	<p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">try</span>{
+    arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+        <span class="hljs-keyword">if</span>(item === <span class="hljs-number">2</span>){
+            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>();
+        }
+        <span class="hljs-built_in">console</span>.log(item);
+    });
+}<span class="hljs-keyword">catch</span>(e){
+}</code></pre><p><br></p></p>
 	</div>
 	</article>
 	
