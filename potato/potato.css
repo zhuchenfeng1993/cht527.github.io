@@ -1,0 +1,34 @@
+body{
+	background: url('./cv_bg.png') repeat;
+}
+.potato-wrapper{
+	text-align: center;
+}
+.potato-img{
+	width: 100px;
+	vertical-align: middle;
+}
+.potato-text{
+	vertical-align: middle;
+	font-size: 2rem
+}
+.timer-container,.btn-group-container{
+	border: 1px solid #eee;
+}
+.wrapper{
+	width: 600px;
+    height: 450px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.timer-container{
+	display: inline-block;
+	width: 69%;
+	height: 400px;
+}
+.btn-group-container{
+	display: inline-block;
+	width: 29%;	height: 400px
+}
