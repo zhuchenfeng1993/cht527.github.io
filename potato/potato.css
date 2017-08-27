@@ -12,23 +12,149 @@ body{
 	vertical-align: middle;
 	font-size: 2rem
 }
-.timer-container,.btn-group-container{
+.timer-container,.operate-btn-group,.toDoList-container{
 	border: 1px solid #eee;
 }
+
 .wrapper{
 	width: 600px;
     height: 450px;
     margin: 10px auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
+    border: 1px solid #eee;
+
 }
 .timer-container{
-	display: inline-block;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 	width: 69%;
 	height: 400px;
 }
-.btn-group-container{
+.toDoList-container{
+	width: 29%;
+	height: 400px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+#todoList{
+	width: 150px;
+	height: 300px;
+	border: 1px solid #aaa;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#todoList::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);background-color:#f5f5f5;border-radius:10px}
+#todoList::-webkit-scrollbar{width:10px;background-color:#f5f5f5}
+#todoList::-webkit-scrollbar-thumb{border-radius:10px;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.44,#a0a0a0),color-stop(0.72,#aaa),color-stop(0.86,#b4b4b4))}
+.addTask-container{
+	width: 150px;
+	height: 80px;
+	line-height: 80px;
+	border: 1px solid #eee;
+	text-align: center;
+}
+.operate-btn-group{
+	width: 300px;	
+	height: 80px;
+	display: flex;
+	justify-content: space-around;
+    align-items: center;
+}
+.timer-box{
+	width: 300px;
+    height: 300px;
+    border: 1px solid #aaa;
+}    
+.innerBox-task{
+	width: 100%;
+    height: 50px;
+    border: 1px solid #eee;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.innerBox-timer{
+	width: 230px;
+    height: 230px;
+    margin: 0 auto;
+}
+#startTask,#pauseTask,#addTask{
 	display: inline-block;
-	width: 29%;	height: 400px
+	width: 85px;
+	height: 35px;
+	line-height:35px;
+	text-align: center;
+	color: #fff;
+	border-radius:4px;
+	cursor: pointer;
+}
+#startTask{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+#startTask:hover{
+	background-color: #449d44;
+    border-color: #398439;
+}
+#pauseTask{
+	background-color: #f0ad4e;
+    border-color: #eea236;
+}
+#pauseTask:hover{
+	background-color: #ec971f;
+    border-color: #d58512;
+}
+#addTask{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+#addTask:hover{
+	background-color: #31b0d5;
+    border-color: #269abc;
+}
+.todoItem{
+	display: flex;
+	align-items: center;
+	color: #fff;
+	margin: 7px;
+}
+.del-content,.item-content{
+	background: #5bc0de;
+	height: 22px;
+	line-height: 22px;
+	font-size: 0.9rem;
+}
+.item-content{
+    width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+}
+.del-content{
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    color: #286090;
+    text-align: center;
+}
+.del-content:hover{
+	color: blue
+}
+.item-icon{
+	width: 0;
+	height: 0;
+	border-top: 11px solid transparent;
+	border-right: 11px solid #5bc0de;
+	border-bottom: 11px solid transparent;
 }
