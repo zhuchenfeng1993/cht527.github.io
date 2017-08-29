@@ -1,11 +1,13 @@
 body{
 	background: url('./cv_bg.png') repeat;
+	font-family: 'microsoft yahei'
 }
 .potato-wrapper{
 	text-align: center;
+	margin: 20px;
 }
 .potato-img{
-	width: 100px;
+	width: 70px;
 	vertical-align: middle;
 }
 .potato-text{
@@ -46,10 +48,10 @@ body{
 #todoList{
 	width: 150px;
 	height: 300px;
-	border: 1px solid #aaa;
 	padding: 0;
 	margin: 0;
 	list-style: none;
+	overflow-y: auto;
 }
 #todoList::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);background-color:#f5f5f5;border-radius:10px}
 #todoList::-webkit-scrollbar{width:10px;background-color:#f5f5f5}
@@ -71,12 +73,10 @@ body{
 .timer-box{
 	width: 300px;
     height: 300px;
-    border: 1px solid #aaa;
 }    
 .innerBox-task{
 	width: 100%;
     height: 50px;
-    border: 1px solid #eee;
     width: 100%;
     height: 50px;
     text-align: center;
@@ -86,6 +86,8 @@ body{
 	width: 230px;
     height: 230px;
     margin: 0 auto;
+    position: relative;
+    text-align: center;
 }
 #startTask,#pauseTask,#addTask{
 	display: inline-block;
@@ -125,7 +127,7 @@ body{
 	display: flex;
 	align-items: center;
 	color: #fff;
-	margin: 7px;
+	margin: 10px;
 }
 .del-content,.item-content{
 	background: #5bc0de;
@@ -157,4 +159,35 @@ body{
 	border-top: 11px solid transparent;
 	border-right: 11px solid #5bc0de;
 	border-bottom: 11px solid transparent;
+}
+
+.innerBox-timer-left,.innerBox-timer-right,.innerBox-timer-cycle-left,.innerBox-timer-cycle-right{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	border-radius: 50%; 
+}
+.innerBox-timer-left,.innerBox-timer-cycle-left{
+	top:5px;
+	left: 5px;
+	clip: rect(0px,110px,220px,0px);
+}
+.innerBox-timer-right,.innerBox-timer-cycle-right{
+	top:5px;
+	right: 5px;
+	clip: rect(0px,220px,220px,110px);
+}
+.innerBox-timer-left,.innerBox-timer-right{
+	border: 10px solid rgba(196,196,196,1);
+	z-index: 10;
+}
+.innerBox-timer-cycle-left,.innerBox-timer-cycle-right{
+	border: 10px solid #5bc0de;
+	z-index: 0;
+}
+.timer-value{
+	line-height: 230px;
+    display: inline-block;
+    font-size: 3rem;
+    color: rgba(156,156,156,1);
 }

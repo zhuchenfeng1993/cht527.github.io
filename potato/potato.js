@@ -11,26 +11,134 @@ function store(key, data) {
 function Todo(id,text) {
 	return {"id":id,"text":text};
 }
+//----------- 番茄时钟 UI ------------ 
+var chtPotatoUI={
+    timerClock:function(){
 
-var chtPotato={
+    },
+    init:function(){
+      this.findDom();
+      this.bindEvent();
+    },
+    
+    findDom:function(){
+            this.startTask=document.querySelector("#startTask");//开始任务
+            this.pauseTask=document.querySelector("#pauseTask");// 暂停任务
+            this.innerBoxTimer=document.querySelector("#innerBoxTimer");// 倒计时时钟
+            this.timerValue=document.querySelector("#timerValue");// 倒计时时钟数字
+            this.restAudio=document.querySelector("#restAudio");// 中间休息 audio
+            this.finishAudio=document.querySelector("#finishAudio");// 完成任务 audio
+            this.innerBoxTimerLeft=document.querySelector("#innerBoxTimerLeft");
+            this.innerBoxTimerRight=document.querySelector("#innerBoxTimerRight");
+            this.innerBoxTimerCycleLeft=document.querySelector("#innerBoxTimerCycleLeft");
+            this.innerBoxTimerCycleRight=document.querySelector("#innerBoxTimerCycleRight");
+    },
+     // 模拟 Controller (业务逻辑层)
+    bindEvent:function(){
+      //---开始 任务----
+          this.startTask.addEventListener('click', function (){
+              this.start();
+          }.bind(this), false);
+          //---暂停 任务----
+          this.pauseTask.addEventListener('click', function (){
+              this.pause();
+          }.bind(this), false);
+    },
+    //----开始任务-----
+    start:function () {
+        this.timerClockStart();
+        this.progressCycle();
+    },
+    //----暂停任务-----
+    pause:function() {
+      clearInterval(this.timerClock)
+    },
+    //----中间休息 提示------
+    rest:function(){
+        this.restAudio.play();
+    }.bind(this),
+    //----任务完成 提示------
+    finish:function(){
+        this.finishAudio.play();
+    }.bind(this),
+    //----进度条--------
+    progressCycle:function(){
+      
+    },
+    timerFormat:function(leftTime){
+            var leftsecond = parseInt(leftTime/1000);
+            //---day 跟 hour 暂时不用
+            var day=Math.floor(leftsecond/(60*60*24)); 
+            var hour=Math.floor((leftsecond-day*24*60*60)/3600); 
+            var minute=Math.floor((leftsecond-day*24*60*60-hour*3600)/60);
+            var second=Math.floor(leftsecond-day*24*60*60-hour*3600-minute*60);  
+            minute=minute<10?"0"+minute:minute;
+            second=second<10?"0"+second:second; 
+            return minute+":"+second;
+    },
+    //----数字倒计时--环形进度条UI--
+    timerClockStart:function(){
+        var timeSec=1*60; //秒数
+        var leftTime=timeSec*1000;
+        var angle=360/timeSec;//每秒转的角度值
+        var n=0;m=1; //左右半圆的计数值
+        //var leftRotate=0,rightRotate=0;// 左右半圆分别旋转的角度量
+        this.timerClock=setInterval(function(){
+          this.timerValue.innerHTML=this.timerFormat(leftTime);
+          //---触发完成任务 clock 、清除倒计时
+          if(leftTime<1000){
+            this.finish();
+            clearInterval(this.timerClock);
+            this.innerBoxTimerLeft.style.zIndex=10;
+            this.innerBoxTimerRight.style.zIndex=10;
+            this.innerBoxTimerCycleLeft.style.zIndex=0;
+            this.innerBoxTimerCycleRight.style.zIndex=0;
+            this.innerBoxTimerLeft.style.transform="rotate(0deg)";
+            this.innerBoxTimerRight.style.transform="rotate(0deg)";
+            swal("Good job", "当前番茄时钟已完成", "success")
+            return false;
+          };
+          //----休息---
+          if(leftTime==5*60*1000){
+            //---触发休息 clock
+            this.rest();
+          };
+          if(n<=timeSec/2){ //----前半段时间右半圆旋转
+              this.innerBoxTimerRight.style.transform="rotate("+angle*n+"deg)";
+              n++;
+              
+          }else{ //--------后半段时间左半圆旋转
+              m++;
+              this.innerBoxTimerRight.style.zIndex=-10;
+              this.innerBoxTimerCycleRight.style.zIndex=20;
+              this.innerBoxTimerLeft.style.transform="rotate("+angle*m+"deg)";
+              
+          }
+          leftTime-=1000;
+          
+        }.bind(this),1000);
+    }
+   
+
+};
+//----------- 任务列表 ------------ 
+
+var chtPotatoList={
   	init:function () {
   		this.todos = store(APP_KEY);
   		this.findDom();
   		this.bindEvent();
   		this.render(); // 初始化渲染
   	},
-  	findDom:function(argument){
+  	findDom:function(){
           this.todoList = document.querySelector("#todoList");//列表
           this.todoListItem = document.querySelector(".todoItem");//列表项
           this.addTask=document.querySelector("#addTask");//添加任务
-          this.startTask=document.querySelector("#startTask");//开始任务
-          this.pauseTask=document.querySelector("#pauseTask");// 暂停任务
           this.innerBoxTask=document.querySelector("#innerBoxTask");// 任务名称
-          this.innerBoxTimer=document.querySelector("#innerBoxTimer");// 倒计时时钟
 
     },
      // 模拟 Controller (业务逻辑层)
-    bindEvent:function(argument){
+    bindEvent:function(){
         //---添加 新任务
         this.addTask.addEventListener('click', function (){
             this.addItem();
@@ -48,14 +156,7 @@ var chtPotato={
            var targetContent=e.target.innerHTML;
            this.innerBoxTask.innerHTML="在"+this.timeFormater()+"完成"+targetContent+"，加油^_^";
         }.bind(this));
-        //---开始 任务----
-        this.startTask.addEventListener('click', function (){
-            this.start();
-        }.bind(this), false);
-        //---暂停 任务----
-        this.pauseTask.addEventListener('click', function (){
-            this.pause();
-        }.bind(this), false);
+        
     },
     // 这里勉强抽象成一个视图吧!!!
     view:function() {
@@ -78,6 +179,7 @@ var chtPotato={
       var endTime=new Date(startTime.getTime()+dur),end_hh=endTime.getHours(),end_mm=endTime.getMinutes();                
       end_hh=end_hh>=10?end_hh:"0"+end_hh;  
       end_mm=end_mm>=10?end_mm:"0"+end_mm;
+      
       return start_hh+":"+start_mm+" - "+end_hh+":"+end_mm;
     },
   
@@ -94,14 +196,9 @@ var chtPotato={
            */
           store(APP_KEY, this.todos);
     },
-   	start:function (argument) {
-   		
-   	},
-   	pause:function() {
-
-   	},
+    
+    //----添加任务-----
     addItem:function() {
-      //var taskName='';
       swal({   
         title: "新建任务",   
         text: "输入任务名称:",   
@@ -118,7 +215,6 @@ var chtPotato={
             swal.showInputError("请输入任务名称!");
             return false;
         }      
-        //taskName=inputValue;
         var id = Number(new Date());
         var addTodo = new Todo(id, inputValue);
         this.todos.push(addTodo); // 模型发生改变
@@ -149,4 +245,5 @@ var chtPotato={
     }
 
 };
-chtPotato.init();
+chtPotatoList.init();
+chtPotatoUI.init();

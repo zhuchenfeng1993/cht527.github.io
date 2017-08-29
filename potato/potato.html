@@ -16,8 +16,16 @@
 	<div class="wrapper">
 		<div class="timer-container">
 			<div class="timer-box">
+				<audio src="./rest.mp3" id="restAudio"></audio>				
+				<audio src="./clock.mp3" id="finishAudio"></audio>
 				<div class="innerBox-task" id="innerBoxTask"></div>
-				<div class="innerBox-timer" id="innerBoxTimer"></div>
+				<div class="innerBox-timer" id="innerBoxTimer">
+					<div class="innerBox-timer-left" id="innerBoxTimerLeft"></div>
+					<div class="innerBox-timer-right" id="innerBoxTimerRight"></div>
+					<div class="innerBox-timer-cycle-left" id="innerBoxTimerCycleLeft"></div>
+					<div class="innerBox-timer-cycle-right" id="innerBoxTimerCycleRight"></div>
+					<div class="timer-value" id="timerValue"></div>
+				</div>
 			</div>
 			<div class="operate-btn-group">
 				<span id="startTask">开始</span>	
