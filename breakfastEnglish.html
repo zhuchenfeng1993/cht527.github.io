@@ -8,6 +8,7 @@
 	<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <link rel="shortcut icon" href="./img/favicon.ico" /> 
+<link rel="stylesheet" type="text/css" href="./css/nav-responsive.css" media="screen and (max-width: 450px)">
 <style>
  canvas {position: absolute;top: 0;left: 0;z-index: 0;width: 100%;height: 100%;pointer-events: none;}
   .en-container,iframe{
@@ -29,7 +30,16 @@
 <div class="en-container">
     <iframe height="230" width="260" src="http://www.ximalaya.com/swf/album/blue.swf?id=3505819" frameborder=0 allowfullscreen></iframe>
 </div>
-    
+<ul class="nav-ul-list">
+                <li onclick="javascript:window.location.href='/breakfastEnglish.html'" >&nbsp;早餐英语</li>
+                <li class="nav-divider"></li>
+                <li onclick="javascript:window.location.href='/article_list.html';" class="shidian" id="shidian" >&nbsp;字里行间</li>
+                <li class="nav-divider"></li>
+                <li onclick="javascript:window.location.href='/webFE/webFE_list.html'" class="webFE" id="webFE" >&nbsp;前端开发</li>
+                <li class="nav-divider"></li>
+                <li class="li_diary" id="li_diary" >&nbsp;心之契约</li>
+                <li class="photo" id="photo" >&nbsp;朝花夕拾</li>
+ </ul>   
 <canvas width="1366" height="643"></canvas>
 
 <script>
