@@ -1,7 +1,8 @@
 
 function mapArticleList(dataList){
+	var article_items_contianer=document.getElementById('article_items_contianer');
 	if (list_config.type=="hotArticle") { //---十点读书 文章列表模板
-		var articleFrag = document.createDocumentFragment();
+		var articleParent = '';
 		$.map(dataList,function(value,index,array){
 			var itemTemplate=
 			'<section class="list">'+ 
@@ -24,12 +25,12 @@ function mapArticleList(dataList){
 				'</div>'+	
 				'<hr class="divider">'+
 			'</section>';
-
-			articleFrag.appendChild(itemTemplate);
+			articleParent+=itemTemplate;
+			
 		});
-		$("#article_items_contianer").append(articleFrag);
+		article_items_contianer.innerHTML=articleParent;
 	}else if(list_config.type=="webFE"){   //-----------webFE  文章列表 模板
-		var webFeFrag = document.createDocumentFragment();
+		var webFeParent = '';
 		$.map(dataList,function(value,index,array){
 				var itemTemplate=
 			      '<section class="list">'+ 
@@ -41,11 +42,11 @@ function mapArticleList(dataList){
 			        '<hr class="divider">'+
 			      '</section>';
 
-		    	webFeFrag.appendChild(itemTemplate);
+		    	webFeParent+=itemTemplate;
 		});
-		$("#article_items_contianer").append(webFeFrag);
+		article_items_contianer.innerHTML=webFeParent;
 	}else{//-----------日记 列表 模板
-		var diaryFrag = document.createDocumentFragment();
+		var diaryParent = '';
 		var moodUrl='';
 		$.map(dataList,function(value,index,array){
 			var titleArr=value.title.split('/');
@@ -81,9 +82,9 @@ function mapArticleList(dataList){
 					'</div>'+	
 					'<hr class="divider" style="width:90%;margin:15px auto;border: 0;border-top: 1px solid #eee;">'+
 				'</section>';  
-			diaryFrag.appendChild(itemTemplate);
+			diaryParent+=itemTemplate;
 		});
-		$("#article_items_contianer").append(diaryFrag);
+		article_items_contianer.innerHTML=diaryParent;
 	}
 }
 
