@@ -1,6 +1,7 @@
 
 function mapArticleList(dataList){
 	if (list_config.type=="hotArticle") { //---十点读书 文章列表模板
+		var articleFrag = document.createDocumentFragment();
 		$.map(dataList,function(value,index,array){
 			var itemTemplate=
 			'<section class="list">'+ 
@@ -24,10 +25,11 @@ function mapArticleList(dataList){
 				'<hr class="divider">'+
 			'</section>';
 
-			$("#article_items_contianer").append(itemTemplate)
-		})
+			articleFrag.appendChild(itemTemplate);
+		});
+		$("#article_items_contianer").append(articleFrag);
 	}else if(list_config.type=="webFE"){   //-----------webFE  文章列表 模板
-
+		var webFeFrag = document.createDocumentFragment();
 		$.map(dataList,function(value,index,array){
 				var itemTemplate=
 			      '<section class="list">'+ 
@@ -39,10 +41,11 @@ function mapArticleList(dataList){
 			        '<hr class="divider">'+
 			      '</section>';
 
-		    	$("#article_items_contianer").append(itemTemplate)
-    		
-		})
+		    	webFeFrag.appendChild(itemTemplate);
+		});
+		$("#article_items_contianer").append(webFeFrag);
 	}else{//-----------日记 列表 模板
+		var diaryFrag = document.createDocumentFragment();
 		var moodUrl='';
 		$.map(dataList,function(value,index,array){
 			var titleArr=value.title.split('/');
@@ -78,8 +81,9 @@ function mapArticleList(dataList){
 					'</div>'+	
 					'<hr class="divider" style="width:90%;margin:15px auto;border: 0;border-top: 1px solid #eee;">'+
 				'</section>';  
-			$("#article_items_contianer").append(itemTemplate)
-		})
+			diaryFrag.appendChild(itemTemplate);
+		});
+		$("#article_items_contianer").append(diaryFrag);
 	}
 }
 
