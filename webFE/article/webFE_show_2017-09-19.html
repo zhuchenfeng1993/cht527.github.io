@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="caohaitao">
+<meta name="keywords" content="自我对话,回忆,记录,web前端技术">
+<meta name="description" content="记录昨日的难忘,把握今日的时光,拥抱明日的希望,脚踏实地,不忘初心的走下去">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" /> 
+<title></title>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/webFE_header.css">
+<link rel="stylesheet" type="text/css" href="/css/webFE.css">
+<link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css" />
+<link href="https://cdn.bootcss.com/highcharts/5.0.12/css/highcharts.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js"></script>
+<style>
+
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div id="wrapper">
+	<header class="js_header mod-header">
+    <div class="mod-header__wrap">
+        <div class="js_menu mod-header__nav">
+            <ul id="menu-nav" class="menu">
+             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a class="nav" href="/index.html">首页</a></li>
+      		<li id="menu-item-4814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4814"><a class="nav" id="HTML" href="javascript:void(0);" onclick="classify('html')">HTML</a></li>
+      		<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a id="CSS" class="nav" href="javascript:void(0);" onclick="classify('css')">CSS</a></li>
+      		<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a id="JavaScript" class="nav"  href="javascript:void(0);" onclick="classify('JavaScript')">JavaScript</a></li>
+      		<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a id="frame"  class="nav" href="javascript:void(0);" onclick="classify('frame')">F2E 散文</a></li>
+			<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a class="nav" href="http://www.w3cplus.com/" target="_blank" >W3CPLUS</a></li>
+			<li id="menu-item-6168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6168"><a class="nav" href="http://www.w3cfuns.com/" target="_blank" >W3CFUNS</a></li>
+			<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-14"><a class="nav" href="http://f2e.im/" target="_blank" >F2E社区</a></li>
+			</ul>   
+			<audio id="myaudio"></audio>     
+		</div>
+        <div class="js_piano_nav_icon mod-header__music-icon" title="钢琴节奏"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+</header>
+
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+
+	<article>
+	<h1 class="webFE_title">前端性能优化</h1>
+	<p class="webFE_article_author">Posted by:&nbsp;&nbsp;cht</p>
+	<p class="webFE_article_date"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;<span>2017-09-19</span></p>
+	<div class="article_content">&nbsp;&nbsp;  
+       <p>关于前端性能优化这个知识点，从校招阶段就一直在刻意记忆，到如今工作一年多了，期间还是会在逛论坛、博客过程中看到讲解前端性能优化的文章，很多方法其实工作中并没有用到，但作为一个合（cai）格（niao）前端攻城狮，不积跬步，何以成仙？<img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/cool_thumb.gif" style="line-height: 1;">就用这篇文章汇总当下各类优化前端性能的方法：</p><p><br></p>
+       <p>关于优化前端性能，可以大致从两个方向进行分类，<font color="#ffcc00">一是各种优化策略，二是代码书写习惯。</font></p><p><font size="5">一、各类优化策略</font></p><p>优化的策略相信很多前端人员都能多多少少说出几种方法，总结下来基本可以涵盖了这几个方面：</p><p><font size="4"><i>1、减少网络请求次数</i></font></p><p><br></p><p><i>1.1 &nbsp; 雪碧图</i></p><p>原理一句话概括，一张10k的图片比<span style="line-height: 1;">10张1k的图片</span><span style="line-height: 1;">加载速度快，减少了http请求资源的次数。</span></p><p><span style="line-height: 1;">处理方法：设置图片或者图片容器的宽、高，再通过background-position属性控制位置</span></p><p><i><span style="line-height: 1;">1.2 &nbsp;&nbsp;</span><strong style="line-height: 1;">使用CDN</strong></i></p><p>如果应用程序web服务器离用户更近，那么一个HTTP请求的响应时间将缩短。另一方面，如果组件web服务器离用户更近，则多个HTTP请求的响应时间将缩短。</p><p>CDN还可以进行数据备份、扩展存储能力，进行缓存，同时有助于缓和Web流量峰值压力。</p><p>但也存在一些缺点：</p><p>（1）、响应时间可能会受到其他网站流量的影响。CDN服务提供商在其所有客户之间共享Web服务器组。</p><p>（2）、如果CDN服务质量下降了，那么你的工作质量也将下降</p><p>（3）、无法直接控制组件服务器</p><p><i>1.3 &nbsp; 添加Expires 头</i></p><p>在第一次访问的时候需要进行很多的http请求，但是<strong>通过一个长久的Expires头，可以使得这些组件被缓存</strong>，这样在后续的请求中可以避免很多不必要的http请求，<strong>需要添加的包括图片、css、脚本，即所有的组件上</strong>。</p><p><font color="#ff0000">注意： Expires的缺点是必须保证浏览器和服务器的时间严格一致，否则就会出现问题。</font></p><p><strong>为图片使用长久的Expires头非常普遍， 但是这一最佳实践不应当仅仅用在图片上，长久的Expired头应该包括任何不经常变化的组件，包括脚本、样式表。但是HTML文档不应该使用长久的Expires头，因为他包含动态内容，这些内容在每次用户请求时都将不断刷新。</strong></p><p><i><strong>1.4 &nbsp;&nbsp;</strong><span style="line-height: 1;">Last-Modified 和ETags</span></i></p><p>Last-Modified 和ETags请求的http报头一起使用，服务器首先产生 Last-Modified/Etag标记，服务器可在稍后使用它来判断页面是否已经被修改，来决定文件是否继续缓存<br>过程如下:<br>1. 客户端请求一个页面（A）。<br>2. 服务器返回页面A，并在给A加上一个Last-Modified/ETag。<br>3. 客户端展现该页面，并将页面连同Last-Modified/ETag一起缓存。<br>4. 客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag一起传递给服务器。<br>5. 服务器检查该Last-Modified或ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304和一个空的响应体。<br>注：<br>1、Last-Modified和Etag头都是由Web Server发出的Http Reponse Header，Web Server应该同时支持这两种头。<br>2、Web Server发送完Last-Modified/Etag头给客户端后，客户端会缓存这些头；<br>3、客户端再次发起相同页面的请求时，将分别发送与Last-Modified/Etag对应的Http RequestHeader:If-Modified-Since和If-None-Match。我们可以看到这两个Header的值和WebServer发出的Last-Modified,Etag值完全一样；<br>4、通过上述值到服务器端检查，判断文件是否继续缓存；</p><p><br></p><p><font size="4"><i>2、减少代码量</i></font></p><p><i>2.1 &nbsp;精简代码</i></p><p>从代码中移除不必要的字符以减少文件大小，降低加载的时间。代码精简的时候会移除不必要的空白字符（空格，换行、制表符），这样整个文件的大小就变小了。</p><p><i>2.2 &nbsp;合并代码</i></p><p><span style="line-height: 1;">尽可能的将外部的脚本、样式进行合并，多个合为一个。另外， CSS、 Javascript、Image 都可以用相应的工具进行压缩，压缩后往往能省下不少空间</span></p><p><span style="line-height: 1;"><br></span></p><p><font size="4"><i>3、脚本加载优化</i></font></p><p><span style="line-height: 14px;"><font size="3"><i>3.1 &nbsp; 动态加载</i></font></span></p><p>手工创建script元素，然后等到HTML文档解析完毕后插入到文档中去。这样就可以很好地控制脚本加载的时机，从而避免阻塞问题。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params">src</span>) </span>{
+  <span class="hljs-keyword">const</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+  script.src = src;
+  <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>].appendChild(script);
+}
+load(<span class="hljs-string">'http://aaa.com/jquery.js'</span>);</code></pre><p><font size="3"><i>3.2 &nbsp; 异步加载</i></font></p><p>同步的模式会产生阻塞问题。所以为了解决同步解析脚本会阻塞浏览器渲染的问题，采用异步加载脚本就成为了一种好的选择。利用脚本的async和defer属性就可以实现这种需求。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./a.js"</span> <span class="hljs-keyword">async</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./b.js"</span> defer&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre><p>使用async属性的脚本执行顺序是不能得到保证的。而使用defer属性的脚本执行顺序可以得到保证。另一方面，defer属性是在html文档解析完成后，DOMContentLoaded事件之前就会执行js。async一旦加载完js后就会马上执行，最迟不超过window.onload事件。所以，如果脚本没有操作DOM等元素，或者与DOM什么时候加载完成无关，直接使用async脚本就好。如果需要DOM，就使用defer。</p><p>对于页面中那些独立的脚本，如用户统计等插件就可以放心大胆地使用异步加载。</p><p><font size="3"><i>3.3 &nbsp;懒加载(lazyload)</i></font></p><p>懒加载是一种按需加载的方式，也通常被称为<em>延迟加载</em>。主要思想是通过延迟相关资源的加载，从而提高页面的加载和响应速度。主要介绍两种实现懒加载的技术：虚拟代理技术以及惰性初始化技术。</p><p><i>3.3.1 &nbsp;虚拟代理加载</i></p><p>所谓虚拟代理加载，即为真正加载的对象事先提供一个代理或者说占位符。最常见的场景是在图片的懒加载中，先用一种loading的图片占位，然后再用异步的方式加载图片。等真正图片加载完成后就填充进图片节点中去。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-comment">// 页面中的图片url事先先存在其data-src属性上</span>
+<span class="hljs-keyword">const</span> lazyLoadImg = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> images = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'img'</span>);
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; images.length; i++) {
+      <span class="hljs-keyword">if</span>(images[i].getAttribute(<span class="hljs-string">'data-src'</span>)) {
+          images[i].setAttribute(<span class="hljs-string">'src'</span>, images[i].getAttribute(<span class="hljs-string">'data-src'</span>));
+          images[i].onload = () =&gt; images[i].removeAttribute(<span class="hljs-string">'data-src'</span>);
+      }
+  }
+}</code></pre><p><i>3.3.2 &nbsp; 惰性初始化&nbsp;</i></p><p>这个模式就是一种将代码初始化的时机推迟（特别是那些初始化消耗较大的资源），从而来提升性能的技术。<br></p><p>jQuery中大名鼎鼎的ready方法就用到了这项技术，其目的是为了在页面DOM元素加载完成后就可以做相应的操作，而不需要等待所有资源加载完毕后。与浏览器中原生的onload事件相比，可以更加提前地介入对DOM的干涉。当页面中包含大量图片等资源时，这个方法就显出它的好处了。</p><p>在jQuery内部的实现原理上，它会设置一个标志位来判断页面是否加载完毕，如果没有加载完成，会将要执行的函数缓存起来。当页面加载完毕后，再一一执行。这样一来，就将原本应该马上执行的代码，延迟到页面加载完毕后再执行。</p><p><i>3.3.3 &nbsp; 根据场景选择加载时机</i></p><p>（1）滚动条监听，常常用在大型图片流等场景下，众所周知的图片瀑布流懒加载就是采用了滚动条监听。通过对用户滚动结束的区域进行计算，从而只加载目标区域中的资源。这样就可以实现节流的目的。</p><p>（2）事件回调，<span style="line-height: 1;">这种场景就是那些需要用户交互的地方，如点击加载更多之类的。这些资源往往通过在用户交互的瞬间（如点击一个触发按钮），发起ajax请求来获取资源。</span></p><p><i><span style="line-height: 1;">3.3.4 &nbsp;&nbsp;</span><font size="3">webpack实现脚本加载优化</font></i></p><p>对于大型项目大家都会用上打包工具。现代化的工具使得我们不必再写那些又长又难懂的代码。针对懒加载，webpack也提供了十分友好的支持。‘</p><p>在原生es6的语法中，提供了import和export的方式来管理模块。而其import关键字是被设置成静态的，因此不支持动态绑定。不过在es6的stage 3规范中，引入了一个新的方法<code>import()</code>使得动态加载模块成为可能</p><p><font size="3"><i>3.4 &nbsp;预加载</i></font></p><p>preload&nbsp;是w3c新出的一个标准。利用link的rel属性来声明相关“proload"，从而实现预加载的目的。就像这样：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span>&lt;link rel=<span class="hljs-string">"preload"</span> href=<span class="hljs-string">"example.js"</span> <span class="hljs-keyword">as</span>=<span class="hljs-string">"script"</span>&gt;</span></code><span>
+</span></pre><div style="font-size: medium;"><font size="3"><br></font></div><font size="2">rel属性是用来告知浏览器启用preload功能，而as属性是用来明确需要预加载资源的类型，</font><p><font size="2">这个资源类型不仅仅包括js脚本(script)，还可以是图片(image)，css(style)，视频(media)等等。浏览器检测到这个属性后，就会预先加载资源。<span style="line-height: 1;">这个规范目前兼容性方面还不是很好，所以可以先稍微了解一下。webpack现在也已经有相关的插件，如果感兴趣的话，请移步</span><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2FGoogleChrome%2Fpreload-webpack-plugin" target="_blank" style="line-height: 1;">preload-webpack-plugin</a><span style="line-height: 1;">。</span></font></p><p><font size="3"><i><span style="line-height: 1;">3.5&nbsp;</span>DNS Prefetch 预解析</i></font></p><p>同preload类似，DNS Prefetch在网络层面上优化了资源加载的速度。我们知道，针对DNS的前端优化，主要分为减少DNS的请求次数，还有就是进行DNS预先获取。DNS prefetch就是为了实现这后者。其用法也很简单，只要在link标签上加上对应的属性就行了。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1">&lt;meta http-equiv=<span class="hljs-string">"x-dns-prefetch-control"</span> content=<span class="hljs-string">"on"</span> /&gt; <span class="hljs-comment">/* 这是用来告知浏览器当前页面要做DNS预解析 */</span>
+&lt;link rel=<span class="hljs-string">"dns-prefetch"</span> href=<span class="hljs-string">"//example.com"</span>&gt;</code></pre><p>在支持该标准的浏览器上，会自动对链接中的地址域名做DNS解析缓存。不过，像Goolge、火狐这样的现代浏览器即使不设置这个属性，也能在后台做自动预解析。如果你的页面中<span style="background-color: rgb(255, 204, 0);">需要大量访问不同域名的资源</span>，可以利用这项技术加快资源的获取，从而获得更好的用户体验。需要注意的是，DNS预解析虽好，但是也不能滥用。<span style="background-color: rgb(255, 204, 0);">如果对多页面重复DNS预解析，会增加DNS的查询次数</span></p><p><font size="5">二、代码书写习惯</font></p><p><i>1、<font size="3">使用DocumentFragment或innerHTML取代复杂的元素注入</font></i></p><p>1.1 &nbsp; DocumentFragement 是一组子节点的“虚拟存储”，并且它没有父标签。在 DOM外，一直保管着你的子节点，直到他们被注入DOM中。<span style="line-height: 1;">为DocumentFragment追加子元素，然后再将这个DocumentFragment加到父列表中，这一系列操作仅仅是一个DOM操作。</span></p><p>1.2 &nbsp; 如果不需要将列表对象当做节点来操作，更好的方法是用字符串构建HTML内容，</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> htmlStr = <span class="hljs-string">''</span>;
+
+items.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
+    <span class="hljs-comment">// 构建包含HTML页面内容的字符串</span>
+    htmlStr += <span class="hljs-string">'&lt;li&gt;'</span> + item.text + <span class="hljs-string">'&lt;/li&gt;'</span>;
+});
+
+<span class="hljs-comment">// 通过innerHTML设定ul内容</span>
+<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>).innerHTML = htmlStr;</code></pre><p>这当中也只有一个DOM操作，并且比起DocumentFragment代码量更少</p><p><br></p><p><i>2、<font size="3">使用Array.prototype.join代替字符串连接</font></i></p><p>在上面元素注入中使用了基本字符连接：<span style="font-size: 0.8em; line-height: 1; background-color: rgb(248, 248, 248);">htmlStr += '&lt;li&gt;' + item.text + '&lt;/li&gt;'; &nbsp;&nbsp;</span></p><p>下面用join方法进行优化</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> items = [];
+
+items.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
+    <span class="hljs-comment">// 构建字符串</span>
+    items.push(<span class="hljs-string">'&lt;li&gt;'</span>, item.text, <span class="hljs-string">'&lt;/li&gt;'</span>);
+});
+
+<span class="hljs-comment">// 通过innerHTML设置列表内容</span>
+<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>).innerHTML = items.join(<span class="hljs-string">''</span>);</code></pre><p><br></p><p><i>3、<font size="3">动画尽可能使用CSS</font></i></p><p>大部分浏览器已经支持CSS的transformation和keyframe所做的动画，但仍有很多人使用JavaScript制作动画效果，实际上使用CSS动画比起JavaScript驱动的动画效率更高。CSS动画同时需要更少的代码。很多的CSS动画是用<font color="#000080" style="background-color: rgb(255, 204, 0);">GPU处理</font>的，因此动画本身很流畅</p><p><br></p><p><i>4、<font size="3">使用事件委托</font></i></p><p>开发中很常见的场景：有一个无序列表，里面有一堆&lt;li&gt;元素，每一个&lt;li&gt;元素都会在点击的时候触发一个行为。这个时候，通常会在每一个元素上添加一个事件监听，但是如果当这个元素或者你添加了监听的这个对象会被频繁的移除添加呢？这个时候，我们就需要引入事件委托了。事件委托是<span style="background-color: rgb(255, 204, 0);">在父级元素上添加一个事件监听，来替代在每一个子元素上添加事件监听</span>。当事件被触发时，event.target会评估相应的措施是否需要被执行。</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#parent-list'</span>).addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-comment">// e.target 是一个被点击的元素!</span>
+    <span class="hljs-comment">// 如果它是一个列表元素</span>
+    <span class="hljs-keyword">if</span>(e.target &amp;&amp; e.target.tagName == <span class="hljs-string">'LI'</span>) {
+        <span class="hljs-comment">// 我们找到了这个元素，对他的操作可以写在这里。</span>
+    }
+})</code></pre><p><br></p><p><font size="3"><i>5、使用索引对象</i></font></p><p>使用索引对象检索代替遍历数组，可以提高遍历速度。AJAX和JSON一个最常见的使用案例是接收包含一组对象的数组，然后从这组数组中根据给定的值搜索对象</p><p>创建一个新的对象，对每一个唯一的值建立一个索引，看栗子：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> userList=[
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="hljs-string">"userName"</span>:<span class="hljs-string">"aa"</span>,<span class="hljs-string">"userAge"</span>:<span class="hljs-number">23</span>},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="hljs-string">"userName"</span>:<span class="hljs-string">"bb"</span>,<span class="hljs-string">"userAge"</span>:<span class="hljs-number">13</span>}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+];
+<span class="hljs-keyword">var</span> userStore = {};
+userList.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">user</span>) </span>{
+    userStore[user.userName] = user;
+});</code></pre><p>想要找一个用户对象时，我们可以直接通过索引找到这个对象：</p><pre style="max-width:100%;overflow-x:auto;"><code class="javascript hljs" codemark="1"><span class="hljs-keyword">var</span> aa= userStore.aa;
+或
+<span class="hljs-keyword">var</span> bb= userStore[<span class="hljs-string">"bb"</span>];</code></pre><p><br></p><p><i>6、<font size="3">控制DOM大小</font></i></p><p>通常控制DOM大小的技巧包括：<a href="http://caibaojian.com/webfront-practice.html">·</a></p><ul><li>使用:before和:after伪元素</li><li><br></li><li>延迟加载和呈现内容</li><li><br></li></ul><ul><li>使用事件委托，更简便的将节点转换成字符串存储</li><li><br></li></ul><p><font size="3"><i>7、 避免重绘 和 回流</i></font></p><p><span style="background-color: rgb(255, 204, 0);">重绘（<strong style="line-height: 1;">repaint</strong>）&nbsp;</span><strong style="line-height: 1;">&nbsp;</strong>当前元素的颜色样式(背景颜色、字体颜色等)发生改变的时候，我们只需要把改变的元素重新的渲染一下即可，重绘主要改变外观风格（改个颜色，换个皮肤），不改变布局，不影响其他的dom，所以重绘对浏览器的性能影响较小，一般不做优化，但是能避免最好。</p><p><span style="background-color: rgb(255, 204, 0);">&nbsp;回流（reflow）</span> 指浏览器为了重新渲染部分或者全部的文档而重新计算文档中元素的位置和几何构造的过程。 因为回流可能导致整个 DOM 树的重新构造，所以是性能的一大杀手，一个元素的回流导致了其所有子元素以及 DOM 中紧随其后的祖先元素的随后的回流。所以，reflow 必然会引起 repaint。</p><p>&nbsp;触发回流的主要有以下操作：</p><p>&nbsp;调整窗口大小 改变字体 增加或者移除样式表。</p><p>&nbsp;内容变化，比如用户在 input、textarea、下拉框中输入或选择文字&nbsp;</p><p>激活 CSS 伪类，比如 :hover (IE 中为兄弟结点伪类的激活)&nbsp;</p><p>&nbsp;JS 操作 DOM&nbsp;</p><p>计算 offsetWidth 和 offsetHeight 属性&nbsp;</p><p>设置 style 属性的值&nbsp;</p><p><br><br></p><p><br></p>     
+	</div>
+	</article>
+	
+	<hr class="divider" style="width:90%;border: 0;border-top: 1px solid #eee;">
+<footer>
+<p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
+<p>
+<a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
+<a href="https://pages.github.com/" target="_blank" class="github-pages">
+  <i class="fa fa-github-square"></i>
+</a>
+</p>
+</footer>
+
+</div>	
+<script type="text/javascript" src="/js/nav.js"></script>
+<script>
+//---------筛选分类---------
+function classify(mark){
+  if (mark=='html') {
+    window.location.href="/webFE/webFE_article_HTML.html";
+  }else if(mark=='css'){
+    window.location.href="/webFE/webFE_article_CSS.html";
+  }else if(mark=='JavaScript'){
+    window.location.href="/webFE/webFE_article_JavaScript.html";
+  }else{
+    window.location.href="/webFE/webFE_article_frame.html";
+  }
+  
+}	
+(function(){
+    var $backToTopEle=$('<img class="backToTop" src="/img/backtop.png" />').appendTo($("body")).click(function(){
+    $("html, body").animate({scrollTop:0},400);
+    }),
+    $backToTopFun=function(){
+      var st=$(document).scrollTop(),
+      winh=$(window).height();
+      (st>0)?$backToTopEle.show():$backToTopEle.hide();
+      if(!window.XMLHttpRequest){
+        $backToTopEle.css("top",st+winh-166);
+      }
+    };
+    $(window).on("scroll",$backToTopFun);
+    $(function(){$backToTopFun();});
+
+})();
+</script>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    var inputText=$("#id_1").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method,"container1");
+
+}
+
+function test_shuffle(str,method){
+    var inputText=$("#id_2").val();
+    var n=parseInt(inputText);
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method,"container2");
+}
+
+function showChat(arrTest,str,method,container) {
+    $('#'+container).highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
