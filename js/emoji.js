@@ -92,7 +92,8 @@ var ImgIputHandler={
 			     var selectMood=$(this).attr("title");
 			     $("#mood").val(selectMood);
 			     $(".faceDiv").hide();
-			     $('#editorContainer').css("marginTop","0px")
+			     $('#editorContainer').css("marginTop","0px");
+			     toggleMark=true;
 
 		});
 	},
