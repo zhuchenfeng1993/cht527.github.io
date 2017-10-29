@@ -55,6 +55,13 @@
             "author": "cht",
             "date": "2017-09-19",
             "category": "F2E散文"
+        },
+        {
+            "id": 25,
+            "title": "Web安全的三个攻防姿势",
+            "author": "转自 <a href=\"https://funteas.com/user/story\">前端日刊</a>",
+            "date": "2017-10-29",
+            "category": "F2E散文"
         }
     ]
 }
