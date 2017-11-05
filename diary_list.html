@@ -102,7 +102,7 @@
 
 		if (!hasCheck||parseInt(hasCheck.split("=")[1])+60*1000<Date.parse(new Date())) {
 			 	swal({
-			 		title:"还不认识你哦!",
+			 		title:"时效已过,重新登录!",
 			 		type:"error",
 					timer: 2000
 				});
