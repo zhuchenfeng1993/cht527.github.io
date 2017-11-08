@@ -39,7 +39,7 @@ ul li{
     height: 45px;
     cursor: pointer;
 }
-li:hover{color:#A09D9D}
+li:hover{color:#A09D9D;font-size:1.1em;}
 .nav-ul-list .nav-divider{display: none;}
 .parentimg{width:52%;display:flex;display:box;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;align-items:center;overflow:hidden;flex-wrap:nowrap;margin:30px auto}
 .photoimg{height:100%;cursor:pointer}
