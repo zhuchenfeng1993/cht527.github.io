@@ -9,7 +9,7 @@
 	<link rel="shortcut icon" href="../img/favicon.ico" /> 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../css/webFE_header.css">
-	<link rel="stylesheet" href="../css/webFE.css">
+	<link rel="stylesheet" href="../css/webFE_app.css">
   <link rel="stylesheet" type="text/css" href="../css/nav-responsive.css" media="screen and (max-width: 450px)">
   <style>
 
@@ -58,16 +58,9 @@
 	
 </div>
 
-<!---分页-start-->
-  <nav aria-label="Page navigation" class="pagination">
-    <ul class="pagination" id="pagination_ul">
-      
-    </ul>
-  </nav>
-<!--分页end-->
 
-	<hr class="divider" style="width:65%;border: 0;border-top: 1px solid #eee;">
-  <footer>
+<hr class="divider" style="width:65%;border: 0;border-top: 1px solid #eee;">
+<footer>
     <p>Copyright &copy; 2017&nbsp;<a href="http://caohaitao.cc">caohaitao.cc</a>&nbsp;&nbsp;. All Rights Reserved</p>
     <p>
       <a class="website-record" href="http://www.miibeian.gov.cn" target="_blank">京ICP备&nbsp;16068799号</a>
@@ -75,23 +68,10 @@
         <i class="fa fa-github-square"></i>
       </a>
     </p>
-  </footer>
+</footer>
 </div>	<!--wrapper-->
 <script>
-  //初始化---list 
-  var list_config={
-    "type":"webFE",
-    "pageSize":7,
-    "curPage":1,
-    "total":0,
-    "pageCount":0,
-    "articleList":[],
-    "curList":[],
-    "dataUrl":"../data_source/webFE/webFE_list.json",
-    "locationUrl":"/webFE/article/webFE_show_"
-  }
-
-
+ 
 //-------------------导航展开--------------------------------------
  $(".js_piano_nav_icon").on("click",function(){
         $("body");
@@ -168,7 +148,7 @@ function classify(mark){
 }
 
 </script>
-<script type="text/javascript" src="../js/article_list.js"></script>
+
 <script type="text/javascript" src="/js/nav.js"></script>
 <script>
 
