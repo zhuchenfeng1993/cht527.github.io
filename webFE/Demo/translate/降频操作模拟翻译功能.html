@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>降频操作模仿翻译</title>
+	<style>
+		.translateWrapper{
+			width: 70%;
+			height: 300px;
+			border: 1px solid #aaa;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			position: absolute;
+		    top: 0;left: 0;right: 0;bottom: 0;
+		    margin: auto;
+		}
+		.select-container,.content-container{
+			width: 95%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.select-container{
+			height: 80px;
+			background: #F9F9F9;
+			border: 1px solid #aaa;
+			border-radius: 5px;
+		}
+		.content-container{
+			height: 160px;
+		}
+		.input-select,.output-select{
+			width: 176px;
+			height: 40px;
+			line-height: 40px;
+			border:1px solid #dcdcdc;
+			border-radius: 5px;
+			text-align: center;
+			background: #fff;
+		}
+		.translate-arrow{
+			width: 25px;
+			height: 25px;
+			overflow: hidden;
+			background: url("http://fanyi.baidu.com/static/translation/img/translate/translang/exchange1x_37fd099.png"); 
+		}
+		.input-container,.output-container{
+			width: 49%;
+			border-radius:2px;
+			position: relative;
+			padding: 8px;
+			font-size: 1.5rem;
+			overflow-y: auto;
+			height: 155px;
+		}
+		.output-container{
+			background: #F9F9F9;
+		}
+		.input-container{
+			border: 1px solid #F9F9F9;
+		}
+		
+		
+	</style>
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+ -->
+ <script src="./pingyinV2016928.js"></script>
+</head>
+<body>
+
+	
+<div id="waveform"></div>
+<div class="translateWrapper">
+	<div class="select-container">
+		<div class="input-select">中文</div>
+		<div class="translate-arrow"></div>
+		<div class="output-select">拼音</div>
+	</div>
+	<div class="content-container">
+		
+		<textarea class="input-container" style="resize:none;"  id="inputValue" placeholder="输入文字，即可翻译"></textarea>
+		
+		<div class="output-container" id="outputValue">
+			
+		</div>
+	</div>
+</div>
+
+<script>
+
+var inputDOM=document.getElementById("inputValue");
+var outputDOM=document.getElementById("outputValue");
+
+// 2、监听输入
+inputDOM.addEventListener('keyup', function (){
+    translateTrigger();
+}, false);
+// 3、降频处理 触发翻译
+function translateTrigger() {
+	clearTimeout(inputListener);//---降频处理
+	var inputListener=setTimeout(function() {
+		translate();
+	},500);
+}
+// 4、调用翻译接口
+function translate() {
+	var currentText=inputDOM.value.split("");
+	var regExp=/[\u4e00-\u9fa5]/;
+	var output=currentText.map(function (item,index) {
+		if (regExp.test(item)) {
+			return codefans_net_CC2PY(item)+" ";
+		}else{
+			return item+" ";
+		}
+	});
+	outputDOM.innerHTML=output.join("");
+}
+	
+
+
+
+	
+/*var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+});
+wavesurfer.on('ready', function () {
+    wavesurfer.play();
+});
+wavesurfer.load('df.mp3'); */
+
+
+</script>
+
+
+</body>
+</html>
