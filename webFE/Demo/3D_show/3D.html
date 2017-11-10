@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3D</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	overflow: hidden;
+}
+.wrap{
+	position: relative;
+	width: 100%;
+}
+.wrap .preform{
+	position: relative;
+	width: 100%;
+	height: 680px;
+	background: rgba(230,190,22,0.9);
+}
+.wrap .preform .bg_wrap{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	z-index: 1;
+}
+.wrap .preform .bg_wrap img{
+	position: absolute;
+}
+.preform .bg_wrap img.luce{
+	width: 100%;
+	bottom: 0;
+	z-index: 1;
+}
+.preform .bg_wrap img.base{
+	width: 100%;
+	left: 50%;
+	margin-left: -740px;
+	bottom: -200px;
+	z-index: 1;
+}
+.wrap .preform .group{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 848px;
+	height: 860px;
+}
+.wrap .preform .group img{
+	position: absolute;
+
+}
+.wrap .preform .group img.bolla{
+	width: 171px;
+	height: 175px;
+	top: 420px;
+	left: 20px;
+	z-index: 2
+}
+.wrap .preform .group img.bomboletta{
+	width: 107px;
+	height: 135px;
+	top: 450px;
+	left: 590px;
+	z-index: 2
+}
+
+.wrap .preform .group img.ciambella{
+	width: 286px;
+	height: 292px;
+	top: 380px;
+	left: 200px;
+	z-index: 5
+}
+.wrap .preform .group img.colori{
+	width: 517px;
+	height: 101px;
+	top: 250px;
+	left: 190px;
+	z-index: 1
+}
+
+.wrap .preform .group img.fish2{
+	width: 315px;
+	height: 291px;
+	top: 280px;
+	left: 290px;
+	z-index: 3
+}
+.wrap .preform .group img.mela{
+	width: 109px;
+	height: 102px;
+	top: 320px;
+	left: 586px;
+	z-index: 2
+}
+.wrap .preform .group img.mouse{
+	width: 432px;
+	height: 368px;
+	top: 410px;
+	left: 560px;
+	z-index: 3
+}
+.wrap .preform .group img.occhiali{
+	width: 196px;
+	height: 113px;
+	top: 220px;
+	left: 670px;
+	z-index: 1
+}
+.wrap .preform .group img.penna{
+	width: 337px;
+	height: 183px;
+	top: 580px;
+	left: 40px;
+	z-index: 1
+}
+.wrap .preform .group img.uccello{
+	width: 137px;
+	height: 145px;
+	top:230px;
+	left: 40px;
+	z-index: 2
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="preform">
+		<div class="bg_wrap">
+			<img class="luce" src="images/bg_luce.png" />
+			<img class="base" src="images/grafica_base.png" />
+		</div>
+		<div class="group">
+			<img class="bolla" data-prox='0.01' data-proy='0.08' src="images/bolla.png" alt="">
+			<img class="bomboletta" data-prox='-0.03' data-proy='-0.02' src="images/bomboletta.png" alt="">
+			
+			<img class="ciambella" data-prox='0.18' data-proy='0.22' src="images/ciambella.png" alt=""> 
+			<img class="colori" data-prox='0.016' data-proy='0.012' src="images/colori.png" alt="">
+			<img class="fish2" data-prox='-0.015' data-proy='-0.01' src="images/fish2.png" alt="">
+			<img class="mela" data-prox='0.03' data-proy='0.02' src="images/mela.png" alt="">
+			<img class="mouse" data-prox='-0.1' data-proy='-0.02' src="images/mouse.png" alt="">
+			<img class="occhiali" data-prox='-0.02' data-proy='-0.015' src="images/occhiali.png" alt="">
+			<img class="penna" data-prox='-0.045' data-proy='-0.03' src="images/penna.png" alt="">
+			<img class="uccello" data-prox='-0.012' data-proy='-0.01' src="images/uccello.png" alt="">
+		
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+<script>
+	(function() {
+		var $show={
+			$wrap:$(".wrap"),
+			$obj:$(".group").find("img"),
+			_init:function () {
+				this.preview=this._center();
+				this._pos();
+				this._handler();
+			},
+			_center:function () {
+				return {
+					left:this.$wrap.width()/2,
+					top:this.$wrap.height()/2
+				};
+			},
+			_pos:function () {
+				$.each(this.$obj,function () {
+					$(this).data('pos',{
+						"left":parseInt($(this).css("left")),
+						"top":parseInt($(this).css("top")),
+						"pro":{
+							x:$(this).data("prox"),
+							y:$(this).data("proy")
+						}
+					
+					});
+				});
+			},
+			_handler:function () {
+				var that=this;
+				this.$wrap.on("mousemove",function (e) {
+					var mx=e.pageX-that.preview.left;
+					var my=e.pageY-that.preview.top;
+					that._move(mx,my);
+				});
+			},
+			_move:function (mx,my) {
+				$.each(this.$obj,function () {
+					var pos=$(this).data("pos");
+					$(this).css({
+						'left':pos.left+(pos.pro.x*mx),
+						'top':pos.top+(pos.pro.y*my)
+					});
+				});
+			}	
+
+		};
+		$show._init();
+	})();
+</script>
+</html>
