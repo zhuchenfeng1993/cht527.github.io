@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>数组随机排序算法</title>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script> 
+<script type="text/javascript" src="highcharts-4.0.1.js"></script> 
+<style>
+table{
+    text-align:center;
+    display: inline-block;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h3> 测试数组['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']在10000次随机处理后的位置分布</h3>
+<table  cellpadding="10"  width="300px"> 
+<thead>
+<tr>  <th>Math.random()-0.5</th>  <th>shuffle</th>  </tr>  
+</thead>
+<tbody> 
+    <tr> 
+    <td><button onclick="test_mathRandom_0_5('a','Math.random()-0.5')"> a  </button>   </td> 
+    <td>  <button onclick="test_shuffle('a','shuffle')"> a  </button>  </td>  
+    </tr>
+    <tr> 
+    <td> <button onclick="test_mathRandom_0_5('b','Math.random()-0.5')"> b  </button>  </td> 
+    <td>  <button onclick="test_shuffle('b','shuffle')"> b </button>  </td> 
+     </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('c','Math.random()-0.5')"> c  </button> </td>
+     <td>  <button onclick="test_shuffle('c','shuffle')"> c </button>  </td> 
+     </tr>
+    <tr>
+     <td><button onclick="test_mathRandom_0_5('d','Math.random()-0.5')"> d  </button>   </td> 
+    <td>   <button onclick="test_shuffle('d','shuffle')"> d  </button> </td> 
+     </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('e','Math.random()-0.5')"> e  </button>  </td> 
+    <td>  <button onclick="test_shuffle('e','shuffle')"> e </button>  </td> 
+      </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('f','Math.random()-0.5')"> f  </button> </td> 
+    <td>   <button onclick="test_shuffle('f','shuffle')"> f  </button> </td>
+     </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('g','Math.random()-0.5')"> g  </button> </td>
+     <td>  <button onclick="test_shuffle('g','shuffle')"> g  </button>  </td> 
+      </tr>
+    <tr> <td><button onclick="test_mathRandom_0_5('h','Math.random()-0.5')"> h  </button>   </td>
+     <td>  <button onclick="test_shuffle('h','shuffle')"> h  </button>  </td>  
+      </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('i','Math.random()-0.5')"> i  </button>  </td> 
+    <td>   <button onclick="test_shuffle('i','shuffle')"> i  </button> </td> 
+      </tr>
+    <tr> <td> <button onclick="test_mathRandom_0_5('j','Math.random()-0.5')"> j  </button> </td> 
+    <td>  <button onclick="test_shuffle('j','shuffle')"> j  </button>  </td>
+    </tr>
+
+</tbody>
+</table> 
+<div id="container" style="display:inline-block"></div>
+<div style="width:90%;margin:0 auto"> 
+ <p style="color:red">翻看v8引擎数组部分的源码，注意到它出于对性能的考虑，对短数组使用的是插入排序，对长数组则使用了快速排序，至此，也就能理解为什么() => Math.random() - 0.5并不能真正随机打乱数组排序了。（有一个没明白的地方：源码中说的是对长度小于等于 22 的使用插入排序，大于 22 的使用快排，但实际测试结果显示分界长度是 10。</p>
+ <p style="color:blue">考察Lodash 库中的 shuffle 算法，注意到它使用的实际上是Fisher–Yates 洗牌算法，这个算法由 Ronald Fisher 和 Frank Yates 于 1938 年提出，然后在 1964 年由 Richard Durstenfeld 改编为适用于电脑编程的版本
+ </p>
+</div>
+<script>
+//Math.Random-0.5 
+function mathRandom_0_5(arr){
+   arr.sort(function () {
+      return Math.random() - 0.5;
+   });
+}
+//shuffle 算法
+function shuffle (arr) {
+    var i=arr.length,t,j;
+    while(i){
+        j=Math.floor(Math.random()*i--);
+        t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
+//---测试随机性
+var n = 100000;
+var array_test1 = (new Array(10)).fill(0),array_test2 = (new Array(10)).fill(0); // arr.fill(val) 将arr的每个值填充为val
+
+// 测试字符的位置
+
+function test_mathRandom_0_5(str,method){
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        mathRandom_0_5(arr);
+        array_test1[arr.indexOf(str)]++;
+    }
+    showChat(array_test1,str,method);
+
+}
+
+function test_shuffle(str,method){
+    for (var i = 0; i < n; i ++) {
+        var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        shuffle(arr);
+        array_test2[arr.indexOf(str)]++;
+    }
+    showChat(array_test2,str,method);
+}
+
+function showChat(arrTest,str,method) {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: method+'方法测试数组元素'+str+'位置随机性'
+        },
+       
+        xAxis: {
+            categories: ['0','1','2','3','4','5','6','7','8','9'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '次数'
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: str+'字符位置随机性',
+            data: arrTest
+        }]
+    });
+}
+</script>
+</body>
+</html>
