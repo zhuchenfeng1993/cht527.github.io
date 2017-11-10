@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jsonp实现百度联想搜索</title>
+<script src="jquery-1.11.1.min.js"></script>
+<style>
+#searchContainer{
+	width: 500px;
+    height: 300px;
+    margin: 20px auto;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+#search{
+	width: 300px;
+	height: 30px;
+	outline: none;
+	padding-left: 5px
+}
+.search{
+	width: 302px;
+    display: inline-block;
+    margin-left: 55px;
+    position: relative;
+    height: 180px;
+    overflow-y: auto;
+    border: 1px solid #bbb;
+    margin-top: -7px;
+    display: none;
+}
+.search ul{
+	position: absolute;
+	padding: 0;
+    margin: 0;
+    width: 100%
+}
+.search ul li{
+	text-align: left;
+	list-style: none;
+	padding-left: 5px;
+	padding-bottom:5px;
+}
+.search ul li:hover{
+	background: #eee
+}
+a{
+	text-decoration:none;
+	color: #aaa;
+}
+</style>
+</head>
+<body>
+<div id="searchContainer">
+	<p style="text-align: center;display: inline-block;">搜索框</p>
+	<input type="text" id="search"  />
+	<div class="search">
+		<ul>
+		</ul>
+	</div>
+</div>
+	
+<script>
+	
+
+/*	1、input onchange 事件 */
+    var searchInput=document.getElementById('search');
+    var oSea=document.querySelector('.search');
+    var oUl=document.querySelector('.search ul');
+    searchInput.onkeyup=function(e) {
+    	var searchVal=this.value;
+    	if(searchVal!=""){
+    		oSea.style.display="inline-block";
+    	}else{
+    		oSea.style.display="none";
+    	};
+    	// ---jsonp---
+    	jsonPgetData(searchVal);
+    }; 
+/*	2、注册回调函数--*/
+	function callbackSearch(value) {
+		var searchResultList=value.s;
+		//--通过数据 添加dom
+		drawDom(searchResultList);
+	}
+/*	3、 jsonp 请求 --*/
+	function jsonPgetData(searchVal) {
+		var oScript=document.createElement('script');
+		oScript.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+searchVal+"&cb=callbackSearch";
+		document.body.appendChild(oScript);
+	}
+
+	// ajax方式 jsonp 请求数据
+	/*
+	$.ajax({
+		method:"POST",
+		url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+searchVal+"&cb=callbackSearch",//百度的地址
+		data:"",
+		dataType:"jsonp",
+		jsonp:"callbackSearch"
+
+	}).done(function(data) {
+		console.log(data);
+	}).error(function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR.status);
+			console.log(jqXHR.readyState);
+			console.log(jqXHR.statusText);
+			    //打印其他两个参数的信息
+			    console.log(textStatus);
+			    console.log(errorThrown);
+	});
+	*/
+	/*4、生成dom 结构*/
+	function drawDom(dataList){
+		oUl.innerHTML='';
+		var resultFragment=document.createDocumentFragment();
+		dataList.forEach(function (value,index) {
+			var resultItem=document.createElement('li');
+			resultItem.innerHTML="<a href='https://www.baidu.com/s?wd="+value+"'>"+value+"</a>";
+			resultFragment.appendChild(resultItem);
+		});
+		oUl.appendChild(resultFragment);
+	}
+</script>
+
+</body>
+</html>
