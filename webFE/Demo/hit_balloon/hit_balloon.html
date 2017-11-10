@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js打气球</title>
+	<style>
+		body{
+			overflow: hidden;
+			background: #ccc;
+		}
+		.balloon{
+			width: 160px;
+			height: 160px;
+			position: absolute;
+			background: #faf9f9;
+			border-radius:160px 160px 64px 160px;/*形状*/
+			transform: rotate(45deg);/*旋转*/
+			cursor: pointer;
+			box-shadow: -8px -8px 80px -8px #873940 inset  /*x y 羽化程度 阴影半径 颜色 内外阴影*/
+		}
+		.balloon:after{
+			position: absolute;
+			content: '';
+			display: block;/*伪类元素默认是inline*/
+			width:0;height: 0;
+			border: 8px solid transparent;
+			border-right-color: #873940;
+			transform: rotate(45deg);/*旋转*/
+			border-radius: 50%;
+			bottom:0;
+			right:0;
+		}
+	</style>
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+ -->
+
+</head>
+<body>
+
+<!-- <div id="waveform"></div> -->
+
+<script>
+/* 1、生成若干dom节点 （气球）*/
+	/* 1.1 初始化气球数量*/
+	/* 1.2 循环创建节点 添加类名 添加到父元素*/
+	/* 1.3 改变纵向高度*/
+	
+
+/* 2、气球向上移动 */
+	/* 2.1 动态 改变top 值*/
+	/* 2.2 获取所有气球,循环改变top */
+	/* 2.3 当前top-动态变化量*/
+	/* 2.4 定时器循环执行move */
+
+/* 3、用户点击 气球动画后消失*/
+    /* 3.1 事件委托 点击事件*/
+    /* 3.2 点击气球节点删除dom */
+    /* 3.3 从气球数组中删掉点击的气球对象 */
+    /* 3.4 删除一个 继续补充一个*/
+/* 4、气球动画 */
+	/* 4.1 速度增加，宽高减小，左右摇摆*/
+
+//-------------初始化------------
+var num=10;
+var wH=window.innerHeight;
+var wW=window.innerWidth;
+var bZ=160;
+var timer=null;
+var balloons=[];
+
+function init(num) {
+	var balloonFragment=document.createDocumentFragment();
+	for (var i = 0; i < num; i++) {
+		var oBalloon=document.createElement('div');
+		oBalloon.className="balloon";
+		oBalloon.style.top=wH-bZ+"px";//纵向 
+		//横向 随机 0--wW
+		var randomX=~~(Math.random()*wW-bZ);
+		randomX=Math.max(0,randomX);
+		oBalloon.style.left=randomX+"px"; 
+		oBalloon.speed=~~(Math.random()*8)+1;// 给元素加自定义属性,实现运动速度随机
+		balloons.push(oBalloon);
+		balloonFragment.appendChild(oBalloon);
+	}
+	document.body.appendChild(balloonFragment);
+}
+function move() {
+	var balloonLen=balloons.length;
+	for (var i = 0; i < balloonLen; i++) {
+
+		balloons[i].style.top=balloons[i].offsetTop-balloons[i].speed+"px";
+		if (balloons[i].offsetTop<(-bZ)) {
+			balloons[i].style.top=wH-bZ+"px";
+		}
+
+	}
+
+}
+
+
+document.addEventListener('click',function (e) {
+	if (e.target.className==='balloon') {
+		//---气球消失
+		//e.target.parentNode.removeChild(e.target);
+		boom.call(e.target);
+		//---气球数组中删掉
+		var currentIndex=balloons.lastIndexOf(e.target);
+		balloons.splice(currentIndex,1);
+		
+		//---新生成一个
+		init(1);
+	}
+},false);
+
+function boom() {
+	var index=0;
+	var rotate=[30,80];
+
+	this.timer=setInterval(function () {
+		index++;
+		index%=2;//0 1 0 1 0 1
+		this.speed++;
+		this.style.top=this.offsetTop-this.speed+"px";
+		this.style.width=this.offsetWidth-10+"px";
+		this.style.height=this.offsetHeight-10+"px";
+		this.style.transform='rotate('+rotate[index]+'deg)';
+	}.bind(this), 1000/60);
+}
+
+init(num);
+
+move();
+
+setInterval(move, 60);
+
+/*var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+});
+wavesurfer.on('ready', function () {
+    wavesurfer.play();
+});
+wavesurfer.load('df.mp3'); */
+
+
+</script>
+
+
+</body>
+</html>
