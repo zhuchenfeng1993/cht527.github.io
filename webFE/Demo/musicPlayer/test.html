@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一曲离殇</title>
+	<link rel="stylesheet" href="./css/musicPlayer.css" />
+</head>
+<body  onselectstart="return false">
+<!-- modal  弹窗 -->
+<div class="cd-modal">
+	<!-- modal 内容 -->
+	<div class="modal-content">
+		<div class="player-title">一曲离殇丶笑看人世繁华</div>
+		<div class="player-container">
+			<div class="play-list" id="playList">
+				<ul id="playListUl"></ul>
+			</div>
+			<div class="player-content">
+				<div class="player-switch">
+					<div class="switch-head"></div>
+					<img class="player-switch-body" src="./images/player-switch.png" alt="唱片机唱针" />
+				</div>
+				<div class="player-disc">
+					<img class="player-body" src="./images/player-body.png" alt="唱片机转盘" />
+					<img id="songCover" src="./images/songCover/0.jpg" alt="歌词封面">
+				</div>
+			</div>
+			<div class="song-lyric" id="textLrc">
+				<div id="contentLrc"></div>
+			</div>
+		</div>
+		
+		<audio src="" id="myMusic"></audio>
+	</div> 
+	<div class="play-set-container">
+			
+	</div>
+	<span class="modal-close">Close</span>
+
+</div> 
+
+<!-- 遮罩层 -->
+<div class="cd-transition-layer visible opening"> 
+	<div class="bg-layer"></div>
+</div> 
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/song-list.js"></script>
+
+
+</body>
+</html>
