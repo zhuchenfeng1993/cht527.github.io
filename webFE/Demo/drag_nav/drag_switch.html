@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽交换</title>
+	<style>
+		*{
+			margin: 0;padding: 0
+		}
+		ul{
+			position: relative;
+		}
+		li{
+			list-style: none;
+			float: left;
+			margin:10px 0 0 10px;
+
+		}
+		.container{
+			width: 610px;
+			height: 400px;
+			border:1px solid #ccc;
+			margin: 100px auto;
+			border-radius: 4px;
+		}
+
+		li>img{
+			width: 190px;
+			height: 116px;
+			border-radius: 4px;
+			cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<div id="photoUl" class="container">
+		<ul >
+			<li><img src="1.png" alt=""></li>
+			<li><img src="2.png" alt=""></li>
+			<li><img src="3.png" alt=""></li>
+			<li><img src="4.png" alt=""></li>
+			<li><img src="5.png" alt=""></li>
+			<li><img src="6.png" alt=""></li>
+			<li><img src="7.png" alt=""></li>
+			<li><img src="8.png" alt=""></li>
+			<li><img src="9.png" alt=""></li>
+		</ul>
+	</div>
+	<script>
+		/*
+			1、所有li改成绝对定位
+				1.1 获取所有li
+				1.2 获取当前li的位置,位置存到数组中
+				1.3 改成绝对定位
+				1.4 设置位置值
+		*/
+		var liList=document.getElementsByTagName("li");
+		var liOffsetArray=[];// 用于位置数组
+		var photo=document.getElementById("photoUl");
+		~~function init() {
+			liOffsetArray=Array.prototype.map.call(liList,function(item) {
+				var x=item.offsetLeft;
+				var y=item.offsetTop;
+
+				return {x,y}
+			});
+			Array.prototype.forEach.call(liList,function(item,index) {
+				item.style.position="absolute";
+				item.style.left=liOffsetArray[index].x+"px";
+				item.style.top=liOffsetArray[index].y+"px";
+				item.style.margin="0px";
+				item.idx=index;
+
+			});
+
+		}();
+		photo.addEventListener("mousedown",drag,false);
+		document.addEventListener("mousemove",drag,false);
+		document.addEventListener("mouseup",drag,false);
+		var ele; //当前选中元素
+		var data={
+			x:0,//原始位置
+			y:0,
+			eX:0,//鼠标点击位置
+			eY:0,
+			idx:0,//元素索引
+			endIdx:0//碰撞成功的元素索引
+		}; //元素初始位置
+		var toggle=false;//是否选中元素
+		var trigger;
+		var z=1;
+		function drag(e) {
+			e=window.event||ev;//获取鼠标事件
+			e.preventDefault();
+			switch(e.type){
+				case "mousedown":
+					if(e.target.parentNode.tagName.toLowerCase()==="li"){
+						ele=e.target.parentNode;//复用
+						data.x=ele.offsetLeft;
+						data.y=ele.offsetTop;
+						data.eX=ele.clientX;
+						data.eY=ele.clientY;
+                        data.idx=ele.idx;
+                        toggle=true;
+					}
+					break;
+				case "mousemove":
+					if (toggle) {
+						var x1=e.clientX;//鼠标移动位置
+						var y1=e.clientY;
+						//--新位置=原始位置+（x2-x1）
+						var xoffset=data.x+x1-data.eX;
+						var yoffset=data.y+y1-data.eY;
+						ele.style.position="absolute";
+						ele.style.left=xoffset+"px";
+						ele.style.top=yoffset+"px";
+						ele.style.margin="0px";
+						ele.style.zIndex=z+1;
+
+						var xR=x1-photo.offsetLeft;//相对坐标
+						var yR=y1-photo.offsetTop;
+						
+						liOffsetArray.some(function(item,index) {
+							if (xR>item.x&&
+							xR<item.x+190&&
+							yR>item.y&&
+							yR<item.y+116&&
+							data.idx!=index) {
+								//碰撞成功
+							trigger=liList[index];
+							data.endIdx=index;//当前点中的元素
+
+							}
+							
+						});
+					}
+					break;
+				case "mouseup":
+					toggle=false;
+					if (trigger) {
+						ele.style.left=trigger.offsetLeft+"px";
+						ele.style.top=trigger.offsetTop+"px";
+						trigger.style.left=data.x+"px";
+						trigger.style.top=data.y+"px";
+						[liOffsetArray[data.idx],liOffsetArray[data.endIdx]]=[liOffsetArray[data.endIdx],liOffsetArray[data.idx]];
+					}
+					break;
+			}
+
+		}
+	</script>
+</body>
+</html>
