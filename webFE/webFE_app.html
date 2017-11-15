@@ -12,11 +12,33 @@
 	<link rel="stylesheet" href="../css/webFE_app.css">
   <link rel="stylesheet" type="text/css" href="../css/nav-responsive.css" media="screen and (max-width: 450px)">
   <style>
-
+    .app-container{
+      display: flex;
+      display: -webkit-flex; 
+      justify-content:space-around;
+      flex-wrap: wrap;
+      width: 1000px;
+      margin: 0 auto
+    }
+    .app-container img{
+      margin-bottom: 50px;
+        height: 260px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .app-container a img{
+      transition: all .25s;
+    }
+    .app-container a img:hover{
+      -o-box-shadow:3px 3px 3px 0px #ccc;
+        box-shadow:3px 3px 3px 0px #ccc;
+        transform:translateY(-4px);
+    }
   </style>
 	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 	
 	<title>前端微应用</title>
+
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 <div id="modal_load"><i class="fa fa-spinner fa-pulse"></i></div>
@@ -55,7 +77,16 @@
 </nav>
 
 <div id="app_items_contianer"><!---列表-->
-	
+	<a href="./Demo/3D_show/3D.html" target="_blank"><img src="./app_img/3D.gif" alt="" /></a>
+  <a href="./Demo/drag_nav/drag_switch.html" target="_blank"><img src="./app_img/drag.gif" alt="" /></a>
+  <a href="./Demo/love/love.html" target="_blank"><img src="./app_img/love.gif" style="height: 300px" alt="" /></a>
+  <a href="./Demo/hit_balloon/hit_balloon.html" target="_blank"><img src="./app_img/hitBallon.gif" alt="" /></a>
+  
+  <a href="./Demo/translate/translate.html" target="_blank"><img src="./app_img/translate.gif" alt="" /></a>
+  <a href="./Demo/musicPlayer/musicPlayer.html" target="_blank"><img src="./app_img/musicPlayer.gif" style="height: 300px" alt="" /></a>
+  <a href="./Demo/potato_clock/potato.html" target="_blank"><img src="./app_img/potato.gif" style="height: 300px" alt="" /></a>
+  <a href="./Demo/jsonp_search/jsonp_search.html" target="_blank"><img src="./app_img/jsonpSearch.gif" style="height: 300px" alt="" /></a>
+  <a href="./Demo/random_array/random_array.html" target="_blank"><img src="./app_img/randomArray.gif"  style="height: 300px" alt="" /></a>
 </div>
 
 
