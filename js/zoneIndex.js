@@ -229,7 +229,7 @@ $(".js_fly_send").click(function() {
 
 
  //---监听展开pianoList 展开、收起
-/* $("#piano_items_contianer").on("click",'.show-hide-piano',function(){
+$("#piano_items_contianer").on("click",'.show-hide-piano',function(){
         if($(this).attr("title")=="展开"){
             $(this).children().eq(0).removeClass("fa-chevron-down").addClass("fa-chevron-up");
             $(this).attr("title","收起")
@@ -238,11 +238,11 @@ $(".js_fly_send").click(function() {
             $(this).attr("title","展开")
         }
         $(this).parent().parent().next().toggle(800);
- })*/
+ })
 
 /*----钢琴弹奏事件绑定----*/
 
-/*$("#piano-container,#piano-back").on("click",function(){
+$("#piano-container,#piano-back").on("click",function(){
 		if (window.blog.is_loadpiano) {
 			$("#container").toggle(400);
         	$("#pianoList").toggle(800);
@@ -281,4 +281,4 @@ function getPianoData(){
 	}).fail(function(){
 		swal('请求接口失败','error','error')
 	});
-}*/
+}
