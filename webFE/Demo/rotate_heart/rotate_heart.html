@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>爱心旋转</title>
+<style type="text/css">
+body{
+	background: #000;
+		/*景深*/
+	/* perspective: 800px; */
+}
+#heart3D{
+	position:absolute;
+	left: 0;top: 0;right: 0;bottom: 0;
+	width: 300px;
+	height: 480px;
+	margin: auto;
+	transform-style: preserve-3d; 
+	animation: rot 15s linear infinite;
+}
+.heart{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 300px;
+	height: 480px;
+	border: 2px solid red;
+	border-left: 0;
+	border-bottom: 0;
+	border-radius: 50% 50% 0/40% 50% 0;
+}
+
+.cube{
+	width: 150px;height: 150px;
+	position:absolute;
+	left: 0;top: 0;right: 0;bottom: 0;
+	margin:auto;
+	transform-style: preserve-3d;
+	transform: translateZ(150px);
+	animation: rot 15s linear infinite;
+}
+.cube div{
+	position: absolute;
+	left: 0;top: 0;
+	width: 150px;
+	height: 150px;
+	background-size: cover;
+
+}
+/* 上 */
+.cube div:nth-child(1){
+	left: 0;top: -150px;
+	transform-origin: bottom;
+	transform:translateZ(0px) rotateX(90deg);
+
+}
+/* 下 */
+.cube div:nth-child(2){
+	left: 0;top: 150px;
+	transform-origin: top;
+	transform:translateZ(0px) rotateX(-90deg);
+
+}
+/* 左 */
+.cube div:nth-child(3){
+	left: -150px;top: 0;
+	transform-origin: right;
+	transform:translateZ(0px) rotateY(-90deg);
+
+}
+/* 右 */
+.cube div:nth-child(4){
+	left: 150px;top: 0;
+	transform-origin: left;
+	transform:translateZ(0px) rotateY(90deg);
+
+}
+/* 前 */
+.cube div:nth-child(5){
+	left: 0;top: 0;
+	transform:translateZ(0px);
+}
+/* 后 */
+.cube div:nth-child(6){
+	left: 0;top: 0;
+	transform:translateZ(-150px);
+}
+@keyframes rot{
+	to{
+		transform:rotateX(360deg) rotateY(360deg);
+	}
+}
+
+</style>
+</head>
+<body>
+<div class="" id="heart3D">	
+	<div class="cube">
+		<div><img width="150" height="150" src="./images/1.png" alt=""></div>
+		<div><img width="150" height="150" src="./images/2.png" alt=""></div>
+		<div><img width="150" height="150" src="./images/3.png" alt=""></div>
+		<div><img width="150" height="150" src="./images/4.png" alt=""></div>
+		<div><img width="150" height="150" src="./images/5.png" alt=""></div>
+		<div><img width="150" height="150" src="./images/6.png" alt=""></div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript">
+var heart3D=document.getElementById("heart3D");
+var heart3D_fragment=document.createDocumentFragment();
+for (var i = 0; i < 36; i++) {
+	var div=document.createElement("div");
+	div.className="heart";
+	div.style.transform="rotateY("+i*10+"deg) rotateZ(45deg) translateX(90px)";
+	heart3D_fragment.appendChild(div);
+}
+heart3D.appendChild(heart3D_fragment);
+</script>
+</html>
