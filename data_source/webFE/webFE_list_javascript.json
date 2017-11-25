@@ -62,6 +62,13 @@
             "author": "转自 <a href=\"http://www.cnblogs.com/pssp/p/6902031.html\">追梦子</a>",
             "date": "2017-07-03",
             "category": "JavaScript"
+        },
+        {
+            "id": 26,
+            "title": "彻底学会apply()、call()、bind()",
+            "author": "cht",
+            "date": "2017-11-25",
+            "category": "JavaScript"
         }
     ]
 }
